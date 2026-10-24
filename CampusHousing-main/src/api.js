@@ -90,9 +90,10 @@ function compare(cand,prefs,commitments) {
   const subtotal=result?.known_recurring_subtotal;
   const base=result?.cost_breakdown?.per_person ?? subtotal;
   const share=subtotal==null ? null : {base:Number(base),mandatory:Number(subtotal)-Number(base),subtotal:Number(subtotal),
-    unknown:result.unknown_costs,complete:false,stale:daysBetween(cand.offer.price.last_reviewed_at,TODAY)>STALE_AFTER_DAYS,
+    unknown:result.unknown_costs,complete:!result.unknown_costs.length,stale:daysBetween(cand.offer.price.last_reviewed_at,TODAY)>STALE_AFTER_DAYS,
     scenario:cand.offer.price.basis==='whole_unit',frequency:cand.offer.price.frequency,reviewed:cand.offer.price.last_reviewed_at};
-  return {cand,fit,conflicts,unknowns,share,commute:{per,supported:supported.length,
+  const checks=result?.notes || [];
+  return {cand,fit,conflicts,unknowns,checks,share,commute:{per,supported:supported.length,
     within:supported.filter(x=>x.best.minutes<=prefs.max_commute_minutes).length,total:result?.total_commitments ?? per.length,
     limiting:[...supported].sort((a,b)=>b.best.minutes-a.best.minutes)[0] || null}};
 }

@@ -78,9 +78,12 @@ function feeRows(o, kind, hh) {
   return o.fees.filter((f) => f.kind === kind).map((f) => {
     const share = f.amount == null ? null : f.basis === 'whole_unit' ? f.amount / hh : f.amount;
     const range = f.amount_max != null && f.amount_max !== f.amount ? `–${money2(f.amount_max)}` : '';
-    const notCounted = f.research || f.included_in_advertised_total == null && f.kind === 'mandatory' && f.classification;
-    const status = f.research ? 'Research observation; not counted until reviewed' : notCounted ? 'Not confirmed whether already in the price; not added' : f.status === 'conflicting_sources' ? 'Sources disagree' : '';
-    return `<tr><td>${esc(f.label)}<div class="tiny">${f.amount == null ? 'Amount not published' : `${money2(f.amount)}${range} ${BASIS_LABEL[f.basis] || ''} ${f.frequency ? FREQ_LABEL[f.frequency] : ''}`}${f.note ? ' · ' + esc(f.note) : ''}</div>${status ? `<div class="tiny" style="color:var(--unsure)">${status}</div>` : ''}</td><td class="r ${share == null ? 'unk' : ''} num">${share == null ? 'Unknown' : (notCounted ? '<s>' : '') + money2(share) + range + (notCounted ? '</s>' : '')}</td></tr>`;
+    const shareRange = range ? `–${money2(f.basis === 'whole_unit' ? f.amount_max / hh : f.amount_max)}` : '';
+    const notCounted = false;
+    const unconfirmed = f.included_in_advertised_total == null && f.kind === 'mandatory' && f.classification;
+    const status = [f.research ? 'From the pricing research; not yet operator-verified' : '', unconfirmed ? 'Counted as extra; may already be in the listed price' : '',
+      f.status === 'conflicting_sources' ? 'Sources disagree' : ''].filter(Boolean).join(' · ');
+    return `<tr><td>${esc(f.label)}<div class="tiny">${f.amount == null ? 'Amount not published' : `${money2(f.amount)}${range} ${BASIS_LABEL[f.basis] || ''} ${f.frequency ? FREQ_LABEL[f.frequency] : ''}`}${f.note ? ' · ' + esc(f.note) : ''}</div>${status ? `<div class="tiny" style="color:var(--unsure)">${status}</div>` : ''}</td><td class="r ${share == null ? 'unk' : ''} num">${share == null ? 'Unknown' : (notCounted ? '<s>' : '') + money2(share) + shareRange + (notCounted ? '</s>' : '')}</td></tr>`;
   }).join('');
 }
 
@@ -108,16 +111,12 @@ function pricingEvidence(c) {
   if (a) blocks.push(`<h3>Advertised range</h3><p><b class="num">${money(a.minimum)}–${money(a.maximum)}</b> ${BASIS_LABEL[a.basis === 'whole_unit' ? 'whole_unit' : 'per_person']} ${FREQ_LABEL[a.period] || ''}</p>
     <ul class="small">${a.plans.map((p) => `<li>${esc(p.name)}: ${money(p.minimum)}${p.maximum !== p.minimum ? '–' + money(p.maximum) : ''}${p.square_feet ? ` · ${esc(p.square_feet)} sq ft` : ''}</li>`).join('')}${(a.uncovered_plans || []).map((p) => `<li>Also: ${esc(p.name)} ${money(p.minimum)}–${money(p.maximum)}</li>`).join('')}</ul>
     <p class="tiny">${esc(a.note)} Source: ${esc(sourceName(a.source_id))}.</p>`);
-  if (a && o.fees.length) {
-    const kinds = [['mandatory', 'Recurring'], ['one_time', 'One-time, not refunded'], ['refundable', 'Refundable deposits'], ['credited', 'Paid early, credited later'], ['optional', 'Optional or situational']];
-    blocks.push(kinds.filter(([k]) => o.fees.some((f) => f.kind === k)).map(([k, l]) => `<table class="ledger"><caption>${l}</caption><tbody>${feeRows(o, k, hh)}</tbody></table>`).join(''));
-  }
   const utilReviewed = (c.sources || []).find((s) => s.id === o.utility_source_id)?.review_status === 'reviewed';
   if (util.length) blocks.push(`<h3>Utilities and services</h3>${utilReviewed ? '' : '<p class="tiny" style="color:var(--unsure)">From a research observation (' + esc(sourceName(o.utility_source_id)) + '); not yet confirmed against a reviewed source.</p>'}<ul class="small">${util.map(([k, v]) => `<li>${esc(k.replaceAll('_', ' '))}: ${UTILITY_STATE[v] || esc(v)}</li>`).join('')}</ul>`);
   if (o.source_conflicts?.length) blocks.push(`<h3>Where sources disagree</h3><ul class="small">${o.source_conflicts.map((x) => `<li>${esc(x.field.replaceAll('_', ' '))}: ${x.values.map((v) => `${esc(v.value)} (${esc(sourceName(v.source_id))})`).join(' vs ')}. ${esc(x.resolution)}</li>`).join('')}</ul>`);
   if (o.operator_questions?.length) blocks.push(`<h3>Ask the leasing office</h3><ul class="small">${o.operator_questions.map((q) => `<li>${esc(q)}</li>`).join('')}</ul>`);
   if (!blocks.length) return '';
-  return `<section class="panel stack-sm" aria-labelledby="h-pe-${c.id}"><h2 id="h-pe-${c.id}">Pricing research</h2><p class="small">From the Oct 24, 2026 pricing research. Only amounts from reviewed sources are counted in the comparison.</p>${blocks.join('')}</section>`;
+  return `<section class="panel stack-sm" aria-labelledby="h-pe-${c.id}"><h2 id="h-pe-${c.id}">Pricing research</h2><p class="small">From the Oct 24, 2026 pricing research. These figures are counted in the comparison but are not operator-verified quotes.</p>${blocks.join('')}</section>`;
 }
 
 function priceDetail(r) {
@@ -129,11 +128,13 @@ function priceDetail(r) {
   }
   if (!c.offer || !r.share) return `<section class="panel stack-sm"><h2>Price</h2><div class="price-hero"><span class="amt" style="color:var(--unsure);font-size:2rem">Price needs confirmation</span></div>
     ${asyncNotice('unsure', 'No reviewed price for this offer', 'An exact comparable price is not established in the catalog. Nothing is filled in from a different plan or promotional range.', '<p class="small" style="margin-top:6px">Ask: What is the rent per person or per unit, and which fees are required?</p>')}</section>`;
-  const o = c.offer, pr = o.price, sh = r.share, hh = p.household_size;
+  const o = c.offer, sh = r.share, hh = p.household_size;
+  const fromRange = o.price.amount == null && o.advertised_range;
+  const pr = fromRange ? { ...o.price, amount: Number(o.advertised_range.minimum), basis: o.advertised_range.basis, frequency: o.advertised_range.period, payment_count: null } : o.price;
   const termTotal = pr.payment_count ? `<p class="small">${pr.payment_count} ${pr.frequency === 'installment' ? 'installments' : 'monthly payments'} documented, so the term's base rent is <b class="num">${money(pr.amount * pr.payment_count)}</b> ${BASIS_LABEL[pr.basis]}.${!sh.complete ? ' Required costs with unknown amounts are not included.' : ''}</p>` : '<p class="small">Payment count not documented, so no term total is shown.</p>';
   return `<section class="panel stack-sm" aria-labelledby="h-price">
     <div class="panel-head"><h2 id="h-price">What it costs</h2>${freshness(r)}</div>
-    <div class="price-hero"><span class="amt num">${money(pr.amount)}</span><span class="basis">${BASIS_LABEL[pr.basis]} ${FREQ_LABEL[pr.frequency]}</span></div>
+    <div class="price-hero">${fromRange ? '<span class="basis">from</span>' : ''}<span class="amt num">${money(pr.amount)}</span>${fromRange ? `<span class="basis">to ${money(Number(o.advertised_range.maximum))}</span>` : ''}<span class="basis">${BASIS_LABEL[pr.basis]} ${FREQ_LABEL[pr.frequency]}</span></div>
     <p class="small">${esc(o.layout)} · ${o.lease === 'individual' ? 'Individual lease' : o.lease === 'joint' ? 'Joint lease' : 'Lease responsibility unconfirmed'} · ${esc(o.term)}${pr.frequency === 'installment' ? '. Installments are payments on the lease schedule, not calendar months.' : ''}</p>
     ${o.correction ? asyncNotice('unsure', `Price corrected on ${fmtDate(o.correction.corrected_on)}`, esc(o.correction.note) + ' Two sources disagreed; the rendered operator page is used.') : ''}
     ${pr.basis === 'whole_unit' ? `<div class="scenario"><b>Splitting scenario, not a lease term</b><span class="small">${money(pr.amount)} ÷ ${hh} people = ${money2(pr.amount / hh)} each. On a joint lease, every signer can be held responsible for the full ${money(pr.amount)} if someone doesn't pay.</span></div>` : ''}
@@ -142,8 +143,7 @@ function priceDetail(r) {
       <tbody>
         <tr><td>Base rent${pr.basis === 'whole_unit' ? ` <span class="tiny">(÷ ${hh})</span>` : ''}</td><td class="r num">${money2(sh.base)}</td></tr>
         ${feeRows(o, 'mandatory', hh)}
-        ${o.unknown_costs.filter((u) => !o.fees.some((f) => f.amount == null && u.startsWith(f.label))).map((u) => `<tr><td>${esc(u)}</td><td class="r unk">Unknown</td></tr>`).join('')}
-        <tr class="total"><td>${sh.complete ? 'Recurring total per person' : 'Known subtotal per person (incomplete)'}</td><td class="r num">${money2(sh.subtotal)}</td></tr>
+        <tr class="total"><td>${sh.complete ? (fromRange ? 'Starting recurring total per person' : 'Recurring total per person') : 'Known subtotal per person (incomplete)'}<div class="tiny">Usage-based utilities not included</div></td><td class="r num">${money2(sh.subtotal)}</td></tr>
       </tbody>
     </table>
     ${o.included.length ? `<p class="small">Included in rent: ${o.included.map(esc).join(', ')}.</p>` : ''}
@@ -169,8 +169,9 @@ function commuteDetail(r) {
 
 function fitSummary(r) {
   return `<section class="panel stack-sm" aria-labelledby="h-fit"><div class="panel-head" style="margin:0"><h2 id="h-fit">Against your needs</h2>${fitChip(r.fit)}</div>
-    ${!r.conflicts.length && !r.unknowns.length ? '<p class="small">Every check passed with current sources: budget, bedrooms, lease and all routed classes.</p>' : ''}
+    ${!r.conflicts.length && !r.unknowns.length ? '<p class="small">Budget, bedrooms and every routed class check out with the current figures.</p>' : ''}
     <ul class="check-list">${r.conflicts.map((x) => `<li><span style="color:var(--conflict)">${I.x}</span><span>${esc(x.text)}</span></li>`).join('')}${r.unknowns.map((x) => `<li><span style="color:var(--unsure)">${I.q}</span><span>${esc(x.text)}</span></li>`).join('')}</ul>
+    ${r.checks?.length ? `<h3 style="font-size:1rem;margin-top:12px">Worth confirming <span class="small">(doesn't change the result)</span></h3><ul class="check-list">${r.checks.map((t) => `<li><span style="color:var(--muted)">${I.info}</span><span>${esc(t)}</span></li>`).join('')}</ul>` : ''}
   </section>`;
 }
 

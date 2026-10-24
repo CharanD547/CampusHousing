@@ -47,45 +47,45 @@ def _close(bucket, occupants):
 def fee_breakdown(offer, preferences, sources=None):
     """Five-bucket fee arithmetic over structured offer fees.
 
-    Only fees whose source has been reviewed against stored page text are counted. Research
-    observations are listed with included_in_totals=False and reported as unknowns, never imputed.
+    Fees from reviewed sources and from the pricing research audit are both counted; each counted
+    item records its evidence level, and research-only, conflicting or unconfirmed-inclusion fees
+    produce notes. Only a required recurring fee with no published amount blocks a budget verdict.
     """
     sources = sources or {}
     occupants = preferences.get('household_size', 1)
-    leaseholders = occupants if offer.get('contract') == 'individual' else 1 if offer.get('contract') == 'unit' else None
+    leaseholders = occupants if offer.get('contract') == 'individual' else 1
     recurring_timing = RECURRING_TIMING.get(offer.get('period'))
     recurring_household = Decimal(0)
     buckets = {k: _bucket() for k in ('one_time_nonrefundable', 'refundable_deposits', 'credited_prepayments', 'upfront_cash')}
-    recurring, per_term, listed, included, unknown = [], [], [], [], []
+    recurring, per_term, listed, included, unknown, notes = [], [], [], [], [], []
+    research_counted = []
     for fee in offer.get('fees', []):
-        # Every source a fee depends on (amount and charging basis) must be reviewed before it counts.
-        reviewed = all(sources.get(key, {}).get('review_status') == 'reviewed'
-                       for key in (fee.get('source_id'), fee.get('basis_source_id')) if key is not None) and fee.get('source_id') is not None
+        statuses = [sources.get(key, {}).get('review_status') for key in (fee.get('source_id'), fee.get('basis_source_id')) if key]
+        evidence = 'reviewed' if statuses and all(x == 'reviewed' for x in statuses) else 'research'
         kind = fee.get('classification')
         amount = _scale(fee, occupants, leaseholders)
         item = {'id': fee['id'], 'label': fee['label'], 'classification': kind, 'scaling_basis': fee.get('scaling_basis'),
                 'amount_min': fee.get('amount_min'), 'amount_max': fee.get('amount_max'), 'source_id': fee.get('source_id'),
-                'included_in_totals': False}
+                'evidence': evidence, 'included_in_totals': False}
         if fee.get('status') == 'conflicting_sources':
-            unknown.append(f"{fee['label']}: sources disagree; {fee.get('note', 'confirm with the operator')}")
+            notes.append(f"{fee['label']}: sources disagree. {fee.get('note', 'Confirm with the operator.')}")
         if kind in ('OPTIONAL_ADDON', 'CONDITIONAL_SITUATIONAL'):
             listed.append(item); continue
-        if not reviewed:
-            listed.append(item); unknown.append(f"{fee['label']} comes from a research observation that has not been reviewed against stored source text; it is listed but not counted.")
-            continue
         if fee.get('included_in_advertised_total') is True:
             included.append(item); continue
-        if fee.get('included_in_advertised_total') is None and kind == 'MANDATORY_RECURRING':
-            listed.append(item); unknown.append(f"Not confirmed whether {fee['label']} is already included in the listed price; it is not added.")
-            continue
         if amount is None:
-            listed.append(item); unknown.append(f"{fee['label']}: amount or charging basis is not documented.")
+            listed.append(item)
+            if kind == 'MANDATORY_RECURRING': unknown.append(f"{fee['label']}: required, but its amount is not published.")
+            else: notes.append(f"{fee['label']}: amount not published; ask the operator.")
             continue
+        if kind == 'MANDATORY_RECURRING' and fee.get('included_in_advertised_total') is None:
+            notes.append(f"{fee['label']} is counted as extra; it may already be in the listed price.")
+        if evidence == 'research': research_counted.append(fee['label'])
         if kind == 'MANDATORY_RECURRING':
             if fee.get('timing_event') == 'PER_TERM':
                 per_term.append({**item, 'included_in_totals': True, 'household_min': money(amount[0]), 'household_max': money(amount[1])}); continue
             if fee.get('timing_event') != recurring_timing or amount[0] != amount[1]:
-                listed.append(item); unknown.append(f"{fee['label']} is billed on a different schedule than the price or varies; it is not added to the recurring subtotal.")
+                listed.append(item); notes.append(f"{fee['label']} is billed on a different schedule than the rent; listed but not added.")
                 continue
             recurring_household += amount[0]
             recurring.append({**item, 'included_in_totals': True, 'household': money(amount[0]), 'per_person': money(amount[0] / occupants)})
@@ -93,7 +93,7 @@ def fee_breakdown(offer, preferences, sources=None):
         target = {'MANDATORY_ONE_TIME': 'one_time_nonrefundable', 'REFUNDABLE_DEPOSIT': 'refundable_deposits',
                   'CREDITED_PREPAYMENT': 'credited_prepayments'}.get(kind)
         if not target:
-            listed.append(item); unknown.append(f"{fee['label']}: charge type is not documented."); continue
+            listed.append(item); notes.append(f"{fee['label']}: charge type is not documented."); continue
         b = buckets[target]
         b['household_min'] += amount[0]; b['household_max'] += amount[1]
         b['items'].append({**item, 'included_in_totals': True, 'household_min': money(amount[0]), 'household_max': money(amount[1])})
@@ -101,88 +101,112 @@ def fee_breakdown(offer, preferences, sources=None):
         if target != 'credited_prepayments' and fee.get('timing_event') in UPFRONT_TIMING:
             u = buckets['upfront_cash']; u['household_min'] += amount[0]; u['household_max'] += amount[1]
             u['items'].append(fee['id'])
+    if research_counted:
+        notes.append('Counted from the Oct 24, 2026 pricing research (not yet operator-verified): ' + ', '.join(dict.fromkeys(research_counted)) + '.')
     utilities = offer.get('utility_matrix', {})
     utility_source = offer.get('utility_source_id')
     if utilities and sources.get(utility_source, {}).get('review_status') != 'reviewed':
-        unknown.append('Utility inclusions come from a research observation that has not been reviewed against stored source text.')
+        notes.append('Utility inclusions come from the pricing research and are not yet operator-verified.')
+    notes.extend(f"{name.replace('_', ' ').capitalize()}: whether it is included is not confirmed." for name, state in utilities.items() if state == 'UNKNOWN')
     return {
         'recurring_fees_per_person': money(recurring_household / occupants), 'recurring_fees': recurring,
         'per_term_fees': per_term, 'included_fees': included, 'listed_not_counted': listed,
         **{k: _close(v, occupants) for k, v in buckets.items()},
         'unresolved_cost_categories': sorted(k for k, v in utilities.items() if v in UNRESOLVED_UTILITY),
-        'utility_matrix': utilities, 'utility_source_id': utility_source, 'unknowns': list(dict.fromkeys(unknown)),
+        'utility_matrix': utilities, 'utility_source_id': utility_source,
+        'unknowns': list(dict.fromkeys(unknown)), 'notes': list(dict.fromkeys(notes)),
     }
 
 
+def effective_terms(offer):
+    """Price, basis and period to compare. Range-only offers use their advertised starting price."""
+    rng = offer.get('advertised_range')
+    if offer.get('amount') is None and rng:
+        return dict(amount=Decimal(rng['minimum']), amount_max=Decimal(rng['maximum']), from_range=True,
+                    basis='unit' if rng.get('basis') == 'whole_unit' else 'person',
+                    period='monthly' if rng.get('period') == 'calendar_month' else 'installment')
+    amount = Decimal(offer['amount']) if offer.get('amount') is not None else None
+    return dict(amount=amount, amount_max=None, from_range=False, basis=offer.get('basis'), period=offer.get('period'))
+
+
 def evaluate(offer, preferences, source, today=None, sources=None):
-    """Conservative three-state evaluation; an incomplete subtotal is not a budget pass."""
+    """Three-state evaluation. Conflicts and missing prices block; operator confirmations are notes."""
     today = today or date.today()
-    unknown = list(offer.get('unknowns', []))
+    sources = sources if sources is not None else {source.get('id'): source}
+    unknown, notes = [], list(offer.get('unknowns', []))
     conflicts = list(offer.get('conflicts', []))
     reasons = []
     checks = {}
     occupants = preferences.get('household_size', 1)
     bedrooms = offer.get('bedrooms')
-    amount = Decimal(offer['amount']) if offer.get('amount') is not None else None
-    stale = not source.get('checked_at') or (today - date.fromisoformat(source['checked_at'][:10])).days > 7
-    if stale: unknown.append('Price source is more than seven days old; refresh and review it.')
-    if source.get('review_status') != 'reviewed': unknown.append('Source changed or awaits review.')
-    if offer.get('basis') == 'unit':
+    terms = effective_terms(offer)
+    amount, basis = terms['amount'], terms['basis']
+    priced = {**offer, 'basis': basis, 'period': terms['period']}
+    # Freshness is the most recent check of any source for this property, including the research audit.
+    checked = [s.get('checked_at') for s in sources.values() if s.get('checked_at')] or [source.get('checked_at')]
+    latest = max((c for c in checked if c), default=None)
+    stale = not latest or (today - date.fromisoformat(latest[:10])).days > 7
+    if stale: unknown.append('Price sources are more than seven days old; refresh and review them.')
+    if source.get('review_status') not in ('reviewed', 'research_observation'): unknown.append('Source changed or awaits review.')
+    if terms['from_range']:
+        notes.append(f"Compared at the advertised starting price; this layout runs from ${amount:,.0f} to ${terms['amount_max']:,.0f}. Ask for a quote on a specific unit.")
+    if basis == 'unit':
         per_person = amount / occupants if amount is not None else None
         reasons.append(f'Cost-sharing scenario: the whole-unit price divided by {occupants}. Each resident may remain responsible for the full lease.')
         room = 'private' if bedrooms and occupants <= bedrooms else 'shared' if bedrooms else 'unknown'
         if bedrooms and occupants > bedrooms:
-            unknown.append('Permission for this occupancy and bedroom sharing is not confirmed.')
+            notes.append('Permission for this occupancy and bedroom sharing is not confirmed.')
         if preferences.get('room') == 'private' and room == 'shared':
             checks['room'] = 'conflict'; conflicts.append('There are fewer bedrooms than people in your household.')
         else: checks['room'] = 'unknown' if room == 'unknown' else 'fits'
-    elif offer.get('basis') == 'person':
+    elif basis == 'person':
         per_person = amount; room = offer.get('room', 'unknown')
         checks['room'] = 'unknown' if room == 'unknown' else 'conflict' if preferences.get('room') == 'private' and room != 'private' else 'fits'
         if checks['room'] == 'conflict': conflicts.append('This offer does not document a private bedroom.')
-        if occupants > 1: unknown.append('Availability of rooms together for your household is not confirmed.')
+        if occupants > 1: notes.append('Ask whether rooms in the same unit can be reserved together for your household.')
     else:
         per_person = None; room = 'unknown'; checks['room'] = 'unknown'
-    if checks['room'] == 'unknown': unknown.append('Bedroom privacy or occupancy basis needs confirmation.')
-    fees = fee_breakdown(offer, preferences, sources if sources is not None else {source.get('id'): source})
-    unknown.extend(fees['unknowns'])
-    unknown.extend(f'{name.capitalize()}: whether it is included is not confirmed.' for name, state in fees['utility_matrix'].items() if state == 'UNKNOWN')
+    if checks['room'] == 'unknown': notes.append('Confirm the bedroom arrangement with the operator.')
+    fees = fee_breakdown(priced, preferences, sources)
+    unknown.extend(fees['unknowns']); notes.extend(fees['notes'])
     recurring = per_person + Decimal(fees['recurring_fees_per_person']) if per_person is not None else None
     if preferences.get('individual_contract'):
         checks['contract'] = 'fits' if offer.get('contract') == 'individual' else 'conflict' if offer.get('contract') == 'unit' else 'unknown'
         if checks['contract'] == 'conflict': conflicts.append('This is a whole-unit lease; you requested an individual contract.')
-        if checks['contract'] == 'unknown': unknown.append('Individual-contract availability needs confirmation.')
+        if checks['contract'] == 'unknown': notes.append('Confirm an individual contract is available.')
     budget = Decimal(str(preferences['budget']))
-    # Billing frequency is retained. An installment is never relabeled as a calendar month.
     checks['budget'] = 'unknown'
-    if per_person is None or offer.get('period') == 'unknown': unknown.append('A comparable recurring price is not documented.')
+    if per_person is None or terms['period'] in (None, 'unknown'): unknown.append('No comparable price is documented.')
     elif recurring > budget:
-        checks['budget'] = 'conflict'; conflicts.append('The known recurring amount alone exceeds your payment budget.')
-    elif not stale and source.get('review_status') == 'reviewed' and not offer.get('unknowns') and not offer.get('conflicts') and not fees['unknowns']:
+        checks['budget'] = 'conflict'
+        conflicts.append('Even the advertised starting price is over your budget.' if terms['from_range'] else 'The known recurring amount alone exceeds your payment budget.')
+    elif not fees['unknowns'] and not stale:
         checks['budget'] = 'fits'
-    else: unknown.append('Known subtotal is within budget; missing costs prevent a full budget match.')
+        if terms['from_range']:
+            high = (terms['amount_max'] / occupants if basis == 'unit' else terms['amount_max']) + Decimal(fees['recurring_fees_per_person'])
+            if high > budget: notes.append(f'Higher-priced units in this layout (up to ${high:,.2f} per person) would exceed your budget.')
+    if fees['unresolved_cost_categories']:
+        notes.append('Not included in the total: ' + ', '.join(x.replace('_', ' ') for x in fees['unresolved_cost_categories']) + '.')
     start, end = offer.get('start'), offer.get('end')
     if not start or not end:
-        checks['dates'] = 'unknown'; unknown.append('Exact lease dates need confirmation.')
+        checks['dates'] = 'unknown'; notes.append('Confirm exact lease start and end dates with the operator.')
     elif start > preferences['start'] or end < preferences['end']:
         checks['dates'] = 'conflict'; conflicts.append('Published lease dates do not cover your intended stay.')
     else: checks['dates'] = 'fits'
     total = None
     if offer.get('annual_total') is not None:
-        total = Decimal(offer['annual_total']) / (occupants if offer.get('basis') == 'unit' else 1)
+        total = Decimal(offer['annual_total']) / (occupants if basis == 'unit' else 1)
         total_label = 'Published term total (scope shown in source)'
-    elif amount is not None and offer.get('installments') and start and end and per_person is not None:
+    elif not terms['from_range'] and amount is not None and offer.get('installments') and per_person is not None:
         total = recurring * offer['installments'] + sum(Decimal(f['household_min']) / occupants for f in fees['per_term_fees'])
-        total_label = ('Base payments plus reviewed recurring fees over documented term; one-time charges and usage-based utilities excluded'
-                       if fees['recurring_fees'] or fees['per_term_fees'] else 'Base payments over documented term; extras excluded')
+        total_label = ('Payments plus known recurring fees over the documented installments; one-time charges and usage-based utilities excluded'
+                       if fees['recurring_fees'] or fees['per_term_fees'] else 'Payments over the documented installments; extras excluded')
     else: total_label = 'Term commitment not fully documented'
-    status = 'conflict' if conflicts else 'review' if unknown or any(v == 'unknown' for v in checks.values()) else 'fits'
+    status = 'conflict' if conflicts else 'review' if unknown else 'fits'
     return dict(offer_id=offer['id'], property_id=offer['property_id'], status=status, checks=checks,
                 per_person=money(per_person) if per_person is not None else None,
                 recurring_per_person=money(recurring) if recurring is not None else None, fees=fees,
-                price_confidence_tier=offer.get('price_confidence_tier'), period=offer.get('period', 'unknown'),
+                price_confidence_tier=offer.get('price_confidence_tier'), period=terms['period'] or 'unknown',
                 term_total=money(total) if total is not None else None, total_label=total_label, room=room,
-                stale=stale, scenario=offer.get('basis') == 'unit', reasons=reasons,
-                unknowns=list(dict.fromkeys(unknown)), conflicts=list(dict.fromkeys(conflicts)))
-
-
+                stale=stale, scenario=basis == 'unit', reasons=reasons, from_range=terms['from_range'],
+                unknowns=list(dict.fromkeys(unknown)), conflicts=list(dict.fromkeys(conflicts)), notes=list(dict.fromkeys(notes)))

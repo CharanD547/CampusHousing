@@ -35,8 +35,13 @@ def test_official_destinations_without_fabricated_routes(tmp_path,request_body):
     response=client.post('/api/v1/comparisons',json=request_body)
     assert response.status_code==200
     for result in response.json()['candidate_results']:
-        assert result['total_commitments']==2 and result['supported_commitments']==0
-        assert all(r['minutes'] is None and r['status']=='unavailable' for r in result['commute_estimates'])
+        assert result['total_commitments']==2
+        for r in result['commute_estimates']:
+            # Default routing is the bundled Blacksburg Transit timetable; every estimate states its scope.
+            assert r['provider']=='bt_gtfs_local'
+            assert (r['status']=='supported')==(r['minutes'] is not None)
+            if r['mode']=='walk' and r['minutes'] is not None: assert any('straight-line' in n for n in r['coverage_notes'])
+            if r['mode']=='drive': assert r['status']=='unsupported'
 
 
 def test_cost_basis_and_bedroom_conflict(client,request_body):
@@ -44,7 +49,9 @@ def test_cost_basis_and_bedroom_conflict(client,request_body):
     comparison=client.post('/api/v1/comparisons',json=request_body).json()
     mill=next(x for x in comparison['candidate_results'] if x['candidate_id']=='mill-2')
     assert mill['known_recurring_subtotal']=='433.33' and mill['fit_state']=='conflict'
-    assert mill['cost_breakdown']['scenario'] and mill['cost_breakdown']['checks']['budget']=='unknown'
+    # Installments are compared with the budget directly; the bedroom shortfall is still a hard conflict.
+    assert mill['cost_breakdown']['scenario'] and mill['cost_breakdown']['checks']['budget']=='fits'
+    assert 'There are fewer bedrooms than people in your household.' in mill['hard_conflicts']
     assert comparison['input_revision']==1
 
 
@@ -56,9 +63,10 @@ def test_partial_routes(client,request_body):
 
 
 def test_wrong_weekday(client,request_body):
+    # A Tuesday routing date for a Monday class routes the class's next Monday instead.
     request_body['route_date']='2026-10-27'
     result=client.post('/api/v1/comparisons',json=request_body).json()['candidate_results'][0]
-    assert result['supported_commitments']==0 and result['commute_estimates'][0]['status']=='unsupported'
+    assert result['supported_commitments']==1 and result['commute_estimates'][0]['route_date']=='2026-11-02'
 
 
 def test_ai_off_checklist_preserves_progress(client,request_body):
@@ -114,8 +122,8 @@ def test_browse_without_schedule_stays_incomplete(client,request_body):
     response=client.post('/api/v1/comparisons',json=request_body)
     assert response.status_code==200
     for row in response.json()['candidate_results']:
-        assert row['total_commitments']==0 and row['fit_state']!='documented_fit'
-        assert 'Add class commitments before judging commute coverage.' in row['unknown_costs']
+        assert row['total_commitments']==0
+        assert 'Add your classes to check commutes.' in row['notes']
 
 
 def test_frontend_assets_and_server_owned_snapshot(client,request_body):

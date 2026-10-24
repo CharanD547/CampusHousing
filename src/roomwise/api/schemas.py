@@ -212,6 +212,7 @@ class CandidateResult(Model):
     price_label: str
     unknown_costs: list[str]
     hard_conflicts: list[str]
+    notes: list[str] = Field(default_factory=list)
     reason_codes: list[str]
     supported_commitments: int
     total_commitments: int

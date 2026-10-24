@@ -15,7 +15,7 @@ The pricing research audit has been ported into `data/housing-seed.json` by `too
 
 Fifteen `research_observation` sources were added, all with `refresh_policy: manual_only`.
 
-**Counted in arithmetic:** a fee counts only when every source it depends on is reviewed against stored snapshot text. Two facts meet that bar today:
+**Reviewed against stored snapshot text:**
 
 | Fact | Evidence in the reviewed snapshot | Effect |
 |---|---|---|
@@ -24,7 +24,7 @@ Fifteen `research_observation` sources were added, all with `refresh_policy: man
 
 The Mill's deposits were already reviewed and now flow into the refundable-deposit bucket.
 
-**Recorded but not counted** (research observations, pending review):
+**Research observations** (counted, marked as research, pending operator verification):
 
 - Foxridge and Windsor Hills fee schedules, move-out inspection fees and deposit ranges
 - Credited reservation payments
@@ -46,6 +46,18 @@ The Mill's deposits were already reviewed and now flow into the refundable-depos
 **To promote a research value:** retrieve and store the source snapshot, review it, and set the source's `review_status` to `reviewed`. The value then counts with no code change.
 
 `CatalogRepository` seeds with `INSERT OR IGNORE`, so an existing `var/catalog.sqlite3` keeps its old offer bodies. A fresh data directory picks up this seed.
+
+### Comparison rules after the port
+
+The comparison was changed so offers reach a definite result instead of "insufficient evidence":
+
+- **Routing:** with no Google Routes key configured, routing uses the bundled Blacksburg Transit GTFS feed (`GtfsRoutingAdapter`). It finds direct scheduled bus trips arriving before the class time minus the buffer. Walking legs and walk-only trips are estimated from straight-line distance × 1.3, and every result says so. A single routing date that isn't a class day moves to the class's next meeting day.
+- **Installments:** compared with the monthly budget directly, with a note that installments follow the lease schedule.
+- **Research figures:** fees, utility inclusions and advertised ranges are counted. Each counted fee records `evidence: reviewed | research`, and the result carries a note.
+- **Advertised ranges:** range-only offers are compared at their starting price. A note gives the high end and whether it would exceed the budget.
+- **Freshness:** measured from the latest check of any source for the property, including the research audit.
+- **Operator questions:** per-offer `unknowns`, unknown lease dates, room-placement questions and conflicting sources are returned in a new `notes` list. They no longer block a fit.
+- **Still blocking:** over budget, too few bedrooms, a commute over the limit, lease dates that don't cover the stay, no route to a class, a stale price, or a required recurring fee with no published amount.
 
 The tables below describe the state before this port. The per-offer `unknowns` and `operator_questions` in the seed are now the current list.
 

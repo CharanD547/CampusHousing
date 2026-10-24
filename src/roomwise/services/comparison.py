@@ -25,7 +25,7 @@ def candidates(catalog):
                                price={'amount':offer['amount'], 'currency':'USD', 'basis':{'person':'per_person','unit':'whole_unit'}.get(offer['basis'], 'unknown'),
                                       'frequency':{'monthly':'calendar_month','installment':'installment'}.get(offer['period'], 'other'),
                                       'payment_count':offer.get('installments'), 'term':{'start':offer.get('start'), 'end':offer.get('end'), 'label':offer['term_label']},
-                                      'source_id':offer['source_id'], 'last_reviewed_at':next(s for s in prop['sources'] if s['id']==offer['source_id'])['checked_at']},
+                                      'source_id':offer['source_id'], 'last_reviewed_at':max(s['checked_at'] for s in prop['sources'] if s.get('checked_at'))},
                                fees=offer.get('fees') or offer['upfront'], unknown_costs=offer['unknowns'],
                                utility_matrix=offer.get('utility_matrix', {}), utility_source_id=offer.get('utility_source_id'), price_confidence_tier=offer.get('price_confidence_tier'),
                                advertised_range=offer.get('advertised_range'), operator_questions=offer.get('operator_questions', []),
@@ -52,8 +52,11 @@ class ComparisonService:
                      start=p.move_in_date.isoformat() if p.move_in_date else '0001-01-01',
                      end=p.move_out_date.isoformat() if p.move_out_date else '9999-12-31')
         occurrences=[]
+        names=('mon','tue','wed','thu','fri','sat','sun')
         for commitment in request.commitments:
-            dates=[request.route_date]
+            # A single routing date that isn't a class day moves to the class's next meeting day.
+            shift=next(i for i in range(7) if names[(request.route_date.weekday()+i)%7] in commitment.weekdays)
+            dates=[request.route_date+timedelta(days=shift)]
             if request.routing_scope=='representative_week':
                 monday=request.route_date-timedelta(days=request.route_date.weekday())
                 dates=[monday+timedelta(days=i) for i,day in enumerate(('mon','tue','wed','thu','fri','sat','sun')) if day in commitment.weekdays]
@@ -66,22 +69,19 @@ class ComparisonService:
             offer=next(x for x in prop['offers'] if x['id']==key)
             source=next(x for x in prop['sources'] if x['id']==offer['source_id'])
             costs=evaluate(offer,prefs,source,sources={s['id']:s for s in prop['sources']})
-            conflicts=list(costs['conflicts']); unknowns=list(costs['unknowns'])
+            conflicts=list(costs['conflicts']); unknowns=list(costs['unknowns']); notes=list(costs['notes'])
             if not p.move_in_date:
                 # No fabricated housing dates or date conflicts when the user hasn't chosen a stay.
                 conflicts=[x for x in conflicts if x!='Published lease dates do not cover your intended stay.']
-                costs['checks']['dates']='unknown'; unknowns.append('Intended housing dates were not supplied.')
+                costs['checks']['dates']='unknown'; notes.append('Add your move-in and move-out dates to check lease timing.')
             if p.requested_bedrooms and (offer['bedrooms'] is None or offer['bedrooms']<p.requested_bedrooms):
                 if offer['bedrooms'] is None: unknowns.append('Requested bedroom count is not documented.')
                 else: conflicts.append('This layout has fewer bedrooms than requested.')
-            if offer['period']!='monthly':
-                # Contractual installments cannot be compared with a monthly budget as though identical.
-                costs['checks']['budget']='unknown'
-                conflicts=[x for x in conflicts if x!='The known recurring amount alone exceeds your payment budget.']
-                unknowns.append('Installment/payment amount is not a documented calendar-month total; monthly affordability is unresolved.')
+            if costs['period']=='installment':
+                notes.append('Compared per installment. Installments follow the lease schedule and are not calendar months.')
             routes=[]
             if not request.commitments:
-                unknowns.append('Add class commitments before judging commute coverage.')
+                notes.append('Add your classes to check commutes.')
             for commitment,route_day in occurrences:
                 for mode in p.travel_modes:
                     if route_day.strftime('%a').lower() not in commitment.weekdays:
@@ -106,10 +106,11 @@ class ComparisonService:
             if supported<len(occurrences): unknowns.append('Not all class commitments have supported route evidence.')
             if any(r['minutes']>p.max_commute_minutes for r in best): conflicts.append('A supported class journey exceeds the maximum commute preference.')
             state='conflict' if conflicts else 'insufficient_evidence' if unknowns else 'documented_fit'
-            costs.update(status=state, conflicts=list(dict.fromkeys(conflicts)), unknowns=list(dict.fromkeys(unknowns)))
+            costs.update(status=state, conflicts=list(dict.fromkeys(conflicts)), unknowns=list(dict.fromkeys(unknowns)), notes=list(dict.fromkeys(notes)))
             results.append(dict(candidate_id=key,property_id=prop['id'],fit_state=state,
                                 cost_breakdown=costs,known_recurring_subtotal=costs['recurring_per_person'],
-                                price_label=('Base installment plus reviewed recurring fees / unknown extras' if costs['fees']['recurring_fees'] else 'Base installment / unknown extras') if offer['period']=='installment' else 'Known subtotal; confirm missing charges',
+                                price_label=('Advertised starting price' if costs['from_range'] else 'Listed price')+(' plus known recurring fees' if costs['fees']['recurring_fees'] else '')+(' per installment' if costs['period']=='installment' else ' per month'),
+                                notes=list(dict.fromkeys(notes)),
                                 unknown_costs=list(dict.fromkeys(unknowns)),hard_conflicts=list(dict.fromkeys(conflicts)),
                                 reason_codes=(['hard_conflict'] if conflicts else [])+(['missing_evidence'] if unknowns else []),
                                 supported_commitments=supported,total_commitments=len(occurrences),

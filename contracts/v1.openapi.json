@@ -1399,6 +1399,13 @@
             "type": "array",
             "title": "Hard Conflicts"
           },
+          "notes": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Notes"
+          },
           "reason_codes": {
             "items": {
               "type": "string"

@@ -20,6 +20,7 @@ from roomwise.adapters.model import JSONModel
 from roomwise.services.assistant import AssistantService
 from roomwise.adapters.gemma import UnconfiguredGemmaRuntime
 from roomwise.adapters.routing import UnconfiguredRoutingAdapter
+from roomwise.adapters.gtfs_routing import GtfsRoutingAdapter
 from roomwise.adapters.google_routes import GoogleRoutesAdapter
 from roomwise.adapters.places import GooglePlaces
 from roomwise.repositories.provider_budget import ProviderBudget
@@ -44,7 +45,7 @@ def create_app(settings=None, *, campuses=None, routing=None, gemma=None, assist
     accounts=Accounts(settings.data_dir)
     evidence=EvidenceRepository(catalog)
     maps_budget=ProviderBudget(settings.data_dir/'maps-requests.sqlite3',settings.maps_daily_requests)
-    routing=routing or (GoogleRoutesAdapter(settings,maps_budget) if settings.routes_enabled and settings.routes_api_key else UnconfiguredRoutingAdapter())
+    routing=routing or (GoogleRoutesAdapter(settings,maps_budget) if settings.routes_enabled and settings.routes_api_key else GtfsRoutingAdapter())
     places=GooglePlaces(settings,maps_budget)
     gemma=gemma or UnconfiguredGemmaRuntime()
     comparisons=ComparisonService(catalog,campuses,routing,store)
