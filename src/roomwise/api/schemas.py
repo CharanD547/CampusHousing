@@ -162,6 +162,12 @@ class Offer(Model):
     price: Price
     fees: list[dict]
     unknown_costs: list[str]
+    utility_matrix: dict[str, str] = Field(default_factory=dict)
+    utility_source_id: str | None = None
+    price_confidence_tier: str | None = None
+    advertised_range: dict | None = None
+    operator_questions: list[str] = Field(default_factory=list)
+    source_conflicts: list[dict] = Field(default_factory=list)
 
 
 class Candidate(Model):

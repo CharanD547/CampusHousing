@@ -48,8 +48,23 @@ function normalizeCandidate(c) {
     last_reviewed_at:c.offer.price.last_reviewed_at.slice(0,10)};
   return {...c,area:'Blacksburg, VA',offer:{...c.offer,price,lease:c.offer.contract,
     term:c.offer.price.term.label,byTheBed:c.offer.price.basis==='per_person',included:[],
-    fees:c.offer.fees.map(f=>({...f,label:f.label || f.name || 'Charge',amount:f.amount==null ? null:Number(f.amount),
-      kind:f.refundable ? 'refundable' : 'one_time'}))},evidence:[]};
+    fees:c.offer.fees.map(f=>normalizeFee(f,c.sources))},evidence:[]};
+}
+
+// Structured fees keep their classification; legacy upfront rows keep the refundable flag.
+const FEE_KIND={MANDATORY_RECURRING:'mandatory',MANDATORY_ONE_TIME:'one_time',REFUNDABLE_DEPOSIT:'refundable',
+  CREDITED_PREPAYMENT:'credited',OPTIONAL_ADDON:'optional',CONDITIONAL_SITUATIONAL:'optional'};
+const FEE_FREQUENCY={PER_INSTALLMENT:'installment',PER_CALENDAR_MONTH:'calendar_month'};
+const FEE_BASIS={PER_BED_INSTALLMENT:'per_person',PER_APPLICANT:'per_applicant',PER_PRIMARY_LEASEHOLDER:'per_leaseholder',PER_PET:'per_pet'};
+function normalizeFee(f,sources) {
+  const raw=f.amount ?? f.amount_min;
+  const reviewed=[f.source_id,f.basis_source_id].filter(Boolean).every(id=>(sources||[]).find(s=>s.id===id)?.review_status==='reviewed');
+  return {...f,label:f.label || f.name || 'Charge',amount:raw==null ? null:Number(raw),
+    amount_max:f.amount_max==null ? null:Number(f.amount_max),
+    kind:f.timing_event==='PER_TERM' ? 'term' : FEE_KIND[f.classification] || (f.refundable ? 'refundable' : 'one_time'),
+    basis:f.scaling_basis==='PER_UNIT' || f.basis==='unit' ? 'whole_unit' : FEE_BASIS[f.scaling_basis] || f.basis || 'per_person',
+    frequency:FEE_FREQUENCY[f.timing_event] || f.frequency,
+    research:f.classification ? !reviewed : false};
 }
 
 function compare(cand,prefs,commitments) {
@@ -73,7 +88,8 @@ function compare(cand,prefs,commitments) {
   const conflicts=(result?.hard_conflicts || []).map(text=>({kind:'constraint',text}));
   const unknowns=(result?.unknown_costs || [API.comparisonError || 'Waiting for the backend comparison.']).map(text=>({kind:'price',text}));
   const subtotal=result?.known_recurring_subtotal;
-  const share=subtotal==null ? null : {base:Number(subtotal),mandatory:0,subtotal:Number(subtotal),
+  const base=result?.cost_breakdown?.per_person ?? subtotal;
+  const share=subtotal==null ? null : {base:Number(base),mandatory:Number(subtotal)-Number(base),subtotal:Number(subtotal),
     unknown:result.unknown_costs,complete:false,stale:daysBetween(cand.offer.price.last_reviewed_at,TODAY)>STALE_AFTER_DAYS,
     scenario:cand.offer.price.basis==='whole_unit',frequency:cand.offer.price.frequency,reviewed:cand.offer.price.last_reviewed_at};
   return {cand,fit,conflicts,unknowns,share,commute:{per,supported:supported.length,

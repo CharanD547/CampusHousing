@@ -75,3 +75,17 @@ test('LAN HTTP works when secure-context randomUUID is absent',()=>{
   assert.match(ids[0],/^browser-/);
   assert.match(ids[1],uuid);assert.match(ids[2],uuid);assert.notEqual(ids[1],ids[2]);
 });
+
+test('structured fees keep their classification and research fees are marked as not counted',()=>{
+  const scope=context();
+  const fees=vm.runInContext(`normalizeCandidate({...offer,sources:[{id:'reviewed',review_status:'reviewed'},{id:'audit',review_status:'research_observation'}],
+    offer:{...offer.offer,fees:[
+      {id:'billing',label:'Billing',classification:'MANDATORY_RECURRING',timing_event:'PER_INSTALLMENT',scaling_basis:'PER_BED_INSTALLMENT',amount_min:'6.79',amount_max:'6.79',included_in_advertised_total:false,source_id:'reviewed'},
+      {id:'internet',label:'Internet',classification:'MANDATORY_RECURRING',timing_event:'PER_CALENDAR_MONTH',scaling_basis:'PER_UNIT',amount_min:'65.00',amount_max:'65.00',included_in_advertised_total:false,source_id:'audit'},
+      {id:'deposit',label:'Deposit',classification:'REFUNDABLE_DEPOSIT',timing_event:'AT_MOVE_IN',scaling_basis:'PER_UNIT',amount_min:'400.00',amount_max:'1500.00',source_id:'reviewed'},
+      {id:'annual',label:'Annual fees',classification:'MANDATORY_RECURRING',timing_event:'PER_TERM',scaling_basis:'PER_BED_INSTALLMENT',amount_min:'155.00',amount_max:'155.00',source_id:'reviewed'},
+      {label:'Application fee',amount:'35',refundable:false,basis:'unknown'}]}}).offer.fees`,scope).map(f=>({...f}));
+  assert.deepEqual(JSON.parse(JSON.stringify(fees.map(f=>[f.kind,f.amount,f.research]))),[['mandatory',6.79,false],['mandatory',65,true],['refundable',400,false],['term',155,false],['one_time',35,false]]);
+  assert.equal(fees[1].basis,'whole_unit');
+  assert.equal(fees[2].amount_max,1500);
+});

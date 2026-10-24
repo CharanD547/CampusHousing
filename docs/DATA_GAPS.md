@@ -2,6 +2,53 @@
 
 Audit: October 24, 2026. Based on the running catalog, separate housing observations, review database and current source-policy inspection. This is a field-level backlog, not new pricing or legal clearance.
 
+## Update: pricing research port (Oct 24, 2026)
+
+The pricing research audit has been ported into `data/housing-seed.json` by `tools/backend/port_pricing_research.py`. Backend work items 1–4 below are implemented in `roomwise.domain.costs.fee_breakdown`. Each offer now carries:
+
+- **`fees`:** classification, timing, scaling basis, amount range, inclusion flag, credit target and source.
+- **`utility_matrix`:** with its own `utility_source_id`.
+- **`price_confidence_tier`**
+- **`advertised_range`:** named plans with ranges.
+- **`source_conflicts`**
+- **`operator_questions`**
+
+Fifteen `research_observation` sources were added, all with `refresh_policy: manual_only`.
+
+**Counted in arithmetic:** a fee counts only when every source it depends on is reviewed against stored snapshot text. Two facts meet that bar today:
+
+| Fact | Evidence in the reviewed snapshot | Effect |
+|---|---|---|
+| Union $6.79 utility billing administrative fee per installment | `union-plans`: every plan's "Total Monthly Leasing Price" is base rent + $6.79 | `known_recurring_subtotal` now matches the portal total, e.g. B2 $1,420.79 |
+| Alight annual totals include $155 in mandatory fees | `alight-plans`: "Total price: $10,175 - $10,415 … East $835 West $855"; 2B $11,615 - $12,143 for $955 / $999 | `annual_total` set to $10,175 / $10,415 / $11,615; the $155 is a per-term fee |
+
+The Mill's deposits were already reviewed and now flow into the refundable-deposit bucket.
+
+**Recorded but not counted** (research observations, pending review):
+
+- Foxridge and Windsor Hills fee schedules, move-out inspection fees and deposit ranges
+- Credited reservation payments
+- Terrace View per-installment fees, whose inclusion is unconfirmed
+- Advertised plan ranges for Foxridge (14 plans), Windsor Hills (6) and Terrace View (per-bed listings)
+- Union application, admin, deposit and insurance terms, and utility inclusions
+- The Mill's per-applicant basis for the application fee
+
+**Conflicts kept open rather than resolved:**
+
+- Alight's one-sheet ($829 / $849 / $949) versus the reviewed rates page ($835 / $855 / $955)
+- Union's $6.79 versus a cached $6.44, and annual versus "11 Month Lease"
+- Windsor's deposit: $300–$500 (operator PDF) versus $400–$1,500 (Apartments.com)
+- Windsor's $40 amenity fee
+- Foxridge's reservation credit: toward rent or toward the deposit
+- Foxridge's "Shared Pricing" figures versus its whole-unit leases
+- The Mill's "By-The-Bed" listing badge versus its joint lease
+
+**To promote a research value:** retrieve and store the source snapshot, review it, and set the source's `review_status` to `reviewed`. The value then counts with no code change.
+
+`CatalogRepository` seeds with `INSERT OR IGNORE`, so an existing `var/catalog.sqlite3` keeps its old offer bodies. A fresh data directory picks up this seed.
+
+The tables below describe the state before this port. The per-offer `unknowns` and `operator_questions` in the seed are now the current list.
+
 ## 3. Complete pricing and availability
 
 ### What is actually missing by property

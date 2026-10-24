@@ -73,7 +73,7 @@ const dayLabel = (d) => (DAYS.find((x) => x[0] === d) || [, d])[1];
 const fmtTime = (t) => { if (!t) return ''; const [h, m] = t.split(':').map(Number); const ap = h >= 12 ? 'pm' : 'am'; return `${((h + 11) % 12) + 1}:${String(m).padStart(2, '0')} ${ap}`; };
 const plural = (n, w, p) => `${n} ${n === 1 ? w : (p || w + 's')}`;
 const MODE_LABEL = { walk: 'Walk', transit: 'Bus', bike: 'Bike', drive: 'Drive' };
-const BASIS_LABEL = { per_person: 'per person', whole_unit: 'for the whole unit', per_space: 'per space', per_pet: 'per pet', unknown:'billing basis unconfirmed' };
+const BASIS_LABEL = { per_person: 'per person', whole_unit: 'for the whole unit', per_space: 'per space', per_pet: 'per pet', per_applicant: 'per applicant', per_leaseholder: 'per leaseholder', unknown:'billing basis unconfirmed' };
 const FREQ_LABEL = { calendar_month: 'per month', installment: 'per installment', other: 'billing frequency unconfirmed' };
 const building = (id) => BUILDINGS.find((b) => b.id === id);
 const candidate = (id) => CANDIDATES.find((c) => c.id === id);

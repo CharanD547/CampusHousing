@@ -2028,6 +2028,62 @@
             },
             "type": "array",
             "title": "Unknown Costs"
+          },
+          "utility_matrix": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "type": "object",
+            "title": "Utility Matrix"
+          },
+          "utility_source_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Utility Source Id"
+          },
+          "price_confidence_tier": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Price Confidence Tier"
+          },
+          "advertised_range": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Advertised Range"
+          },
+          "operator_questions": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Operator Questions"
+          },
+          "source_conflicts": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array",
+            "title": "Source Conflicts"
           }
         },
         "additionalProperties": false,

@@ -77,7 +77,10 @@ function viewExplore() {
 function feeRows(o, kind, hh) {
   return o.fees.filter((f) => f.kind === kind).map((f) => {
     const share = f.amount == null ? null : f.basis === 'whole_unit' ? f.amount / hh : f.amount;
-    return `<tr><td>${esc(f.label)}<div class="tiny">${f.amount == null ? 'Amount not published' : `${money(f.amount)} ${BASIS_LABEL[f.basis] || ''} ${f.frequency ? FREQ_LABEL[f.frequency] : ''}`}</div></td><td class="r ${share == null ? 'unk' : ''} num">${share == null ? 'Unknown' : money2(share)}</td></tr>`;
+    const range = f.amount_max != null && f.amount_max !== f.amount ? `–${money2(f.amount_max)}` : '';
+    const notCounted = f.research || f.included_in_advertised_total == null && f.kind === 'mandatory' && f.classification;
+    const status = f.research ? 'Research observation; not counted until reviewed' : notCounted ? 'Not confirmed whether already in the price; not added' : f.status === 'conflicting_sources' ? 'Sources disagree' : '';
+    return `<tr><td>${esc(f.label)}<div class="tiny">${f.amount == null ? 'Amount not published' : `${money2(f.amount)}${range} ${BASIS_LABEL[f.basis] || ''} ${f.frequency ? FREQ_LABEL[f.frequency] : ''}`}${f.note ? ' · ' + esc(f.note) : ''}</div>${status ? `<div class="tiny" style="color:var(--unsure)">${status}</div>` : ''}</td><td class="r ${share == null ? 'unk' : ''} num">${share == null ? 'Unknown' : (notCounted ? '<s>' : '') + money2(share) + range + (notCounted ? '</s>' : '')}</td></tr>`;
   }).join('');
 }
 
@@ -92,6 +95,29 @@ function housingResearch(c) {
     if(f.advertised_total_monthly_leasing_price) facts+=`<p>${esc(f.layout)}: ${money(f.advertised_total_monthly_leasing_price)} advertised leasing total; ${fmtDate(f.lease_start)}–${fmtDate(f.lease_end)}.</p>`;
     return `<div>${facts}<p class="small">${esc(o.limitation)}</p><a href="${esc(o.url)}" target="_blank" rel="noopener noreferrer">Read original disclosure ↗</a></div>`;
   }).join('')}</section>`;
+}
+
+const UTILITY_STATE = { INCLUDED: 'Included', EXCLUDED_FIXED_FEE: 'Covered by a listed fee', EXCLUDED_VARIABLE_USAGE: 'You pay by usage', PROVIDER_DEPENDENT: 'You arrange', UNKNOWN: 'Not confirmed' };
+
+// Structured evidence from the pricing research: ranges, fees, utilities, conflicts and operator questions.
+function pricingEvidence(c) {
+  const o = c.offer, a = o.advertised_range, hh = S.prefs.household_size;
+  const sourceName = (id) => (c.sources || []).find((s) => s.id === id)?.title || id;
+  const util = Object.entries(o.utility_matrix || {});
+  const blocks = [];
+  if (a) blocks.push(`<h3>Advertised range</h3><p><b class="num">${money(a.minimum)}–${money(a.maximum)}</b> ${BASIS_LABEL[a.basis === 'whole_unit' ? 'whole_unit' : 'per_person']} ${FREQ_LABEL[a.period] || ''}</p>
+    <ul class="small">${a.plans.map((p) => `<li>${esc(p.name)}: ${money(p.minimum)}${p.maximum !== p.minimum ? '–' + money(p.maximum) : ''}${p.square_feet ? ` · ${esc(p.square_feet)} sq ft` : ''}</li>`).join('')}${(a.uncovered_plans || []).map((p) => `<li>Also: ${esc(p.name)} ${money(p.minimum)}–${money(p.maximum)}</li>`).join('')}</ul>
+    <p class="tiny">${esc(a.note)} Source: ${esc(sourceName(a.source_id))}.</p>`);
+  if (a && o.fees.length) {
+    const kinds = [['mandatory', 'Recurring'], ['one_time', 'One-time, not refunded'], ['refundable', 'Refundable deposits'], ['credited', 'Paid early, credited later'], ['optional', 'Optional or situational']];
+    blocks.push(kinds.filter(([k]) => o.fees.some((f) => f.kind === k)).map(([k, l]) => `<table class="ledger"><caption>${l}</caption><tbody>${feeRows(o, k, hh)}</tbody></table>`).join(''));
+  }
+  const utilReviewed = (c.sources || []).find((s) => s.id === o.utility_source_id)?.review_status === 'reviewed';
+  if (util.length) blocks.push(`<h3>Utilities and services</h3>${utilReviewed ? '' : '<p class="tiny" style="color:var(--unsure)">From a research observation (' + esc(sourceName(o.utility_source_id)) + '); not yet confirmed against a reviewed source.</p>'}<ul class="small">${util.map(([k, v]) => `<li>${esc(k.replaceAll('_', ' '))}: ${UTILITY_STATE[v] || esc(v)}</li>`).join('')}</ul>`);
+  if (o.source_conflicts?.length) blocks.push(`<h3>Where sources disagree</h3><ul class="small">${o.source_conflicts.map((x) => `<li>${esc(x.field.replaceAll('_', ' '))}: ${x.values.map((v) => `${esc(v.value)} (${esc(sourceName(v.source_id))})`).join(' vs ')}. ${esc(x.resolution)}</li>`).join('')}</ul>`);
+  if (o.operator_questions?.length) blocks.push(`<h3>Ask the leasing office</h3><ul class="small">${o.operator_questions.map((q) => `<li>${esc(q)}</li>`).join('')}</ul>`);
+  if (!blocks.length) return '';
+  return `<section class="panel stack-sm" aria-labelledby="h-pe-${c.id}"><h2 id="h-pe-${c.id}">Pricing research</h2><p class="small">From the Oct 24, 2026 pricing research. Only amounts from reviewed sources are counted in the comparison.</p>${blocks.join('')}</section>`;
 }
 
 function priceDetail(r) {
@@ -125,6 +151,7 @@ function priceDetail(r) {
     ${o.fees.some((f) => f.kind === 'refundable') ? `<table class="ledger"><caption>Refundable deposits</caption><tbody>${feeRows(o, 'refundable', hh)}</tbody></table>` : ''}
     ${o.fees.some((f) => f.kind === 'one_time') ? `<table class="ledger"><caption>One-time, not refunded</caption><tbody>${feeRows(o, 'one_time', hh)}</tbody></table>` : ''}
     ${termTotal}
+    ${o.fees.filter((f) => f.kind === 'term').map((f) => `<p class="small">Plus ${money2(f.amount)} ${esc(f.label.toLowerCase())}${f.derivation ? ` (${esc(f.derivation)})` : ''}. ${esc(f.note || '')}</p>`).join('')}
     <p class="tiny">Source: ${esc(c.evidence[0].source_name)}, reviewed ${fmtDate(pr.last_reviewed_at)}. <button class="linkish" data-action="evidence" data-id="${c.id}">Open evidence</button></p>
   </section>`;
 }
@@ -169,7 +196,7 @@ function viewProperty(id) {
   </div></div></section>
   <div class="wrap page">
   <div class="two-col">
-    <div class="stack">${priceDetail(r)}${housingResearch(c)}${nearbySection(c)}${commuteDetail(r)}</div>
+    <div class="stack">${priceDetail(r)}${pricingEvidence(c)}${housingResearch(c)}${nearbySection(c)}${commuteDetail(r)}</div>
     <div class="stack">${commuteSign(r)}${fitSummary(r)}${questionsBlock(c.id)}</div>
   </div></div>`;
 }

@@ -26,7 +26,10 @@ def candidates(catalog):
                                       'frequency':{'monthly':'calendar_month','installment':'installment'}.get(offer['period'], 'other'),
                                       'payment_count':offer.get('installments'), 'term':{'start':offer.get('start'), 'end':offer.get('end'), 'label':offer['term_label']},
                                       'source_id':offer['source_id'], 'last_reviewed_at':next(s for s in prop['sources'] if s['id']==offer['source_id'])['checked_at']},
-                               fees=offer['upfront'], unknown_costs=offer['unknowns'])))
+                               fees=offer.get('fees') or offer['upfront'], unknown_costs=offer['unknowns'],
+                               utility_matrix=offer.get('utility_matrix', {}), utility_source_id=offer.get('utility_source_id'), price_confidence_tier=offer.get('price_confidence_tier'),
+                               advertised_range=offer.get('advertised_range'), operator_questions=offer.get('operator_questions', []),
+                               source_conflicts=offer.get('source_conflicts', []))))
     return result
 
 
@@ -62,7 +65,7 @@ class ComparisonService:
             prop=next(x for x in catalog if x['id']==candidate['property_id'])
             offer=next(x for x in prop['offers'] if x['id']==key)
             source=next(x for x in prop['sources'] if x['id']==offer['source_id'])
-            costs=evaluate(offer,prefs,source)
+            costs=evaluate(offer,prefs,source,sources={s['id']:s for s in prop['sources']})
             conflicts=list(costs['conflicts']); unknowns=list(costs['unknowns'])
             if not p.move_in_date:
                 # No fabricated housing dates or date conflicts when the user hasn't chosen a stay.
@@ -105,8 +108,8 @@ class ComparisonService:
             state='conflict' if conflicts else 'insufficient_evidence' if unknowns else 'documented_fit'
             costs.update(status=state, conflicts=list(dict.fromkeys(conflicts)), unknowns=list(dict.fromkeys(unknowns)))
             results.append(dict(candidate_id=key,property_id=prop['id'],fit_state=state,
-                                cost_breakdown=costs,known_recurring_subtotal=costs['per_person'],
-                                price_label='Base installment / unknown extras' if offer['period']=='installment' else 'Known subtotal; confirm missing charges',
+                                cost_breakdown=costs,known_recurring_subtotal=costs['recurring_per_person'],
+                                price_label=('Base installment plus reviewed recurring fees / unknown extras' if costs['fees']['recurring_fees'] else 'Base installment / unknown extras') if offer['period']=='installment' else 'Known subtotal; confirm missing charges',
                                 unknown_costs=list(dict.fromkeys(unknowns)),hard_conflicts=list(dict.fromkeys(conflicts)),
                                 reason_codes=(['hard_conflict'] if conflicts else [])+(['missing_evidence'] if unknowns else []),
                                 supported_commitments=supported,total_commitments=len(occurrences),
