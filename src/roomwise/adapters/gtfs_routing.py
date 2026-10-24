@@ -46,6 +46,25 @@ def near(stops, point, radius):
     return {sid: (meters, name) for meters, sid, name in sorted(found) if meters <= radius}
 
 
+class FallbackRoutingAdapter:
+    """Google Routes first; the local Blacksburg Transit timetable when Google returns no supported route."""
+    def __init__(self, primary, fallback):
+        self.primary, self.fallback = primary, fallback
+        self.provider = f'{primary.provider}+{fallback.provider}'
+
+    def for_request(self):
+        primary = self.primary.for_request() if hasattr(self.primary, 'for_request') else self.primary
+        return FallbackRoutingAdapter(primary, self.fallback)
+
+    def estimate(self, candidate, building, commitment, mode, route_date, preferences):
+        first = self.primary.estimate(candidate, building, commitment, mode, route_date, preferences)
+        if first.get('status') == 'supported': return first
+        backup = self.fallback.estimate(candidate, building, commitment, mode, route_date, preferences)
+        if backup.get('status') != 'supported': return first
+        reason = (first.get('coverage_notes') or ['Google Routes returned no estimate.'])[0]
+        return {**backup, 'coverage_notes': [f'Google Routes unavailable ({reason}) Using the bundled bus timetable instead.'] + backup['coverage_notes']}
+
+
 class GtfsRoutingAdapter:
     provider = 'bt_gtfs_local'
 

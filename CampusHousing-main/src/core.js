@@ -148,6 +148,12 @@ function coverageText(r) {
 }
 
 // The guide sign: one row per commitment.
+// The date routes were actually computed for (a class's next meeting day), not the picker's date.
+function routedDates(r) {
+  const dates = [...new Set(r.commute.per.flatMap((x) => x.ests.map((e) => e.route_date)).filter(Boolean))].sort();
+  return dates.length ? dates.map((d) => fmtDay(d)).join(', ') : fmtDay(ROUTING_DATE);
+}
+
 function commuteSign(r, { title, small } = {}) {
   const p = S.prefs;
   const rows = r.commute.per.map((x) => {
@@ -160,7 +166,7 @@ function commuteSign(r, { title, small } = {}) {
   return `<div class="sign ${small ? 'small-sign' : ''}" role="group" aria-label="Commute from ${esc(r.cand.property_name)}"><div class="sign-in">
     <div class="sign-title"><strong>${esc(title || 'From ' + r.cand.property_name)}</strong><span>${r.commute.supported} of ${r.commute.total} routed</span></div>
     ${rows}${empty}
-    <div class="sign-foot"><span>Routed for ${fmtDay(ROUTING_DATE)}</span><span>Fastest of: ${p.travel_modes.map((m) => MODE_LABEL[m]).join(', ')}</span></div>
+    <div class="sign-foot"><span>Routed for ${routedDates(r)}</span><span>Fastest of: ${p.travel_modes.map((m) => MODE_LABEL[m]).join(', ')}</span></div>
   </div></div>`;
 }
 

@@ -229,7 +229,7 @@ function commuteDetail(r) {
     <div class="cmp-scroll" style="border:0;background:none"><table class="ledger" style="min-width:420px"><thead><tr><th>Class</th><th>Mode</th><th class="r">Time</th></tr></thead><tbody>
     ${r.commute.per.map((x) => x.ests.map((e, i) => `<tr><td>${i === 0 ? `<b>${esc(x.b.short)}</b><div class="tiny">${esc(x.date)} by ${fmtTime(x.c.arrival_time_local)}</div>` : ''}</td><td>${modeIcon(e.mode)} ${MODE_LABEL[e.mode]}<div class="tiny">${esc(e.context)}</div></td><td class="r num">${e.status === 'supported' ? `<b>${e.minutes} min</b>` : '<span class="unk">No supported estimate</span>'}</td></tr>`).join('')).join('')}
     </tbody></table></div>
-    <p class="tiny">Origin: ${esc(r.cand.coordinate_basis.toLowerCase())}. Routed for ${fmtDay(ROUTING_DATE)} with provider availability shown above. Missing estimates remain unknown.</p>
+    <p class="tiny">Origin: ${esc(r.cand.coordinate_basis.toLowerCase())}. Routed for ${routedDates(r)} with provider availability shown above. Missing estimates remain unknown.</p>
   </section>`;
 }
 

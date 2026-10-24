@@ -32,3 +32,25 @@ def test_long_walks_drive_and_days_without_service_are_not_supported():
 def test_no_trip_before_service_starts():
     early = GtfsRoutingAdapter().estimate(MILL, TORGERSEN, commitment(time(5, 0)), 'transit', date(2026, 10, 27), PREFS)
     assert early['status'] == 'unsupported' and early['minutes'] is None
+
+
+class StubPrimary:
+    provider = 'google_routes'
+    def __init__(self, status): self.status = status
+    def estimate(self, candidate, building, commitment, mode, route_date, preferences):
+        return dict(candidate_id=candidate['id'], commitment_id=commitment.id, mode=mode, status=self.status,
+                    minutes=12 if self.status == 'supported' else None, provider=self.provider,
+                    coverage_notes=['Routing time/attempt limit reached; remaining estimates are unavailable.'])
+
+
+def test_google_result_wins_and_timetable_fills_gaps():
+    from roomwise.adapters.gtfs_routing import FallbackRoutingAdapter
+    day = date(2026, 10, 27)
+    live = FallbackRoutingAdapter(StubPrimary('supported'), GtfsRoutingAdapter())
+    assert live.estimate(MILL, TORGERSEN, commitment(), 'transit', day, PREFS)['provider'] == 'google_routes'
+    capped = FallbackRoutingAdapter(StubPrimary('unavailable'), GtfsRoutingAdapter())
+    filled = capped.estimate(MILL, TORGERSEN, commitment(), 'transit', day, PREFS)
+    assert filled['provider'] == 'bt_gtfs_local' and filled['status'] == 'supported'
+    assert 'bundled bus timetable' in filled['coverage_notes'][0]
+    # Nothing to fall back to for driving: the Google result is returned unchanged.
+    assert capped.estimate(MILL, TORGERSEN, commitment(), 'drive', day, PREFS)['provider'] == 'google_routes'

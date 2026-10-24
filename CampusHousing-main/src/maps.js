@@ -2,7 +2,7 @@
 const MAPS={loading:null,error:null,map:null,element:null,markers:[],contextKey:null};
 function googleMapShell(results) {
   const ids=results.map(r=>r.cand.id).join(',');
-  return `<div class="map-card"><div class="google-map" data-offers="${esc(ids)}" style="height:560px;min-height:320px" aria-label="Google Maps housing and campus locations"></div><div class="map-bar"><span>Approximate housing and campus building locations. Select a marker to select its offer. Entrances, parking and travel times are unverified.</span></div></div>`;
+  return `<div class="map-card"><div class="google-map" data-offers="${esc(ids)}" style="height:560px;min-height:320px" aria-label="Google Maps housing and campus locations"></div><div class="map-bar"><span>Approximate housing and campus building locations. Select a marker to jump to that place. Entrances, parking and travel times are unverified.</span></div></div>`;
 }
 function loadGoogleMaps() {
   if (MAPS.loading) return MAPS.loading;
@@ -40,7 +40,7 @@ async function hydrateGoogleMaps() {
         const position={lat:c.coordinates.lat,lng:c.coordinates.lon};bounds.extend(position);
         const marker=new google.maps.marker.AdvancedMarkerElement({map,position,title:c.property_name,gmpClickable:true});
         MAPS.markers.push(marker);
-        marker.addEventListener('gmp-click',()=>{UI.selected=c.id;render();document.getElementById('card-'+c.id)?.scrollIntoView({block:'nearest'});});
+        marker.addEventListener('gmp-click',()=>{UI.selected=c.property_id;render();document.getElementById('card-'+c.property_id)?.scrollIntoView({block:'nearest',behavior:'smooth'});});
       }
       for (const c of S.commitments) {
         const b=building(c.building_id);if(!b)continue;

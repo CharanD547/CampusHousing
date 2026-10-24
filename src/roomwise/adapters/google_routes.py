@@ -7,13 +7,16 @@ from zoneinfo import ZoneInfo
 import httpx
 from roomwise.adapters.routing import UnconfiguredRoutingAdapter
 
+# Six properties x two classes x two modes is 24 distinct routes; plans at one property share them.
+MAX_CALLS_PER_REQUEST=30
+
 
 class GoogleRoutesAdapter:
     provider='google_routes'
     def __init__(self,settings,budget,transport=None):
         self.settings,self.budget,self.transport=settings,budget,transport
         self.memo={};self.calls=0
-        self.deadline=time.monotonic()+12
+        self.deadline=time.monotonic()+20
 
     def for_request(self):return GoogleRoutesAdapter(self.settings,self.budget,self.transport)
 
@@ -29,7 +32,7 @@ class GoogleRoutesAdapter:
         if mode=='transit' and not -7<=(arrival-datetime.now(timezone.utc)).total_seconds()/86400<=100:
             return {**empty,'status':'unsupported','coverage_notes':['Requested transit date is outside the provider window.']}
         remaining=self.deadline-time.monotonic()
-        if remaining<0.1 or self.calls>=12 or not self.budget.take('routes'):
+        if remaining<0.1 or self.calls>=MAX_CALLS_PER_REQUEST or not self.budget.take('routes'):
             return {**empty,'coverage_notes':['Routing time/attempt limit reached; remaining estimates are unavailable.']}
         self.calls+=1
         payload={'origin':{'location':{'latLng':{'latitude':candidate['coordinates']['lat'],'longitude':candidate['coordinates']['lon']}}},
