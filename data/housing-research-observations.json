@@ -1,0 +1,42 @@
+{
+  "reviewed_on": "2026-10-24",
+  "scope": "Public-source research observations, not published catalog corrections or complete quotes",
+  "currency": "USD",
+  "observations": [
+    {
+      "id": "foxridge-public-ranges",
+      "property_id": "foxridge",
+      "url": "https://foxridgeliving.securecafe.com/onlineleasing/foxridge-apartments-0/floorplans.aspx",
+      "facts": {"ranges": [{"layout": "Burruss", "bedrooms": 1, "minimum": "1359", "maximum": "2083"}, {"layout": "Grove", "bedrooms": 2, "minimum": "1455", "maximum": "2436"}, {"layout": "Willow", "bedrooms": 3, "minimum": "1728", "maximum": "2900"}]},
+      "limitation": "Examples from a date-sensitive inventory. Grove also contains conflicting per-person promotional copy. Confirm billing basis, unit, term and applicable fees; a range minimum is not an available offer."
+    },
+    {
+      "id": "foxridge-published-fees",
+      "property_id": "foxridge",
+      "url": "https://www.foxridgeliving.com/gridmedia/img/fees.pdf",
+      "facts": {"issued": "2026-08-04", "monthly": {"trash": "7", "internet": "65", "billing": "1.50"}, "one_time": {"application_per_adult": "35", "administration": "200", "reservation_credited_toward_rent": "200"}, "security_deposit_range": ["400", "1500"], "required_insurance": "provider-dependent"},
+      "limitation": "Property-wide disclosure subject to lease and screening. Floor-plan deposits differ from the fee guide; resolve for the selected unit. Reservation credit must not be counted twice."
+    },
+    {
+      "id": "windsor-published-fees",
+      "property_id": "windsor",
+      "url": "https://www.windsorhillsapts.com/gridmedia/img/fees.pdf",
+      "facts": {"issued": "2026-08-04", "monthly": {"trash": "9", "billing": "1.50"}, "one_time": {"application_per_adult": "30", "administration": "200", "reservation_credited_toward_rent": "200"}, "security_deposit_range": ["300", "500"], "required_insurance": "provider-dependent"},
+      "limitation": "Property-wide disclosure subject to lease and screening. Public floor-plan link redirects to sign-in; base rent remains unresolved."
+    },
+    {
+      "id": "terrace-published-fees",
+      "property_id": "terrace",
+      "url": "https://terraceviewblacksburg.com/fees",
+      "facts": {"per_installment": {"utility_billing": "5", "technology": "40", "trash": "10"}, "one_time": {"administration_per_primary_leaseholder": "150", "application_per_applicant": "50"}, "variable": ["electricity", "shared-space electricity", "insurance"], "refundable_deposit_maximum_rent_multiple": "2"},
+      "limitation": "Confirm which charges are already included in the advertised leasing total. Do not add these charges twice or relabel installments as calendar months."
+    },
+    {
+      "id": "terrace-specific-plan-example",
+      "property_id": "terrace",
+      "url": "https://entratasnipit.terraceviewblacksburg.com/blacksburg/terrace-view/?include_paragraph_content=0&is_collapsed=0&is_responsive_snippet=1&is_show_map=0&locale_code=&occupancy_type=10&snippet_type=website",
+      "facts": {"layout": "1x1 Tier 3", "bedrooms": 1, "advertised_total_monthly_leasing_price": "1450", "displayed_deposit": "200", "lease_start": "2027-08-21", "lease_end": "2028-07-31"},
+      "limitation": "Specific plan example, not a replacement for the generic one-bedroom catalog entry. Total leasing price is not base rent; reconciliation with installment fees and deposit range remains necessary."
+    }
+  ]
+}

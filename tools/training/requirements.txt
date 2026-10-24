@@ -1,0 +1,8 @@
+# Optional environment only; never install these into the production API image.
+# Resolve and record a compatible lock on the selected CUDA runtime before a real run.
+-r ../../requirements-lock.txt
+torch>=2.7
+transformers>=4.51,<5
+peft>=0.15,<1
+datasets>=3,<5
+accelerate>=1,<2

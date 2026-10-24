@@ -1,0 +1,895 @@
+{
+  "version": 1,
+  "checked_at": "2026-10-15T16:00:00+00:00",
+  "properties": [
+    {
+      "id": "foxridge",
+      "name": "Foxridge",
+      "address": "750 Hethwood Boulevard, Blacksburg, VA",
+      "lat": 37.21712041,
+      "lon": -80.45262679,
+      "description": "Whole-apartment options with configurable utility and furniture packages.",
+      "sources": [
+        {
+          "id": "foxridge-plans",
+          "url": "https://www.foxridgeliving.com/floorplans/",
+          "title": "Foxridge Plans",
+          "checked_at": "2026-10-15T16:00:00+00:00",
+          "excerpt": "Choose your roommates, if any",
+          "applicable_term": "Term not specified",
+          "review_status": "reviewed",
+          "refresh_policy": "robots_checked",
+          "sha256": "a3de781b325e312c689039677279b55b61cff0065eb9f6e64dbb5d197e075646"
+        }
+      ],
+      "offers": [
+        {
+          "id": "foxridge-1",
+          "name": "One-bedroom category",
+          "bedrooms": 1,
+          "bathrooms": null,
+          "amount": null,
+          "basis": "unknown",
+          "period": "unknown",
+          "contract": "unknown",
+          "room": "unknown",
+          "installments": null,
+          "start": null,
+          "end": null,
+          "annual_total": null,
+          "term_label": "Confirm applicable term",
+          "advertised_occupants": null,
+          "upfront": [],
+          "unknowns": [
+            "Confirm mandatory charges, utilities, exact term and availability."
+          ],
+          "conflicts": [],
+          "property_id": "foxridge",
+          "source_id": "foxridge-plans",
+          "evidence": [
+            {
+              "field": "offer_details",
+              "quote": "Choose your roommates, if any",
+              "source_id": "foxridge-plans"
+            }
+          ]
+        },
+        {
+          "id": "foxridge-2",
+          "name": "Two-bedroom category",
+          "bedrooms": 2,
+          "bathrooms": null,
+          "amount": null,
+          "basis": "unknown",
+          "period": "unknown",
+          "contract": "unknown",
+          "room": "unknown",
+          "installments": null,
+          "start": null,
+          "end": null,
+          "annual_total": null,
+          "term_label": "Confirm applicable term",
+          "advertised_occupants": null,
+          "upfront": [],
+          "unknowns": [
+            "Confirm mandatory charges, utilities, exact term and availability."
+          ],
+          "conflicts": [],
+          "property_id": "foxridge",
+          "source_id": "foxridge-plans",
+          "evidence": [
+            {
+              "field": "offer_details",
+              "quote": "Choose your roommates, if any",
+              "source_id": "foxridge-plans"
+            }
+          ]
+        },
+        {
+          "id": "foxridge-3",
+          "name": "Three-bedroom category",
+          "bedrooms": 3,
+          "bathrooms": null,
+          "amount": null,
+          "basis": "unknown",
+          "period": "unknown",
+          "contract": "unknown",
+          "room": "unknown",
+          "installments": null,
+          "start": null,
+          "end": null,
+          "annual_total": null,
+          "term_label": "Confirm applicable term",
+          "advertised_occupants": null,
+          "upfront": [],
+          "unknowns": [
+            "Confirm mandatory charges, utilities, exact term and availability."
+          ],
+          "conflicts": [],
+          "property_id": "foxridge",
+          "source_id": "foxridge-plans",
+          "evidence": [
+            {
+              "field": "offer_details",
+              "quote": "Choose your roommates, if any",
+              "source_id": "foxridge-plans"
+            }
+          ]
+        }
+      ],
+      "url": "https://www.foxridgeliving.com/floorplans/",
+      "location_source": "https://tobmaps.blacksburg.gov/server/rest/services/base_layers/OpenGovLayers/MapServer/0",
+      "location_note": "Representative Town GIS address point; not the assigned unit or a verified pedestrian entrance."
+    },
+    {
+      "id": "alight",
+      "name": "Alight Blacksburg",
+      "address": "1600 Patrick Henry Drive, Blacksburg, VA",
+      "lat": 37.2450948,
+      "lon": -80.42586636,
+      "description": "Per-person contracts, with East and West options and fixed installment payments.",
+      "sources": [
+        {
+          "id": "alight-plans",
+          "url": "https://alight-blacksburg.com/rates-floorplans/",
+          "title": "Alight Plans",
+          "checked_at": "2026-10-24T14:56:13.139Z",
+          "excerpt": "Per person, 12 installments",
+          "applicable_term": "2027–28",
+          "review_status": "reviewed",
+          "refresh_policy": "manual_only",
+          "sha256": "244032691c1493de14adf1d0961d255ef764e7ae82f42b651408afb88432b2cd",
+          "reviewed_at": "2026-10-24T14:56:13.139Z",
+          "review_scope": "Manual browser review of displayed base installment amounts and standard term; fees and availability remain unconfirmed."
+        },
+        {
+          "id": "alight-faq",
+          "url": "https://alight-blacksburg.com/faqs/",
+          "title": "Alight Faq",
+          "checked_at": "2026-10-15T16:00:00+00:00",
+          "excerpt": "one person per bedroom",
+          "applicable_term": "2027–28",
+          "review_status": "reviewed",
+          "refresh_policy": "manual_only",
+          "sha256": null
+        }
+      ],
+      "offers": [
+        {
+          "id": "alight-east",
+          "name": "East · four bedrooms",
+          "bedrooms": 4,
+          "bathrooms": 2,
+          "amount": "835",
+          "basis": "person",
+          "period": "installment",
+          "contract": "individual",
+          "room": "private",
+          "installments": 12,
+          "start": "2027-08-18",
+          "end": "2028-07-24",
+          "annual_total": null,
+          "term_label": "2027–28",
+          "advertised_occupants": null,
+          "upfront": [],
+          "unknowns": [
+            "Confirm East utilities and the allocation of mandatory fees; published floor-plan total is a range."
+          ],
+          "conflicts": [],
+          "property_id": "alight",
+          "source_id": "alight-plans",
+          "evidence": [
+            {
+              "field": "offer_details",
+              "quote": "Per person, 12 installments",
+              "source_id": "alight-plans"
+            },
+            {
+              "field": "room_contract",
+              "quote": "one person per bedroom",
+              "source_id": "alight-faq"
+            },
+            {
+              "field": "amount",
+              "quote": "East $835",
+              "source_id": "alight-plans",
+              "source_hash": "244032691c1493de14adf1d0961d255ef764e7ae82f42b651408afb88432b2cd",
+              "reviewed_at": "2026-10-24T14:56:13.139Z",
+              "review_id": "2026-10-24-official-base-prices"
+            }
+          ]
+        },
+        {
+          "id": "alight-west",
+          "name": "West · four bedrooms",
+          "bedrooms": 4,
+          "bathrooms": 2,
+          "amount": "855",
+          "basis": "person",
+          "period": "installment",
+          "contract": "individual",
+          "room": "private",
+          "installments": 12,
+          "start": "2027-08-18",
+          "end": "2028-07-24",
+          "annual_total": null,
+          "term_label": "2027–28",
+          "advertised_occupants": null,
+          "upfront": [],
+          "unknowns": [
+            "Confirm mandatory fee allocation and electricity; published floor-plan total is a range."
+          ],
+          "conflicts": [],
+          "property_id": "alight",
+          "source_id": "alight-plans",
+          "evidence": [
+            {
+              "field": "offer_details",
+              "quote": "Per person, 12 installments",
+              "source_id": "alight-plans"
+            },
+            {
+              "field": "room_contract",
+              "quote": "one person per bedroom",
+              "source_id": "alight-faq"
+            },
+            {
+              "field": "amount",
+              "quote": "West $855",
+              "source_id": "alight-plans",
+              "source_hash": "244032691c1493de14adf1d0961d255ef764e7ae82f42b651408afb88432b2cd",
+              "reviewed_at": "2026-10-24T14:56:13.139Z",
+              "review_id": "2026-10-24-official-base-prices"
+            }
+          ]
+        },
+        {
+          "id": "alight-2",
+          "name": "Standard · two bedrooms",
+          "bedrooms": 2,
+          "bathrooms": 1,
+          "amount": "955",
+          "basis": "person",
+          "period": "installment",
+          "contract": "individual",
+          "room": "private",
+          "installments": 12,
+          "start": "2027-08-18",
+          "end": "2028-07-24",
+          "annual_total": null,
+          "term_label": "2027–28",
+          "advertised_occupants": null,
+          "upfront": [],
+          "unknowns": [
+            "Confirm utilities and mandatory fees for this specific offer."
+          ],
+          "conflicts": [],
+          "property_id": "alight",
+          "source_id": "alight-plans",
+          "evidence": [
+            {
+              "field": "offer_details",
+              "quote": "Per person, 12 installments",
+              "source_id": "alight-plans"
+            },
+            {
+              "field": "room_contract",
+              "quote": "one person per bedroom",
+              "source_id": "alight-faq"
+            },
+            {
+              "field": "amount",
+              "quote": "Standard $955",
+              "source_id": "alight-plans",
+              "source_hash": "244032691c1493de14adf1d0961d255ef764e7ae82f42b651408afb88432b2cd",
+              "reviewed_at": "2026-10-24T14:56:13.139Z",
+              "review_id": "2026-10-24-official-base-prices"
+            }
+          ]
+        }
+      ],
+      "url": "https://alight-blacksburg.com/rates-floorplans/",
+      "location_source": "https://tobmaps.blacksburg.gov/server/rest/services/base_layers/OpenGovLayers/MapServer/0",
+      "location_note": "Representative Town GIS address point; not the assigned unit or a verified pedestrian entrance."
+    },
+    {
+      "id": "union",
+      "name": "Union Blacksburg",
+      "address": "1001 University City Boulevard, Blacksburg, VA",
+      "lat": 37.23733434,
+      "lon": -80.43612692,
+      "description": "Furnished private-room choices with separately disclosed leasing prices.",
+      "sources": [
+        {
+          "id": "union-plans",
+          "url": "https://www.unionblacksburg.com/blacksburg/union-blacksburg/student",
+          "title": "Union Plans",
+          "checked_at": "2026-10-24T14:56:45.043Z",
+          "excerpt": "Lease term: Annual (08/16/2027 - 07/17/2028)",
+          "applicable_term": "2027–28",
+          "review_status": "reviewed",
+          "refresh_policy": "manual_only",
+          "sha256": "f920174044abb971a2b34916a5e3ab7addce6627cdc62ef32a9f8714c5b938dd",
+          "reviewed_at": "2026-10-24T14:56:45.043Z",
+          "review_scope": "Manual browser review of standard-term private base rent for S1, B2 Deluxe and C1. Total leasing prices are higher and do not replace the base installment amounts."
+        }
+      ],
+      "offers": [
+        {
+          "id": "union-s1",
+          "name": "S1 Furnished · studio",
+          "bedrooms": 0,
+          "bathrooms": 1,
+          "amount": "1678",
+          "basis": "person",
+          "period": "installment",
+          "contract": "unknown",
+          "room": "private",
+          "installments": null,
+          "start": "2027-08-16",
+          "end": "2028-07-17",
+          "annual_total": null,
+          "term_label": "2027–28",
+          "advertised_occupants": null,
+          "upfront": [],
+          "unknowns": [
+            "Confirm mandatory charges, utilities, exact term and availability.",
+            "Displayed amount is base rent per installment. The operator separately lists a higher total leasing price; confirm mandatory charges and their billing frequency."
+          ],
+          "conflicts": [],
+          "property_id": "union",
+          "source_id": "union-plans",
+          "evidence": [
+            {
+              "field": "offer_details",
+              "quote": "Lease term: Annual (08/16/2027 - 07/17/2028)",
+              "source_id": "union-plans"
+            },
+            {
+              "field": "amount",
+              "quote": "Base Rent: $1,678/per installment",
+              "source_id": "union-plans",
+              "source_hash": "f920174044abb971a2b34916a5e3ab7addce6627cdc62ef32a9f8714c5b938dd",
+              "reviewed_at": "2026-10-24T14:56:45.043Z",
+              "review_id": "2026-10-24-official-base-prices"
+            }
+          ]
+        },
+        {
+          "id": "union-b2",
+          "name": "B2 Deluxe Furnished",
+          "bedrooms": 2,
+          "bathrooms": 2.5,
+          "amount": "1414",
+          "basis": "person",
+          "period": "installment",
+          "contract": "unknown",
+          "room": "private",
+          "installments": null,
+          "start": "2027-08-16",
+          "end": "2028-07-17",
+          "annual_total": null,
+          "term_label": "2027–28",
+          "advertised_occupants": null,
+          "upfront": [],
+          "unknowns": [
+            "Confirm mandatory charges, utilities, exact term and availability.",
+            "Displayed amount is base rent per installment. The operator separately lists a higher total leasing price; confirm mandatory charges and their billing frequency."
+          ],
+          "conflicts": [],
+          "property_id": "union",
+          "source_id": "union-plans",
+          "evidence": [
+            {
+              "field": "offer_details",
+              "quote": "Lease term: Annual (08/16/2027 - 07/17/2028)",
+              "source_id": "union-plans"
+            },
+            {
+              "field": "amount",
+              "quote": "Base Rent: $1,414/per installment",
+              "source_id": "union-plans",
+              "source_hash": "f920174044abb971a2b34916a5e3ab7addce6627cdc62ef32a9f8714c5b938dd",
+              "reviewed_at": "2026-10-24T14:56:45.043Z",
+              "review_id": "2026-10-24-official-base-prices"
+            }
+          ]
+        },
+        {
+          "id": "union-c1",
+          "name": "C1 Furnished",
+          "bedrooms": 3,
+          "bathrooms": 3,
+          "amount": "1340",
+          "basis": "person",
+          "period": "installment",
+          "contract": "unknown",
+          "room": "private",
+          "installments": null,
+          "start": "2027-08-16",
+          "end": "2028-07-17",
+          "annual_total": null,
+          "term_label": "2027–28",
+          "advertised_occupants": null,
+          "upfront": [],
+          "unknowns": [
+            "Confirm mandatory charges, utilities, exact term and availability.",
+            "Displayed amount is base rent per installment. The operator separately lists a higher total leasing price; confirm mandatory charges and their billing frequency."
+          ],
+          "conflicts": [],
+          "property_id": "union",
+          "source_id": "union-plans",
+          "evidence": [
+            {
+              "field": "offer_details",
+              "quote": "Lease term: Annual (08/16/2027 - 07/17/2028)",
+              "source_id": "union-plans"
+            },
+            {
+              "field": "amount",
+              "quote": "Base Rent: $1,340/per installment",
+              "source_id": "union-plans",
+              "source_hash": "f920174044abb971a2b34916a5e3ab7addce6627cdc62ef32a9f8714c5b938dd",
+              "reviewed_at": "2026-10-24T14:56:45.043Z",
+              "review_id": "2026-10-24-official-base-prices"
+            }
+          ]
+        }
+      ],
+      "url": "https://www.unionblacksburg.com/blacksburg/union-blacksburg/student",
+      "location_source": "https://tobmaps.blacksburg.gov/server/rest/services/base_layers/OpenGovLayers/MapServer/0",
+      "location_note": "Representative Town GIS address point; not the assigned unit or a verified pedestrian entrance."
+    },
+    {
+      "id": "terrace",
+      "name": "Terrace View",
+      "address": "413 Hunt Club Road, Blacksburg, VA",
+      "lat": 37.24300036,
+      "lon": -80.42500999,
+      "description": "Several apartment and townhome layouts. Current rates require the operator’s pricing widget.",
+      "sources": [
+        {
+          "id": "terrace-plans",
+          "url": "https://terraceviewblacksburg.com/pricing",
+          "title": "Terrace Plans",
+          "checked_at": "2026-10-15T16:00:00+00:00",
+          "excerpt": "PRICE LISTED IS PER BED",
+          "applicable_term": "Term not specified",
+          "review_status": "reviewed",
+          "refresh_policy": "robots_checked",
+          "sha256": "3754f7d55a712837502714770b1e93351ad231c719966f23ab219273e115191f"
+        }
+      ],
+      "offers": [
+        {
+          "id": "terrace-1",
+          "name": "One-bedroom category",
+          "bedrooms": 1,
+          "bathrooms": null,
+          "amount": null,
+          "basis": "person",
+          "period": "unknown",
+          "contract": "unknown",
+          "room": "unknown",
+          "installments": null,
+          "start": null,
+          "end": null,
+          "annual_total": null,
+          "term_label": "Confirm applicable term",
+          "advertised_occupants": null,
+          "upfront": [],
+          "unknowns": [
+            "Confirm mandatory charges, utilities, exact term and availability."
+          ],
+          "conflicts": [],
+          "property_id": "terrace",
+          "source_id": "terrace-plans",
+          "evidence": [
+            {
+              "field": "offer_details",
+              "quote": "PRICE LISTED IS PER BED",
+              "source_id": "terrace-plans"
+            }
+          ]
+        },
+        {
+          "id": "terrace-2",
+          "name": "Two-bedroom category",
+          "bedrooms": 2,
+          "bathrooms": null,
+          "amount": null,
+          "basis": "person",
+          "period": "unknown",
+          "contract": "unknown",
+          "room": "unknown",
+          "installments": null,
+          "start": null,
+          "end": null,
+          "annual_total": null,
+          "term_label": "Confirm applicable term",
+          "advertised_occupants": null,
+          "upfront": [],
+          "unknowns": [
+            "Confirm mandatory charges, utilities, exact term and availability."
+          ],
+          "conflicts": [],
+          "property_id": "terrace",
+          "source_id": "terrace-plans",
+          "evidence": [
+            {
+              "field": "offer_details",
+              "quote": "PRICE LISTED IS PER BED",
+              "source_id": "terrace-plans"
+            }
+          ]
+        },
+        {
+          "id": "terrace-4",
+          "name": "Four-bedroom category",
+          "bedrooms": 4,
+          "bathrooms": null,
+          "amount": null,
+          "basis": "person",
+          "period": "unknown",
+          "contract": "unknown",
+          "room": "unknown",
+          "installments": null,
+          "start": null,
+          "end": null,
+          "annual_total": null,
+          "term_label": "Confirm applicable term",
+          "advertised_occupants": null,
+          "upfront": [],
+          "unknowns": [
+            "Confirm mandatory charges, utilities, exact term and availability."
+          ],
+          "conflicts": [],
+          "property_id": "terrace",
+          "source_id": "terrace-plans",
+          "evidence": [
+            {
+              "field": "offer_details",
+              "quote": "PRICE LISTED IS PER BED",
+              "source_id": "terrace-plans"
+            }
+          ]
+        }
+      ],
+      "url": "https://terraceviewblacksburg.com/pricing",
+      "location_source": "https://tobmaps.blacksburg.gov/server/rest/services/base_layers/OpenGovLayers/MapServer/0",
+      "location_note": "Representative Town GIS address point; not the assigned unit or a verified pedestrian entrance."
+    },
+    {
+      "id": "windsor",
+      "name": "Windsor Hills",
+      "address": "200 Hampton Court, Blacksburg, VA",
+      "lat": 37.23942967,
+      "lon": -80.39697943,
+      "description": "Studio through three-bedroom choices; live prices are not available in the reviewed static page.",
+      "sources": [
+        {
+          "id": "windsor-plans",
+          "url": "https://www.windsorhillsapts.com/floorplans/",
+          "title": "Windsor Plans",
+          "checked_at": "2026-10-15T16:00:00+00:00",
+          "excerpt": "studio, one, two, and three bedroom",
+          "applicable_term": "Term not specified",
+          "review_status": "reviewed",
+          "refresh_policy": "robots_checked",
+          "sha256": "f1906c5250a01b0325c04743a9aafcf60d71cbf6f66df096debc1d6badb958a6"
+        }
+      ],
+      "offers": [
+        {
+          "id": "windsor-1",
+          "name": "One-bedroom category",
+          "bedrooms": 1,
+          "bathrooms": null,
+          "amount": null,
+          "basis": "unknown",
+          "period": "unknown",
+          "contract": "unknown",
+          "room": "unknown",
+          "installments": null,
+          "start": null,
+          "end": null,
+          "annual_total": null,
+          "term_label": "Confirm applicable term",
+          "advertised_occupants": null,
+          "upfront": [],
+          "unknowns": [
+            "Confirm mandatory charges, utilities, exact term and availability."
+          ],
+          "conflicts": [],
+          "property_id": "windsor",
+          "source_id": "windsor-plans",
+          "evidence": [
+            {
+              "field": "offer_details",
+              "quote": "studio, one, two, and three bedroom",
+              "source_id": "windsor-plans"
+            }
+          ]
+        },
+        {
+          "id": "windsor-2",
+          "name": "Two-bedroom category",
+          "bedrooms": 2,
+          "bathrooms": null,
+          "amount": null,
+          "basis": "unknown",
+          "period": "unknown",
+          "contract": "unknown",
+          "room": "unknown",
+          "installments": null,
+          "start": null,
+          "end": null,
+          "annual_total": null,
+          "term_label": "Confirm applicable term",
+          "advertised_occupants": null,
+          "upfront": [],
+          "unknowns": [
+            "Confirm mandatory charges, utilities, exact term and availability."
+          ],
+          "conflicts": [],
+          "property_id": "windsor",
+          "source_id": "windsor-plans",
+          "evidence": [
+            {
+              "field": "offer_details",
+              "quote": "studio, one, two, and three bedroom",
+              "source_id": "windsor-plans"
+            }
+          ]
+        },
+        {
+          "id": "windsor-3",
+          "name": "Three-bedroom category",
+          "bedrooms": 3,
+          "bathrooms": null,
+          "amount": null,
+          "basis": "unknown",
+          "period": "unknown",
+          "contract": "unknown",
+          "room": "unknown",
+          "installments": null,
+          "start": null,
+          "end": null,
+          "annual_total": null,
+          "term_label": "Confirm applicable term",
+          "advertised_occupants": null,
+          "upfront": [],
+          "unknowns": [
+            "Confirm mandatory charges, utilities, exact term and availability."
+          ],
+          "conflicts": [],
+          "property_id": "windsor",
+          "source_id": "windsor-plans",
+          "evidence": [
+            {
+              "field": "offer_details",
+              "quote": "studio, one, two, and three bedroom",
+              "source_id": "windsor-plans"
+            }
+          ]
+        }
+      ],
+      "url": "https://www.windsorhillsapts.com/floorplans/",
+      "location_source": "https://tobmaps.blacksburg.gov/server/rest/services/base_layers/OpenGovLayers/MapServer/0",
+      "location_note": "Representative Town GIS address point; not the assigned unit or a verified pedestrian entrance."
+    },
+    {
+      "id": "mill",
+      "name": "The Mill",
+      "address": "1811 Grayland Street, Blacksburg, VA",
+      "lat": 37.2107303,
+      "lon": -80.39652582,
+      "description": "Whole-unit prices with shared responsibility; water, sewer, trash and recycling included.",
+      "sources": [
+        {
+          "id": "mill-plans",
+          "url": "https://www.blacksburgmill.com/floor-plans/",
+          "title": "Mill Plans",
+          "checked_at": "2026-10-24T20:36:09.996864+00:00",
+          "excerpt": "Pricing is per unit.",
+          "applicable_term": "2027–28",
+          "review_status": "reviewed",
+          "refresh_policy": "robots_checked",
+          "sha256": "a579a2fc8d7864803a41918888a52f37a75de14d71dc0a5b27e9770247d9c9f8",
+          "reviewed_at": "2026-10-24T20:36:09.996864+00:00",
+          "review_scope": "Official public page checked with robots-aware retrieval. Stored text is selected field evidence, not a full-page republication. Asking prices/installment basis only; no unit availability guarantee."
+        },
+        {
+          "id": "mill-faq",
+          "url": "https://www.blacksburgmill.com/faq/",
+          "title": "Mill Faq",
+          "checked_at": "2026-10-24T20:36:48.317625+00:00",
+          "excerpt": "12 equal installments",
+          "applicable_term": "Typical term; exact dates unconfirmed",
+          "review_status": "reviewed",
+          "refresh_policy": "robots_checked",
+          "sha256": "36f46001ab05aba6b2a4a22e21ac7dfba4081eeb1f5c62e0e28ff3b41ad6904e",
+          "reviewed_at": "2026-10-24T20:36:48.317625+00:00",
+          "review_scope": "Official public page checked with robots-aware retrieval. Stored text is selected field evidence, not a full-page republication. Asking prices/installment basis only; no unit availability guarantee."
+        }
+      ],
+      "offers": [
+        {
+          "id": "mill-1",
+          "name": "One bedroom · 535 sq ft",
+          "bedrooms": 1,
+          "bathrooms": 1,
+          "amount": "1100",
+          "basis": "unit",
+          "period": "installment",
+          "contract": "unit",
+          "room": "unknown",
+          "installments": 12,
+          "start": null,
+          "end": null,
+          "annual_total": null,
+          "term_label": "2027–28",
+          "advertised_occupants": null,
+          "upfront": [
+            {
+              "label": "Security deposit",
+              "amount": "800",
+              "refundable": true,
+              "basis": "unit"
+            },
+            {
+              "label": "Application fee",
+              "amount": "35",
+              "refundable": false,
+              "basis": "unknown"
+            }
+          ],
+          "unknowns": [
+            "Confirm exact dates, electricity and internet costs, application-fee basis, occupancy permission and availability."
+          ],
+          "conflicts": [],
+          "property_id": "mill",
+          "source_id": "mill-plans",
+          "evidence": [
+            {
+              "field": "offer_details",
+              "quote": "Pricing is per unit.",
+              "source_id": "mill-plans"
+            },
+            {
+              "field": "period",
+              "quote": "12 equal installments",
+              "source_id": "mill-faq"
+            },
+            {
+              "field": "amount",
+              "quote": "1 Beds | 1 Baths 535 Sq. Ft. Rent: $1100",
+              "source_id": "mill-plans",
+              "source_hash": "a579a2fc8d7864803a41918888a52f37a75de14d71dc0a5b27e9770247d9c9f8",
+              "reviewed_at": "2026-10-24T20:36:09.996864+00:00",
+              "review_id": "2026-10-24-mill-price-recheck"
+            }
+          ]
+        },
+        {
+          "id": "mill-2",
+          "name": "Two bedrooms · 780 sq ft",
+          "bedrooms": 2,
+          "bathrooms": 1,
+          "amount": "1300",
+          "basis": "unit",
+          "period": "installment",
+          "contract": "unit",
+          "room": "unknown",
+          "installments": 12,
+          "start": null,
+          "end": null,
+          "annual_total": null,
+          "term_label": "2027–28",
+          "advertised_occupants": null,
+          "upfront": [
+            {
+              "label": "Security deposit",
+              "amount": "900",
+              "refundable": true,
+              "basis": "unit"
+            },
+            {
+              "label": "Application fee",
+              "amount": "35",
+              "refundable": false,
+              "basis": "unknown"
+            }
+          ],
+          "unknowns": [
+            "Confirm exact dates, electricity and internet costs, application-fee basis, occupancy permission and availability."
+          ],
+          "conflicts": [],
+          "property_id": "mill",
+          "source_id": "mill-plans",
+          "evidence": [
+            {
+              "field": "offer_details",
+              "quote": "Pricing is per unit.",
+              "source_id": "mill-plans"
+            },
+            {
+              "field": "period",
+              "quote": "12 equal installments",
+              "source_id": "mill-faq"
+            },
+            {
+              "field": "amount",
+              "quote": "2 Beds | 1 Baths 780 Sq. Ft. Rent: $1300",
+              "source_id": "mill-plans",
+              "source_hash": "a579a2fc8d7864803a41918888a52f37a75de14d71dc0a5b27e9770247d9c9f8",
+              "reviewed_at": "2026-10-24T20:36:09.996864+00:00",
+              "review_id": "2026-10-24-mill-price-recheck"
+            }
+          ]
+        },
+        {
+          "id": "mill-3",
+          "name": "Three bedrooms · 1,025 sq ft",
+          "bedrooms": 3,
+          "bathrooms": 1,
+          "amount": "1680",
+          "basis": "unit",
+          "period": "installment",
+          "contract": "unit",
+          "room": "unknown",
+          "installments": 12,
+          "start": null,
+          "end": null,
+          "annual_total": null,
+          "term_label": "2027–28",
+          "advertised_occupants": null,
+          "upfront": [
+            {
+              "label": "Security deposit",
+              "amount": "1050",
+              "refundable": true,
+              "basis": "unit"
+            },
+            {
+              "label": "Application fee",
+              "amount": "35",
+              "refundable": false,
+              "basis": "unknown"
+            }
+          ],
+          "unknowns": [
+            "Confirm exact dates, electricity and internet costs, application-fee basis, occupancy permission and availability."
+          ],
+          "conflicts": [],
+          "property_id": "mill",
+          "source_id": "mill-plans",
+          "evidence": [
+            {
+              "field": "offer_details",
+              "quote": "Pricing is per unit.",
+              "source_id": "mill-plans"
+            },
+            {
+              "field": "period",
+              "quote": "12 equal installments",
+              "source_id": "mill-faq"
+            },
+            {
+              "field": "amount",
+              "quote": "3 Beds | 1 Baths 1,025 Sq. Ft. Rent: $1680",
+              "source_id": "mill-plans",
+              "source_hash": "a579a2fc8d7864803a41918888a52f37a75de14d71dc0a5b27e9770247d9c9f8",
+              "reviewed_at": "2026-10-24T20:36:09.996864+00:00",
+              "review_id": "2026-10-24-mill-price-recheck"
+            }
+          ]
+        }
+      ],
+      "url": "https://www.blacksburgmill.com/floor-plans/",
+      "location_source": "https://tobmaps.blacksburg.gov/server/rest/services/base_layers/OpenGovLayers/MapServer/0",
+      "location_note": "Representative Town GIS address point; not the assigned unit or a verified pedestrian entrance."
+    }
+  ],
+  "price_review": "2026-10-24-mill-price-recheck"
+}

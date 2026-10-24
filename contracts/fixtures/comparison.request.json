@@ -1,0 +1,30 @@
+{
+  "fixture_mode": true,
+  "notice": "Synthetic integration input only. IDs are not live verified buildings or offers.",
+  "payload": {
+    "campus_id": "vt",
+    "revision": 7,
+    "route_date": "2026-10-26",
+    "preferences": {
+      "monthly_budget_per_person": 1100,
+      "household_size": 2,
+      "travel_modes": [
+        "walk",
+        "transit"
+      ]
+    },
+    "commitments": [
+      {
+        "id": "c1",
+        "building_id": "fixture-building",
+        "weekdays": [
+          "mon"
+        ],
+        "arrival_time_local": "09:00"
+      }
+    ],
+    "candidate_ids": [
+      "fixture-offer"
+    ]
+  }
+}

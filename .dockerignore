@@ -1,0 +1,10 @@
+.venv*
+__pycache__
+.pytest_cache
+var
+output
+.env*
+backend-archive-path.txt
+tests
+docs
+contracts/fixtures

@@ -1,0 +1,34 @@
+{
+  "id": "2026-10-24-mill-price-recheck",
+  "sources": [
+    {
+      "property_id": "mill",
+      "source_id": "mill-plans",
+      "offers": [
+        {
+          "id": "mill-1",
+          "before": "1100",
+          "after": "1100",
+          "quote": "1 Beds | 1 Baths 535 Sq. Ft. Rent: $1100"
+        },
+        {
+          "id": "mill-2",
+          "before": "1300",
+          "after": "1300",
+          "quote": "2 Beds | 1 Baths 780 Sq. Ft. Rent: $1300"
+        },
+        {
+          "id": "mill-3",
+          "before": "1680",
+          "after": "1680",
+          "quote": "3 Beds | 1 Baths 1,025 Sq. Ft. Rent: $1680"
+        }
+      ]
+    },
+    {
+      "property_id": "mill",
+      "source_id": "mill-faq",
+      "offers": []
+    }
+  ]
+}

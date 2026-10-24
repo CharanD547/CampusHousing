@@ -1,0 +1,24 @@
+{
+  "id": "2026-10-24-official-base-prices",
+  "sources": [
+    {
+      "property_id": "alight",
+      "source_id": "alight-plans",
+      "offers": [
+        {"id": "alight-east", "before": "829", "after": "835", "quote": "East $835"},
+        {"id": "alight-west", "before": "849", "after": "855", "quote": "West $855"},
+        {"id": "alight-2", "before": "949", "after": "955", "quote": "Standard $955"}
+      ]
+    },
+    {
+      "property_id": "union",
+      "source_id": "union-plans",
+      "price_note": "Displayed amount is base rent per installment. The operator separately lists a higher total leasing price; confirm mandatory charges and their billing frequency.",
+      "offers": [
+        {"id": "union-s1", "before": "1678", "after": "1678", "quote": "Base Rent: $1,678/per installment"},
+        {"id": "union-b2", "before": "1414", "after": "1414", "quote": "Base Rent: $1,414/per installment"},
+        {"id": "union-c1", "before": "1290", "after": "1340", "quote": "Base Rent: $1,340/per installment"}
+      ]
+    }
+  ]
+}

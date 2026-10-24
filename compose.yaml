@@ -1,0 +1,22 @@
+services:
+  roomwise:
+    build: .
+    ports:
+      - "127.0.0.1:8001:8001"
+    environment:
+      ROOMWISE_DATA_DIR: /app/var
+      ROOMWISE_API_TOKEN: ${ROOMWISE_API_TOKEN:?Set a private operator token before running the container}
+      ROOMWISE_MAPS_JAVASCRIPT_API_KEY: ${ROOMWISE_MAPS_JAVASCRIPT_API_KEY:-}
+      ROOMWISE_PLACES_API_KEY: ${ROOMWISE_PLACES_API_KEY:-}
+      ROOMWISE_ROUTES_API_KEY: ${ROOMWISE_ROUTES_API_KEY:-}
+      ROOMWISE_MAPS_ENABLED: ${ROOMWISE_MAPS_ENABLED:-false}
+      ROOMWISE_PLACES_ENABLED: ${ROOMWISE_PLACES_ENABLED:-false}
+      ROOMWISE_ROUTES_ENABLED: ${ROOMWISE_ROUTES_ENABLED:-false}
+      ROOMWISE_MAPS_DAILY_REQUESTS: ${ROOMWISE_MAPS_DAILY_REQUESTS:-40}
+      ROOMWISE_ACCOUNTS_REQUIRED: ${ROOMWISE_ACCOUNTS_REQUIRED:-false}
+      ROOMWISE_EXTERNAL_ENABLED: "false"
+    volumes:
+      - roomwise_data:/app/var
+    restart: unless-stopped
+volumes:
+  roomwise_data:

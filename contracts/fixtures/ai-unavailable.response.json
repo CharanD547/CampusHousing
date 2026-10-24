@@ -1,0 +1,14 @@
+{
+  "fixture_mode": true,
+  "payload": {
+    "input_revision": 7,
+    "model_id": null,
+    "status": "ai_unavailable",
+    "candidate_explanations": [],
+    "error": {
+      "code": "gemma_not_configured",
+      "message": "No genuine runtime is configured.",
+      "retryable": false
+    }
+  }
+}
