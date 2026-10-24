@@ -254,6 +254,7 @@ async function initRoomwise() {
     API.maps=maps;
     API.health=health;
     CANDIDATES.splice(0,CANDIDATES.length,...catalog.candidates.map(normalizeCandidate));
+    LIVE_PRICES_AT=CANDIDATES.map(c=>c.offer.price.last_reviewed_at).sort().pop() || null;
     BUILDINGS.splice(0,BUILDINGS.length,...campus.buildings.map(b=>({...b,short:b.label})));
     if (!CANDIDATES.length) throw new Error('No catalog offers are currently available.');
     const evidenceIDs=[...new Set(CANDIDATES.flatMap(c=>c.sources.map(s=>s.id)))];

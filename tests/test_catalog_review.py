@@ -24,6 +24,10 @@ def old_catalog(store):
             prop=json.loads(db.execute('SELECT body FROM housing_catalog WHERE id=?',(review['property_id'],)).fetchone()[0])
             for change in review['offers']:next(o for o in prop['offers'] if o['id']==change['id'])['amount']=change['before']
             db.execute('UPDATE housing_catalog SET body=? WHERE id=?',(json.dumps(prop),prop['id']))
+            # Roll the source back to before the manifest's snapshot so the review applies to older evidence.
+            source=json.loads(db.execute('SELECT body FROM housing_sources WHERE id=?',(review['source_id'],)).fetchone()[0])
+            source.update(checked_at='2026-10-15T16:00:00+00:00',review_status='reviewed')
+            db.execute('UPDATE housing_sources SET body=? WHERE id=?',(json.dumps(source),review['source_id']))
 
 
 def test_review_preserves_frozen_brief_and_is_idempotent(tmp_path):
@@ -43,7 +47,7 @@ def test_invalid_review_rolls_back_all_changes(tmp_path,failure):
     elif failure=='price':
         with catalog.connect() as db:
             prop=json.loads(db.execute("SELECT body FROM housing_catalog WHERE id='union'").fetchone()[0])
-            prop['offers'][-1]['amount']='1500'
+            next(o for o in prop['offers'] if o['id']=='union-c1')['amount']='1500'
             db.execute("UPDATE housing_catalog SET body=? WHERE id='union'",(json.dumps(prop),))
     else:
         with catalog.connect() as db:

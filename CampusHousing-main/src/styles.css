@@ -580,3 +580,21 @@ input[type="range"] { width: 100%; accent-color: #c87649; height: 28px; }
 .cand-price .amt.range { font-size: 1.375rem; white-space: nowrap; }
 .fchip .num { color: var(--rust); }
 @media (max-width: 540px) { .stripe .wrap > span:last-child { display: none; } }
+
+/* Explore: one card per property, plan prices in the right column */
+.prop-card { grid-template-columns: 150px minmax(0, 1fr) minmax(220px, 260px); }
+.prop-card .cand-actions { grid-row: auto; grid-column: 3; align-self: start; }
+.plan-prices { grid-column: 3; grid-row: 1 / span 5; align-self: start; border-left: 1px solid var(--rule); padding-left: 18px; }
+.plan-head { font-size: .625rem; letter-spacing: .12em; text-transform: uppercase; font-weight: 850; color: var(--rust); margin-bottom: 8px; }
+.plan-prices ul { list-style: none; margin: 0; padding: 0; }
+.plan-prices li a { display: grid; grid-template-columns: 10px 1fr auto; gap: 10px; align-items: center; padding: 7px 0; border-bottom: 1px solid var(--rule); text-decoration: none; font-size: .8125rem; }
+.plan-prices li:last-child a { border-bottom: 0; }
+.plan-prices li a:hover { color: var(--rust); }
+.plan-prices b { font-family: var(--display); font-weight: 700; letter-spacing: -.02em; white-space: nowrap; }
+.plan-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+@media (max-width: 640px) {
+  .prop-card { grid-template-columns: 104px minmax(0, 1fr); }
+  .plan-prices, .prop-card .cand-actions { grid-column: 1 / -1; grid-row: auto; border-left: 0; padding-left: 0; }
+}
+.plan-all { border-left: 0; padding-left: 0; }
+.plan-all ul { max-height: 420px; overflow-y: auto; }

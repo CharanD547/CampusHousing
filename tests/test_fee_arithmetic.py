@@ -135,8 +135,9 @@ def test_seed_provenance_is_complete_and_research_never_becomes_a_price():
     for prop in seed()['properties']:
         sources = {s['id']: s for s in prop['sources']}
         for source in sources.values():
-            if source['review_status'] != 'reviewed':
-                assert source['review_status'] == 'research_observation' and source['refresh_policy'] == 'manual_only'
+            assert source['review_status'] in ('reviewed', 'live_observation', 'research_observation')
+            if source['review_status'] == 'research_observation':
+                assert source['refresh_policy'] == 'manual_only'
         for o in prop['offers']:
             for f in o.get('fees', []):
                 assert f['source_id'] in sources and f.get('basis_source_id', f['source_id']) in sources
@@ -157,7 +158,7 @@ def test_seed_reviewed_totals_reconcile_with_source_text():
         # Published annual total = 12 installments + $155 mandatory fees for every plan.
         assert Decimal(o['annual_total']) == Decimal(o['amount']) * 12 + 155
     portal = {'union-s1': '1684.79', 'union-b2': '1420.79', 'union-c1': '1346.79'}
-    for o in props['union']['offers']:
+    for o in (o for o in props['union']['offers'] if o['id'] in portal):
         sources = {s['id']: s for s in props['union']['sources']}
         result = evaluate(o, {**PREFS, 'household_size': 1}, sources[o['source_id']], today=TODAY, sources=sources)
         assert result['recurring_per_person'] == portal[o['id']]
@@ -165,12 +166,12 @@ def test_seed_reviewed_totals_reconcile_with_source_text():
 
 
 def test_comparison_api_reports_fees_in_subtotal(client, request_body):
-    request_body['candidate_ids'] = ['union-b2', 'foxridge-2', 'mill-2']
+    request_body['candidate_ids'] = ['union-b2', 'foxridge-grove', 'mill-2']
     rows = {r['candidate_id']: r for r in client.post('/api/v1/comparisons', json=request_body).json()['candidate_results']}
     assert rows['union-b2']['known_recurring_subtotal'] == '1420.79'
-    # $1,447 starting price / 2 + $73.50 unit fees / 2
-    assert rows['foxridge-2']['known_recurring_subtotal'] == '760.25'
+    # Grove: $1,544 advertised from-price / 2 + $73.50 unit fees / 2
+    assert rows['foxridge-grove']['known_recurring_subtotal'] == '808.75'
     assert rows['mill-2']['cost_breakdown']['fees']['refundable_deposits']['household_min'] == '900.00'
     assert rows['mill-2']['fit_state'] == 'documented_fit'
     catalog = {c['id']: c for c in client.get('/api/v1/candidates').json()['candidates']}
-    assert catalog['foxridge-2']['offer']['advertised_range']['minimum'] == '1447'
+    assert catalog['foxridge-grove']['offer']['price_confidence_tier'] == 'ADVERTISED_FROM'

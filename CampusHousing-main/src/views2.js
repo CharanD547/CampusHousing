@@ -43,33 +43,99 @@ function candCard(r) {
   </li>`;
 }
 
+// One entry per property: its plans are compared individually, then summarized.
+function propertyGroups(results) {
+  const groups = new Map();
+  for (const r of results) {
+    const key = r.cand.property_id;
+    if (!groups.has(key)) groups.set(key, { key, cand: r.cand, plans: [] });
+    groups.get(key).plans.push(r);
+  }
+  return [...groups.values()].map((g) => {
+    g.plans.sort((a, z) => (a.cand.offer.bedrooms ?? 0) - (z.cand.offer.bedrooms ?? 0) || (a.cand.offer.price.amount ?? 0) - (z.cand.offer.price.amount ?? 0));
+    g.fit = g.plans.reduce((best, r) => (FIT_ORDER[r.fit] < FIT_ORDER[best] ? r.fit : best), 'conflict');
+    g.fitting = g.plans.filter((r) => r.fit === 'fit');
+    // Lead with the cheapest plan that fits, otherwise the cheapest plan.
+    g.lead = [...(g.fitting.length ? g.fitting : g.plans)].sort((a, z) => (a.share?.subtotal ?? 1e9) - (z.share?.subtotal ?? 1e9))[0];
+    return g;
+  });
+}
+
+const bedLabel = (n) => (n === 0 ? 'Studio' : `${n} bed`);
+const FIT_DOT = { fit: 'var(--fit)', conflict: 'var(--conflict)', insufficient: 'var(--unsure)' };
+
+function planPrices(g) {
+  const price = g.plans[0].cand.offer.price;
+  const head = `${price.basis === 'whole_unit' ? 'Whole unit' : 'Per bed'} · ${price.frequency === 'installment' ? 'per installment' : 'per month'}`;
+  const from = g.plans.some((r) => r.cand.offer.price_confidence_tier === 'ADVERTISED_FROM');
+  const dot = (fit) => `<i class="plan-dot" style="background:${FIT_DOT[fit]}" title="${FIT_META[fit].label}"></i>`;
+  let rows;
+  if (g.plans.length <= 5) {
+    rows = g.plans.map((r) => `<li><a href="#property-${esc(r.cand.id)}">${dot(r.fit)}<span>${esc(r.cand.offer.layout)}</span><b class="num">${from ? 'from ' : ''}${money(r.cand.offer.price.amount)}</b></a></li>`);
+  } else {
+    const byBeds = new Map();
+    for (const r of g.plans) {
+      const n = r.cand.offer.bedrooms ?? 0;
+      if (!byBeds.has(n)) byBeds.set(n, []);
+      byBeds.get(n).push(r);
+    }
+    rows = [...byBeds.entries()].map(([n, rs]) => {
+      const amounts = rs.map((r) => r.cand.offer.price.amount).filter((x) => x != null);
+      const lo = Math.min(...amounts), hi = Math.max(...amounts);
+      const best = rs.reduce((b, r) => (FIT_ORDER[r.fit] < FIT_ORDER[b.fit] ? r : b), rs[0]);
+      return `<li><a href="#property-${esc(best.cand.id)}">${dot(best.fit)}<span>${bedLabel(n)} <span class="tiny">${plural(rs.length, 'plan')}</span></span><b class="num">${lo === hi ? money(lo) : `${money(lo)}–${money(hi)}`}</b></a></li>`;
+    });
+  }
+  return `<div class="plan-prices"><div class="plan-head">${head}${from ? ' · advertised from' : ''}</div><ul>${rows.join('')}</ul></div>`;
+}
+
+function propertyCard(g) {
+  const c = g.cand, r = g.lead, sel = c.property_id === UI.selected;
+  const issue = g.fitting.length ? null : (r.conflicts[0] || r.unknowns[0]);
+  return `<li class="cand prop-card ${sel ? 'sel' : ''}" id="card-${esc(c.property_id)}" data-action="select" data-id="${esc(c.id)}">
+    <div class="cand-photo" style="--pos:${PHOTO_POS[c.property_id] || '47% 50%'}" aria-hidden="true"></div>
+    <div class="cand-top">
+      <div><div class="cand-name"><a href="#property-${esc(r.cand.id)}">${esc(c.property_name)}</a></div><div class="cand-area">${esc(c.address || c.area)}</div></div>
+      ${fitChip(g.fit)}
+    </div>
+    <div class="cand-meta"><b>${g.fitting.length ? `${g.fitting.length} of ${plural(g.plans.length, 'plan')} fit your needs` : `None of ${plural(g.plans.length, 'plan')} fits`}</b>${r.share ? `<span>· best for you: ${esc(r.cand.offer.layout)}, ${money(r.share.subtotal)} each</span>` : ''}</div>
+    <div class="cand-meta"><span>${coverageDots(r)}<b>${coverageText(r)}</b></span></div>
+    ${issue ? `<div class="cand-unknown ${r.conflicts.length ? 'bad' : ''}">${r.conflicts.length ? I.x : I.q}<span>${esc(issue.text)}</span></div>` : ''}
+    <div class="cand-meta">${freshness(r)}${demoChip()}</div>
+    ${planPrices(g)}
+    <div class="cand-actions"><a class="btn btn-sm" href="#property-${esc(r.cand.id)}">View plans and sources</a>${shortlistBtn(r.cand.id)}</div>
+  </li>`;
+}
+
 function viewExplore() {
   const q = UI.query.trim().toLowerCase();
-  let all = S.sim.emptyInventory ? [] : compareAll();
+  const all = S.sim.emptyInventory ? [] : propertyGroups(compareAll());
   const total = all.length;
-  let rs = all.filter((r) => UI.filters[r.fit] && (!q || (r.cand.property_name + ' ' + r.cand.area + ' ' + (r.cand.address || '')).toLowerCase().includes(q)));
-  rs.sort((a, z) => FIT_ORDER[a.fit] - FIT_ORDER[z.fit] || a.cand.property_name.localeCompare(z.cand.property_name));
+  const text = (g) => [g.cand.property_name, g.cand.area, g.cand.address, ...g.plans.map((r) => r.cand.offer.layout)].join(' ').toLowerCase();
+  const rs = all.filter((g) => UI.filters[g.fit] && (!q || text(g).includes(q)));
+  rs.sort((a, z) => FIT_ORDER[a.fit] - FIT_ORDER[z.fit] || (a.lead.share?.subtotal ?? 1e9) - (z.lead.share?.subtotal ?? 1e9));
   const counts = { fit: 0, conflict: 0, insufficient: 0 };
-  all.forEach((r) => counts[r.fit]++);
+  all.forEach((g) => counts[g.fit]++);
+  const plans = all.reduce((n, g) => n + g.plans.length, 0);
   const list = !total
     ? `<div class="empty"><h3>No reviewed places to show</h3><p>The reviewed collection is empty right now. That says nothing about how many apartments exist in Blacksburg, only that none have passed review here yet.</p><button class="btn btn-sm" data-action="sim-off" data-key="emptyInventory">Reload the collection</button></div>`
     : !rs.length
-      ? `<div class="empty"><h3>Nothing matches “${esc(UI.query)}”</h3><p>Search covers place names, areas and streets in the reviewed collection.</p><button class="btn btn-sm" data-action="clear-search">Clear search and filters</button></div>`
-      : `<ul class="cand-list">${rs.map(candCard).join('')}</ul>`;
+      ? `<div class="empty"><h3>Nothing matches “${esc(UI.query)}”</h3><p>Search covers place names, streets and floor plans.</p><button class="btn btn-sm" data-action="clear-search">Clear search and filters</button></div>`
+      : `<ul class="cand-list">${rs.map(propertyCard).join('')}</ul>`;
   return `
-  <div class="page-head"><div class="kicker">Explore · Blacksburg, VA</div><h1 tabindex="-1" id="page-title">Places near Virginia Tech</h1><p>${total} reviewed places, checked against revision ${S.revision} of your needs and ${plural(S.commitments.length, 'class', 'classes')}. Grouped by status, never by a hidden score.</p></div>
+  <div class="page-head"><div class="kicker">Explore · Blacksburg, VA</div><h1 tabindex="-1" id="page-title">Places near Virginia Tech</h1><p>${plural(total, 'place')}, ${plans} floor plans with prices checked ${fmtDate(LIVE_PRICES_AT || TODAY)}. Each place shows its best plan for revision ${S.revision} of your needs and ${plural(S.commitments.length, 'class', 'classes')}.</p></div>
   <div class="explore">
     <div>
       <div class="toolbar"><div class="explore-tools">
-        <div class="search"><label class="sr" for="q">Search places</label>${I.search}<input class="input" id="q" type="search" placeholder="Search by name, area or street" value="${esc(UI.query)}" data-ui="query" autocomplete="off"></div>
+        <div class="search"><label class="sr" for="q">Search places</label>${I.search}<input class="input" id="q" type="search" placeholder="Search by name, street or floor plan" value="${esc(UI.query)}" data-ui="query" autocomplete="off"></div>
         <div class="filter-row" role="group" aria-label="Filter by status">
           ${['fit', 'insufficient', 'conflict'].map((k) => `<label class="fchip"><input type="checkbox" id="flt-${k}" data-filter="${k}" ${UI.filters[k] ? 'checked' : ''}><span>${FIT_META[k].icon}${FIT_META[k].label} <span class="num">${counts[k]}</span></span></label>`).join('')}
         </div>
       </div></div>
-      <div class="results-meta"><span aria-live="polite">${plural(rs.length, 'place')} shown, by status then A to Z</span><button class="btn btn-sm map-mobile-toggle" data-action="toggle-map" aria-expanded="${UI.mapOpen}">${UI.mapOpen ? 'Hide map' : 'Show map'}</button></div>
+      <div class="results-meta"><span aria-live="polite">${plural(rs.length, 'place')} shown, best matches first</span><button class="btn btn-sm map-mobile-toggle" data-action="toggle-map" aria-expanded="${UI.mapOpen}">${UI.mapOpen ? 'Hide map' : 'Show map'}</button></div>
       ${list}
     </div>
-    <div class="map-wrap ${UI.mapOpen ? '' : 'collapsed'}">${total ? schematicMap(rs) : ''}</div>
+    <div class="map-wrap ${UI.mapOpen ? '' : 'collapsed'}">${total ? schematicMap(rs.map((g) => g.lead)) : ''}</div>
   </div>`;
 }
 
@@ -83,7 +149,7 @@ function feeRows(o, kind, hh) {
     const unconfirmed = f.included_in_advertised_total == null && f.kind === 'mandatory' && f.classification;
     const status = [f.research ? 'From the pricing research; not yet operator-verified' : '', unconfirmed ? 'Counted as extra; may already be in the listed price' : '',
       f.status === 'conflicting_sources' ? 'Sources disagree' : ''].filter(Boolean).join(' · ');
-    return `<tr><td>${esc(f.label)}<div class="tiny">${f.amount == null ? 'Amount not published' : `${money2(f.amount)}${range} ${BASIS_LABEL[f.basis] || ''} ${f.frequency ? FREQ_LABEL[f.frequency] : ''}`}${f.note ? ' · ' + esc(f.note) : ''}</div>${status ? `<div class="tiny" style="color:var(--unsure)">${status}</div>` : ''}</td><td class="r ${share == null ? 'unk' : ''} num">${share == null ? 'Unknown' : (notCounted ? '<s>' : '') + money2(share) + shareRange + (notCounted ? '</s>' : '')}</td></tr>`;
+    return `<tr><td>${esc(f.label)}<div class="tiny">${f.amount == null ? 'Amount not published' : `${money2(f.amount)}${range} ${BASIS_LABEL[f.basis] || ''} ${f.frequency ? FREQ_LABEL[f.frequency] : ''}`}${f.note ? ' · ' + esc(f.note) : ''}</div>${status ? `<div class="tiny" style="color:var(--unsure)">${status}</div>` : ''}</td><td class="r ${share == null && f.included_in_advertised_total !== true ? 'unk' : ''} num">${f.included_in_advertised_total === true ? '<span class="small">Included in the price</span>' : share == null ? 'Unknown' : (notCounted ? '<s>' : '') + money2(share) + shareRange + (notCounted ? '</s>' : '')}</td></tr>`;
   }).join('');
 }
 
@@ -141,7 +207,7 @@ function priceDetail(r) {
     <table class="ledger">
       <caption>Recurring, your share</caption>
       <tbody>
-        <tr><td>Base rent${pr.basis === 'whole_unit' ? ` <span class="tiny">(÷ ${hh})</span>` : ''}</td><td class="r num">${money2(sh.base)}</td></tr>
+        <tr><td>Listed price${pr.basis === 'whole_unit' ? ` <span class="tiny">(÷ ${hh})</span>` : ''}</td><td class="r num">${money2(sh.base)}</td></tr>
         ${feeRows(o, 'mandatory', hh)}
         <tr class="total"><td>${sh.complete ? (fromRange ? 'Starting recurring total per person' : 'Recurring total per person') : 'Known subtotal per person (incomplete)'}<div class="tiny">Usage-based utilities not included</div></td><td class="r num">${money2(sh.subtotal)}</td></tr>
       </tbody>
@@ -192,14 +258,23 @@ function viewProperty(id) {
   <section class="band"><div class="wrap">
   <nav class="crumbs" aria-label="Breadcrumb"><a href="#explore">Explore</a><span aria-hidden="true">/</span><span>${esc(c.property_name)}</span></nav>
   <div class="prop-head">
-    <div><div class="kicker">${esc(typeLabel(c.type))} · ${esc(c.area)}</div><h1 tabindex="-1" id="page-title" style="margin-top:18px">${esc(c.property_name)}</h1><p class="lede">${esc(typeLabel(c.type))} in ${esc(c.area)}${c.address ? ', ' + esc(c.address) : ''}. Map point is the ${esc(c.coordinate_basis.toLowerCase())}.</p><div class="chips">${fitChip(r.fit)}${demoChip()}</div></div>
+    <div><div class="kicker">${esc(c.offer.layout)} · ${esc(c.address || c.area)}</div><h1 tabindex="-1" id="page-title" style="margin-top:18px">${esc(c.property_name)}</h1><p class="lede">${esc(typeLabel(c.type))} in ${esc(c.area)}${c.address ? ', ' + esc(c.address) : ''}. Map point is the ${esc(c.coordinate_basis.toLowerCase())}.</p><div class="chips">${fitChip(r.fit)}${demoChip()}</div></div>
     <div class="btn-row">${c.type === 'offer' ? shortlistBtn(c.id, false) : ''}<button class="btn" data-action="evidence" data-id="${c.id}">${I.doc} All evidence</button></div>
   </div></div></section>
   <div class="wrap page">
   <div class="two-col">
     <div class="stack">${priceDetail(r)}${pricingEvidence(c)}${housingResearch(c)}${nearbySection(c)}${commuteDetail(r)}</div>
-    <div class="stack">${commuteSign(r)}${fitSummary(r)}${questionsBlock(c.id)}</div>
+    <div class="stack">${allPlans(c)}${commuteSign(r)}${fitSummary(r)}${questionsBlock(c.id)}</div>
   </div></div>`;
+}
+
+function allPlans(c) {
+  const g = propertyGroups(CANDIDATES.filter((x) => x.property_id === c.property_id).map((x) => compare(x, S.prefs, S.commitments)))[0];
+  if (!g || g.plans.length < 2) return '';
+  const from = c.offer.price_confidence_tier === 'ADVERTISED_FROM';
+  return `<section class="panel stack-sm plan-prices plan-all" aria-labelledby="h-plans"><h2 id="h-plans">All ${g.plans.length} plans here</h2>
+    <p class="small">${g.fitting.length} fit your needs. ${from ? 'Advertised “from” prices. ' : ''}Select one to see its costs.</p>
+    <ul>${g.plans.map((r) => `<li><a href="#property-${esc(r.cand.id)}" ${r.cand.id === c.id ? 'aria-current="page" style="font-weight:800"' : ''}><i class="plan-dot" style="background:${FIT_DOT[r.fit]}" title="${FIT_META[r.fit].label}"></i><span>${esc(r.cand.offer.layout)}</span><b class="num">${money(r.cand.offer.price.amount)}</b></a></li>`).join('')}</ul></section>`;
 }
 
 function evidenceDrawer(id) {

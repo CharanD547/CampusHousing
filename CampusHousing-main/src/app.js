@@ -63,7 +63,12 @@ document.addEventListener('click', async (ev) => {
   if (t.tagName === 'LI' && ev.target.closest('a[href], button, input, select, summary')) return;
   const a = t.dataset.action, id = t.dataset.id;
   switch (a) {
-    case 'select': UI.selected = UI.selected === id ? null : id; render(); { const c = document.getElementById('card-' + id); if (c && t.closest('svg')) c.scrollIntoView({ block: 'nearest', behavior: 'smooth' }); } break;
+    case 'select': {
+      const key = candidate(id)?.property_id || id;
+      UI.selected = UI.selected === key ? null : key; render();
+      const c = document.getElementById('card-' + key); if (c && t.closest('svg')) c.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+      break;
+    }
     case 'toggle-shortlist': {
       if (S.shortlist.includes(id)) { S.shortlist = S.shortlist.filter((x) => x !== id); save(); toast(`Removed ${candidate(id).property_name} from your shortlist`); }
       else if (S.shortlist.length >= 3) toast('Your shortlist holds 3 places. Remove one first.');

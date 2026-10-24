@@ -61,7 +61,8 @@ def fee_breakdown(offer, preferences, sources=None):
     research_counted = []
     for fee in offer.get('fees', []):
         statuses = [sources.get(key, {}).get('review_status') for key in (fee.get('source_id'), fee.get('basis_source_id')) if key]
-        evidence = 'reviewed' if statuses and all(x == 'reviewed' for x in statuses) else 'research'
+        evidence = ('reviewed' if statuses and all(x == 'reviewed' for x in statuses)
+                    else 'research' if 'research_observation' in statuses or not statuses else 'live')
         kind = fee.get('classification')
         amount = _scale(fee, occupants, leaseholders)
         item = {'id': fee['id'], 'label': fee['label'], 'classification': kind, 'scaling_basis': fee.get('scaling_basis'),
@@ -147,7 +148,7 @@ def evaluate(offer, preferences, source, today=None, sources=None):
     latest = max((c for c in checked if c), default=None)
     stale = not latest or (today - date.fromisoformat(latest[:10])).days > 7
     if stale: unknown.append('Price sources are more than seven days old; refresh and review them.')
-    if source.get('review_status') not in ('reviewed', 'research_observation'): unknown.append('Source changed or awaits review.')
+    if source.get('review_status') not in ('reviewed', 'live_observation', 'research_observation'): unknown.append('Source changed or awaits review.')
     if terms['from_range']:
         notes.append(f"Compared at the advertised starting price; this layout runs from ${amount:,.0f} to ${terms['amount_max']:,.0f}. Ask for a quote on a specific unit.")
     if basis == 'unit':

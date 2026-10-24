@@ -4,6 +4,7 @@ Transit: direct scheduled trips from a stop near the home to a stop near the cla
 arriving before the class arrival time minus the buffer. Walking legs and walk-only trips are
 estimated from straight-line distance with a detour factor; every result says so.
 """
+from copy import deepcopy
 from datetime import datetime, timedelta
 from functools import lru_cache
 from roomwise.adapters.bt_gtfs import distance, feed, seconds
@@ -48,7 +49,19 @@ def near(stops, point, radius):
 class GtfsRoutingAdapter:
     provider = 'bt_gtfs_local'
 
+    def __init__(self):
+        self.memo = {}
+
     def estimate(self, candidate, building, commitment, mode, route_date, preferences):
+        # Every floor plan at a property shares its address, so route once per property and class.
+        buffer = commitment.arrival_buffer_minutes if commitment.arrival_buffer_minutes is not None else preferences.arrival_buffer_minutes
+        key = (candidate['coordinates']['lat'], candidate['coordinates']['lon'], building['id'], mode, route_date, commitment.arrival_time_local, buffer)
+        if key not in self.memo:
+            if len(self.memo) > 5000: self.memo.clear()
+            self.memo[key] = self._estimate(candidate, building, commitment, mode, route_date, preferences)
+        return {**deepcopy(self.memo[key]), 'candidate_id': candidate['id'], 'commitment_id': commitment.id}
+
+    def _estimate(self, candidate, building, commitment, mode, route_date, preferences):
         result = UnconfiguredRoutingAdapter().estimate(candidate, building, commitment, mode, route_date, preferences)
         result.update(provider=self.provider)
         home = (candidate['coordinates']['lat'], candidate['coordinates']['lon'])

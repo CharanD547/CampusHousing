@@ -1,0 +1,629 @@
+{
+  "retrieved_at": "2026-10-24T23:10:00+00:00",
+  "scope": "Operator pages read on Oct 24, 2026 (~7:05–7:15 PM EDT). Asking prices for the 2027–28 term unless noted; not unit availability or a signed quote.",
+  "properties": {
+    "foxridge": {
+      "source": {
+        "id": "foxridge-plans",
+        "url": "https://www.foxridgeliving.com/floorplans/",
+        "method": "rendered page in a browser"
+      },
+      "basis": "unit",
+      "period": "monthly",
+      "price_type": "from",
+      "contract": "unit",
+      "quote": "Burruss Rent: From $1,379 1 bd | 1 ba 725 sq ft 2 Roommates: From $690",
+      "plans": [
+        {
+          "name": "Burruss",
+          "bedrooms": 1,
+          "bathrooms": 1,
+          "amount": "1379",
+          "square_feet": "725"
+        },
+        {
+          "name": "Cascade",
+          "bedrooms": 1,
+          "bathrooms": 1,
+          "amount": "1444",
+          "square_feet": "863"
+        },
+        {
+          "name": "Grove",
+          "bedrooms": 2,
+          "bathrooms": 1.5,
+          "amount": "1544",
+          "square_feet": "921–993"
+        },
+        {
+          "name": "Preston",
+          "bedrooms": 2,
+          "bathrooms": 1.5,
+          "amount": "1679",
+          "square_feet": "1,057–1,068"
+        },
+        {
+          "name": "Willow",
+          "bedrooms": 3,
+          "bathrooms": 2,
+          "amount": "1899",
+          "square_feet": "1,008–1,080"
+        },
+        {
+          "name": "Leyland",
+          "bedrooms": 4,
+          "bathrooms": 2.5,
+          "amount": "2919",
+          "square_feet": "1,860"
+        },
+        {
+          "name": "Foxfield",
+          "bedrooms": 5,
+          "bathrooms": 2.5,
+          "amount": "3564",
+          "square_feet": "1,998"
+        }
+      ]
+    },
+    "windsor": {
+      "source": {
+        "id": "windsor-plans",
+        "url": "https://www.windsorhillsapts.com/floorplans/",
+        "method": "rendered page in a browser"
+      },
+      "basis": "unit",
+      "period": "monthly",
+      "price_type": "from",
+      "contract": "unit",
+      "quote": "The Canterbury Rent: From: $1234 1 bd | 1 ba 836 sq ft Deposit: Call for details.",
+      "plans": [
+        {
+          "name": "The Ripley (studio)",
+          "bedrooms": 1,
+          "bathrooms": 1,
+          "amount": "1294",
+          "square_feet": "389"
+        },
+        {
+          "name": "The Canterbury",
+          "bedrooms": 1,
+          "bathrooms": 1,
+          "amount": "1234",
+          "square_feet": "836"
+        },
+        {
+          "name": "The Dover",
+          "bedrooms": 1,
+          "bathrooms": 1,
+          "amount": "1250",
+          "square_feet": "936"
+        },
+        {
+          "name": "The Lincoln",
+          "bedrooms": 2,
+          "bathrooms": 1,
+          "amount": "1403",
+          "square_feet": "1,046"
+        },
+        {
+          "name": "The Rochester",
+          "bedrooms": 2,
+          "bathrooms": 1,
+          "amount": "1441",
+          "square_feet": "1,146"
+        },
+        {
+          "name": "The Lynford",
+          "bedrooms": 3,
+          "bathrooms": 1.5,
+          "amount": "1680",
+          "square_feet": "1,214"
+        },
+        {
+          "name": "The Warwick",
+          "bedrooms": 3,
+          "bathrooms": 1.5,
+          "amount": "1844",
+          "square_feet": "1,314"
+        }
+      ]
+    },
+    "terrace": {
+      "source": {
+        "id": "terrace-widget",
+        "url": "https://entratasnipit.terraceviewblacksburg.com/blacksburg/terrace-view/?&is_responsive_snippet=1&snippet_type=website&occupancy_type=10",
+        "method": "operator leasing widget in a browser"
+      },
+      "basis": "person",
+      "period": "installment",
+      "price_type": "total_leasing_price",
+      "contract": "unknown",
+      "room": "private",
+      "start": "2027-08-21",
+      "end": "2028-07-31",
+      "quote": "1x1 Tier 3 1 Bed / 1 Bath Options Rent Deposit Private Total Monthly Leasing Price $1,450 Lease term: 27/28 Lease Term (08/21/2027 - 07/31/2028) $200",
+      "plans": [
+        {
+          "name": "1x1.5TH T1",
+          "bedrooms": 1,
+          "bathrooms": 1.5,
+          "amount": "1610",
+          "deposit": "200"
+        },
+        {
+          "name": "1x1.5TH T2",
+          "bedrooms": 1,
+          "bathrooms": 1.5,
+          "amount": "1550",
+          "deposit": "200"
+        },
+        {
+          "name": "1x1.5TH T3",
+          "bedrooms": 1,
+          "bathrooms": 1.5,
+          "amount": "1505",
+          "deposit": "200"
+        },
+        {
+          "name": "1x1 Tier 1",
+          "bedrooms": 1,
+          "bathrooms": 1.0,
+          "amount": "1520",
+          "deposit": "200"
+        },
+        {
+          "name": "1x1 Tier 2",
+          "bedrooms": 1,
+          "bathrooms": 1.0,
+          "amount": "1505",
+          "deposit": "200"
+        },
+        {
+          "name": "1x1 Tier 3",
+          "bedrooms": 1,
+          "bathrooms": 1.0,
+          "amount": "1450",
+          "deposit": "200"
+        },
+        {
+          "name": "2Ax1 T1",
+          "bedrooms": 2,
+          "bathrooms": 1.0,
+          "amount": "910",
+          "deposit": "200"
+        },
+        {
+          "name": "2Ax1 T2",
+          "bedrooms": 2,
+          "bathrooms": 1.0,
+          "amount": "905",
+          "deposit": "200"
+        },
+        {
+          "name": "2Ax1 T3",
+          "bedrooms": 2,
+          "bathrooms": 1.0,
+          "amount": "865",
+          "deposit": "200"
+        },
+        {
+          "name": "2x1.5 T1",
+          "bedrooms": 2,
+          "bathrooms": 1.5,
+          "amount": "1050",
+          "deposit": "200"
+        },
+        {
+          "name": "2x1.5 T2",
+          "bedrooms": 2,
+          "bathrooms": 1.5,
+          "amount": "1000",
+          "deposit": "200"
+        },
+        {
+          "name": "2x1.5 T3",
+          "bedrooms": 2,
+          "bathrooms": 1.5,
+          "amount": "990",
+          "deposit": "200"
+        },
+        {
+          "name": "2x1.5TH T1",
+          "bedrooms": 2,
+          "bathrooms": 1.5,
+          "amount": "1080",
+          "deposit": "200"
+        },
+        {
+          "name": "2x1.5TH T2",
+          "bedrooms": 2,
+          "bathrooms": 1.5,
+          "amount": "1055",
+          "deposit": "200"
+        },
+        {
+          "name": "2x1.5TH T3",
+          "bedrooms": 2,
+          "bathrooms": 1.5,
+          "amount": "1025",
+          "deposit": "200"
+        },
+        {
+          "name": "2x2.5TH T1",
+          "bedrooms": 2,
+          "bathrooms": 2.5,
+          "amount": "1125",
+          "deposit": "200"
+        },
+        {
+          "name": "2x2 Tier 1",
+          "bedrooms": 2,
+          "bathrooms": 2.0,
+          "amount": "1110",
+          "deposit": "200"
+        },
+        {
+          "name": "3Ax1.5 T1",
+          "bedrooms": 3,
+          "bathrooms": 1.5,
+          "amount": "900",
+          "deposit": "200"
+        },
+        {
+          "name": "3Ax1.5 T2",
+          "bedrooms": 3,
+          "bathrooms": 1.5,
+          "amount": "890",
+          "deposit": "200"
+        },
+        {
+          "name": "3Ax1.5 T3",
+          "bedrooms": 3,
+          "bathrooms": 1.5,
+          "amount": "865",
+          "deposit": "200"
+        },
+        {
+          "name": "3Ax2 T1",
+          "bedrooms": 3,
+          "bathrooms": 2.0,
+          "amount": "920",
+          "deposit": "200"
+        },
+        {
+          "name": "3x1.5TH T1",
+          "bedrooms": 3,
+          "bathrooms": 1.5,
+          "amount": "965",
+          "deposit": "200"
+        },
+        {
+          "name": "3x1.5TH T2",
+          "bedrooms": 3,
+          "bathrooms": 1.5,
+          "amount": "950",
+          "deposit": "200"
+        },
+        {
+          "name": "3x1.5TH T3",
+          "bedrooms": 3,
+          "bathrooms": 1.5,
+          "amount": "930",
+          "deposit": "200"
+        },
+        {
+          "name": "3x2.5TH T1",
+          "bedrooms": 3,
+          "bathrooms": 2.5,
+          "amount": "1045",
+          "deposit": "200"
+        },
+        {
+          "name": "3x2 Tier 1",
+          "bedrooms": 3,
+          "bathrooms": 2.0,
+          "amount": "935",
+          "deposit": "200"
+        },
+        {
+          "name": "3x2 Tier 2",
+          "bedrooms": 3,
+          "bathrooms": 2.0,
+          "amount": "920",
+          "deposit": "200"
+        },
+        {
+          "name": "3x2 Tier 3",
+          "bedrooms": 3,
+          "bathrooms": 2.0,
+          "amount": "900",
+          "deposit": "200"
+        },
+        {
+          "name": "3x3 Tier 1",
+          "bedrooms": 3,
+          "bathrooms": 3.0,
+          "amount": "1040",
+          "deposit": "200"
+        },
+        {
+          "name": "4x2.5 T1",
+          "bedrooms": 4,
+          "bathrooms": 2.5,
+          "amount": "995",
+          "deposit": "200"
+        },
+        {
+          "name": "4x2.5 T2",
+          "bedrooms": 4,
+          "bathrooms": 2.5,
+          "amount": "960",
+          "deposit": "200"
+        },
+        {
+          "name": "4x2.5 T3",
+          "bedrooms": 4,
+          "bathrooms": 2.5,
+          "amount": "955",
+          "deposit": "200"
+        },
+        {
+          "name": "4x2 Tier 1",
+          "bedrooms": 4,
+          "bathrooms": 2.0,
+          "amount": "925",
+          "deposit": "200"
+        },
+        {
+          "name": "4x2 Tier 2",
+          "bedrooms": 4,
+          "bathrooms": 2.0,
+          "amount": "920",
+          "deposit": "200"
+        },
+        {
+          "name": "4x3 Tier 1",
+          "bedrooms": 4,
+          "bathrooms": 3.0,
+          "amount": "985",
+          "deposit": "200"
+        },
+        {
+          "name": "4x4 Tier 1",
+          "bedrooms": 4,
+          "bathrooms": 4.0,
+          "amount": "1085",
+          "deposit": "200"
+        }
+      ]
+    },
+    "alight": {
+      "source": {
+        "id": "alight-plans",
+        "url": "https://alight-blacksburg.com/rates-floorplans/",
+        "method": "robots-aware fetch"
+      },
+      "basis": "person",
+      "period": "installment",
+      "price_type": "rate",
+      "contract": "individual",
+      "room": "private",
+      "start": "2027-08-18",
+      "end": "2028-07-24",
+      "installments": 12,
+      "quote": "Total price: $10,175 - $10,415 | 2027-28 Academic Year Floorplan Choices: East $ 835 LIMITED SPACES West $ 855",
+      "also_confirmed_by": {
+        "id": "alight-onesheet",
+        "url": "https://alight-blacksburg.com/one-sheet/",
+        "quote": "RATES: 4 Bedroom , 2 Bath East $ 835 West $ 855 2 Bedroom , 1 Bath Standard $ 955 With fireplace $ 999"
+      },
+      "plans": [
+        {
+          "name": "4 bed · 2 bath, East",
+          "bedrooms": 4,
+          "bathrooms": 2,
+          "amount": "835",
+          "annual_total": "10175",
+          "id": "alight-east"
+        },
+        {
+          "name": "4 bed · 2 bath, West",
+          "bedrooms": 4,
+          "bathrooms": 2,
+          "amount": "855",
+          "annual_total": "10415",
+          "id": "alight-west"
+        },
+        {
+          "name": "2 bed · 1 bath, Standard",
+          "bedrooms": 2,
+          "bathrooms": 1,
+          "amount": "955",
+          "annual_total": "11615",
+          "id": "alight-2"
+        },
+        {
+          "name": "2 bed · 1 bath, with fireplace",
+          "bedrooms": 2,
+          "bathrooms": 1,
+          "amount": "999",
+          "annual_total": "12143",
+          "id": "alight-2-fireplace"
+        }
+      ]
+    },
+    "union": {
+      "source": {
+        "id": "union-plans",
+        "url": "https://www.unionblacksburg.com/blacksburg/union-blacksburg/student/",
+        "method": "rendered page in a browser"
+      },
+      "basis": "person",
+      "period": "installment",
+      "price_type": "base_rent",
+      "contract": "unknown",
+      "room": "private",
+      "start": "2027-08-16",
+      "end": "2028-07-17",
+      "quote": "Total Monthly Leasing Price $1,420.79 Base Rent: $1,414/per installment Lease term: Annual (08/16/2027 - 07/17/2028)",
+      "plans": [
+        {
+          "name": "S1 Furnished (studio)",
+          "bedrooms": 1,
+          "bathrooms": 1,
+          "amount": "1678",
+          "tiers": {
+            "Private": "1678",
+            "Patio": "1709",
+            "Top Floor": "1716",
+            "Pool View": "1730"
+          },
+          "square_feet": "435",
+          "id": "union-s1"
+        },
+        {
+          "name": "A1 Furnished",
+          "bedrooms": 1,
+          "bathrooms": 1,
+          "amount": "1886",
+          "tiers": {
+            "Private": "1886",
+            "Upgraded": "1892"
+          },
+          "square_feet": "540"
+        },
+        {
+          "name": "B1 Furnished",
+          "bedrooms": 2,
+          "bathrooms": 2,
+          "amount": "1385",
+          "tiers": {
+            "Private": "1385",
+            "Tiers": "1400–1408"
+          },
+          "square_feet": "852"
+        },
+        {
+          "name": "B2 Deluxe Furnished",
+          "bedrooms": 2,
+          "bathrooms": 2.5,
+          "amount": "1414",
+          "tiers": {
+            "Private": "1414",
+            "Top Floor": "1416",
+            "Pool View": "1417",
+            "Top Floor Pool View": "1440"
+          },
+          "square_feet": "1,069",
+          "id": "union-b2"
+        },
+        {
+          "name": "C1 Furnished",
+          "bedrooms": 3,
+          "bathrooms": 3,
+          "amount": "1340",
+          "tiers": {
+            "Private": "1340",
+            "Top Floor": "1351",
+            "Patio": "1356"
+          },
+          "square_feet": "1,175",
+          "id": "union-c1"
+        },
+        {
+          "name": "D1 Furnished",
+          "bedrooms": 4,
+          "bathrooms": 4,
+          "amount": "1213",
+          "tiers": {
+            "Tiers": "1213–1231"
+          },
+          "square_feet": "1,458"
+        },
+        {
+          "name": "D2 Furnished",
+          "bedrooms": 4,
+          "bathrooms": 4,
+          "amount": "1204",
+          "tiers": {
+            "Tiers": "1204–1220"
+          },
+          "square_feet": "1,576"
+        },
+        {
+          "name": "D3 Furnished",
+          "bedrooms": 4,
+          "bathrooms": 4,
+          "amount": "1222",
+          "tiers": {
+            "Tiers": "1222–1226"
+          },
+          "square_feet": "1,589"
+        },
+        {
+          "name": "THD4 Furnished (townhome)",
+          "bedrooms": 4,
+          "bathrooms": 4,
+          "amount": "1253",
+          "square_feet": "1,615"
+        },
+        {
+          "name": "D5 Existing unit, unfurnished",
+          "bedrooms": 4,
+          "bathrooms": 4,
+          "amount": "1030",
+          "square_feet": "1,450"
+        },
+        {
+          "name": "D6 Existing unit, furnished",
+          "bedrooms": 4,
+          "bathrooms": 3,
+          "amount": "1110",
+          "square_feet": "1,450"
+        }
+      ]
+    },
+    "mill": {
+      "source": {
+        "id": "mill-plans",
+        "url": "https://www.blacksburgmill.com/floor-plans/",
+        "method": "robots-aware fetch"
+      },
+      "basis": "unit",
+      "period": "installment",
+      "price_type": "rent",
+      "contract": "unit",
+      "installments": 12,
+      "quote": "2 Beds | 1 Baths 780 Sq. Ft. Rent: $1300 (Only $650 per room with 2 people) Deposit & Fees: Security Deposit: $900 Application Fee: $35",
+      "plans": [
+        {
+          "name": "1 bed · 1 bath",
+          "bedrooms": 1,
+          "bathrooms": 1,
+          "amount": "1100",
+          "deposit": "800",
+          "square_feet": "535",
+          "id": "mill-1"
+        },
+        {
+          "name": "2 bed · 1 bath",
+          "bedrooms": 2,
+          "bathrooms": 1,
+          "amount": "1300",
+          "deposit": "900",
+          "square_feet": "780",
+          "id": "mill-2"
+        },
+        {
+          "name": "3 bed · 1 bath",
+          "bedrooms": 3,
+          "bathrooms": 1,
+          "amount": "1680",
+          "deposit": "1050",
+          "square_feet": "1,025",
+          "id": "mill-3"
+        }
+      ]
+    }
+  }
+}

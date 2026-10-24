@@ -6,7 +6,8 @@ from roomwise.config import Settings
 
 def test_catalog_and_removed_routes(client):
     data=client.get('/api/v1/candidates').json()['candidates']
-    assert len(data)==18
+    # One offer per live floor plan across the six properties.
+    assert len(data)==68 and len({c['property_id'] for c in data})==6
     assert next(c for c in data if c['id']=='alight-east')['offer']['price']['amount']=='835'
     for path in ('/repair','/rehearsal','/investigate','/api/inspect','/api/housing/properties'):
         assert client.get(path).status_code==404

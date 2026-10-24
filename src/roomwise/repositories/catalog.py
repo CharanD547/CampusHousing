@@ -25,7 +25,7 @@ class CatalogRepository:
                     for source in prop['sources']:
                         snapshot = snapshots.get(source['id'], {})
                         text = snapshot.get('text', '')
-                        source = {**source, 'sha256': snapshot.get('sha256') or (hashlib.sha256(text.encode()).hexdigest() if text else None)}
+                        source = {**source, 'sha256': source.get('sha256') or snapshot.get('sha256') or (hashlib.sha256(text.encode()).hexdigest() if text else None)}
                         db.execute('INSERT OR IGNORE INTO housing_sources VALUES (?,?,?)', (source['id'], json.dumps(source), text))
                         initial_id=hashlib.sha256(('seed:'+source['id']+':'+str(source.get('sha256'))+':'+source['checked_at']).encode()).hexdigest()[:32]
                         initial={**source,'id':initial_id,'source_id':source['id'],'retrieved_at':source['checked_at'],'changed':False,'origin':'reviewed_seed'}
