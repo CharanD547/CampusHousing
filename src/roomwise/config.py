@@ -31,6 +31,7 @@ class Settings:
     accounts_required: bool = False
     local_operator_enabled: bool = False
     maps_daily_requests: int = 60
+    public_access: bool = False
 
     @classmethod
     def from_env(cls):
@@ -49,4 +50,5 @@ class Settings:
                    get('ROOMWISE_ROUTES_ENABLED','false').lower()=='true',
                    get('ROOMWISE_ACCOUNTS_REQUIRED','false').lower()=='true',
                    get('ROOMWISE_LOCAL_OPERATOR_ENABLED','false').lower()=='true',
-                   min(60,max(0,int(get('ROOMWISE_MAPS_DAILY_REQUESTS','60')))))
+                   min(60,max(0,int(get('ROOMWISE_MAPS_DAILY_REQUESTS','60')))),
+                   get('ROOMWISE_PUBLIC_ACCESS','false').lower()=='true')
