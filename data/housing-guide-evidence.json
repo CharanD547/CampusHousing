@@ -3,1085 +3,2487 @@
   "properties": {
     "the-edge-apartments-townhomes": {
       "status": "operator_observed",
-      "source_url": "https://www.cmgleasing.com/property/the-edge-apts/",
-      "checked_at": "2026-10-25T02:38:38.143173+00:00",
-      "source_sha256": "a5be93e4cd114d39f793d69778b21255e3bfb42b18a01155a38205bac4c9a8cc",
+      "source_url": "https://theedgeapartmentsva.prospectportal.com/blacksburg/the-edge-apartments-and-townhomes/student/",
+      "checked_at": "2026-10-25T04:05:00+00:00",
+      "method": "Operator leasing portal and cost calculator, read in a browser",
       "prices": [
         {
-          "label": "The Edge - B1 floorplan",
+          "label": "2 Bed 2 Bath B1",
           "bedrooms": 2,
           "minimum": 1375.0,
-          "maximum": 1415.0
+          "maximum": 1375.0,
+          "group_label": "Per bed (private room) · per installment"
         },
         {
-          "label": "The Edge - B2 floorplan",
+          "label": "2 Bed 2 Bath B2",
           "bedrooms": 2,
           "minimum": 1415.0,
-          "maximum": 1415.0
+          "maximum": 1415.0,
+          "group_label": "Per bed (private room) · per installment"
         },
         {
-          "label": "The Edge - B3 floorplan",
+          "label": "2 Bed 2 Bath B3",
           "bedrooms": 2,
           "minimum": 1395.0,
-          "maximum": 1405.0
+          "maximum": 1395.0,
+          "group_label": "Per bed (private room) · per installment"
         },
         {
-          "label": "The Edge - C1 floorplan",
+          "label": "3 Bed 3 Bath C1",
           "bedrooms": 3,
           "minimum": 1317.0,
-          "maximum": 1317.0
+          "maximum": 1317.0,
+          "group_label": "Per bed (private room) · per installment"
         },
         {
-          "label": "The Edge - C2 floorplan",
+          "label": "3 Bed 3 Bath C2 · 1,207 sq ft",
           "bedrooms": 3,
           "minimum": 1317.0,
-          "maximum": 1317.0
+          "maximum": 1317.0,
+          "group_label": "Per bed (private room) · per installment"
         },
         {
-          "label": "The Edge - D1 floorplan",
+          "label": "4 Bed 4 Bath D1",
           "bedrooms": 4,
           "minimum": 1255.0,
-          "maximum": 1275.0
+          "maximum": 1255.0,
+          "group_label": "Per bed (private room) · per installment"
         },
         {
-          "label": "The Edge - D2 floorplan",
+          "label": "4 Bed 4 Bath D2",
           "bedrooms": 4,
           "minimum": 1255.0,
-          "maximum": 1295.0
+          "maximum": 1255.0,
+          "group_label": "Per bed (private room) · per installment"
         },
         {
-          "label": "The Edge - D3 floorplan",
+          "label": "4 Bed 4 Bath D3",
           "bedrooms": 4,
           "minimum": 1295.0,
-          "maximum": 1295.0
+          "maximum": 1295.0,
+          "group_label": "Per bed (private room) · per installment"
         },
         {
-          "label": "The Edge, D4 floorplan phase I",
+          "label": "4 Bed 4 Bath D4",
           "bedrooms": 4,
           "minimum": 1255.0,
-          "maximum": 1295.0
+          "maximum": 1255.0,
+          "group_label": "Per bed (private room) · per installment"
         },
         {
-          "label": "The Edge - D4 floorplan phase II",
+          "label": "4 Bed 4 Bath D4 Phase II",
           "bedrooms": 4,
           "minimum": 1245.0,
-          "maximum": 1245.0
+          "maximum": 1245.0,
+          "group_label": "Per bed (private room) · per installment"
         }
       ],
+      "billing_basis": "per_person",
+      "billing_period": "installment",
+      "lease": {
+        "term": "June - 12 Month Lease",
+        "start": "2027-06-01",
+        "end": "2028-06-30",
+        "other_terms_offered": true
+      },
+      "recurring_fees": [],
+      "recurring_fee_note": "Operator calculator: Total Monthly Leasing Price equals Per Installment Base Rent ($1,317 / inst for C2), so no additional required monthly charges are listed.",
+      "one_time_fees": [
+        {
+          "label": "Application fee",
+          "amount": 35,
+          "timing": "at application",
+          "basis": "per applicant"
+        },
+        {
+          "label": "Security deposit",
+          "amount": 500,
+          "timing": "at application",
+          "refundable": true
+        },
+        {
+          "label": "One-time deposit",
+          "amount": 500,
+          "timing": "at move-in"
+        }
+      ],
+      "utilities": "Utilities are based on usage (operator calculator).",
+      "evidence_quotes": [
+        "Total Monthly Leasing Price $1,317 · Per Installment Base Rent $1,317 / inst",
+        "Lease term: June - 12 Month Lease (06/01/2027 - 06/30/2028)",
+        "One-Time Charges $1,035 · Due at Application - $535 · SECURITY DEPOSIT $500 · APPLICATION FEE $35 · Due at Move-in One-Time Deposit $500"
+      ],
+      "remaining_gaps": [
+        "Whether the move-in $500 one-time deposit is refundable",
+        "Usage-based utility estimates",
+        "Live availability per floor plan"
+      ],
+      "billing_note": "Operator portal: per-bed (private room) total monthly leasing price per installment; no extra required monthly fees listed. One-time: $35 application, $500 security deposit, $500 move-in deposit. Utilities by usage.",
+      "location_note": "Approximate community address point published by the operator; not a verified entrance.",
       "coordinates": {
         "lat": 37.235262,
         "lon": -80.424169
       },
-      "address": "321 Edge Way Blacksburg, VA 24060",
-      "billing_note": "Operator-published asking figures. Confirm billing basis, required fees, lease dates and availability.",
-      "location_note": "Approximate community address point published by the operator; not a verified entrance."
+      "address": "321 Edge Way Blacksburg, VA 24060"
     },
     "tech-terrace": {
       "status": "operator_observed",
-      "source_url": "https://www.cmgleasing.com/property/tech-terrace/",
-      "checked_at": "2026-10-25T02:38:38.596562+00:00",
-      "source_sha256": "5da8c43fae47004d997a3aa62c00955a0b89c3c695b15eb19d1c260b23470a08",
+      "source_url": "https://techterrace.prospectportal.com/blacksburg/tech-terrace-apartments/conventional/",
+      "checked_at": "2026-10-25T06:30:00+00:00",
+      "method": "CMG Leasing Entrata portal and cmgleasing.com property page, FAQ and lease template, read in a browser",
       "prices": [
         {
-          "label": "Tech Terrace",
+          "label": "4 Bed / 2 Bath · 1,250 sq ft",
           "bedrooms": 4,
           "minimum": 3576.0,
-          "maximum": 3576.0
+          "maximum": 3576.0,
+          "group_label": "Whole-unit apartment · per month"
         }
       ],
+      "price_type": "total_monthly_leasing_price",
+      "billing_basis": "per_unit",
+      "billing_period": "calendar_month",
+      "lease": {
+        "term": "12 months (joint and several lease)",
+        "start": null,
+        "end": null
+      },
+      "availability": "Waitlist only on the operator portal at check time",
+      "recurring_fees": [],
+      "recurring_fee_note": "Entrata 'Total Monthly Leasing Price'; The Chase calculator shows base rent only with no added monthly fees. Utilities not listed as included are billed by usage; residents set up required utility accounts before move-in.",
+      "one_time_fees": [
+        {
+          "label": "Security deposit (refundable less damages)",
+          "amount": 3576,
+          "note": "equal to one month's rent per floor plan",
+          "refundable": true
+        }
+      ],
+      "situational_fees": [
+        {
+          "label": "Late fee after 5:00 PM on the 5th",
+          "amount": "10% of monthly rent"
+        },
+        {
+          "label": "Returned check / rejected payment",
+          "amount": 30
+        },
+        {
+          "label": "Pet deposit ($75 retained for sanitation and extermination)",
+          "amount": null
+        }
+      ],
+      "requirements": [
+        "Proof of renter's insurance before move-in",
+        "Signed lease and deposit paid in full before possession"
+      ],
+      "utilities_included": [
+        "internet (SingleDigits)",
+        "recycling"
+      ],
+      "pets": "No pets",
+      "manager": "CMG Leasing",
+      "cmg_page": "https://www.cmgleasing.com/property/tech-terrace/",
+      "address": "303-307 Webb St, Blacksburg, VA 24060",
+      "property_note": "Parking decals required for off-street parking; residents use The Edge amenities",
+      "evidence_quotes": [
+        "4 Bed / 2 Bath · 1,250 sq ft Total Monthly Leasing Price $3,576 $3,576 deposit · Waitlist Available",
+        "CMG FAQ: All deposits are refundable, less any damages · late charge of 10% of your total monthly rent after 5PM on the 5th"
+      ],
+      "remaining_gaps": [
+        "Application fee (not published)",
+        "Exact lease start/end dates"
+      ],
+      "billing_note": "Operator whole-unit monthly prices $3,576–$3,576; deposit equals one month's rent; 12-month joint and several lease; 10% late fee; renter's insurance required. Included: internet (SingleDigits), recycling.",
+      "location_note": "Operator street address; map uses the geocoded point.",
       "coordinates": {
         "lat": 37.23552,
         "lon": -80.422359
-      },
-      "address": "303-307 Webb St Blacksburg, VA 24060",
-      "billing_note": "Operator-published asking figures. Confirm billing basis, required fees, lease dates and availability.",
-      "location_note": "Approximate community address point published by the operator; not a verified entrance."
+      }
     },
     "the-lofts-at-316": {
       "status": "operator_observed",
-      "source_url": "https://www.cmgleasing.com/property/lofts-at-316/",
-      "checked_at": "2026-10-25T02:38:39.042276+00:00",
-      "source_sha256": "da9f5826b1da3b6c70abb23768fe7b3cda7f30991ed808b5b935c33c8e94d0f3",
+      "source_url": "https://loftsat316.prospectportal.com/blacksburg/lofts-at-316/conventional/",
+      "checked_at": "2026-10-25T06:30:00+00:00",
+      "method": "CMG Leasing Entrata portal and cmgleasing.com property page, FAQ and lease template, read in a browser",
       "prices": [
         {
-          "label": "Lofts at 316-A",
+          "label": "1 Bed / 1 Bath · 600+ sq ft",
           "bedrooms": 1,
           "minimum": 1415.0,
-          "maximum": 1415.0
-        },
-        {
-          "label": "Lofts at 316-B",
-          "bedrooms": 1,
-          "minimum": 1415.0,
-          "maximum": 1415.0
-        },
-        {
-          "label": "Lofts at 316-C",
-          "bedrooms": 1,
-          "minimum": 1415.0,
-          "maximum": 1415.0
-        }
-      ],
-      "coordinates": {
-        "lat": 37.231043,
-        "lon": -80.415279
-      },
-      "address": "316 N. Main Street Blacksburg, VA 24060",
-      "billing_note": "Operator-published asking figures. Confirm billing basis, required fees, lease dates and availability.",
-      "location_note": "Approximate community address point published by the operator; not a verified entrance."
-    },
-    "chase-apartments-the-chase": {
-      "status": "operator_observed",
-      "source_url": "https://www.cmgleasing.com/property/chase/",
-      "checked_at": "2026-10-25T02:38:39.484311+00:00",
-      "source_sha256": "c5a1bf5e67336de22eb9f82d365c79c52d49ef232bd2f867be65bfb1da1a4b04",
-      "prices": [
-        {
-          "label": "The Chase Apartments",
-          "bedrooms": 4,
-          "minimum": 3576.0,
-          "maximum": 3576.0
-        }
-      ],
-      "coordinates": {
-        "lat": 37.232478,
-        "lon": -80.410351
-      },
-      "address": "421, 431, 451, 461 E. Roanoke Street Blacksburg, VA 24060",
-      "billing_note": "Operator-published asking figures. Confirm billing basis, required fees, lease dates and availability.",
-      "location_note": "Approximate community address point published by the operator; not a verified entrance."
-    },
-    "chasewood-downs": {
-      "status": "operator_observed",
-      "source_url": "https://www.cmgleasing.com/property/chasewood-downs/",
-      "checked_at": "2026-10-25T02:38:40.128739+00:00",
-      "source_sha256": "a5b0366ddecbd8e0529f8e460365d8aef000598cf536fee0d24ace46aad8f741",
-      "prices": [
-        {
-          "label": "Chasewood - 1 Bedroom Belmont, 494 sq. ft.",
-          "bedrooms": 1,
-          "minimum": 1050.0,
-          "maximum": 1050.0
-        },
-        {
-          "label": "Chasewood - 1 Bedroom Belmont, 541 sq. ft.",
-          "bedrooms": 1,
-          "minimum": 1080.0,
-          "maximum": 1080.0
-        },
-        {
-          "label": "Chasewood - 1 Bedroom Belmont, 566 sq. ft.",
-          "bedrooms": 1,
-          "minimum": 1100.0,
-          "maximum": 1100.0
-        },
-        {
-          "label": "Chasewood - 1 Bedroom Delmar",
-          "bedrooms": 1,
-          "minimum": 1160.0,
-          "maximum": 1160.0
-        },
-        {
-          "label": "Chasewood - 1 Bedroom Delmar with Balcony",
-          "bedrooms": 1,
-          "minimum": 1180.0,
-          "maximum": 1180.0
-        },
-        {
-          "label": "Chasewood - 2 Bedroom Belmont",
-          "bedrooms": 2,
-          "minimum": 1320.0,
-          "maximum": 1320.0
-        },
-        {
-          "label": "Chasewood - 2 Bedroom Delmar",
-          "bedrooms": 2,
-          "minimum": 1400.0,
-          "maximum": 1400.0
-        },
-        {
-          "label": "Chasewood - 2 Bedroom Delmar with Balcony",
-          "bedrooms": 2,
-          "minimum": 1420.0,
-          "maximum": 1420.0
-        }
-      ],
-      "coordinates": {
-        "lat": 37.24223,
-        "lon": -80.431304
-      },
-      "address": "1304-4 University City Blvd Blacksburg, VA 24060",
-      "billing_note": "Operator-published asking figures. Confirm billing basis, required fees, lease dates and availability.",
-      "location_note": "Approximate community address point published by the operator; not a verified entrance."
-    },
-    "shawnee-apartments": {
-      "status": "operator_observed",
-      "source_url": "https://www.cmgleasing.com/property/shawnee-apartments/",
-      "checked_at": "2026-10-25T02:38:40.732384+00:00",
-      "source_sha256": "a72fab719896b809051d9699d5fe643f188a2377c984c3c8b65d7e46328a84d3",
-      "prices": [
-        {
-          "label": "Shawnee - 1 bedroom",
-          "bedrooms": 1,
-          "minimum": 1130.0,
-          "maximum": 1145.0
-        },
-        {
-          "label": "Shawnee - 2 bedroom",
-          "bedrooms": 2,
-          "minimum": 1325.0,
-          "maximum": 1340.0
-        },
-        {
-          "label": "Shawnee - 3 bedroom",
-          "bedrooms": 3,
-          "minimum": 1660.0,
-          "maximum": 1675.0
-        }
-      ],
-      "coordinates": {
-        "lat": 37.242107,
-        "lon": -80.433223
-      },
-      "address": "1222 University City Blvd Blacksburg, VA 24060",
-      "billing_note": "Operator-published asking figures. Confirm billing basis, required fees, lease dates and availability.",
-      "location_note": "Approximate community address point published by the operator; not a verified entrance."
-    },
-    "cedar-pointe-apartments": {
-      "status": "operator_observed",
-      "source_url": "https://www.cmgleasing.com/property/cedarpointe/",
-      "checked_at": "2026-10-25T02:38:41.454653+00:00",
-      "source_sha256": "187ed6533ca46534887c4ac5031a7ad8bbb919bb812cad588976bf7e27c01ce2",
-      "prices": [
-        {
-          "label": "Cedar Pointe Apartments - B1 Floorplan",
-          "bedrooms": 2,
-          "minimum": 2000.0,
-          "maximum": 2000.0
-        },
-        {
-          "label": "Cedar Pointe Apartments - B2 Floorplan",
-          "bedrooms": 2,
-          "minimum": 2100.0,
-          "maximum": 2100.0
-        },
-        {
-          "label": "Cedar Pointe Apartments - B3 Floorplan",
-          "bedrooms": 2,
-          "minimum": 2000.0,
-          "maximum": 2000.0
-        },
-        {
-          "label": "Cedar Pointe Apartments - S1 Floorplan",
-          "bedrooms": 1,
-          "minimum": 1570.0,
-          "maximum": 1570.0
-        },
-        {
-          "label": "Cedar Pointe Apartments - S2 Floorplan",
-          "bedrooms": 1,
-          "minimum": 1620.0,
-          "maximum": 1620.0
-        },
-        {
-          "label": "Cedar Pointe Apartments - S3 Floorplan",
-          "bedrooms": 1,
-          "minimum": 1520.0,
-          "maximum": 1520.0
-        },
-        {
-          "label": "Cedar Pointe Apartments - S4 Floorplan",
-          "bedrooms": 1,
-          "minimum": 1520.0,
-          "maximum": 1520.0
-        }
-      ],
-      "coordinates": {
-        "lat": 37.200846,
-        "lon": -80.3987542
-      },
-      "address": "200 Cedar Pointe Drive Blacksburg, Virginia 24060",
-      "billing_note": "Operator-published asking figures. Confirm billing basis, required fees, lease dates and availability.",
-      "location_note": "Approximate community address point published by the operator; not a verified entrance."
-    },
-    "cedarfield-apartments-townhomes": {
-      "status": "operator_observed",
-      "source_url": "https://www.cmgleasing.com/property/cedarfield-apts-townhomes/",
-      "checked_at": "2026-10-25T02:38:41.997185+00:00",
-      "source_sha256": "1c3ad03b9956979fcb7a44a49a4353f42ffe23fd081b95e2974e4b93e02085f4",
-      "prices": [
-        {
-          "label": "Cedarfield - 1 bedroom, Phase I and II",
-          "bedrooms": 1,
-          "minimum": 1280.0,
-          "maximum": 1280.0
-        },
-        {
-          "label": "Cedarfield - 1 bedroom, Phase III",
-          "bedrooms": 1,
-          "minimum": 1350.0,
-          "maximum": 1350.0
-        },
-        {
-          "label": "Cedarfield - 2 bedroom, Phase I and II",
-          "bedrooms": 2,
-          "minimum": 1420.0,
-          "maximum": 1420.0
-        },
-        {
-          "label": "Cedarfield - 2 bedroom, Phase III",
-          "bedrooms": 2,
-          "minimum": 1540.0,
-          "maximum": 1570.0
-        },
-        {
-          "label": "Cedarfield - 2 bedroom townhome",
-          "bedrooms": 2,
-          "minimum": 1820.0,
-          "maximum": 1820.0
-        },
-        {
-          "label": "Cedarfield - 3 bedroom townhome",
-          "bedrooms": 3,
-          "minimum": 2035.0,
-          "maximum": 2035.0
-        }
-      ],
-      "coordinates": {
-        "lat": 37.205816,
-        "lon": -80.395657
-      },
-      "address": "Old Cedarfield Dr Blacksburg, VA 24060",
-      "billing_note": "Operator-published asking figures. Confirm billing basis, required fees, lease dates and availability.",
-      "location_note": "Approximate community address point published by the operator; not a verified entrance."
-    },
-    "the-vue-apartments": {
-      "status": "operator_observed",
-      "source_url": "https://www.cmgleasing.com/property/vue-apartments/",
-      "checked_at": "2026-10-25T02:38:42.576106+00:00",
-      "source_sha256": "868b39d8d9f1a310ace3d7c8562b8894311bd80b4a2dc822ce554f02eb55af93",
-      "prices": [
-        {
-          "label": "Vue Apartments - A1 Floorplan",
-          "bedrooms": 1,
-          "minimum": 1660.0,
-          "maximum": 1660.0
-        },
-        {
-          "label": "Vue Apartments - A2 Floorplan",
-          "bedrooms": 1,
-          "minimum": 1710.0,
-          "maximum": 1710.0
-        },
-        {
-          "label": "Vue Apartments - B1-2 Floorplan",
-          "bedrooms": 2,
-          "minimum": 2190.0,
-          "maximum": 2190.0
-        },
-        {
-          "label": "Vue Apartments - B1 Floorplan",
-          "bedrooms": 2,
-          "minimum": 2100.0,
-          "maximum": 2100.0
-        },
-        {
-          "label": "Vue Apartments - B2 Floorplan",
-          "bedrooms": 2,
-          "minimum": 2300.0,
-          "maximum": 2300.0
-        },
-        {
-          "label": "Vue Apartments - B3 Floorplan",
-          "bedrooms": 2,
-          "minimum": 2300.0,
-          "maximum": 2300.0
-        },
-        {
-          "label": "Vue Apartments - B4 Floorplan",
-          "bedrooms": 2,
-          "minimum": 2100.0,
-          "maximum": 2100.0
-        },
-        {
-          "label": "Vue Apartments - C1 Floorplan",
-          "bedrooms": 3,
-          "minimum": 2745.0,
-          "maximum": 2745.0
-        },
-        {
-          "label": "Vue Apartments - C2 Floorplan",
-          "bedrooms": 3,
-          "minimum": 2670.0,
-          "maximum": 2670.0
-        },
-        {
-          "label": "Vue Apartments - C3 Floorplan",
-          "bedrooms": 3,
-          "minimum": 2670.0,
-          "maximum": 2670.0
-        }
-      ],
-      "coordinates": {
-        "lat": 37.2032883,
-        "lon": -80.407982
-      },
-      "address": null,
-      "billing_note": "Operator-published asking figures. Confirm billing basis, required fees, lease dates and availability.",
-      "location_note": "Approximate community address point published by the operator; not a verified entrance."
-    },
-    "the-reserve-at-knollwood": {
-      "status": "operator_observed",
-      "source_url": "https://www.cmgleasing.com/property/reserve-at-knollwood/",
-      "checked_at": "2026-10-25T02:38:43.164814+00:00",
-      "source_sha256": "19bdf736b2383b7447d0813441689154a61074ebcb503b95ee990aa4c4fe5730",
-      "prices": [
-        {
-          "label": "Reserve at Knollwood - A1 floorplan",
-          "bedrooms": 1,
-          "minimum": 1550.0,
-          "maximum": 1570.0
-        },
-        {
-          "label": "Reserve at Knollwood - A2 floorplan",
-          "bedrooms": 1,
-          "minimum": 1570.0,
-          "maximum": 1570.0
-        },
-        {
-          "label": "Reserve at Knollwood - B1 End floorplan",
-          "bedrooms": 2,
-          "minimum": 1890.0,
-          "maximum": 1900.0
-        },
-        {
-          "label": "Reserve at Knollwood - B1 floorplan",
-          "bedrooms": 2,
-          "minimum": 1870.0,
-          "maximum": 1900.0
-        },
-        {
-          "label": "Reserve at Knollwood - B2 floorplan",
-          "bedrooms": 2,
-          "minimum": 1890.0,
-          "maximum": 1900.0
-        },
-        {
-          "label": "Reserve at Knollwood - B3 End floorplan",
-          "bedrooms": 2,
-          "minimum": 1900.0,
-          "maximum": 1900.0
-        },
-        {
-          "label": "Reserve at Knollwood - B3 floorplan",
-          "bedrooms": 2,
-          "minimum": 1900.0,
-          "maximum": 1900.0
-        },
-        {
-          "label": "Reserve at Knollwood - C1 floorplan",
-          "bedrooms": 3,
-          "minimum": 2440.0,
-          "maximum": 2480.0
-        },
-        {
-          "label": "Reserve at Knollwood - C2 floorplan",
-          "bedrooms": 3,
-          "minimum": 2470.0,
-          "maximum": 2480.0
-        }
-      ],
-      "coordinates": {
-        "lat": 37.20288,
-        "lon": -80.404719
-      },
-      "address": "2401 Pamela Way Blacksburg, VA 24060",
-      "billing_note": "Operator-published asking figures. Confirm billing basis, required fees, lease dates and availability.",
-      "location_note": "Approximate community address point published by the operator; not a verified entrance."
-    },
-    "the-crossing-at-knollwood": {
-      "status": "operator_observed",
-      "source_url": "https://www.cmgleasing.com/property/crossing-at-knollwood/",
-      "checked_at": "2026-10-25T02:38:43.670671+00:00",
-      "source_sha256": "fc209547901e6eb747ec867709782064bd2a8efbd5083dc75ddbb05c66ef6d56",
-      "prices": [
-        {
-          "label": "Crossing at Knollwood - 1 bedroom",
-          "bedrooms": 1,
-          "minimum": 1480.0,
-          "maximum": 1490.0
-        },
-        {
-          "label": "Crossing at Knollwood - 2 bedroom",
-          "bedrooms": 2,
-          "minimum": 1755.0,
-          "maximum": 1790.0
-        }
-      ],
-      "coordinates": {
-        "lat": 37.198059,
-        "lon": -80.404252
-      },
-      "address": "2379 Research Center Dr Blacksburg, VA 24060",
-      "billing_note": "Operator-published asking figures. Confirm billing basis, required fees, lease dates and availability.",
-      "location_note": "Approximate community address point published by the operator; not a verified entrance."
-    },
-    "knollwood-condominium": {
-      "status": "operator_observed",
-      "source_url": "https://www.cmgleasing.com/property/knollwood-condos/",
-      "checked_at": "2026-10-25T02:38:44.209444+00:00",
-      "source_sha256": "b94818023970e8e1f750bfdfc1653239375991649ae809d87308a799e3488941",
-      "prices": [
-        {
-          "label": "Knollwood Condominium - 1 bedroom",
-          "bedrooms": 1,
-          "minimum": 1490.0,
-          "maximum": 1500.0
-        },
-        {
-          "label": "Knollwood Condominium - 2 bedroom",
-          "bedrooms": 2,
-          "minimum": 1820.0,
-          "maximum": 1830.0
-        },
-        {
-          "label": "Knollwood Condominium - 2 bedroom with loft",
-          "bedrooms": 2,
-          "minimum": 1900.0,
-          "maximum": 1900.0
-        },
-        {
-          "label": "Knollwood Condominium - 2 bedroom with sunroom",
-          "bedrooms": 2,
-          "minimum": 1840.0,
-          "maximum": 1840.0
-        },
-        {
-          "label": "Knollwood Condominium - 3 bedroom",
-          "bedrooms": 3,
-          "minimum": 2225.0,
-          "maximum": 2225.0
-        },
-        {
-          "label": "Knollwood Condominium - 3 bedroom expanded",
-          "bedrooms": 3,
-          "minimum": 2275.0,
-          "maximum": 2285.0
-        }
-      ],
-      "coordinates": {
-        "lat": 37.201236,
-        "lon": -80.40366
-      },
-      "address": "303 N. Knollwood Dr Blacksburg, VA 24060",
-      "billing_note": "Operator-published asking figures. Confirm billing basis, required fees, lease dates and availability.",
-      "location_note": "Approximate community address point published by the operator; not a verified entrance."
-    },
-    "knollwood-townhomes": {
-      "status": "operator_observed",
-      "source_url": "https://www.cmgleasing.com/property/knollwood-townhomes/",
-      "checked_at": "2026-10-25T02:38:44.698509+00:00",
-      "source_sha256": "ac82259bfb14f79900d0d15e32337b0126013897298e7eaf135a429df00093a8",
-      "prices": [
-        {
-          "label": "Knollwood Townhomes, 245 Sheliah Court",
-          "bedrooms": 2,
-          "minimum": 2200.0,
-          "maximum": 2200.0
-        },
-        {
-          "label": "Knollwood Townhomes, 247 Sheliah Court",
-          "bedrooms": 2,
-          "minimum": 2200.0,
-          "maximum": 2200.0
-        },
-        {
-          "label": "Knollwood Townhomes, 249 Sheliah Court",
-          "bedrooms": 2,
-          "minimum": 2200.0,
-          "maximum": 2200.0
-        },
-        {
-          "label": "Knollwood Townhomes, 268 Sheliah Court",
-          "bedrooms": 3,
-          "minimum": 2500.0,
-          "maximum": 2500.0
-        },
-        {
-          "label": "Knollwood Townhomes, 306 Sheliah Court",
-          "bedrooms": 2,
-          "minimum": 2275.0,
-          "maximum": 2275.0
-        },
-        {
-          "label": "Knollwood Townhomes, 320 Sheliah Court",
-          "bedrooms": 3,
-          "minimum": 2500.0,
-          "maximum": 2500.0
-        }
-      ],
-      "coordinates": {
-        "lat": 37.203208,
-        "lon": -80.403716
-      },
-      "address": "245, 247, 249, 268, 306, 320 Sheliah Ct Blacksburg, VA 24060",
-      "billing_note": "Operator-published asking figures. Confirm billing basis, required fees, lease dates and availability.",
-      "location_note": "Approximate community address point published by the operator; not a verified entrance."
-    },
-    "haven-blacksburg-haven-on-north-main": {
-      "status": "operator_observed",
-      "source_url": "https://www.havenblacksburg.com/haven---north-street",
-      "checked_at": "2026-10-25T02:46:49+00:00",
-      "method": "Rendered public operator listings; selected price locators",
-      "entry_kind": "listing",
-      "has_mixed_basis": true,
-      "coordinates": null,
-      "address": null,
-      "billing_note": "Room and whole-apartment monthly listings are shown separately. Exact fees, lease terms and availability require confirmation. Unpriced rows are excluded.",
-      "prices": [
-        {
-          "label": "1203 North Main St. Apt M - Rm A",
-          "bedrooms": 4,
-          "minimum": 550,
-          "maximum": 550,
-          "group_label": "Room listing · per month"
-        },
-        {
-          "label": "1201 North Main St. Apt J",
-          "bedrooms": 3,
-          "minimum": 2697,
-          "maximum": 2697,
-          "group_label": "3 bed apartment · per month"
-        },
-        {
-          "label": "1201 North Main St. Apt I",
-          "bedrooms": 3,
-          "minimum": 2697,
-          "maximum": 2697,
-          "group_label": "3 bed apartment · per month"
-        },
-        {
-          "label": "1205 North Main St. Apt J",
-          "bedrooms": 4,
-          "minimum": 3716,
-          "maximum": 3716,
-          "group_label": "4 bed apartment · per month"
-        },
-        {
-          "label": "1205 North Main St. Apt I",
-          "bedrooms": 4,
-          "minimum": 3636,
-          "maximum": 3636,
-          "group_label": "4 bed apartment · per month"
-        },
-        {
-          "label": "1205 North Main St. Apt G",
-          "bedrooms": 3,
-          "minimum": 2697,
-          "maximum": 2697,
-          "group_label": "3 bed apartment · per month"
-        },
-        {
-          "label": "1203 North Main St. Apt F",
-          "bedrooms": 2,
-          "minimum": 1938,
-          "maximum": 1938,
-          "group_label": "2 bed apartment · per month"
-        },
-        {
-          "label": "1203 North Main St. Apt I",
-          "bedrooms": 4,
-          "minimum": 3596,
-          "maximum": 3596,
-          "group_label": "4 bed apartment · per month"
-        },
-        {
-          "label": "1205 North Main St. Apt B",
-          "bedrooms": 3,
-          "minimum": 2697,
-          "maximum": 2697,
-          "group_label": "3 bed apartment · per month"
-        },
-        {
-          "label": "1205 North Main St. Apt A",
-          "bedrooms": 4,
-          "minimum": 3596,
-          "maximum": 3596,
-          "group_label": "4 bed apartment · per month"
-        },
-        {
-          "label": "1203 North Main St. Apt L",
-          "bedrooms": 4,
-          "minimum": 3596,
-          "maximum": 3596,
-          "group_label": "4 bed apartment · per month"
-        },
-        {
-          "label": "1203 North Main St. Apt K",
-          "bedrooms": 4,
-          "minimum": 3596,
-          "maximum": 3596,
-          "group_label": "4 bed apartment · per month"
-        },
-        {
-          "label": "1203 North Main St. Apt J",
-          "bedrooms": 4,
-          "minimum": 3596,
-          "maximum": 3596,
-          "group_label": "4 bed apartment · per month"
-        },
-        {
-          "label": "1203 North Main St. Apt H",
-          "bedrooms": 3,
-          "minimum": 2697,
-          "maximum": 2697,
-          "group_label": "3 bed apartment · per month"
-        },
-        {
-          "label": "1203 North Main St. Apt G",
-          "bedrooms": 2,
-          "minimum": 1938,
-          "maximum": 1938,
-          "group_label": "2 bed apartment · per month"
-        },
-        {
-          "label": "1203 North Main St. Apt D",
-          "bedrooms": 2,
-          "minimum": 1938,
-          "maximum": 1938,
-          "group_label": "2 bed apartment · per month"
-        },
-        {
-          "label": "1203 North Main St. Apt B",
-          "bedrooms": 2,
-          "minimum": 1938,
-          "maximum": 1938,
-          "group_label": "2 bed apartment · per month"
-        },
-        {
-          "label": "1201 North Main St. Apt E",
-          "bedrooms": 3,
-          "minimum": 2697,
-          "maximum": 2697,
-          "group_label": "3 bed apartment · per month"
-        },
-        {
-          "label": "1201 North Main St. Apt C",
-          "bedrooms": 4,
-          "minimum": 3596,
-          "maximum": 3596,
-          "group_label": "4 bed apartment · per month"
-        },
-        {
-          "label": "1201 North Main St. Apt A",
-          "bedrooms": 3,
-          "minimum": 2697,
-          "maximum": 2697,
-          "group_label": "3 bed apartment · per month"
-        },
-        {
-          "label": "1201 North Main St. Apt B",
-          "bedrooms": 3,
-          "minimum": 2697,
-          "maximum": 2697,
-          "group_label": "3 bed apartment · per month"
-        },
-        {
-          "label": "1201 North Main St. Apt L",
-          "bedrooms": 4,
-          "minimum": 3596,
-          "maximum": 3596,
-          "group_label": "4 bed apartment · per month"
-        },
-        {
-          "label": "1201 North Main St. Apt H",
-          "bedrooms": 4,
-          "minimum": 3596,
-          "maximum": 3596,
-          "group_label": "4 bed apartment · per month"
-        }
-      ]
-    },
-    "park37": {
-      "status": "operator_observed",
-      "source_url": "https://www.roostrealestategroup.com/park37",
-      "checked_at": "2026-10-25T02:45:17.584482+00:00",
-      "source_sha256": "8467ab265c943d5d6a8c5423b10fd0fa704ea7fc1738f8a7561628509cc7e008",
-      "prices": [
-        {
-          "label": "Maybrook",
-          "bedrooms": 1,
-          "minimum": 1760.0,
-          "maximum": 1860.0
-        },
-        {
-          "label": "Ellett Valley",
-          "bedrooms": 2,
-          "minimum": 1250.0,
-          "maximum": 1350.0
-        },
-        {
-          "label": "Walker Creek",
-          "bedrooms": 4,
-          "minimum": 1090.0,
-          "maximum": 1190.0
-        },
-        {
-          "label": "Pearis Mountain",
-          "bedrooms": 4,
-          "minimum": 1150.0,
-          "maximum": 1250.0
-        }
-      ],
-      "coordinates": null,
-      "address": null,
-      "billing_note": "Published per-room rates; ranges may include furnishing options. Confirm fees and payment schedule.",
-      "location_note": "Operator community point where provided; otherwise use the address-search map."
-    },
-    "brexx-at-blacksburg-the-retreat": {
-      "status": "operator_observed",
-      "source_url": "https://www.brexxblacksburg.com/floor-plans/",
-      "checked_at": "2026-10-25T02:45:17.955756+00:00",
-      "source_sha256": "fd97ccb8fb3675f11b9d4888937bae38f02d13f60b9dfb13918e2b2a3558425c",
-      "prices": [
-        {
-          "label": "Birchmore 2x2.5",
-          "bedrooms": 2,
-          "minimum": 1399.0,
-          "maximum": 1399.0
-        },
-        {
-          "label": "Birchmore 3x3",
-          "bedrooms": 3,
-          "minimum": 1299.0,
-          "maximum": 1299.0
-        },
-        {
-          "label": "Milledge 3x3",
-          "bedrooms": 3,
-          "minimum": 1299.0,
-          "maximum": 1299.0
-        },
-        {
-          "label": "Courtyard 4x4",
-          "bedrooms": 4,
-          "minimum": 1189.0,
-          "maximum": 1189.0
-        },
-        {
-          "label": "Lumpkin 4x4",
-          "bedrooms": 4,
-          "minimum": 1149.0,
-          "maximum": 1149.0
-        },
-        {
-          "label": "Thornberry 4x4",
-          "bedrooms": 4,
-          "minimum": 1179.0,
-          "maximum": 1179.0
-        },
-        {
-          "label": "Lumpkin 4x4.5",
-          "bedrooms": 4,
-          "minimum": 1199.0,
-          "maximum": 1199.0
-        },
-        {
-          "label": "Milledge 4x4.5",
-          "bedrooms": 4,
-          "minimum": 1199.0,
-          "maximum": 1199.0
-        },
-        {
-          "label": "Springmore 4x4.5",
-          "bedrooms": 4,
-          "minimum": 1179.0,
-          "maximum": 1179.0
-        },
-        {
-          "label": "Cloverhurst 4x4.5",
-          "bedrooms": 4,
-          "minimum": 1179.0,
-          "maximum": 1179.0
-        },
-        {
-          "label": "Stafford 4x4.5",
-          "bedrooms": 4,
-          "minimum": 1189.0,
-          "maximum": 1189.0
-        },
-        {
-          "label": "Bloomfield 4x4",
-          "bedrooms": 4,
-          "minimum": 1179.0,
-          "maximum": 1179.0
-        },
-        {
-          "label": "Rutherford 5x5.5",
-          "bedrooms": 5,
-          "minimum": 1159.0,
-          "maximum": 1159.0
-        },
-        {
-          "label": "Courtyard 5x5",
-          "bedrooms": 5,
-          "minimum": 1119.0,
-          "maximum": 1119.0
-        },
-        {
-          "label": "Hawthorne 5x5",
-          "bedrooms": 5,
-          "minimum": 1169.0,
-          "maximum": 1169.0
-        },
-        {
-          "label": "Magnolia 5x5",
-          "bedrooms": 5,
-          "minimum": 1149.0,
-          "maximum": 1149.0
-        },
-        {
-          "label": "Talmadge 5x5.5",
-          "bedrooms": 5,
-          "minimum": 1069.0,
-          "maximum": 1069.0
-        }
-      ],
-      "coordinates": null,
-      "address": null,
-      "billing_note": "Published starting rates per person/bed. Confirm fees, payment schedule and lease dates.",
-      "location_note": "Operator community point where provided; otherwise use the address-search map."
-    },
-    "the-summit-at-uptown": {
-      "status": "operator_observed",
-      "source_url": "https://www.roostrealestategroup.com/the-summit",
-      "checked_at": "2026-10-25T03:27:19.923517+00:00",
-      "source_sha256": "23365b69605ce100515b4aaa6f2f3248a08b871eaf34d13fa4e9549f05230a6b",
-      "method": "Robots-aware public page fetch",
-      "prices": [
-        {
-          "label": "3 bed · 2.5 bath townhome, 1,600 sq ft",
-          "bedrooms": 3,
-          "minimum": 2985.0,
-          "maximum": 2985.0,
-          "group_label": "Whole-unit townhome · per month"
-        },
-        {
-          "label": "3 bed townhome, furnished",
-          "bedrooms": 3,
-          "minimum": 3285.0,
-          "maximum": 3285.0,
-          "group_label": "Whole-unit townhome · per month"
-        },
-        {
-          "label": "4 bed · 3.5 bath townhome, 2,332 sq ft",
-          "bedrooms": 4,
-          "minimum": 3880.0,
-          "maximum": 3880.0,
-          "group_label": "Whole-unit townhome · per month"
-        },
-        {
-          "label": "4 bed townhome, furnished",
-          "bedrooms": 4,
-          "minimum": 4280.0,
-          "maximum": 4280.0,
-          "group_label": "Whole-unit townhome · per month"
-        }
-      ],
-      "coordinates": null,
-      "address": "Staniel Drive, Blacksburg, VA 24060",
-      "billing_note": "Operator rent per townhome; includes parking, lawn care and trash. Confirm other fees, lease dates and availability.",
-      "location_note": "Street-level operator address; map uses the geocoded guide address."
-    },
-    "smith-s-landing": {
-      "status": "listing_observed",
-      "source_url": "https://offcampus.vt.edu/housing/property/smiths-landing-apartments/ocpv98tbhd",
-      "checked_at": "2026-10-25T03:35:00+00:00",
-      "method": "VT Off-Campus Housing listings (web search)",
-      "prices": [
-        {
-          "label": "1 bed · 1 bath, 680 sq ft (12-month)",
-          "bedrooms": 1,
-          "minimum": 1470.0,
-          "maximum": 1470.0,
+          "maximum": 1415.0,
           "group_label": "Whole-unit apartment · per month"
         },
         {
-          "label": "2 bed · 2 bath, 1,063 sq ft (12-month)",
+          "label": "1 Bed / 1 Bath with Den · 692 sq ft",
+          "bedrooms": 1,
+          "minimum": 1415.0,
+          "maximum": 1415.0,
+          "group_label": "Whole-unit apartment · per month"
+        }
+      ],
+      "price_type": "total_monthly_leasing_price",
+      "billing_basis": "per_unit",
+      "billing_period": "calendar_month",
+      "lease": {
+        "term": "12 months (joint and several lease)",
+        "start": null,
+        "end": null
+      },
+      "availability": "Waitlist only on the operator portal at check time",
+      "recurring_fees": [],
+      "recurring_fee_note": "Entrata 'Total Monthly Leasing Price'; The Chase calculator shows base rent only with no added monthly fees. Utilities not listed as included are billed by usage; residents set up required utility accounts before move-in.",
+      "one_time_fees": [
+        {
+          "label": "Security deposit (refundable less damages)",
+          "amount": 1415,
+          "note": "equal to one month's rent per floor plan",
+          "refundable": true
+        }
+      ],
+      "situational_fees": [
+        {
+          "label": "Late fee after 5:00 PM on the 5th",
+          "amount": "10% of monthly rent"
+        },
+        {
+          "label": "Returned check / rejected payment",
+          "amount": 30
+        },
+        {
+          "label": "Pet deposit ($75 retained for sanitation and extermination)",
+          "amount": null
+        }
+      ],
+      "requirements": [
+        "Proof of renter's insurance before move-in",
+        "Signed lease and deposit paid in full before possession"
+      ],
+      "utilities_included": [],
+      "pets": "No pets",
+      "manager": "CMG Leasing",
+      "cmg_page": "https://www.cmgleasing.com/property/lofts-at-316/",
+      "address": "316 N Main St, Blacksburg, VA 24060",
+      "property_note": "One guaranteed parking spot per apartment; internet through a provider of the resident's choice",
+      "evidence_quotes": [
+        "1 Bed / 1 Bath · 600+ sq ft Total Monthly Leasing Price $1,415 $1,415 deposit · Waitlist Available",
+        "CMG FAQ: All deposits are refundable, less any damages · late charge of 10% of your total monthly rent after 5PM on the 5th"
+      ],
+      "remaining_gaps": [
+        "Application fee (not published)",
+        "Exact lease start/end dates"
+      ],
+      "billing_note": "Operator whole-unit monthly prices $1,415–$1,415; deposit equals one month's rent; 12-month joint and several lease; 10% late fee; renter's insurance required.",
+      "location_note": "Operator street address; map uses the geocoded point.",
+      "coordinates": {
+        "lat": 37.231043,
+        "lon": -80.415279
+      }
+    },
+    "chase-apartments-the-chase": {
+      "status": "operator_observed",
+      "source_url": "https://thechaseapts.prospectportal.com/blacksburg/the-chase-apartments/conventional/",
+      "checked_at": "2026-10-25T06:30:00+00:00",
+      "method": "CMG Leasing Entrata portal and cmgleasing.com property page, FAQ and lease template, read in a browser",
+      "prices": [
+        {
+          "label": "4 Bed / 2 Bath · 1,250 sq ft",
+          "bedrooms": 4,
+          "minimum": 3576.0,
+          "maximum": 3576.0,
+          "group_label": "Whole-unit apartment · per month"
+        }
+      ],
+      "price_type": "total_monthly_leasing_price",
+      "billing_basis": "per_unit",
+      "billing_period": "calendar_month",
+      "lease": {
+        "term": "12 months (joint and several lease)",
+        "start": null,
+        "end": null
+      },
+      "availability": "Waitlist only on the operator portal at check time",
+      "recurring_fees": [],
+      "recurring_fee_note": "Entrata 'Total Monthly Leasing Price'; The Chase calculator shows base rent only with no added monthly fees. Utilities not listed as included are billed by usage; residents set up required utility accounts before move-in.",
+      "one_time_fees": [
+        {
+          "label": "Security deposit (refundable less damages)",
+          "amount": 3576,
+          "note": "equal to one month's rent per floor plan",
+          "refundable": true
+        }
+      ],
+      "situational_fees": [
+        {
+          "label": "Late fee after 5:00 PM on the 5th",
+          "amount": "10% of monthly rent"
+        },
+        {
+          "label": "Returned check / rejected payment",
+          "amount": 30
+        },
+        {
+          "label": "Pet deposit ($75 retained for sanitation and extermination)",
+          "amount": null
+        }
+      ],
+      "requirements": [
+        "Proof of renter's insurance before move-in",
+        "Signed lease and deposit paid in full before possession"
+      ],
+      "utilities_included": [
+        "internet (SingleDigits)",
+        "gas heat",
+        "water",
+        "recycling"
+      ],
+      "pets": "No pets",
+      "manager": "CMG Leasing",
+      "cmg_page": "https://www.cmgleasing.com/property/chase/",
+      "address": "421, 431, 451, 461 E Roanoke St, Blacksburg, VA 24060",
+      "property_note": "Operator cost calculator: base rent only, $0 one-time charges, 12-month lease, other utilities by usage; parking decals required",
+      "evidence_quotes": [
+        "4 Bed / 2 Bath · 1,250 sq ft Total Monthly Leasing Price $3,576 $3,576 deposit · Waitlist Available",
+        "CMG FAQ: All deposits are refundable, less any damages · late charge of 10% of your total monthly rent after 5PM on the 5th"
+      ],
+      "remaining_gaps": [
+        "Application fee (not published)",
+        "Exact lease start/end dates"
+      ],
+      "billing_note": "Operator whole-unit monthly prices $3,576–$3,576; deposit equals one month's rent; 12-month joint and several lease; 10% late fee; renter's insurance required. Included: internet (SingleDigits), gas heat, water, recycling.",
+      "location_note": "Operator street address; map uses the geocoded point.",
+      "coordinates": {
+        "lat": 37.232478,
+        "lon": -80.410351
+      }
+    },
+    "chasewood-downs": {
+      "status": "operator_observed",
+      "source_url": "https://chasewood.prospectportal.com/blacksburg/chasewood-apartments/conventional/",
+      "checked_at": "2026-10-25T06:30:00+00:00",
+      "method": "CMG Leasing Entrata portal and cmgleasing.com property page, FAQ and lease template, read in a browser",
+      "prices": [
+        {
+          "label": "Studio Belmont · 268 sq ft",
+          "bedrooms": 0,
+          "minimum": 865.0,
+          "maximum": 865.0,
+          "group_label": "Whole-unit apartment · per month"
+        },
+        {
+          "label": "1 Bed Belmont · 494 sq ft",
+          "bedrooms": 1,
+          "minimum": 1050.0,
+          "maximum": 1050.0,
+          "group_label": "Whole-unit apartment · per month"
+        },
+        {
+          "label": "1 Bed Belmont · 541 sq ft",
+          "bedrooms": 1,
+          "minimum": 1080.0,
+          "maximum": 1080.0,
+          "group_label": "Whole-unit apartment · per month"
+        },
+        {
+          "label": "1 Bed Belmont · 566 sq ft",
+          "bedrooms": 1,
+          "minimum": 1100.0,
+          "maximum": 1100.0,
+          "group_label": "Whole-unit apartment · per month"
+        },
+        {
+          "label": "1 Bed Delmar · 500 sq ft",
+          "bedrooms": 1,
+          "minimum": 1180.0,
+          "maximum": 1180.0,
+          "group_label": "Whole-unit apartment · per month"
+        },
+        {
+          "label": "1 Bed Delmar ground · 500 sq ft",
+          "bedrooms": 1,
+          "minimum": 1160.0,
+          "maximum": 1160.0,
+          "group_label": "Whole-unit apartment · per month"
+        },
+        {
+          "label": "2 Bed 1 Bath Belmont · 787 sq ft",
+          "bedrooms": 2,
+          "minimum": 1320.0,
+          "maximum": 1320.0,
+          "group_label": "Whole-unit apartment · per month"
+        },
+        {
+          "label": "2 Bed 1 Bath Delmar · 790 sq ft (from)",
+          "bedrooms": 2,
+          "minimum": 1400.0,
+          "maximum": 1400.0,
+          "group_label": "Whole-unit apartment · per month"
+        },
+        {
+          "label": "2 Bed 1 Bath Saratoga · 850 sq ft (from)",
+          "bedrooms": 2,
+          "minimum": 1430.0,
+          "maximum": 1430.0,
+          "group_label": "Whole-unit apartment · per month"
+        },
+        {
+          "label": "3 Bed 1 Bath Saratoga · 951 sq ft (from)",
+          "bedrooms": 3,
+          "minimum": 1700.0,
+          "maximum": 1700.0,
+          "group_label": "Whole-unit apartment · per month"
+        }
+      ],
+      "price_type": "total_monthly_leasing_price",
+      "billing_basis": "per_unit",
+      "billing_period": "calendar_month",
+      "lease": {
+        "term": "12 months (joint and several lease)",
+        "start": null,
+        "end": null
+      },
+      "availability": "Waitlist only on the operator portal at check time",
+      "recurring_fees": [],
+      "recurring_fee_note": "Entrata 'Total Monthly Leasing Price'; The Chase calculator shows base rent only with no added monthly fees. Utilities not listed as included are billed by usage; residents set up required utility accounts before move-in.",
+      "one_time_fees": [
+        {
+          "label": "Security deposit (refundable less damages)",
+          "amount": 865,
+          "note": "equal to one month's rent per floor plan",
+          "refundable": true
+        }
+      ],
+      "situational_fees": [
+        {
+          "label": "Late fee after 5:00 PM on the 5th",
+          "amount": "10% of monthly rent"
+        },
+        {
+          "label": "Returned check / rejected payment",
+          "amount": 30
+        },
+        {
+          "label": "Pet deposit ($75 retained for sanitation and extermination)",
+          "amount": null
+        }
+      ],
+      "requirements": [
+        "Proof of renter's insurance before move-in",
+        "Signed lease and deposit paid in full before possession"
+      ],
+      "utilities_included": [
+        "internet (SingleDigits)",
+        "water",
+        "trash",
+        "gas heat and water (select apartments)"
+      ],
+      "pets": "Pet friendly",
+      "manager": "CMG Leasing",
+      "cmg_page": "https://www.cmgleasing.com/property/chasewood-downs/",
+      "address": "1304 University City Blvd, Blacksburg, VA 24060",
+      "property_note": "Accepting applications for 2027-2028; operator FAQ range $865–$1,725",
+      "evidence_quotes": [
+        "Studio Belmont · 268 sq ft Total Monthly Leasing Price $865 $865 deposit · Waitlist Available",
+        "CMG FAQ: All deposits are refundable, less any damages · late charge of 10% of your total monthly rent after 5PM on the 5th"
+      ],
+      "remaining_gaps": [
+        "Application fee (not published)",
+        "Exact lease start/end dates"
+      ],
+      "billing_note": "Operator whole-unit monthly prices $865–$1,700; deposit equals one month's rent; 12-month joint and several lease; 10% late fee; renter's insurance required. Included: internet (SingleDigits), water, trash, gas heat and water (select apartments).",
+      "location_note": "Operator street address; map uses the geocoded point.",
+      "coordinates": {
+        "lat": 37.24223,
+        "lon": -80.431304
+      }
+    },
+    "shawnee-apartments": {
+      "status": "operator_observed",
+      "source_url": "https://shawnee.prospectportal.com/blacksburg/shawnee-apartments-phase-i/conventional/",
+      "checked_at": "2026-10-25T06:30:00+00:00",
+      "method": "CMG Leasing Entrata portal and cmgleasing.com property page, FAQ and lease template, read in a browser",
+      "prices": [
+        {
+          "label": "1 Bed / 1 Bath · 620 sq ft (from)",
+          "bedrooms": 1,
+          "minimum": 1095.0,
+          "maximum": 1095.0,
+          "group_label": "Whole-unit apartment · per month"
+        },
+        {
+          "label": "1 Bed / 1 Bath · 620 sq ft (second plan)",
+          "bedrooms": 1,
+          "minimum": 1105.0,
+          "maximum": 1105.0,
+          "group_label": "Whole-unit apartment · per month"
+        }
+      ],
+      "price_type": "total_monthly_leasing_price",
+      "billing_basis": "per_unit",
+      "billing_period": "calendar_month",
+      "lease": {
+        "term": "12 months (joint and several lease)",
+        "start": null,
+        "end": null
+      },
+      "availability": "Waitlist only on the operator portal at check time",
+      "recurring_fees": [],
+      "recurring_fee_note": "Entrata 'Total Monthly Leasing Price'; The Chase calculator shows base rent only with no added monthly fees. Utilities not listed as included are billed by usage; residents set up required utility accounts before move-in.",
+      "one_time_fees": [
+        {
+          "label": "Security deposit (refundable less damages)",
+          "amount": 1095,
+          "note": "equal to one month's rent per floor plan",
+          "refundable": true
+        }
+      ],
+      "situational_fees": [
+        {
+          "label": "Late fee after 5:00 PM on the 5th",
+          "amount": "10% of monthly rent"
+        },
+        {
+          "label": "Returned check / rejected payment",
+          "amount": 30
+        },
+        {
+          "label": "Pet deposit ($75 retained for sanitation and extermination)",
+          "amount": null
+        }
+      ],
+      "requirements": [
+        "Proof of renter's insurance before move-in",
+        "Signed lease and deposit paid in full before possession"
+      ],
+      "utilities_included": [
+        "gas heat",
+        "hot water",
+        "trash",
+        "recycling"
+      ],
+      "pets": "Pet friendly",
+      "manager": "CMG Leasing",
+      "cmg_page": "https://www.cmgleasing.com/property/shawnee-apartments/",
+      "address": "1222 University City Blvd, Blacksburg, VA 24060",
+      "property_note": "Accepting applications for 2027-2028; portal currently lists only 1-bed plans (deposit $1,130–$1,140); 2 and 3-bed plans from earlier record not currently listed; cable/internet via Comcast; open parking",
+      "evidence_quotes": [
+        "1 Bed / 1 Bath · 620 sq ft Total Monthly Leasing Price $1,095 $1,095 deposit · Waitlist Available",
+        "CMG FAQ: All deposits are refundable, less any damages · late charge of 10% of your total monthly rent after 5PM on the 5th"
+      ],
+      "remaining_gaps": [
+        "Application fee (not published)",
+        "Exact lease start/end dates"
+      ],
+      "billing_note": "Operator whole-unit monthly prices $1,095–$1,105; deposit equals one month's rent; 12-month joint and several lease; 10% late fee; renter's insurance required. Included: gas heat, hot water, trash, recycling.",
+      "location_note": "Operator street address; map uses the geocoded point.",
+      "coordinates": {
+        "lat": 37.242107,
+        "lon": -80.433223
+      }
+    },
+    "cedar-pointe-apartments": {
+      "status": "operator_observed",
+      "source_url": "https://cedarpointeapts.prospectportal.com/blacksburg/cedar-pointe-apartments/conventional/",
+      "checked_at": "2026-10-25T06:30:00+00:00",
+      "method": "CMG Leasing Entrata portal and cmgleasing.com property page, FAQ and lease template, read in a browser",
+      "prices": [
+        {
+          "label": "Studio S1 · 594 sq ft",
+          "bedrooms": 0,
+          "minimum": 1570.0,
+          "maximum": 1570.0,
+          "group_label": "Whole-unit apartment · per month"
+        },
+        {
+          "label": "Studio S2 · 594 sq ft",
+          "bedrooms": 0,
+          "minimum": 1620.0,
+          "maximum": 1620.0,
+          "group_label": "Whole-unit apartment · per month"
+        },
+        {
+          "label": "Studio S3 · 486 sq ft",
+          "bedrooms": 0,
+          "minimum": 1520.0,
+          "maximum": 1520.0,
+          "group_label": "Whole-unit apartment · per month"
+        },
+        {
+          "label": "Studio S4 · 495 sq ft",
+          "bedrooms": 0,
+          "minimum": 1520.0,
+          "maximum": 1520.0,
+          "group_label": "Whole-unit apartment · per month"
+        },
+        {
+          "label": "2 Bed 2 Bath B1 · 848 sq ft",
+          "bedrooms": 2,
+          "minimum": 2000.0,
+          "maximum": 2000.0,
+          "group_label": "Whole-unit apartment · per month"
+        },
+        {
+          "label": "2 Bed 2 Bath with balcony · 885 sq ft",
+          "bedrooms": 2,
+          "minimum": 2100.0,
+          "maximum": 2100.0,
+          "group_label": "Whole-unit apartment · per month"
+        },
+        {
+          "label": "2 Bed 2 Bath B3 · 821 sq ft",
+          "bedrooms": 2,
+          "minimum": 2000.0,
+          "maximum": 2000.0,
+          "group_label": "Whole-unit apartment · per month"
+        }
+      ],
+      "price_type": "total_monthly_leasing_price",
+      "billing_basis": "per_unit",
+      "billing_period": "calendar_month",
+      "lease": {
+        "term": "12 months (joint and several lease)",
+        "start": null,
+        "end": null
+      },
+      "availability": "Waitlist only on the operator portal at check time",
+      "recurring_fees": [],
+      "recurring_fee_note": "Entrata 'Total Monthly Leasing Price'; The Chase calculator shows base rent only with no added monthly fees. Utilities not listed as included are billed by usage; residents set up required utility accounts before move-in.",
+      "one_time_fees": [
+        {
+          "label": "Security deposit (refundable less damages)",
+          "amount": 1570,
+          "note": "equal to one month's rent per floor plan",
+          "refundable": true
+        }
+      ],
+      "situational_fees": [
+        {
+          "label": "Late fee after 5:00 PM on the 5th",
+          "amount": "10% of monthly rent"
+        },
+        {
+          "label": "Returned check / rejected payment",
+          "amount": 30
+        },
+        {
+          "label": "Pet deposit ($75 retained for sanitation and extermination)",
+          "amount": null
+        }
+      ],
+      "requirements": [
+        "Proof of renter's insurance before move-in",
+        "Signed lease and deposit paid in full before possession"
+      ],
+      "utilities_included": [
+        "gigabit internet"
+      ],
+      "pets": "Pets welcome (dog park, pet spa)",
+      "manager": "CMG Leasing",
+      "cmg_page": "https://www.cmgleasing.com/property/cedarpointe/",
+      "address": "200 Cedar Pointe Dr, Blacksburg, VA 24060",
+      "property_note": "Portal: 'Security deposit is equal to one month's rent.' Free on-site parking with decal; fully furnished apartments available",
+      "evidence_quotes": [
+        "Studio S1 · 594 sq ft Total Monthly Leasing Price $1,570 $1,570 deposit · Waitlist Available",
+        "CMG FAQ: All deposits are refundable, less any damages · late charge of 10% of your total monthly rent after 5PM on the 5th"
+      ],
+      "remaining_gaps": [
+        "Application fee (not published)",
+        "Exact lease start/end dates"
+      ],
+      "billing_note": "Operator whole-unit monthly prices $1,520–$2,100; deposit equals one month's rent; 12-month joint and several lease; 10% late fee; renter's insurance required. Included: gigabit internet.",
+      "location_note": "Operator street address; map uses the geocoded point.",
+      "coordinates": {
+        "lat": 37.200846,
+        "lon": -80.3987542
+      }
+    },
+    "cedarfield-apartments-townhomes": {
+      "status": "operator_observed",
+      "source_url": "https://cedarfield.prospectportal.com/blacksburg/cedarfield-apartments-and-townhomes/conventional/",
+      "checked_at": "2026-10-25T06:30:00+00:00",
+      "method": "CMG Leasing Entrata portal and cmgleasing.com property page, FAQ and lease template, read in a browser",
+      "prices": [
+        {
+          "label": "1 Bed 1 Bath Phase 1 · 652 sq ft",
+          "bedrooms": 1,
+          "minimum": 1280.0,
+          "maximum": 1280.0,
+          "group_label": "Whole-unit apartment · per month"
+        },
+        {
+          "label": "1 Bed 1 Bath Phase 3 · 792 sq ft",
+          "bedrooms": 1,
+          "minimum": 1350.0,
+          "maximum": 1350.0,
+          "group_label": "Whole-unit apartment · per month"
+        },
+        {
+          "label": "2 Bed 1 Bath Phase 1 · 869 sq ft",
+          "bedrooms": 2,
+          "minimum": 1420.0,
+          "maximum": 1420.0,
+          "group_label": "Whole-unit apartment · per month"
+        },
+        {
+          "label": "2 Bed 2.5 Bath townhome Phase 2 · 1,280 sq ft",
+          "bedrooms": 2,
+          "minimum": 1820.0,
+          "maximum": 1820.0,
+          "group_label": "Whole-unit apartment · per month"
+        },
+        {
+          "label": "2 Bed 2 Bath Phase 3 · 992 sq ft",
+          "bedrooms": 2,
+          "minimum": 1570.0,
+          "maximum": 1570.0,
+          "group_label": "Whole-unit apartment · per month"
+        },
+        {
+          "label": "2 Bed 2 Bath Phase 3, no patio or storage · 992 sq ft",
+          "bedrooms": 2,
+          "minimum": 1540.0,
+          "maximum": 1540.0,
+          "group_label": "Whole-unit apartment · per month"
+        },
+        {
+          "label": "2 Bed 2 Bath Phase 3, no patio · 992 sq ft",
+          "bedrooms": 2,
+          "minimum": 1550.0,
+          "maximum": 1550.0,
+          "group_label": "Whole-unit apartment · per month"
+        },
+        {
+          "label": "3 Bed 2.5 Bath townhome Phase 2 · 1,444 sq ft",
+          "bedrooms": 3,
+          "minimum": 2035.0,
+          "maximum": 2035.0,
+          "group_label": "Whole-unit apartment · per month"
+        }
+      ],
+      "price_type": "total_monthly_leasing_price",
+      "billing_basis": "per_unit",
+      "billing_period": "calendar_month",
+      "lease": {
+        "term": "12 months (joint and several lease)",
+        "start": null,
+        "end": null
+      },
+      "availability": "Waitlist only on the operator portal at check time",
+      "recurring_fees": [],
+      "recurring_fee_note": "Entrata 'Total Monthly Leasing Price'; The Chase calculator shows base rent only with no added monthly fees. Utilities not listed as included are billed by usage; residents set up required utility accounts before move-in.",
+      "one_time_fees": [
+        {
+          "label": "Security deposit (refundable less damages)",
+          "amount": 1280,
+          "note": "equal to one month's rent per floor plan",
+          "refundable": true
+        }
+      ],
+      "situational_fees": [
+        {
+          "label": "Late fee after 5:00 PM on the 5th",
+          "amount": "10% of monthly rent"
+        },
+        {
+          "label": "Returned check / rejected payment",
+          "amount": 30
+        },
+        {
+          "label": "Pet deposit ($75 retained for sanitation and extermination)",
+          "amount": null
+        }
+      ],
+      "requirements": [
+        "Proof of renter's insurance before move-in",
+        "Signed lease and deposit paid in full before possession"
+      ],
+      "utilities_included": [
+        "internet (SingleDigits)"
+      ],
+      "pets": "Pets welcome",
+      "manager": "CMG Leasing",
+      "cmg_page": "https://www.cmgleasing.com/property/cedarfield-apts-townhomes/",
+      "address": "Old Cedarfield Dr, Blacksburg, VA 24060",
+      "property_note": "",
+      "evidence_quotes": [
+        "1 Bed 1 Bath Phase 1 · 652 sq ft Total Monthly Leasing Price $1,280 $1,280 deposit · Waitlist Available",
+        "CMG FAQ: All deposits are refundable, less any damages · late charge of 10% of your total monthly rent after 5PM on the 5th"
+      ],
+      "remaining_gaps": [
+        "Application fee (not published)",
+        "Exact lease start/end dates"
+      ],
+      "billing_note": "Operator whole-unit monthly prices $1,280–$2,035; deposit equals one month's rent; 12-month joint and several lease; 10% late fee; renter's insurance required. Included: internet (SingleDigits).",
+      "location_note": "Operator street address; map uses the geocoded point.",
+      "coordinates": {
+        "lat": 37.205816,
+        "lon": -80.395657
+      }
+    },
+    "the-vue-apartments": {
+      "status": "operator_observed",
+      "source_url": "https://vueblacksburg.prospectportal.com/blacksburg/vue-apartments/conventional/",
+      "checked_at": "2026-10-25T06:30:00+00:00",
+      "method": "CMG Leasing Entrata portal and cmgleasing.com property page, FAQ and lease template, read in a browser",
+      "prices": [
+        {
+          "label": "1 Bed 1 Bath A1 · 593 sq ft",
+          "bedrooms": 1,
+          "minimum": 1660.0,
+          "maximum": 1660.0,
+          "group_label": "Whole-unit apartment · per month"
+        },
+        {
+          "label": "1 Bed 1 Bath A2 · 675 sq ft",
+          "bedrooms": 1,
+          "minimum": 1710.0,
+          "maximum": 1710.0,
+          "group_label": "Whole-unit apartment · per month"
+        },
+        {
+          "label": "2 Bed 2 Bath B1 · 937 sq ft",
+          "bedrooms": 2,
+          "minimum": 2100.0,
+          "maximum": 2100.0,
+          "group_label": "Whole-unit apartment · per month"
+        },
+        {
+          "label": "2 Bed 2 Bath B1-2 · 937 sq ft",
+          "bedrooms": 2,
+          "minimum": 2190.0,
+          "maximum": 2190.0,
+          "group_label": "Whole-unit apartment · per month"
+        },
+        {
+          "label": "2 Bed 2 Bath B2 · 1,067 sq ft",
+          "bedrooms": 2,
+          "minimum": 2300.0,
+          "maximum": 2300.0,
+          "group_label": "Whole-unit apartment · per month"
+        },
+        {
+          "label": "2 Bed 2 Bath B3-1 · 1,090 sq ft",
+          "bedrooms": 2,
+          "minimum": 2300.0,
+          "maximum": 2300.0,
+          "group_label": "Whole-unit apartment · per month"
+        },
+        {
+          "label": "2 Bed 2 Bath B3-2 · 1,115 sq ft",
+          "bedrooms": 2,
+          "minimum": 2300.0,
+          "maximum": 2300.0,
+          "group_label": "Whole-unit apartment · per month"
+        },
+        {
+          "label": "2 Bed 2 Bath B3-3 · 1,115 sq ft",
+          "bedrooms": 2,
+          "minimum": 2300.0,
+          "maximum": 2300.0,
+          "group_label": "Whole-unit apartment · per month"
+        },
+        {
+          "label": "2 Bed 2 Bath B4 · 933 sq ft",
+          "bedrooms": 2,
+          "minimum": 2100.0,
+          "maximum": 2100.0,
+          "group_label": "Whole-unit apartment · per month"
+        },
+        {
+          "label": "3 Bed 2 Bath C2-2 · 1,174 sq ft",
+          "bedrooms": 3,
+          "minimum": 2670.0,
+          "maximum": 2670.0,
+          "group_label": "Whole-unit apartment · per month"
+        },
+        {
+          "label": "3 Bed 3 Bath C1 · 1,216 sq ft",
+          "bedrooms": 3,
+          "minimum": 2745.0,
+          "maximum": 2745.0,
+          "group_label": "Whole-unit apartment · per month"
+        },
+        {
+          "label": "3 Bed 3 Bath C1-2 · 1,205 sq ft",
+          "bedrooms": 3,
+          "minimum": 2745.0,
+          "maximum": 2745.0,
+          "group_label": "Whole-unit apartment · per month"
+        },
+        {
+          "label": "3 Bed 2 Bath C3 · 1,118 sq ft",
+          "bedrooms": 3,
+          "minimum": 2670.0,
+          "maximum": 2670.0,
+          "group_label": "Whole-unit apartment · per month"
+        }
+      ],
+      "price_type": "total_monthly_leasing_price",
+      "billing_basis": "per_unit",
+      "billing_period": "calendar_month",
+      "lease": {
+        "term": "12 months (joint and several lease)",
+        "start": null,
+        "end": null
+      },
+      "availability": "Waitlist only on the operator portal at check time",
+      "recurring_fees": [],
+      "recurring_fee_note": "Entrata 'Total Monthly Leasing Price'; The Chase calculator shows base rent only with no added monthly fees. Utilities not listed as included are billed by usage; residents set up required utility accounts before move-in.",
+      "one_time_fees": [
+        {
+          "label": "Security deposit (refundable less damages)",
+          "amount": 1660,
+          "note": "equal to one month's rent per floor plan",
+          "refundable": true
+        }
+      ],
+      "situational_fees": [
+        {
+          "label": "Late fee after 5:00 PM on the 5th",
+          "amount": "10% of monthly rent"
+        },
+        {
+          "label": "Returned check / rejected payment",
+          "amount": 30
+        },
+        {
+          "label": "Pet deposit ($75 retained for sanitation and extermination)",
+          "amount": null
+        }
+      ],
+      "requirements": [
+        "Proof of renter's insurance before move-in",
+        "Signed lease and deposit paid in full before possession"
+      ],
+      "utilities_included": [
+        "gigabit internet"
+      ],
+      "pets": "Pets welcome (pet park)",
+      "manager": "CMG Leasing",
+      "cmg_page": "https://www.cmgleasing.com/property/vue-apartments/",
+      "address": "1906 Research Center Dr, Blacksburg, VA 24060",
+      "property_note": "Portal: 'accepting applications for 2027-2028 and rental rates have not been set for this lease term' — shown prices are current-term rates; washer/dryer included",
+      "evidence_quotes": [
+        "1 Bed 1 Bath A1 · 593 sq ft Total Monthly Leasing Price $1,660 $1,660 deposit · Waitlist Available",
+        "CMG FAQ: All deposits are refundable, less any damages · late charge of 10% of your total monthly rent after 5PM on the 5th"
+      ],
+      "remaining_gaps": [
+        "Application fee (not published)",
+        "Exact lease start/end dates",
+        "2027–28 rents (operator says not yet set)"
+      ],
+      "billing_note": "Operator whole-unit monthly prices $1,660–$2,745; deposit equals one month's rent; 12-month joint and several lease; 10% late fee; renter's insurance required. Included: gigabit internet.",
+      "location_note": "Operator street address; map uses the geocoded point.",
+      "coordinates": {
+        "lat": 37.2032883,
+        "lon": -80.407982
+      }
+    },
+    "the-reserve-at-knollwood": {
+      "status": "operator_observed",
+      "source_url": "https://reservekwapts.prospectportal.com/blacksburg/the-reserve-at-knollwood-apartments/conventional/",
+      "checked_at": "2026-10-25T06:30:00+00:00",
+      "method": "CMG Leasing Entrata portal and cmgleasing.com property page, FAQ and lease template, read in a browser",
+      "prices": [
+        {
+          "label": "1 Bed 1 Bath · 715 sq ft (from)",
+          "bedrooms": 1,
+          "minimum": 1550.0,
+          "maximum": 1550.0,
+          "group_label": "Whole-unit apartment · per month"
+        },
+        {
+          "label": "1 Bed 1 Bath top floor · 667+ sq ft",
+          "bedrooms": 1,
+          "minimum": 1570.0,
+          "maximum": 1570.0,
+          "group_label": "Whole-unit apartment · per month"
+        },
+        {
+          "label": "2 Bed 2 Bath · 1,058+ sq ft (from)",
+          "bedrooms": 2,
+          "minimum": 1870.0,
+          "maximum": 1870.0,
+          "group_label": "Whole-unit apartment · per month"
+        },
+        {
+          "label": "2 Bed 2 Bath top floor · 1,058+ sq ft",
+          "bedrooms": 2,
+          "minimum": 1900.0,
+          "maximum": 1900.0,
+          "group_label": "Whole-unit apartment · per month"
+        },
+        {
+          "label": "2 Bed 2 Bath walk-out · 1,108+ sq ft",
+          "bedrooms": 2,
+          "minimum": 1900.0,
+          "maximum": 1900.0,
+          "group_label": "Whole-unit apartment · per month"
+        },
+        {
+          "label": "3 Bed 3 Bath · 1,206+ sq ft (from)",
+          "bedrooms": 3,
+          "minimum": 2440.0,
+          "maximum": 2440.0,
+          "group_label": "Whole-unit apartment · per month"
+        },
+        {
+          "label": "3 Bed 3 Bath top floor · 1,206+ sq ft",
+          "bedrooms": 3,
+          "minimum": 2480.0,
+          "maximum": 2480.0,
+          "group_label": "Whole-unit apartment · per month"
+        }
+      ],
+      "price_type": "total_monthly_leasing_price",
+      "billing_basis": "per_unit",
+      "billing_period": "calendar_month",
+      "lease": {
+        "term": "12 months (joint and several lease)",
+        "start": null,
+        "end": null
+      },
+      "availability": "Waitlist only on the operator portal at check time",
+      "recurring_fees": [],
+      "recurring_fee_note": "Entrata 'Total Monthly Leasing Price'; The Chase calculator shows base rent only with no added monthly fees. Utilities not listed as included are billed by usage; residents set up required utility accounts before move-in.",
+      "one_time_fees": [
+        {
+          "label": "Security deposit (refundable less damages)",
+          "amount": 1550,
+          "note": "equal to one month's rent per floor plan",
+          "refundable": true
+        }
+      ],
+      "situational_fees": [
+        {
+          "label": "Late fee after 5:00 PM on the 5th",
+          "amount": "10% of monthly rent"
+        },
+        {
+          "label": "Returned check / rejected payment",
+          "amount": 30
+        },
+        {
+          "label": "Pet deposit ($75 retained for sanitation and extermination)",
+          "amount": null
+        }
+      ],
+      "requirements": [
+        "Proof of renter's insurance before move-in",
+        "Signed lease and deposit paid in full before possession"
+      ],
+      "utilities_included": [
+        "internet"
+      ],
+      "pets": "Pets welcome",
+      "manager": "CMG Leasing",
+      "cmg_page": "https://www.cmgleasing.com/property/reserve-at-knollwood/",
+      "address": "2401 Pamela Way, Blacksburg, VA 24060",
+      "property_note": "",
+      "evidence_quotes": [
+        "1 Bed 1 Bath · 715 sq ft Total Monthly Leasing Price $1,550 $1,550 deposit · Waitlist Available",
+        "CMG FAQ: All deposits are refundable, less any damages · late charge of 10% of your total monthly rent after 5PM on the 5th"
+      ],
+      "remaining_gaps": [
+        "Application fee (not published)",
+        "Exact lease start/end dates"
+      ],
+      "billing_note": "Operator whole-unit monthly prices $1,550–$2,480; deposit equals one month's rent; 12-month joint and several lease; 10% late fee; renter's insurance required. Included: internet.",
+      "location_note": "Operator street address; map uses the geocoded point.",
+      "coordinates": {
+        "lat": 37.20288,
+        "lon": -80.404719
+      }
+    },
+    "the-crossing-at-knollwood": {
+      "status": "operator_observed",
+      "source_url": "https://thecrossingapts.prospectportal.com/blacksburg/the-crossing-at-knollwood-apartments/conventional/",
+      "checked_at": "2026-10-25T06:30:00+00:00",
+      "method": "CMG Leasing Entrata portal and cmgleasing.com property page, FAQ and lease template, read in a browser",
+      "prices": [
+        {
+          "label": "1 Bed 1 Bath · 768 sq ft",
+          "bedrooms": 1,
+          "minimum": 1480.0,
+          "maximum": 1480.0,
+          "group_label": "Whole-unit apartment · per month"
+        },
+        {
+          "label": "1 Bed 1 Bath 3rd floor · 768 sq ft",
+          "bedrooms": 1,
+          "minimum": 1490.0,
+          "maximum": 1490.0,
+          "group_label": "Whole-unit apartment · per month"
+        },
+        {
+          "label": "2 Bed 2 Bath · 960 sq ft (from)",
+          "bedrooms": 2,
+          "minimum": 1755.0,
+          "maximum": 1755.0,
+          "group_label": "Whole-unit apartment · per month"
+        },
+        {
+          "label": "2 Bed 2 Bath 3rd floor · 960 sq ft",
+          "bedrooms": 2,
+          "minimum": 1790.0,
+          "maximum": 1790.0,
+          "group_label": "Whole-unit apartment · per month"
+        }
+      ],
+      "price_type": "total_monthly_leasing_price",
+      "billing_basis": "per_unit",
+      "billing_period": "calendar_month",
+      "lease": {
+        "term": "12 months (joint and several lease)",
+        "start": null,
+        "end": null
+      },
+      "availability": "Waitlist only on the operator portal at check time",
+      "recurring_fees": [],
+      "recurring_fee_note": "Entrata 'Total Monthly Leasing Price'; The Chase calculator shows base rent only with no added monthly fees. Utilities not listed as included are billed by usage; residents set up required utility accounts before move-in.",
+      "one_time_fees": [
+        {
+          "label": "Security deposit (refundable less damages)",
+          "amount": 1480,
+          "note": "equal to one month's rent per floor plan",
+          "refundable": true
+        }
+      ],
+      "situational_fees": [
+        {
+          "label": "Late fee after 5:00 PM on the 5th",
+          "amount": "10% of monthly rent"
+        },
+        {
+          "label": "Returned check / rejected payment",
+          "amount": 30
+        },
+        {
+          "label": "Pet deposit ($75 retained for sanitation and extermination)",
+          "amount": null
+        }
+      ],
+      "requirements": [
+        "Proof of renter's insurance before move-in",
+        "Signed lease and deposit paid in full before possession"
+      ],
+      "utilities_included": [
+        "internet (SingleDigits)"
+      ],
+      "pets": "Pets welcome",
+      "manager": "CMG Leasing",
+      "cmg_page": "https://www.cmgleasing.com/property/crossing-at-knollwood/",
+      "address": "2379 Research Center Dr, Blacksburg, VA 24060",
+      "property_note": "",
+      "evidence_quotes": [
+        "1 Bed 1 Bath · 768 sq ft Total Monthly Leasing Price $1,480 $1,480 deposit · Waitlist Available",
+        "CMG FAQ: All deposits are refundable, less any damages · late charge of 10% of your total monthly rent after 5PM on the 5th"
+      ],
+      "remaining_gaps": [
+        "Application fee (not published)",
+        "Exact lease start/end dates"
+      ],
+      "billing_note": "Operator whole-unit monthly prices $1,480–$1,790; deposit equals one month's rent; 12-month joint and several lease; 10% late fee; renter's insurance required. Included: internet (SingleDigits).",
+      "location_note": "Operator street address; map uses the geocoded point.",
+      "coordinates": {
+        "lat": 37.198059,
+        "lon": -80.404252
+      }
+    },
+    "knollwood-condominium": {
+      "status": "operator_observed",
+      "source_url": "https://kwcondos.prospectportal.com/Apartments/module/properties/",
+      "checked_at": "2026-10-25T06:30:00+00:00",
+      "method": "CMG Leasing Entrata portal and cmgleasing.com property page, FAQ and lease template, read in a browser",
+      "prices": [
+        {
+          "label": "Condo 4203 / 5204 · 1 bed",
+          "bedrooms": 1,
+          "minimum": 1490.0,
+          "maximum": 1490.0,
+          "group_label": "Whole-unit apartment · per month"
+        },
+        {
+          "label": "Condo 2304 / 5301 · 1 bed",
+          "bedrooms": 1,
+          "minimum": 1500.0,
+          "maximum": 1500.0,
+          "group_label": "Whole-unit apartment · per month"
+        },
+        {
+          "label": "Condo 7101 / 7204 / 7203, 7301, 7306 · 2 bed",
+          "bedrooms": 2,
+          "minimum": 1820.0,
+          "maximum": 1820.0,
+          "group_label": "Whole-unit apartment · per month"
+        },
+        {
+          "label": "Condo 6202 · 2 bed",
           "bedrooms": 2,
           "minimum": 1840.0,
           "maximum": 1840.0,
           "group_label": "Whole-unit apartment · per month"
         },
         {
-          "label": "3 bed · 3 bath, 1,235 sq ft (12-month)",
+          "label": "Condos 4201 and 3301 · 2–3 bed (from)",
+          "bedrooms": 2,
+          "minimum": 1900.0,
+          "maximum": 1900.0,
+          "group_label": "Whole-unit apartment · per month"
+        },
+        {
+          "label": "Condo 4205 · 3 bed",
           "bedrooms": 3,
-          "minimum": 2370.0,
-          "maximum": 2400.0,
+          "minimum": 2275.0,
+          "maximum": 2275.0,
           "group_label": "Whole-unit apartment · per month"
         }
       ],
-      "coordinates": null,
-      "address": null,
-      "billing_note": "Plus fees, per VT Off-Campus listings. Listing-site figure, not an operator quote. Confirm current rent, billing basis, fees and availability with the operator.",
+      "price_type": "total_monthly_leasing_price",
+      "billing_basis": "per_unit",
+      "billing_period": "calendar_month",
+      "lease": {
+        "term": "12 months (joint and several lease)",
+        "start": null,
+        "end": null
+      },
+      "availability": "Waitlist only on the operator portal at check time",
+      "recurring_fees": [],
+      "recurring_fee_note": "Entrata 'Total Monthly Leasing Price'; The Chase calculator shows base rent only with no added monthly fees. Utilities not listed as included are billed by usage; residents set up required utility accounts before move-in.",
+      "one_time_fees": [
+        {
+          "label": "Security deposit (refundable less damages)",
+          "amount": 1490,
+          "note": "equal to one month's rent per floor plan",
+          "refundable": true
+        }
+      ],
+      "situational_fees": [
+        {
+          "label": "Late fee after 5:00 PM on the 5th",
+          "amount": "10% of monthly rent"
+        },
+        {
+          "label": "Returned check / rejected payment",
+          "amount": 30
+        },
+        {
+          "label": "Pet deposit ($75 retained for sanitation and extermination)",
+          "amount": null
+        }
+      ],
+      "requirements": [
+        "Proof of renter's insurance before move-in",
+        "Signed lease and deposit paid in full before possession"
+      ],
+      "utilities_included": [],
+      "pets": "Pet-friendly community",
+      "manager": "CMG Leasing",
+      "cmg_page": "https://www.cmgleasing.com/property/knollwood-condos/",
+      "address": "301–305 N Knollwood Dr & 211–215 S Knollwood Dr, Blacksburg, VA 24060",
+      "property_note": "Individually listed condos ('Starting at'); internet via Comcast; washer/dryer included",
+      "evidence_quotes": [
+        "Condo 4203 / 5204 · 1 bed Total Monthly Leasing Price $1,490 $1,490 deposit · Waitlist Available",
+        "CMG FAQ: All deposits are refundable, less any damages · late charge of 10% of your total monthly rent after 5PM on the 5th"
+      ],
+      "remaining_gaps": [
+        "Application fee (not published)",
+        "Exact lease start/end dates"
+      ],
+      "billing_note": "Operator whole-unit monthly prices $1,490–$2,275; deposit equals one month's rent; 12-month joint and several lease; 10% late fee; renter's insurance required.",
+      "location_note": "Operator street address; map uses the geocoded point.",
+      "coordinates": {
+        "lat": 37.201236,
+        "lon": -80.40366
+      }
+    },
+    "knollwood-townhomes": {
+      "status": "operator_observed",
+      "source_url": "https://knollwoodtownhomes.prospectportal.com/apartments/",
+      "checked_at": "2026-10-25T06:30:00+00:00",
+      "method": "CMG Leasing Entrata portal and cmgleasing.com property page, FAQ and lease template, read in a browser",
+      "prices": [
+        {
+          "label": "245 / 249 / 320 Sheliah Ct · 2–3 bed (from)",
+          "bedrooms": 2,
+          "minimum": 2200.0,
+          "maximum": 2200.0,
+          "group_label": "Whole-unit apartment · per month"
+        },
+        {
+          "label": "247 Sheliah Ct · 2 bed",
+          "bedrooms": 2,
+          "minimum": 2200.0,
+          "maximum": 2200.0,
+          "group_label": "Whole-unit apartment · per month"
+        },
+        {
+          "label": "306 Sheliah Ct · 2 bed",
+          "bedrooms": 2,
+          "minimum": 2275.0,
+          "maximum": 2275.0,
+          "group_label": "Whole-unit apartment · per month"
+        }
+      ],
+      "price_type": "total_monthly_leasing_price",
+      "billing_basis": "per_unit",
+      "billing_period": "calendar_month",
+      "lease": {
+        "term": "12 months (joint and several lease)",
+        "start": null,
+        "end": null
+      },
+      "availability": "Waitlist only on the operator portal at check time",
+      "recurring_fees": [],
+      "recurring_fee_note": "Entrata 'Total Monthly Leasing Price'; The Chase calculator shows base rent only with no added monthly fees. Utilities not listed as included are billed by usage; residents set up required utility accounts before move-in.",
+      "one_time_fees": [
+        {
+          "label": "Security deposit (refundable less damages)",
+          "amount": 2200,
+          "note": "equal to one month's rent per floor plan",
+          "refundable": true
+        }
+      ],
+      "situational_fees": [
+        {
+          "label": "Late fee after 5:00 PM on the 5th",
+          "amount": "10% of monthly rent"
+        },
+        {
+          "label": "Returned check / rejected payment",
+          "amount": 30
+        },
+        {
+          "label": "Pet deposit ($75 retained for sanitation and extermination)",
+          "amount": null
+        }
+      ],
+      "requirements": [
+        "Proof of renter's insurance before move-in",
+        "Signed lease and deposit paid in full before possession"
+      ],
+      "utilities_included": [],
+      "pets": "Allows pets",
+      "manager": "CMG Leasing",
+      "cmg_page": "https://www.cmgleasing.com/property/knollwood-townhomes/",
+      "address": "245–320 Sheliah Ct, Blacksburg, VA 24060",
+      "property_note": "Portal lists 3 townhomes ('Starting at'); 268 Sheliah Ct ($2,500 in earlier record) not currently listed",
+      "evidence_quotes": [
+        "245 / 249 / 320 Sheliah Ct · 2–3 bed Total Monthly Leasing Price $2,200 $2,200 deposit · Waitlist Available",
+        "CMG FAQ: All deposits are refundable, less any damages · late charge of 10% of your total monthly rent after 5PM on the 5th"
+      ],
+      "remaining_gaps": [
+        "Application fee (not published)",
+        "Exact lease start/end dates"
+      ],
+      "billing_note": "Operator whole-unit monthly prices $2,200–$2,275; deposit equals one month's rent; 12-month joint and several lease; 10% late fee; renter's insurance required.",
+      "location_note": "Operator street address; map uses the geocoded point.",
+      "coordinates": {
+        "lat": 37.203208,
+        "lon": -80.403716
+      }
+    },
+    "haven-blacksburg-haven-on-north-main": {
+      "status": "operator_observed",
+      "source_url": "https://www.havenblacksburg.com/haven---north-street",
+      "checked_at": "2026-10-25T05:50:00+00:00",
+      "method": "Operator availability page and listing details (havenblacksburg.com, leasing by Pointe West Management), read in a browser",
+      "entry_kind": "listing",
+      "has_mixed_basis": true,
+      "prices": [
+        {
+          "label": "1203 North Main St. Apt M - Rm A · room in 4 bed 2 bath, 1,153 sq ft · spring semester, available 11/15/2026",
+          "bedrooms": 4,
+          "minimum": 550.0,
+          "maximum": 550.0,
+          "group_label": "Room listing · per month"
+        },
+        {
+          "label": "1201 North Main St. Apt J · 3 bed 2 bath, 850 sq ft · 2027–28, available 08/12",
+          "bedrooms": 3,
+          "minimum": 2697.0,
+          "maximum": 2697.0,
+          "group_label": "3 bed apartment · per month"
+        },
+        {
+          "label": "1201 North Main St. Apt I · 3 bed 2 bath, 940 sq ft · 2027–28, available 08/12",
+          "bedrooms": 3,
+          "minimum": 2697.0,
+          "maximum": 2697.0,
+          "group_label": "3 bed apartment · per month"
+        },
+        {
+          "label": "1205 North Main St. Apt J · 4 bed 3 bath, 1,217 sq ft · 2027–28, available 08/12",
+          "bedrooms": 4,
+          "minimum": 3716.0,
+          "maximum": 3716.0,
+          "group_label": "4 bed apartment · per month"
+        },
+        {
+          "label": "1205 North Main St. Apt I · 4 bed 2.5 bath, 1,204 sq ft · 2027–28, available 08/12",
+          "bedrooms": 4,
+          "minimum": 3636.0,
+          "maximum": 3636.0,
+          "group_label": "4 bed apartment · per month"
+        },
+        {
+          "label": "1205 North Main St. Apt G · 3 bed 2 bath, 918 sq ft · 2027–28, available 08/12",
+          "bedrooms": 3,
+          "minimum": 2697.0,
+          "maximum": 2697.0,
+          "group_label": "3 bed apartment · per month"
+        },
+        {
+          "label": "1203 North Main St. Apt F · 2 bed 1 bath, 545 sq ft · 2027–28, available 08/12",
+          "bedrooms": 2,
+          "minimum": 1938.0,
+          "maximum": 1938.0,
+          "group_label": "2 bed apartment · per month"
+        },
+        {
+          "label": "1203 North Main St. Apt I · 4 bed 2 bath, 1,153 sq ft · 2027–28, available 08/12",
+          "bedrooms": 4,
+          "minimum": 3596.0,
+          "maximum": 3596.0,
+          "group_label": "4 bed apartment · per month"
+        },
+        {
+          "label": "1205 North Main St. Apt B · 3 bed 2 bath, 1,152 sq ft · 2027–28, available 08/12",
+          "bedrooms": 3,
+          "minimum": 2697.0,
+          "maximum": 2697.0,
+          "group_label": "3 bed apartment · per month"
+        },
+        {
+          "label": "1205 North Main St. Apt A · 4 bed 2 bath, 2,304 sq ft · 2027–28, available 08/12",
+          "bedrooms": 4,
+          "minimum": 3596.0,
+          "maximum": 3596.0,
+          "group_label": "4 bed apartment · per month"
+        },
+        {
+          "label": "1203 North Main St. Apt L · 4 bed 2 bath, 1,153 sq ft · 2027–28, available 08/12",
+          "bedrooms": 4,
+          "minimum": 3596.0,
+          "maximum": 3596.0,
+          "group_label": "4 bed apartment · per month"
+        },
+        {
+          "label": "1203 North Main St. Apt K · 4 bed 2 bath, 1,153 sq ft · 2027–28, available 08/12",
+          "bedrooms": 4,
+          "minimum": 3596.0,
+          "maximum": 3596.0,
+          "group_label": "4 bed apartment · per month"
+        },
+        {
+          "label": "1203 North Main St. Apt J · 4 bed 2 bath, 1,153 sq ft · 2027–28, available 07/14",
+          "bedrooms": 4,
+          "minimum": 3596.0,
+          "maximum": 3596.0,
+          "group_label": "4 bed apartment · per month"
+        },
+        {
+          "label": "1203 North Main St. Apt H · 3 bed 2 bath, 810 sq ft · 2027–28, available 07/14",
+          "bedrooms": 3,
+          "minimum": 2697.0,
+          "maximum": 2697.0,
+          "group_label": "3 bed apartment · per month"
+        },
+        {
+          "label": "1203 North Main St. Apt G · 2 bed 1 bath, 513 sq ft · 2027–28, available 08/12",
+          "bedrooms": 2,
+          "minimum": 1938.0,
+          "maximum": 1938.0,
+          "group_label": "2 bed apartment · per month"
+        },
+        {
+          "label": "1203 North Main St. Apt D · 2 bed 1 bath, 527 sq ft · 2027–28, available 08/12",
+          "bedrooms": 2,
+          "minimum": 1938.0,
+          "maximum": 1938.0,
+          "group_label": "2 bed apartment · per month"
+        },
+        {
+          "label": "1203 North Main St. Apt B · 2 bed 1 bath, 527 sq ft · 2027–28, available 08/12",
+          "bedrooms": 2,
+          "minimum": 1938.0,
+          "maximum": 1938.0,
+          "group_label": "2 bed apartment · per month"
+        },
+        {
+          "label": "1201 North Main St. Apt E · 3 bed 2 bath, 940 sq ft · 2027–28, available 08/12",
+          "bedrooms": 3,
+          "minimum": 2697.0,
+          "maximum": 2697.0,
+          "group_label": "3 bed apartment · per month"
+        },
+        {
+          "label": "1201 North Main St. Apt C · 4 bed 2 bath, 1,155 sq ft · 2027–28, available 08/12",
+          "bedrooms": 4,
+          "minimum": 3596.0,
+          "maximum": 3596.0,
+          "group_label": "4 bed apartment · per month"
+        },
+        {
+          "label": "1201 North Main St. Apt A · 3 bed 2 bath, 940 sq ft · 2027–28, available 08/12",
+          "bedrooms": 3,
+          "minimum": 2697.0,
+          "maximum": 2697.0,
+          "group_label": "3 bed apartment · per month"
+        },
+        {
+          "label": "1201 North Main St. Apt B · 3 bed 2 bath, 850 sq ft · 2027–28, available 08/12",
+          "bedrooms": 3,
+          "minimum": 2697.0,
+          "maximum": 2697.0,
+          "group_label": "3 bed apartment · per month"
+        },
+        {
+          "label": "1201 North Main St. Apt L · 4 bed 2 bath, 1,266 sq ft · 2027–28, available 08/12",
+          "bedrooms": 4,
+          "minimum": 3596.0,
+          "maximum": 3596.0,
+          "group_label": "4 bed apartment · per month"
+        },
+        {
+          "label": "1201 North Main St. Apt H · 4 bed 2 bath, 1,266 sq ft · 2027–28, available 08/12",
+          "bedrooms": 4,
+          "minimum": 3596.0,
+          "maximum": 3596.0,
+          "group_label": "4 bed apartment · per month"
+        }
+      ],
+      "billing_basis": "per_unit",
+      "billing_period": "calendar_month",
+      "lease": {
+        "term": "2027-2028 lease term",
+        "start": "2027-08-12",
+        "end": null,
+        "note": "Most units available 08/12/2027; 1203 Apt H and Apt J available 07/14/2027. Room A in 1203 Apt M is a spring-semester listing from 11/15/2026."
+      },
+      "recurring_fees": [],
+      "one_time_fees": [
+        {
+          "label": "Application fee",
+          "amount": 49,
+          "timing": "at application",
+          "source": "Haven Blacksburg site 'Terms' (brand-wide)"
+        },
+        {
+          "label": "Admin fee (per person)",
+          "amount": 199,
+          "timing": "at move-in",
+          "source": "Haven Blacksburg site 'Terms' (brand-wide)"
+        },
+        {
+          "label": "Non-refundable reconditioning fee (per bedroom)",
+          "amount": 299,
+          "timing": "at move-in",
+          "source": "Haven Blacksburg site 'Terms' (brand-wide)"
+        }
+      ],
+      "unit_notes": [
+        "1205 N Main: washer/dryer and dishwasher in unit; unfurnished; bus stop in front",
+        "1201 N Main: on-site laundry"
+      ],
+      "manager": "Granite Student Living; leasing and tours via Pointe West Management (540-953-1341, 900 Glade Rd)",
+      "address": "1201–1205 N Main St, Blacksburg, VA 24060",
+      "evidence_quotes": [
+        "1205 North Main St. Apt J $3,716 / MONTH 4 beds 3 baths 1,217 sqft. Available for the 2027-2028 lease term Available 08/12/2027",
+        "Terms Application $49 Admin Fee $199 / person Non-Refundable Reconditioning Fee $299 / bedroom"
+      ],
+      "remaining_gaps": [
+        "Security deposit",
+        "Lease end date",
+        "Utilities included (not stated for North Main)",
+        "Whether the brand-wide fees apply to North Main whole-unit leases"
+      ],
+      "billing_note": "Operator whole-apartment rents for 2027–28 (available Aug 12, 2027): 2BR $1,938, 3BR $2,697, 4BR $3,596–$3,716; one spring-semester room at $550. Brand-wide fees: $49 application, $199 admin/person, $299/bedroom reconditioning.",
+      "location_note": "Operator street addresses; map uses the geocoded point."
+    },
+    "park37": {
+      "status": "operator_observed",
+      "source_url": "https://www.roostrealestategroup.com/park37",
+      "checked_at": "2026-10-25T04:35:00+00:00",
+      "method": "Operator community page and operator AppFolio listings, read in a browser",
+      "prices": [
+        {
+          "label": "Maybrook · 1 bed 1 bath, 620 sq ft",
+          "bedrooms": 1,
+          "minimum": 1760.0,
+          "maximum": 1760.0,
+          "group_label": "Per room (private) · per month"
+        },
+        {
+          "label": "Maybrook · furnished",
+          "bedrooms": 1,
+          "minimum": 1860.0,
+          "maximum": 1860.0,
+          "group_label": "Per room (private) · per month"
+        },
+        {
+          "label": "Ellett Valley · 2 bed 2 bath, 859 sq ft",
+          "bedrooms": 2,
+          "minimum": 1250.0,
+          "maximum": 1250.0,
+          "group_label": "Per room (private) · per month"
+        },
+        {
+          "label": "Ellett Valley · furnished",
+          "bedrooms": 2,
+          "minimum": 1350.0,
+          "maximum": 1350.0,
+          "group_label": "Per room (private) · per month"
+        },
+        {
+          "label": "Walker Creek · 4 bed 4 bath, 1,378 sq ft",
+          "bedrooms": 4,
+          "minimum": 1090.0,
+          "maximum": 1090.0,
+          "group_label": "Per room (private) · per month"
+        },
+        {
+          "label": "Walker Creek · furnished",
+          "bedrooms": 4,
+          "minimum": 1190.0,
+          "maximum": 1190.0,
+          "group_label": "Per room (private) · per month"
+        },
+        {
+          "label": "Pearis Mountain · 4 bed 4 bath + balcony, 1,485 sq ft",
+          "bedrooms": 4,
+          "minimum": 1150.0,
+          "maximum": 1150.0,
+          "group_label": "Per room (private) · per month"
+        },
+        {
+          "label": "Pearis Mountain · furnished",
+          "bedrooms": 4,
+          "minimum": 1250.0,
+          "maximum": 1250.0,
+          "group_label": "Per room (private) · per month"
+        }
+      ],
+      "billing_basis": "per_person",
+      "billing_period": "calendar_month",
+      "lease": {
+        "term": "Park 37 2027-2028",
+        "start": "2027-08-06",
+        "end": null,
+        "note": "AppFolio listings: Available 8/6/27, term 'PARK 37 2027-2028'; end date not published"
+      },
+      "recurring_fees": [],
+      "recurring_fee_note": "Rent includes water, sewer, parking and high-speed internet (operator); AppFolio also lists lawn care and trash as included. No separate required monthly fee published.",
+      "one_time_fees": [
+        {
+          "label": "Application fee",
+          "amount": 50,
+          "timing": "at application",
+          "source": "operator AppFolio listing"
+        }
+      ],
+      "utilities_included": [
+        "water",
+        "sewer",
+        "parking",
+        "high-speed internet",
+        "lawn care",
+        "trash"
+      ],
+      "address": "1222 Patrick Henry Dr, Blacksburg, VA 24060",
+      "evidence_quotes": [
+        "Walker Creek 4 Bed | 4 Bath 1378 sq. ft. Rent: $1,090/room - includes water, sewer, parking, & high-speed internet · Furnished Rate: $1,190/room",
+        "AppFolio: Rent: $1,190 · Application Fee: $50 · Room Type: Private · Available 8/6/27 · TERM PARK 37 2027-2028"
+      ],
+      "remaining_gaps": [
+        "Security deposit",
+        "Lease end date and number of payments",
+        "Electricity billing"
+      ],
+      "billing_note": "Operator per-room rents; includes water, sewer, parking, internet, lawn care and trash. $50 application fee. 2027–28 term, available Aug 6, 2027.",
+      "location_note": "Operator street address; map uses the geocoded point."
+    },
+    "brexx-at-blacksburg-the-retreat": {
+      "status": "operator_observed",
+      "source_url": "https://www.brexxblacksburg.com/floor-plans/",
+      "checked_at": "2026-10-25T04:25:00+00:00",
+      "method": "Operator floor-plans page and operator price calculator, read in a browser",
+      "prices": [
+        {
+          "label": "Birchmore 2x2.5 · 1,270 sq ft (starting at)",
+          "bedrooms": 2,
+          "minimum": 1399.0,
+          "maximum": 1399.0,
+          "group_label": "Per bed (rates are per person/per bed) · per installment, starting at"
+        },
+        {
+          "label": "Birchmore 3x3 · 1,357 sq ft (starting at)",
+          "bedrooms": 3,
+          "minimum": 1299.0,
+          "maximum": 1299.0,
+          "group_label": "Per bed (rates are per person/per bed) · per installment, starting at"
+        },
+        {
+          "label": "Milledge 3x3 · 1,350 sq ft (starting at)",
+          "bedrooms": 3,
+          "minimum": 1299.0,
+          "maximum": 1299.0,
+          "group_label": "Per bed (rates are per person/per bed) · per installment, starting at"
+        },
+        {
+          "label": "Courtyard 4x4 · 1,700 sq ft (starting at)",
+          "bedrooms": 4,
+          "minimum": 1189.0,
+          "maximum": 1189.0,
+          "group_label": "Per bed (rates are per person/per bed) · per installment, starting at"
+        },
+        {
+          "label": "Lumpkin 4x4 · 1,640 sq ft (starting at)",
+          "bedrooms": 4,
+          "minimum": 1149.0,
+          "maximum": 1149.0,
+          "group_label": "Per bed (rates are per person/per bed) · per installment, starting at"
+        },
+        {
+          "label": "Thornberry 4x4 · 1,684 sq ft (starting at)",
+          "bedrooms": 4,
+          "minimum": 1179.0,
+          "maximum": 1179.0,
+          "group_label": "Per bed (rates are per person/per bed) · per installment, starting at"
+        },
+        {
+          "label": "Lumpkin 4x4.5 · 2,034 sq ft (starting at)",
+          "bedrooms": 4,
+          "minimum": 1199.0,
+          "maximum": 1199.0,
+          "group_label": "Per bed (rates are per person/per bed) · per installment, starting at"
+        },
+        {
+          "label": "Milledge 4x4.5 · 2,034 sq ft (starting at)",
+          "bedrooms": 4,
+          "minimum": 1199.0,
+          "maximum": 1199.0,
+          "group_label": "Per bed (rates are per person/per bed) · per installment, starting at"
+        },
+        {
+          "label": "Springmore 4x4.5 · 1,852 sq ft (starting at)",
+          "bedrooms": 4,
+          "minimum": 1179.0,
+          "maximum": 1179.0,
+          "group_label": "Per bed (rates are per person/per bed) · per installment, starting at"
+        },
+        {
+          "label": "Cloverhurst 4x4.5 · 1,956 sq ft (starting at)",
+          "bedrooms": 4,
+          "minimum": 1179.0,
+          "maximum": 1179.0,
+          "group_label": "Per bed (rates are per person/per bed) · per installment, starting at"
+        },
+        {
+          "label": "Stafford 4x4.5 · 2,036 sq ft (starting at)",
+          "bedrooms": 4,
+          "minimum": 1189.0,
+          "maximum": 1189.0,
+          "group_label": "Per bed (rates are per person/per bed) · per installment, starting at"
+        },
+        {
+          "label": "Bloomfield 4x4 · 1,800 sq ft (starting at)",
+          "bedrooms": 4,
+          "minimum": 1179.0,
+          "maximum": 1179.0,
+          "group_label": "Per bed (rates are per person/per bed) · per installment, starting at"
+        },
+        {
+          "label": "Rutherford 5x5.5 · 2,065 sq ft (starting at)",
+          "bedrooms": 5,
+          "minimum": 1159.0,
+          "maximum": 1159.0,
+          "group_label": "Per bed (rates are per person/per bed) · per installment, starting at"
+        },
+        {
+          "label": "Courtyard 5x5 · 1,955 sq ft (starting at)",
+          "bedrooms": 5,
+          "minimum": 1119.0,
+          "maximum": 1119.0,
+          "group_label": "Per bed (rates are per person/per bed) · per installment, starting at"
+        },
+        {
+          "label": "Hawthorne 5x5 · 2,040 sq ft (starting at)",
+          "bedrooms": 5,
+          "minimum": 1169.0,
+          "maximum": 1169.0,
+          "group_label": "Per bed (rates are per person/per bed) · per installment, starting at"
+        },
+        {
+          "label": "Magnolia 5x5 · 1,980 sq ft (starting at)",
+          "bedrooms": 5,
+          "minimum": 1149.0,
+          "maximum": 1149.0,
+          "group_label": "Per bed (rates are per person/per bed) · per installment, starting at"
+        },
+        {
+          "label": "Talmadge 5x5.5 · 2,200 sq ft (starting at)",
+          "bedrooms": 5,
+          "minimum": 1069.0,
+          "maximum": 1069.0,
+          "group_label": "Per bed (rates are per person/per bed) · per installment, starting at"
+        }
+      ],
+      "billing_basis": "per_person",
+      "billing_period": "installment",
+      "lease": {
+        "term": "Annual - Brexx at Blacksburg",
+        "start": "2027-08-19",
+        "end": "2028-07-31"
+      },
+      "recurring_fees": [
+        {
+          "label": "Credit reporting fee",
+          "amount": 8.95,
+          "frequency": "per installment",
+          "required": true
+        },
+        {
+          "label": "Rental insurance waiver",
+          "amount": 15.0,
+          "frequency": "per installment",
+          "required": true,
+          "note": "Charged as 'Rental Insurance Waiver Income'"
+        },
+        {
+          "label": "Trash reimbursement billback",
+          "amount": 6.0,
+          "frequency": "per installment",
+          "required": true
+        }
+      ],
+      "recurring_fee_total": 29.95,
+      "one_time_fees": [
+        {
+          "label": "Application fee",
+          "amount": 50,
+          "timing": "lease approval",
+          "required": true
+        },
+        {
+          "label": "Administration fee",
+          "amount": 150,
+          "timing": "lease approval",
+          "required": true
+        },
+        {
+          "label": "Utility billing fee",
+          "amount": 62,
+          "timing": "move-in",
+          "required": true
+        }
+      ],
+      "optional_fees": [
+        {
+          "label": "Reserved parking",
+          "amount": 50,
+          "frequency": "per installment"
+        },
+        {
+          "label": "Surface parking",
+          "amount": 10,
+          "frequency": "per installment"
+        },
+        {
+          "label": "Pet rent",
+          "amount": 45,
+          "frequency": "per installment"
+        },
+        {
+          "label": "Non-refundable pet fee",
+          "amount": 400,
+          "timing": "move-in"
+        },
+        {
+          "label": "Unit premium",
+          "amount": 45,
+          "frequency": "per installment"
+        }
+      ],
+      "special": "IMMEDIATE MOVE-INS GET FREE RENT FOR JUNE & JULY 2027 (operator banner)",
+      "address": "1800 Redd Road, Blacksburg, VA 24060",
+      "evidence_quotes": [
+        "Rates are per person/per bed.",
+        "Amounts stated apply to the Annual - Brexx at Blacksburg (08/19/2027 - 07/31/2028) lease term.",
+        "Application Fee REQUIRED LEASE APPROVAL $50.00 · Administration Fee REQUIRED LEASE APPROVAL $150.00 · Credit Reporting Fees REQUIRED PER INSTALLMENT $8.95 · Rental Insurance Waiver Income REQUIRED PER INSTALLMENT $15.00 · Trash Reimbursement Billback REQUIRED PER INSTALLMENT $6.00 · Utility Billing Fee REQUIRED MOVE-IN $62.00"
+      ],
+      "remaining_gaps": [
+        "Number of installments for the Aug 19, 2027 – Jul 31, 2028 term",
+        "Security deposit",
+        "Usage-based utilities beyond the billing fee"
+      ],
+      "billing_note": "Operator: per-bed 'starting at' rents per installment; required $29.95 per installment in fees ($8.95 credit reporting, $15 insurance waiver, $6 trash); one-time $50 application, $150 admin, $62 utility billing. Lease Aug 19, 2027 – Jul 31, 2028.",
+      "location_note": "Map uses the geocoded guide address."
+    },
+    "the-summit-at-uptown": {
+      "status": "operator_observed",
+      "source_url": "https://roostrealestategroup.appfolio.com/listings",
+      "checked_at": "2026-10-25T06:45:00+00:00",
+      "method": "Operator AppFolio listings and listing detail, plus operator community page (roostrealestategroup.com/the-summit), read in a browser",
+      "prices": [
+        {
+          "label": "3 bed 2.5 bath townhome, 1,600 sq ft · 2027–28",
+          "bedrooms": 3,
+          "minimum": 995.0,
+          "maximum": 995.0,
+          "group_label": "Per bed (private room) · per month"
+        },
+        {
+          "label": "3 bed townhome, furnished · 2027–28",
+          "bedrooms": 3,
+          "minimum": 1095.0,
+          "maximum": 1095.0,
+          "group_label": "Per bed (private room) · per month"
+        },
+        {
+          "label": "4 bed 3.5 bath townhome, 2,332 sq ft · 2027–28",
+          "bedrooms": 4,
+          "minimum": 970.0,
+          "maximum": 970.0,
+          "group_label": "Per bed (private room) · per month"
+        },
+        {
+          "label": "4 bed townhome, furnished · 2027–28",
+          "bedrooms": 4,
+          "minimum": 1070.0,
+          "maximum": 1070.0,
+          "group_label": "Per bed (private room) · per month"
+        },
+        {
+          "label": "3 bed townhome · spring 2027, 6-month lease",
+          "bedrooms": 3,
+          "minimum": 1095.0,
+          "maximum": 1095.0,
+          "group_label": "Per bed (private room) · per month"
+        },
+        {
+          "label": "3 bed townhome, furnished · spring 2027, 6-month lease",
+          "bedrooms": 3,
+          "minimum": 1195.0,
+          "maximum": 1195.0,
+          "group_label": "Per bed (private room) · per month"
+        }
+      ],
+      "billing_basis": "per_person",
+      "billing_period": "calendar_month",
+      "unit_totals_note": "Operator community page quotes whole townhomes at $2,985 (3BR; furnished $3,285) and $3,880 (4BR; furnished $4,280), equal to per-bed rent × bedrooms for 2027–28.",
+      "lease": {
+        "term": "The Summit 2027-2028",
+        "start": "2027-07-17",
+        "end": null,
+        "note": "Also a 6-month spring 2027 term available 1/15/27; short-term leasing offered"
+      },
+      "recurring_fees": [],
+      "one_time_fees": [
+        {
+          "label": "Application fee",
+          "amount": 50,
+          "timing": "at application",
+          "source": "operator AppFolio listing"
+        }
+      ],
+      "utilities_included": [
+        "parking",
+        "trash",
+        "lawn care"
+      ],
+      "pets": "Cats and dogs allowed",
+      "furnished": "optional (+$100/bed)",
+      "address": "100-220 Hoopers Ln & 1740-1816 Staniel Dr, Blacksburg, VA 24060",
+      "manager": "Roost Real Estate Group",
+      "evidence_quotes": [
+        "BED RENT $970 · 2,332 sq ft · 4 bd / 3.5 ba · AVAILABLE 7/17/27 · TERM THE SUMMIT 2027-2028 · ROOM TYPE PRIVATE",
+        "Rent: $1,095 Application Fee: $50 · Utilities Included Parking Trash Lawn Care"
+      ],
+      "remaining_gaps": [
+        "Security deposit",
+        "Lease end date",
+        "Electric/water/internet billing"
+      ],
+      "billing_note": "Operator per-room rents for 2027–28 (from Jul 17, 2027): 4BR $970, 3BR $995; furnished +$100. Spring 2027 6-month 3BR $1,095–$1,195. Parking, trash and lawn care included; $50 application.",
+      "location_note": "Operator street addresses; map uses the geocoded point."
+    },
+    "smith-s-landing": {
+      "status": "listing_observed",
+      "source_url": "https://offcampus.vt.edu/housing/property/smiths-landing-apartments/eqb2jwp",
+      "checked_at": "2026-10-25T05:35:00+00:00",
+      "method": "Virginia Tech Off-Campus listing (community-supplied, updated 2 weeks ago, 'Now leasing for 2027-2028'), read in a browser",
+      "prices": [
+        {
+          "label": "1 bed 1 bath, 680 sq ft",
+          "bedrooms": 1,
+          "minimum": 1550.0,
+          "maximum": 1550.0,
+          "group_label": "Whole-unit apartment · per month"
+        },
+        {
+          "label": "1 bed 1 bath, 704 sq ft",
+          "bedrooms": 1,
+          "minimum": 1550.0,
+          "maximum": 1550.0,
+          "group_label": "Whole-unit apartment · per month"
+        },
+        {
+          "label": "2 bed 2 bath, 1,063 sq ft",
+          "bedrooms": 2,
+          "minimum": 1910.0,
+          "maximum": 1910.0,
+          "group_label": "Whole-unit apartment · per month"
+        },
+        {
+          "label": "2 bed 2 bath, 1,078 sq ft",
+          "bedrooms": 2,
+          "minimum": 1910.0,
+          "maximum": 1910.0,
+          "group_label": "Whole-unit apartment · per month"
+        },
+        {
+          "label": "3 bed 3 bath, 1,241 sq ft",
+          "bedrooms": 3,
+          "minimum": 2525.0,
+          "maximum": 2525.0,
+          "group_label": "Whole-unit apartment · per month"
+        },
+        {
+          "label": "3 bed 3 bath, 1,235 sq ft",
+          "bedrooms": 3,
+          "minimum": 2525.0,
+          "maximum": 2545.0,
+          "group_label": "Whole-unit apartment · per month"
+        }
+      ],
+      "billing_basis": "per_unit",
+      "billing_period": "calendar_month",
+      "lease": {
+        "term": "12 month lease, 2027-2028, renewal offered",
+        "start": null,
+        "end": null
+      },
+      "recurring_fees": [
+        {
+          "label": "Utility billing administrative fee",
+          "amount": 5.5,
+          "period": "month",
+          "required": true
+        },
+        {
+          "label": "Internet & wireless",
+          "amount": null,
+          "period": "month",
+          "required": true,
+          "note": "varies"
+        },
+        {
+          "label": "Water/sewer (submetered)",
+          "amount": null,
+          "period": "month",
+          "required": true,
+          "note": "varies by usage"
+        }
+      ],
+      "one_time_fees": [
+        {
+          "label": "Application fee",
+          "amount": 50,
+          "timing": "at application"
+        },
+        {
+          "label": "Administrative fee",
+          "amount": 200,
+          "timing": "at application"
+        },
+        {
+          "label": "Security deposit",
+          "amount": null,
+          "timing": "at move-in",
+          "note": "up to 1 month's rent",
+          "refundable": true
+        }
+      ],
+      "optional_fees": [
+        {
+          "label": "Reserved parking",
+          "amount": 25,
+          "period": "month"
+        },
+        {
+          "label": "Resident liability coverage",
+          "amount": 15,
+          "period": "month",
+          "note": "situational"
+        },
+        {
+          "label": "Pet fee (dog/cat), non-refundable",
+          "amount": 475
+        },
+        {
+          "label": "Pet rent",
+          "amount": 40,
+          "period": "month"
+        },
+        {
+          "label": "Third-party pet management",
+          "amount": "25-30"
+        }
+      ],
+      "situational_fees": [
+        {
+          "label": "NSF fee",
+          "amount": 50
+        },
+        {
+          "label": "Late fee",
+          "amount": "10% of rent"
+        }
+      ],
+      "manager": "Drucker & Falk",
+      "operator_site": "https://www.smithslandingapartments.com/",
+      "address": "870 Plantation Rd, Blacksburg, VA 24060",
+      "evidence_quotes": [
+        "2 Bedrooms 2 Bathrooms $1,910 Plus Fees 12 Month Lease 1,063 Available Soon",
+        "Utility - Billing Administrative Fee $5.50 / mo · Water/Sewer-Submetered Varies · Administrative Fee $200 · Application Fee $50 · Security Deposits *Up to 1 Month's Rent"
+      ],
+      "remaining_gaps": [
+        "Exact 2027–28 lease start/end dates",
+        "Internet fee amount",
+        "Electric billing",
+        "Exact deposit amount"
+      ],
+      "billing_note": "Whole-unit rents for 2027–28 (12-month): 1BR $1,550, 2BR $1,910, 3BR $2,525–$2,545. Required: $5.50/mo utility billing fee plus submetered water/sewer and internet. $50 application, $200 admin, deposit up to one month's rent. Reserved parking $25/mo. Listing figure, not an operator quote.",
       "location_note": "Map uses the geocoded guide address."
     },
     "fourteen35-apartments": {
       "status": "listing_observed",
-      "source_url": "https://www.apartments.com/fourteen35-apartments-blacksburg-va/yggxhjv/",
-      "checked_at": "2026-10-25T03:35:00+00:00",
-      "method": "Apartments.com listing (web search)",
+      "source_url": "https://offcampus.vt.edu/housing/property/fourteen35-apartments/edgcljq",
+      "checked_at": "2026-10-25T04:50:00+00:00",
+      "method": "Virginia Tech Off-Campus Housing listing (community-supplied data), read in a browser",
       "prices": [
         {
-          "label": "2–4 bed, bed/bath parity, furnished (12-month)",
-          "bedrooms": null,
+          "label": "4 bed 4 bath, 1,437 sq ft · available Aug 6, 2027",
+          "bedrooms": 4,
           "minimum": 995.0,
-          "maximum": 1255.0,
-          "group_label": "Room listing · per month"
+          "maximum": 995.0,
+          "group_label": "Per bed (private bedroom) · per month"
+        },
+        {
+          "label": "4 bed 4 bath, 1,437 sq ft · available Aug 6, 2027 (upper tier)",
+          "bedrooms": 4,
+          "minimum": 1005.0,
+          "maximum": 1005.0,
+          "group_label": "Per bed (private bedroom) · per month"
+        },
+        {
+          "label": "4 bed 4 bath, 1,437 sq ft · available now (current term)",
+          "bedrooms": 4,
+          "minimum": 965.0,
+          "maximum": 965.0,
+          "group_label": "Per bed (private bedroom) · per month"
         }
       ],
-      "coordinates": null,
+      "billing_basis": "per_person",
+      "billing_period": "calendar_month",
+      "lease": {
+        "term": "12 month lease",
+        "start": "2027-08-06",
+        "end": null,
+        "note": "Individual leases; 2027 units available 8/6/27"
+      },
+      "recurring_fees": [],
+      "recurring_fee_note": "Listing shows no community-supplied monthly required fees; utilities usage-based fees excluded from the shown price.",
+      "one_time_fees": [
+        {
+          "label": "Application fee (per applicant)",
+          "amount": 49,
+          "timing": "at application"
+        },
+        {
+          "label": "Administrative fee",
+          "amount": 199,
+          "timing": "at move-in"
+        },
+        {
+          "label": "Reconditioning fee",
+          "amount": 299,
+          "timing": "at move-in"
+        }
+      ],
+      "optional_fees": [
+        {
+          "label": "Pet fee (dog or cat), one-time",
+          "amount": 350
+        },
+        {
+          "label": "Monthly pet rent",
+          "amount": 50,
+          "period": "month"
+        }
+      ],
+      "parking": "Surface lot (fee not listed)",
+      "furnished": true,
+      "manager": "Granite Student Living",
       "address": "1435 Toms Creek Rd, Blacksburg, VA 24060",
-      "billing_note": "$995–$1,255 plus fees, 12-month lease; VT Off-Campus quotes the same property per bedroom. Listing-site figure, not an operator quote. Confirm current rent, billing basis, fees and availability with the operator.",
+      "evidence_quotes": [
+        "4 Bedrooms 4 Bathrooms $995 / Bedroom Plus Fees 12 Month Lease 1,437 8/6/27",
+        "Application Fee Per Applicant $49 · Administrative Fee $199 · Reconditioning Fee $299"
+      ],
+      "remaining_gaps": [
+        "Security deposit",
+        "Exact lease end date",
+        "Which utilities are included (earlier VT listing said electricity, heat, trash, water/sewer included)",
+        "Parking fee"
+      ],
+      "billing_note": "$995–$1,005 per bedroom for 2027 (12-month individual lease, from Aug 6, 2027), furnished 4x4. One-time: $49 application, $199 admin, $299 reconditioning. Listing figure, not an operator quote.",
       "location_note": "Map uses the geocoded guide address."
     },
     "hub-blacksburg": {
       "status": "listing_observed",
-      "source_url": "https://www.apartments.com/hub-on-campus-blacksburg-blacksburg-va/b9shm79/",
-      "checked_at": "2026-10-25T03:35:00+00:00",
-      "method": "Apartments.com listing (web search)",
+      "source_url": "https://www.apartments.com/hub-blacksburg-blacksburg-va/b9shm79/",
+      "checked_at": "2026-10-25T04:15:00+00:00",
+      "method": "Apartments.com pricing grid (prices) and operator floor-plans page (fees), read in a browser",
       "prices": [
         {
-          "label": "4 bed · 4 bath (4x4+), 1,560 sq ft (11-month)",
+          "label": "1x1 · 517–592 sq ft",
+          "bedrooms": 1,
+          "minimum": 1859.0,
+          "maximum": 1859.0,
+          "group_label": "Per person (individually keyed bedroom) · per month"
+        },
+        {
+          "label": "1x1 Terrace · 447 sq ft",
+          "bedrooms": 1,
+          "minimum": 1884.0,
+          "maximum": 1884.0,
+          "group_label": "Per person (individually keyed bedroom) · per month"
+        },
+        {
+          "label": "1x1 VIP · 517 sq ft",
+          "bedrooms": 1,
+          "minimum": 1909.0,
+          "maximum": 1909.0,
+          "group_label": "Per person (individually keyed bedroom) · per month"
+        },
+        {
+          "label": "2x2 · 763–855 sq ft",
+          "bedrooms": 2,
+          "minimum": 1375.0,
+          "maximum": 1375.0,
+          "group_label": "Per person (individually keyed bedroom) · per month"
+        },
+        {
+          "label": "2x2+ · 895–973 sq ft",
+          "bedrooms": 2,
+          "minimum": 1415.0,
+          "maximum": 1415.0,
+          "group_label": "Per person (individually keyed bedroom) · per month"
+        },
+        {
+          "label": "2x2 VIP · 855 sq ft",
+          "bedrooms": 2,
+          "minimum": 1425.0,
+          "maximum": 1425.0,
+          "group_label": "Per person (individually keyed bedroom) · per month"
+        },
+        {
+          "label": "2x2 Mansion · 817 sq ft",
+          "bedrooms": 2,
+          "minimum": 1445.0,
+          "maximum": 1445.0,
+          "group_label": "Per person (individually keyed bedroom) · per month"
+        },
+        {
+          "label": "2x2 VIP+ · 1,121 sq ft (starting at)",
+          "bedrooms": 2,
+          "minimum": 1465.0,
+          "maximum": 1465.0,
+          "group_label": "Per person (individually keyed bedroom) · per month"
+        },
+        {
+          "label": "3x2 · 990–1,076 sq ft (starting at)",
+          "bedrooms": 3,
+          "minimum": 999.0,
+          "maximum": 999.0,
+          "group_label": "Per person (individually keyed bedroom) · per month"
+        },
+        {
+          "label": "4x4 · 1,242–1,373 sq ft",
           "bedrooms": 4,
-          "minimum": 1259.0,
-          "maximum": 1259.0,
-          "group_label": "Room listing · per month"
+          "minimum": 1140.0,
+          "maximum": 1140.0,
+          "group_label": "Per person (individually keyed bedroom) · per month"
+        },
+        {
+          "label": "4x4+ · 1,560 sq ft",
+          "bedrooms": 4,
+          "minimum": 1165.0,
+          "maximum": 1165.0,
+          "group_label": "Per person (individually keyed bedroom) · per month"
+        },
+        {
+          "label": "4x4 TH · 895 sq ft",
+          "bedrooms": 4,
+          "minimum": 1189.0,
+          "maximum": 1189.0,
+          "group_label": "Per person (individually keyed bedroom) · per month"
+        },
+        {
+          "label": "4x4 VIP · 1,242–1,373 sq ft",
+          "bedrooms": 4,
+          "minimum": 1190.0,
+          "maximum": 1190.0,
+          "group_label": "Per person (individually keyed bedroom) · per month"
+        },
+        {
+          "label": "4x4 Mansion · 1,242–1,373 sq ft",
+          "bedrooms": 4,
+          "minimum": 1210.0,
+          "maximum": 1210.0,
+          "group_label": "Per person (individually keyed bedroom) · per month"
+        },
+        {
+          "label": "4x4 Mansion+ · 1,560 sq ft",
+          "bedrooms": 4,
+          "minimum": 1235.0,
+          "maximum": 1235.0,
+          "group_label": "Per person (individually keyed bedroom) · per month"
+        },
+        {
+          "label": "4x4 TH VIP · 895 sq ft",
+          "bedrooms": 4,
+          "minimum": 1239.0,
+          "maximum": 1239.0,
+          "group_label": "Per person (individually keyed bedroom) · per month"
         }
       ],
-      "coordinates": null,
-      "address": null,
-      "billing_note": "$1,259 plus fees, 11-month lease, Aug 21 availability. Listing-site figure, not an operator quote. Confirm current rent, billing basis, fees and availability with the operator.",
+      "billing_basis": "per_person",
+      "billing_period": "calendar_month",
+      "lease": {
+        "term": "11 Month Lease (per Apartments.com); operator says now leasing for Fall 2027",
+        "start": null,
+        "end": null
+      },
+      "recurring_fees": [
+        {
+          "label": "Conservice (utility billing) fee",
+          "amount": 6.67,
+          "frequency": "monthly",
+          "required": true,
+          "source": "operator"
+        }
+      ],
+      "one_time_fees": [
+        {
+          "label": "Application fee",
+          "amount": 35,
+          "timing": "at application",
+          "basis": "per applicant",
+          "source": "operator"
+        },
+        {
+          "label": "Administrative fee",
+          "amount": 200,
+          "timing": "at move-in",
+          "source": "operator"
+        }
+      ],
+      "optional_fees": [
+        {
+          "label": "Renters insurance (if not provided)",
+          "amount": 13.95,
+          "frequency": "monthly"
+        },
+        {
+          "label": "Parking",
+          "amount": 40,
+          "frequency": "monthly",
+          "note": "Operator lists $40/mo; Apartments.com lists garage $30/mo and surface $0/mo"
+        }
+      ],
+      "operator_source": "https://huboncampus.com/blacksburg/floor-plans/",
+      "operator_floor_plans": 19,
+      "operator_pricing": "Call for pricing on all plans; price filter shows $1,200–$1,500",
+      "address": "1201 Snyder Ln, Blacksburg, VA 24060",
+      "evidence_quotes": [
+        "Operator: Required Fees · Application Fee $35 One-Time · Administrative Fee $200 One-Time · Conservice Fee $6.67 Monthly",
+        "Operator: Add-On Fees · Renters Insurance (if not provided) $13.95 Monthly · Parking $40 Monthly",
+        "Apartments.com: 4x4 Mansion + $1,235 / Person Plus Fees · 4 Beds 4 Baths 1,560 Sq Ft",
+        "Apartments.com: Plus Fees 11 Month Lease"
+      ],
+      "remaining_gaps": [
+        "Exact 2027–28 lease start/end dates",
+        "Operator-confirmed per-plan rents (operator site says call for pricing)",
+        "Security deposit"
+      ],
+      "billing_note": "Listing-site per-person rents plus fees, 11-month lease. Operator fees: $35 application, $200 admin, $6.67/mo Conservice; optional parking $40/mo and renters insurance $13.95/mo.",
       "location_note": "Map uses the geocoded guide address."
     },
     "pack-place-apartments": {
-      "status": "listing_observed",
-      "source_url": "https://www.redfin.com/city/2010/VA/Blacksburg/apartments-for-rent/page-2",
-      "checked_at": "2026-10-25T03:35:00+00:00",
-      "method": "Redfin unit listing (web search)",
+      "status": "operator_observed",
+      "source_url": "https://granitesl.appfolio.com/listings/detail/1c4e7d51-54fb-48ca-bec0-a86406c5a068",
+      "checked_at": "2026-10-25T07:55:00+00:00",
+      "method": "Granite Student Living / Pointe West Management AppFolio listing and listing detail, read in a browser",
       "prices": [
         {
-          "label": "Unit B-06 · 2 bed · 1 bath, 767 sq ft",
+          "label": "2 bed 1 bath with den, 767 sq ft · available Aug 6, 2027",
           "bedrooms": 2,
-          "minimum": 1640.0,
-          "maximum": 1640.0,
+          "minimum": 1670.0,
+          "maximum": 1670.0,
           "group_label": "Whole-unit apartment · per month"
         }
       ],
-      "coordinates": null,
-      "address": "524 Prices Fork Rd, Blacksburg, VA 24060",
-      "billing_note": "Listings use 524 Prices Fork Rd, not 520. Listing-site figure, not an operator quote. Confirm current rent, billing basis, fees and availability with the operator.",
-      "location_note": "Map uses the geocoded guide address."
+      "billing_basis": "per_unit",
+      "billing_period": "calendar_month",
+      "lease": {
+        "term": null,
+        "start": "2027-08-06",
+        "end": null
+      },
+      "recurring_fees": [],
+      "one_time_fees": [
+        {
+          "label": "Application fee",
+          "amount": 49,
+          "timing": "at application"
+        }
+      ],
+      "utilities_included": [
+        "water",
+        "sewer",
+        "trash"
+      ],
+      "pets": "No cats or dogs",
+      "laundry": "On-site laundry",
+      "parking": "On-site parking",
+      "manager": "Pointe West Management",
+      "address": "520, 522, 524 Prices Fork Rd, Blacksburg, VA 24060",
+      "previous_listing": {
+        "source": "https://www.redfin.com/city/2010/VA/Blacksburg/apartments-for-rent/page-2",
+        "row": [
+          {
+            "label": "Unit B-06 · 2 bed · 1 bath, 767 sq ft",
+            "bedrooms": 2,
+            "minimum": 1640.0,
+            "maximum": 1640.0,
+            "group_label": "Whole-unit apartment · per month"
+          }
+        ],
+        "note": "Earlier Redfin listing B-06 2bd/1ba 767 sq ft $1,640"
+      },
+      "evidence_quotes": [
+        "2 Bed Pack Place Apartments 520, 522, 524, Prices Fork Road · RENT $1,670 · 767 sq ft · 2 bd / 1 ba · Available 8/6/27",
+        "Rental Terms Rent: $1,670 Application Fee: $49 · Utilities Included Water/Sewer Trash"
+      ],
+      "remaining_gaps": [
+        "Lease length and end date",
+        "Security deposit",
+        "Electric/internet"
+      ],
+      "billing_note": "Operator whole-unit rent $1,670 for a 2x1 with den from Aug 6, 2027 (earlier Redfin figure $1,640). Water, sewer and trash included; $49 application; no pets.",
+      "location_note": "Listings use 524 Prices Fork Rd; map uses the geocoded point."
     },
     "legacy-on-main-the-orchards": {
       "status": "eligibility_observed",
@@ -1093,6 +2495,1334 @@
       "address": "100 Country Club Drive SE, Blacksburg, VA",
       "eligibility": "Income-restricted affordable housing (up to 80% of area median income); full-time students living on their own do not qualify. Applications by lottery.",
       "billing_note": "Operator lists 2–3 bed, 2 bath; no published rents.",
+      "location_note": "Map uses the geocoded guide address."
+    },
+    "collegiate-suites-hunters-ridge": {
+      "status": "operator_observed",
+      "source_url": "https://collegiatesuitesblacksburg.com/all-floor-plans",
+      "checked_at": "2026-10-25T05:05:00+00:00",
+      "method": "Operator Entrata floor-plan widget and operator FAQ, read in a browser; fees from VT Off-Campus listing (community-supplied)",
+      "prices": [
+        {
+          "label": "1x1 B · 1 bed 1 bath, 850 sq ft (sold out)",
+          "bedrooms": 1,
+          "minimum": 1599.0,
+          "maximum": 1599.0,
+          "group_label": "Per bed (private) · per installment"
+        },
+        {
+          "label": "2x2 B · 2 bed 2 bath, 1,310 sq ft",
+          "bedrooms": 2,
+          "minimum": 1075.0,
+          "maximum": 1075.0,
+          "group_label": "Per bed (private) · per installment"
+        },
+        {
+          "label": "2x2 L · 2 bed 2 bath, 850 sq ft",
+          "bedrooms": 2,
+          "minimum": 1055.0,
+          "maximum": 1055.0,
+          "group_label": "Per bed (private) · per installment"
+        },
+        {
+          "label": "2x2 LC · 2 bed 2 bath, 850 sq ft",
+          "bedrooms": 2,
+          "minimum": 1065.0,
+          "maximum": 1065.0,
+          "group_label": "Per bed (private) · per installment"
+        },
+        {
+          "label": "4x2 HR · 4 bed 2 bath, 1,088 sq ft (Hunters Ridge)",
+          "bedrooms": 4,
+          "minimum": 925.0,
+          "maximum": 925.0,
+          "group_label": "Per bed (private) · per installment"
+        },
+        {
+          "label": "4x4 F · 4 bed 4 bath, 1,400 sq ft",
+          "bedrooms": 4,
+          "minimum": 985.0,
+          "maximum": 985.0,
+          "group_label": "Per bed (private) · per installment"
+        },
+        {
+          "label": "4x4 FC · 4 bed 4 bath, 1,400 sq ft",
+          "bedrooms": 4,
+          "minimum": 995.0,
+          "maximum": 995.0,
+          "group_label": "Per bed (private) · per installment"
+        },
+        {
+          "label": "4x4 L · 4 bed 4 bath, 1,312 sq ft",
+          "bedrooms": 4,
+          "minimum": 999.0,
+          "maximum": 999.0,
+          "group_label": "Per bed (private) · per installment"
+        },
+        {
+          "label": "4x4 LC · 4 bed 4 bath, 1,312 sq ft",
+          "bedrooms": 4,
+          "minimum": 999.0,
+          "maximum": 999.0,
+          "group_label": "Per bed (private) · per installment"
+        }
+      ],
+      "price_type": "total_monthly_leasing_price",
+      "billing_basis": "per_person",
+      "billing_period": "installment",
+      "installments": 12,
+      "lease": {
+        "term": "27/28 Lease Term",
+        "start": "2027-08-19",
+        "end": "2028-07-31",
+        "installments": 12,
+        "note": "Rent is a set total payable in twelve equal monthly installments; not prorated"
+      },
+      "recurring_fees": [],
+      "recurring_fee_note": "Prices are the operator's 'Total Monthly Leasing Price' (required monthly fees included). Electric, water and sewer billed monthly by a third-party vendor based on usage.",
+      "one_time_fees": [
+        {
+          "label": "Application fee (per applicant)",
+          "amount": 50,
+          "timing": "at application",
+          "source": "VT Off-Campus listing"
+        },
+        {
+          "label": "Administrative fee",
+          "amount": 150,
+          "timing": "at move-in",
+          "source": "VT Off-Campus listing"
+        }
+      ],
+      "deposit_note": "Security deposit is one qualifying option (instead of guarantor or 3x income); amount not published",
+      "optional_fees": [
+        {
+          "label": "Pet fee (one-time, non-refundable) and monthly pet rent",
+          "amount": null
+        }
+      ],
+      "utilities_included": [
+        "internet",
+        "trash",
+        "recycling",
+        "pest control"
+      ],
+      "utilities_billed_by_usage": [
+        "electric",
+        "water",
+        "sewer"
+      ],
+      "parking": "Free with resident parking pass",
+      "furnished": true,
+      "address": "1310 Henry Ln, Blacksburg, VA 24060",
+      "evidence_quotes": [
+        "4x4 F 4 Bed / 4 Bath — 1,400 sq. ft · Total Monthly Leasing Price $985 · Lease term: 27/28 Lease Term (08/19/2027 - 07/31/2028)",
+        "Internet, trash, recycling, and pest control is included in the rent. Electric, water, and sewer are not included and are billed monthly through a third party vendor based on usage."
+      ],
+      "remaining_gaps": [
+        "Security deposit amount (when used to qualify)",
+        "Pet fee amounts",
+        "Typical electric/water/sewer cost"
+      ],
+      "billing_note": "Operator per-bed total monthly leasing prices for 27/28 (Aug 19, 2027 – Jul 31, 2028, 12 installments): $925–$1,075 shared, 1x1 $1,599 (sold out). Internet, trash, pest included; electric/water/sewer by usage. $50 application, $150 admin. Free parking.",
+      "location_note": "Operator street address; map uses the geocoded point."
+    },
+    "old-row-on-north-main": {
+      "status": "listing_observed",
+      "source_url": "https://offcampus.vt.edu/housing/property/old-row-on-north-main/6y68vyt",
+      "checked_at": "2026-10-25T05:25:00+00:00",
+      "method": "Virginia Tech Off-Campus listing (community-supplied, updated 1 week ago) and operator site havenblacksburg.com for fees, read in a browser",
+      "prices": [
+        {
+          "label": "2 bed 2 bath apartment, 913 sq ft · available Aug 4, 2027",
+          "bedrooms": 2,
+          "minimum": 1419.0,
+          "maximum": 1419.0,
+          "group_label": "Per bed (individual lease) · per month"
+        },
+        {
+          "label": "4 bed 4.5 bath cottage, 2,070 sq ft · available Aug 4, 2027",
+          "bedrooms": 4,
+          "minimum": 1319.0,
+          "maximum": 1319.0,
+          "group_label": "Per bed (individual lease) · per month"
+        }
+      ],
+      "unit_totals_note": "Listing range tops out at $2,838 (2BR) and $5,276 (4BR), i.e. per-bed rent × bedrooms for the whole unit",
+      "billing_basis": "per_person",
+      "billing_period": "calendar_month",
+      "lease": {
+        "term": "12 month lease, renewal offered",
+        "start": "2027-08-04",
+        "end": null
+      },
+      "recurring_fees": [],
+      "recurring_fee_note": "Listing shows no monthly required fees; Wi-Fi and trash included.",
+      "one_time_fees": [
+        {
+          "label": "Application fee",
+          "amount": 49,
+          "timing": "at application",
+          "source": "operator + VT listing"
+        },
+        {
+          "label": "Admin fee (per person)",
+          "amount": 199,
+          "timing": "at move-in",
+          "source": "operator + VT listing"
+        },
+        {
+          "label": "Non-refundable reconditioning fee (per bedroom)",
+          "amount": 299,
+          "timing": "at move-in",
+          "source": "operator site"
+        }
+      ],
+      "utilities_included": [
+        "Wi-Fi",
+        "trash/recycling"
+      ],
+      "furnished": true,
+      "parking": "Surface lot (fee not listed)",
+      "pets": "No pets allowed (VT listing)",
+      "manager": "Granite Student Living (Haven brand)",
+      "address": "901-917 Lunch Pail Ln, Blacksburg, VA 24060",
+      "evidence_quotes": [
+        "4 Bedrooms 4.5 Bathrooms $1,319 - $5,276 / Bedroom Plus Fees 12 Month Lease 2,070 8/4/27",
+        "Application $49 Admin Fee $199 / person Non-Refundable Reconditioning Fee $299 / bedroom"
+      ],
+      "remaining_gaps": [
+        "Security deposit",
+        "Lease end date",
+        "Electric/water billing",
+        "Parking fee"
+      ],
+      "billing_note": "Per-bed individual leases for 2027–28 (available Aug 4, 2027, 12 months): 4x4.5 cottage $1,319/bed, 2x2 apartment $1,419/bed. Furnished; Wi-Fi and trash included. $49 application, $199 admin, $299/bedroom reconditioning. Listing figure, not an operator quote.",
+      "location_note": "Map uses the geocoded guide address."
+    },
+    "maple-ridge-townhomes": {
+      "status": "operator_observed",
+      "source_url": "https://mapleridgeblacksburg.com/all-floor-plans",
+      "checked_at": "2026-10-25T06:05:00+00:00",
+      "method": "Operator Entrata floor-plan widget and operator FAQ, read in a browser",
+      "prices": [
+        {
+          "label": "2 Bedroom Luxury · 2 bed 1.5 bath, 770 sq ft",
+          "bedrooms": 2,
+          "minimum": 999.0,
+          "maximum": 999.0,
+          "group_label": "Per bed (private) · per installment"
+        },
+        {
+          "label": "2 Bedroom Deluxe · 2 bed 2.5 bath, 1,066 sq ft",
+          "bedrooms": 2,
+          "minimum": 1055.0,
+          "maximum": 1055.0,
+          "group_label": "Per bed (private) · per installment"
+        },
+        {
+          "label": "2 Bedroom Premier · 2 bed 2.5 bath, 1,066 sq ft",
+          "bedrooms": 2,
+          "minimum": 1065.0,
+          "maximum": 1065.0,
+          "group_label": "Per bed (private) · per installment"
+        },
+        {
+          "label": "3 Bedroom Luxury · 3 bed 2 bath, 1,050 sq ft",
+          "bedrooms": 3,
+          "minimum": 995.0,
+          "maximum": 995.0,
+          "group_label": "Per bed (private) · per installment"
+        },
+        {
+          "label": "3 Bedroom Premier · 3 bed 3 bath, 1,356 sq ft",
+          "bedrooms": 3,
+          "minimum": 1095.0,
+          "maximum": 1095.0,
+          "group_label": "Per bed (private) · per installment"
+        },
+        {
+          "label": "4 Bedroom Luxury · 4 bed 2 bath, 1,508 sq ft",
+          "bedrooms": 4,
+          "minimum": 965.0,
+          "maximum": 965.0,
+          "group_label": "Per bed (private) · per installment"
+        },
+        {
+          "label": "4 Bedroom Premier · 4 bed 4 bath, 1,848 sq ft",
+          "bedrooms": 4,
+          "minimum": 1030.0,
+          "maximum": 1030.0,
+          "group_label": "Per bed (private) · per installment"
+        }
+      ],
+      "price_type": "total_monthly_leasing_price",
+      "billing_basis": "per_person",
+      "billing_period": "installment",
+      "installments": 12,
+      "lease": {
+        "term": "27/28 Lease Term",
+        "start": "2027-08-21",
+        "end": "2028-07-31",
+        "installments": 12,
+        "note": "Set total rent payable in twelve equal monthly installments; not prorated"
+      },
+      "recurring_fees": [],
+      "recurring_fee_note": "Prices are the operator's 'Total Monthly Leasing Price'. Electric, water and sewer billed monthly through the resident portal based on usage.",
+      "one_time_fees": [],
+      "deposit_note": "No deposit when qualifying with income or a guarantor",
+      "optional_fees": [
+        {
+          "label": "Pet fee (one-time, non-refundable) and monthly pet rent",
+          "amount": null
+        }
+      ],
+      "utilities_included": [
+        "Wi-Fi",
+        "trash",
+        "furniture",
+        "parking"
+      ],
+      "utilities_billed_by_usage": [
+        "electric",
+        "water",
+        "sewer"
+      ],
+      "parking": "Free; guest passes valid 3 days",
+      "furnished": true,
+      "manager": "Coastal Ridge Real Estate (sister of Collegiate Suites and Terrace View)",
+      "address": "344 Red Maple Dr, Blacksburg, VA 24060",
+      "evidence_quotes": [
+        "4 Bedroom Luxury 4 Bed / 2 Bath — 1,508 sq. ft · Total Monthly Leasing Price $965 · Lease term: 27/28 Lease Term (08/21/2027 - 07/31/2028)",
+        "Wi-Fi, trash services, furniture, and parking are included in the rent. Electric, water, and sewer are not included and are billed monthly through the resident portal based on usage."
+      ],
+      "remaining_gaps": [
+        "Application and admin fees (not published by the operator; VT listing removed)",
+        "Deposit amount when not qualifying by income/guarantor",
+        "Pet fee amounts"
+      ],
+      "billing_note": "Operator per-bed total monthly leasing prices for 27/28 (Aug 21, 2027 – Jul 31, 2028, 12 installments): $965–$1,095. Wi-Fi, trash, furniture and parking included; electric/water/sewer by usage. No deposit when qualifying by income or guarantor.",
+      "location_note": "Operator street address; map uses the geocoded point."
+    },
+    "the-farm": {
+      "status": "operator_observed",
+      "source_url": "https://www.havenblacksburg.com/availability",
+      "checked_at": "2026-10-25T07:00:00+00:00",
+      "method": "Operator availability page (Haven at the Farm, leasing by Pointe West Management), read in a browser",
+      "entry_kind": "listing",
+      "prices": [
+        {
+          "label": "1013 Steading Lane · 3 bed 2 bath, 2,468 sq ft · 2026–2027 term, available 10/29/2026",
+          "bedrooms": 3,
+          "minimum": 2495.0,
+          "maximum": 2495.0,
+          "group_label": "3 bed apartment · per month"
+        },
+        {
+          "label": "902 Steading Lane Apt 201 · 1 bed 1 bath, 653 sq ft · 2027–2028 term, available 08/12/2027",
+          "bedrooms": 1,
+          "minimum": 1529.0,
+          "maximum": 1529.0,
+          "group_label": "1 bed apartment · per month"
+        },
+        {
+          "label": "902 Steading Lane Apt 100 · 2 bed 2 bath, 1,073 sq ft · 2027–2028 term, available 08/12/2027",
+          "bedrooms": 2,
+          "minimum": 2378.0,
+          "maximum": 2378.0,
+          "group_label": "2 bed apartment · per month"
+        },
+        {
+          "label": "2001 Steading Lane · 3 bed 3.5 bath, 1,702 sq ft · 2027–2028 term, available 07/21/2027",
+          "bedrooms": 3,
+          "minimum": 3387.0,
+          "maximum": 3387.0,
+          "group_label": "3 bed apartment · per month"
+        },
+        {
+          "label": "904 Steading Lane Apt 201 · 1 bed 1 bath, 653 sq ft · 2027–2028 term, available 08/12/2027",
+          "bedrooms": 1,
+          "minimum": 1529.0,
+          "maximum": 1529.0,
+          "group_label": "1 bed apartment · per month"
+        },
+        {
+          "label": "904 Steading Lane Apt 200 · 2 bed 2 bath, 1,073 sq ft · 2027–2028 term, available 06/10/2027",
+          "bedrooms": 2,
+          "minimum": 2378.0,
+          "maximum": 2378.0,
+          "group_label": "2 bed apartment · per month"
+        },
+        {
+          "label": "904 Steading Lane Apt 101 · 1 bed 1 bath, 653 sq ft · 2027–2028 term, available 07/15/2027",
+          "bedrooms": 1,
+          "minimum": 1529.0,
+          "maximum": 1529.0,
+          "group_label": "1 bed apartment · per month"
+        },
+        {
+          "label": "902 Steading Lane Apt B102 · 1 bed 1 bath, 653 sq ft · 2027–2028 term, available 08/12/2027",
+          "bedrooms": 1,
+          "minimum": 1529.0,
+          "maximum": 1529.0,
+          "group_label": "1 bed apartment · per month"
+        },
+        {
+          "label": "902 Steading Lane Apt 200 · 2 bed 2 bath, 1,073 sq ft · 2027–2028 term, available 06/15/2027",
+          "bedrooms": 2,
+          "minimum": 2378.0,
+          "maximum": 2378.0,
+          "group_label": "2 bed apartment · per month"
+        },
+        {
+          "label": "2016 Steading Lane · 3 bed 3.5 bath, 1,702 sq ft · 2027–2028 term, available 06/01/2027",
+          "bedrooms": 3,
+          "minimum": 3387.0,
+          "maximum": 3387.0,
+          "group_label": "3 bed apartment · per month"
+        },
+        {
+          "label": "2009 Steading Lane · 3 bed 3.5 bath, 1,702 sq ft · 2027–2028 term, available 07/26/2027",
+          "bedrooms": 3,
+          "minimum": 3387.0,
+          "maximum": 3387.0,
+          "group_label": "3 bed apartment · per month"
+        },
+        {
+          "label": "1011 Steading Lane · 3 bed 2 bath, 2,468 sq ft · 2027–2028 term, available 08/12/2027",
+          "bedrooms": 3,
+          "minimum": 3507.0,
+          "maximum": 3507.0,
+          "group_label": "3 bed apartment · per month"
+        },
+        {
+          "label": "1009 Steading Lane · 3 bed 2 bath, 2,468 sq ft · 2027–2028 term, available 08/12/2027",
+          "bedrooms": 3,
+          "minimum": 3507.0,
+          "maximum": 3507.0,
+          "group_label": "3 bed apartment · per month"
+        },
+        {
+          "label": "904 Steading Lane Apt B100 · 1 bed 1 bath, 653 sq ft · 2027–2028 term, available 08/12/2027",
+          "bedrooms": 1,
+          "minimum": 1529.0,
+          "maximum": 1529.0,
+          "group_label": "1 bed apartment · per month"
+        },
+        {
+          "label": "904 Steading Lane Apt 301 · 1 bed 1 bath, 653 sq ft · 2027–2028 term, available 08/12/2027",
+          "bedrooms": 1,
+          "minimum": 1529.0,
+          "maximum": 1529.0,
+          "group_label": "1 bed apartment · per month"
+        },
+        {
+          "label": "902 Steading Lane Apt 301 · 1 bed 1 bath, 653 sq ft · 2027–2028 term, available 08/12/2027",
+          "bedrooms": 1,
+          "minimum": 1529.0,
+          "maximum": 1529.0,
+          "group_label": "1 bed apartment · per month"
+        },
+        {
+          "label": "1015 Steading Lane · 3 bed 2 bath, 2,468 sq ft · 2027–2028 term, available 08/12/2027",
+          "bedrooms": 3,
+          "minimum": 3507.0,
+          "maximum": 3507.0,
+          "group_label": "3 bed apartment · per month"
+        },
+        {
+          "label": "900 Glade Rd Apt 12 · 1 bed 1 bath, 499 sq ft · 2027–2028 term, available 08/12/2027",
+          "bedrooms": 1,
+          "minimum": 819.0,
+          "maximum": 819.0,
+          "group_label": "1 bed apartment · per month"
+        }
+      ],
+      "billing_basis": "per_unit",
+      "billing_period": "calendar_month",
+      "lease": {
+        "term": "2027-2028 lease term",
+        "start": "2027-08-12",
+        "end": null,
+        "note": "Most units available 08/12/2027; some from 06/01–07/26/2027. One 2026–27 unit (1013 Steading Ln) available 10/29/2026."
+      },
+      "recurring_fees": [],
+      "one_time_fees": [
+        {
+          "label": "Application fee",
+          "amount": 49,
+          "timing": "at application",
+          "source": "Haven Blacksburg 'Terms' (brand-wide)"
+        },
+        {
+          "label": "Admin fee (per person)",
+          "amount": 199,
+          "timing": "at move-in",
+          "source": "Haven Blacksburg 'Terms' (brand-wide)"
+        },
+        {
+          "label": "Non-refundable reconditioning fee (per bedroom)",
+          "amount": 299,
+          "timing": "at move-in",
+          "source": "Haven Blacksburg 'Terms' (brand-wide)"
+        }
+      ],
+      "manager": "Granite Student Living; leasing via Pointe West Management (900 Glade Rd, 540-953-1341)",
+      "address": "Steading Ln & 900 Glade Rd, Blacksburg, VA 24060",
+      "evidence_quotes": [
+        "902 Steading Lane Apt 100 $2,378 / MONTH 2 beds 2 baths 1,073 sqft. Available for the 2027-2028 Lease Term. Available 08/12/2027",
+        "2001 Steading Lane $3,387 / MONTH 3 beds 3.5 baths 1,702 sqft. Available for the 2027-2028 lease term."
+      ],
+      "remaining_gaps": [
+        "Security deposit",
+        "Lease end date",
+        "Utilities included",
+        "Whether 900 Glade Rd Apt 12 is part of The Farm community"
+      ],
+      "billing_note": "Operator whole-unit rents for 2027–28: 1BR $1,529, 2BR $2,378, 3BR townhome $3,387–$3,507 (plus a 1BR at 900 Glade Rd for $819). Haven brand fees: $49 application, $199 admin/person, $299/bedroom reconditioning.",
+      "location_note": "Map uses the geocoded guide address."
+    },
+    "1711-apartments": {
+      "status": "listing_observed",
+      "source_url": "https://offcampus.vt.edu/housing/property/1711-apartments/d0d2e8j",
+      "checked_at": "2026-10-25T07:10:00+00:00",
+      "method": "Virginia Tech Off-Campus listing (community-supplied, updated 1 week ago), read in a browser",
+      "prices": [
+        {
+          "label": "4 bed 2 bath, 1,173 sq ft · 2027–28, available Aug 6, 2027",
+          "bedrooms": 4,
+          "minimum": 675.0,
+          "maximum": 675.0,
+          "group_label": "Per bed (individual lease) · per month"
+        },
+        {
+          "label": "4 bed 2 bath · current term, available Nov 15, 2026",
+          "bedrooms": 4,
+          "minimum": 565.0,
+          "maximum": 565.0,
+          "group_label": "Per bed (individual lease) · per month"
+        }
+      ],
+      "billing_basis": "per_person",
+      "billing_period": "calendar_month",
+      "lease": {
+        "term": "12 month individual lease (roommate matched)",
+        "start": "2027-08-06",
+        "end": null
+      },
+      "recurring_fees": [],
+      "recurring_fee_note": "Listing shows no monthly required fees.",
+      "one_time_fees": [
+        {
+          "label": "Application fee (per applicant)",
+          "amount": 49,
+          "timing": "at application"
+        },
+        {
+          "label": "Administrative fee",
+          "amount": 199,
+          "timing": "at move-in"
+        },
+        {
+          "label": "Reconditioning fee",
+          "amount": 299,
+          "timing": "at move-in"
+        }
+      ],
+      "pets": "Pet policies negotiable",
+      "furnished": true,
+      "parking": "Ample parking (fee not listed)",
+      "laundry": "On-site laundry room",
+      "manager": "Granite Student Living",
+      "address": "1711 Whipple Dr, Blacksburg, VA 24060",
+      "evidence_quotes": [
+        "4 Bedrooms 2 Bathrooms $675 / Bedroom Plus Fees 12 Month Lease 1,173 8/6/27",
+        "Application Fee Per Applicant $49 · Administrative Fee $199 · Reconditioning Fee $299"
+      ],
+      "remaining_gaps": [
+        "Security deposit",
+        "Lease end date",
+        "Utilities included (search snippets mention water/sewer/trash; not on the listing read)"
+      ],
+      "billing_note": "$675 per bedroom for 2027–28 (12-month individual lease from Aug 6, 2027), furnished 4x2; a current-term room at $565. One-time: $49 application, $199 admin, $299 reconditioning. Listing figure, not an operator quote.",
+      "location_note": "Map uses the geocoded guide address."
+    },
+    "stonegate-carlton-scott": {
+      "status": "listing_observed",
+      "source_url": "https://offcampus.vt.edu/housing/property/stonegate-and-carlton-scott-apartments/bv6cxqb",
+      "checked_at": "2026-10-25T07:20:00+00:00",
+      "method": "Virginia Tech Off-Campus listing (community-supplied, updated 2 weeks ago), read in a browser",
+      "prices": [
+        {
+          "label": "2 bed 1 bath, 920 sq ft",
+          "bedrooms": 2,
+          "minimum": 720.0,
+          "maximum": 720.0,
+          "group_label": "Per bed (individual lease) · per month"
+        },
+        {
+          "label": "2 bed 1 bath, 950 sq ft",
+          "bedrooms": 2,
+          "minimum": 720.0,
+          "maximum": 720.0,
+          "group_label": "Per bed (individual lease) · per month"
+        },
+        {
+          "label": "3 bed 1.5 bath, 1,024 sq ft",
+          "bedrooms": 3,
+          "minimum": 545.0,
+          "maximum": 545.0,
+          "group_label": "Per bed (individual lease) · per month"
+        },
+        {
+          "label": "3 bed 1 bath, 1,054 sq ft",
+          "bedrooms": 3,
+          "minimum": 545.0,
+          "maximum": 545.0,
+          "group_label": "Per bed (individual lease) · per month"
+        }
+      ],
+      "billing_basis": "per_person",
+      "billing_period": "calendar_month",
+      "lease": {
+        "term": "12 month lease (individual leases)",
+        "start": null,
+        "end": null,
+        "note": "Units listed 'Available Soon'"
+      },
+      "recurring_fees": [
+        {
+          "label": "Utility package",
+          "amount": 50,
+          "period": "month",
+          "required": true
+        }
+      ],
+      "one_time_fees": [
+        {
+          "label": "Application fee (per applicant)",
+          "amount": 49,
+          "timing": "at application"
+        },
+        {
+          "label": "Administrative fee",
+          "amount": 199,
+          "timing": "at move-in"
+        }
+      ],
+      "optional_fees": [
+        {
+          "label": "Pet fee (dog/cat), one-time",
+          "amount": 100
+        },
+        {
+          "label": "Monthly pet fee",
+          "amount": 75,
+          "period": "month"
+        }
+      ],
+      "parking": "Surface lot, no parking fee listed",
+      "furnished": true,
+      "manager": "Granite Student Living",
+      "address": "500 Broce Dr, Blacksburg, VA 24060",
+      "evidence_quotes": [
+        "3 Bedrooms 1.5 Bathrooms $545 / Bedroom Plus Fees 12 Month Lease 1,024 Available Soon",
+        "Utility Package $50 / mo · Application Fee Per Applicant $49 · Administrative Fee $199"
+      ],
+      "remaining_gaps": [
+        "Lease start/end dates",
+        "Security deposit",
+        "What the $50 utility package covers",
+        "400 Broce Dr 4BR units (guide) not on this listing"
+      ],
+      "billing_note": "Per-bed individual leases (12-month): 2x1 $720, 3BR $545, plus a required $50/mo utility package. $49 application, $199 admin. Furnished; free surface parking. Listing figure, not an operator quote.",
+      "location_note": "Map uses the geocoded guide address."
+    },
+    "highlands-at-huckleberry-ridge": {
+      "status": "listing_observed",
+      "source_url": "https://offcampus.vt.edu/housing/property/highlands-at-huckleberry-ridge/gfhtn2z",
+      "checked_at": "2026-10-25T07:30:00+00:00",
+      "method": "Virginia Tech Off-Campus listing (community-supplied, updated 2 weeks ago) plus operator site highlandsapartmentsva.com for features, read in a browser",
+      "prices": [
+        {
+          "label": "1 bed 1 bath, 918 sq ft",
+          "bedrooms": 1,
+          "minimum": 1787.0,
+          "maximum": 1787.0,
+          "group_label": "Whole-unit apartment · per month"
+        },
+        {
+          "label": "1 bed 1 bath (loft), 1,287 sq ft",
+          "bedrooms": 1,
+          "minimum": 1870.0,
+          "maximum": 1870.0,
+          "group_label": "Whole-unit apartment · per month"
+        },
+        {
+          "label": "2 bed 2 bath, 1,209–1,267 sq ft",
+          "bedrooms": 2,
+          "minimum": 1790.0,
+          "maximum": 1865.0,
+          "group_label": "Whole-unit apartment · per month"
+        },
+        {
+          "label": "2 bed 2 bath (loft), 1,584 sq ft",
+          "bedrooms": 2,
+          "minimum": 1870.0,
+          "maximum": 1895.0,
+          "group_label": "Whole-unit apartment · per month"
+        },
+        {
+          "label": "3 bed 2 bath, 1,363–1,450 sq ft",
+          "bedrooms": 3,
+          "minimum": 1965.0,
+          "maximum": 2015.0,
+          "group_label": "Whole-unit apartment · per month"
+        }
+      ],
+      "billing_basis": "per_unit",
+      "billing_period": "calendar_month",
+      "lease": {
+        "term": null,
+        "start": null,
+        "end": null,
+        "note": "Listing says 'Call for Availability'; lease length not stated"
+      },
+      "recurring_fees": [],
+      "one_time_fees": [
+        {
+          "label": "Application fee (per applicant)",
+          "amount": 57,
+          "timing": "at application"
+        }
+      ],
+      "optional_fees": [
+        {
+          "label": "Private garage (leased separately)",
+          "amount": null
+        }
+      ],
+      "parking": "Surface lot; private garages available to lease",
+      "pets": "Dogs and cats allowed, no restrictions listed",
+      "manager": "Park Properties Management Company (PPMC)",
+      "operator_site": "https://www.highlandsapartmentsva.com/",
+      "address": "535 Blackrock Dr, Blacksburg, VA 24060",
+      "evidence_quotes": [
+        "3 Bedrooms 2 Bathrooms $1,965 - $2,015 Plus Fees 1,363 - 1,450 Call for Availability",
+        "Application Fee Per Applicant $57"
+      ],
+      "remaining_gaps": [
+        "Lease length and dates",
+        "Security deposit",
+        "Utilities",
+        "Garage rent",
+        "Operator site publishes no prices"
+      ],
+      "billing_note": "Conventional whole-unit apartments: 1BR $1,787–$1,870, 2BR $1,790–$1,895, 3BR $1,965–$2,015 (plus fees). $57 application. Pets allowed; garages leased separately. Listing figure, not an operator quote.",
+      "location_note": "Map uses the geocoded guide address."
+    },
+    "collegiate-court": {
+      "status": "listing_observed",
+      "source_url": "https://offcampus.vt.edu/housing/property/collegiate-court-apartments/v9cvgxg",
+      "checked_at": "2026-10-25T07:40:00+00:00",
+      "method": "Virginia Tech Off-Campus listing (community-supplied, updated 2 weeks ago), read in a browser",
+      "prices": [
+        {
+          "label": "3 bed 1 bath, 1,226 sq ft · available Jun 16, 2027",
+          "bedrooms": 3,
+          "minimum": 2850.0,
+          "maximum": 2940.0,
+          "group_label": "Whole-unit apartment · per month"
+        },
+        {
+          "label": "4 bed 2 bath, 1,350 sq ft · available Jun 16, 2027",
+          "bedrooms": 4,
+          "minimum": 3640.0,
+          "maximum": 4040.0,
+          "group_label": "Whole-unit apartment · per month"
+        }
+      ],
+      "billing_basis": "per_unit",
+      "billing_period": "calendar_month",
+      "lease": {
+        "term": "Flexible/other lease",
+        "start": "2027-06-16",
+        "end": null
+      },
+      "recurring_fees": [],
+      "one_time_fees": [
+        {
+          "label": "Application fee (per applicant)",
+          "amount": 40,
+          "timing": "at application"
+        }
+      ],
+      "optional_fees": [
+        {
+          "label": "Parking",
+          "amount": "100-125",
+          "period": "month"
+        }
+      ],
+      "utilities_included": [
+        "trash removal only"
+      ],
+      "pets": "No pets allowed",
+      "appliances": "Electric range, refrigerator, dishwasher, washer/dryer",
+      "manager": "Price Real Estate (per search results; not shown on listing read)",
+      "address": "100–103 Collegiate Ct, Blacksburg, VA 24060",
+      "evidence_quotes": [
+        "4 Bedrooms 2 Bathrooms $3,640 - $4,040 Plus Fees 1,350 6/16/27",
+        "Utilities Included: Trash Removal Only · Parking Fee $100 - $125 / mo · Application Fee Per Applicant $40"
+      ],
+      "remaining_gaps": [
+        "Security deposit",
+        "Lease length and end date",
+        "Electric/water costs"
+      ],
+      "billing_note": "Whole-unit rents from Jun 16, 2027: 3x1 $2,850–$2,940, 4x2 $3,640–$4,040 (about $910–$1,010 per bed). Trash only included; parking $100–$125/mo; $40 application; no pets. Listing figure, not an operator quote.",
+      "location_note": "Map uses the geocoded guide address."
+    },
+    "kent-square-condos": {
+      "status": "operator_observed",
+      "source_url": "https://granitesl.appfolio.com/listings/detail/ccafc6d6-60b9-4f02-bba5-4de0c6f97ceb",
+      "checked_at": "2026-10-25T07:55:00+00:00",
+      "method": "Granite Student Living / Pointe West Management AppFolio listing and listing detail, read in a browser",
+      "prices": [
+        {
+          "label": "Unit 404 · 2 bed 2 bath condo, 1,100 sq ft · 2027–28, available Jul 16, 2027",
+          "bedrooms": 2,
+          "minimum": 2500.0,
+          "maximum": 2500.0,
+          "group_label": "Whole-unit apartment · per month"
+        }
+      ],
+      "billing_basis": "per_unit",
+      "billing_period": "calendar_month",
+      "lease": {
+        "term": "2027-2028 lease term",
+        "start": "2027-07-16",
+        "end": null
+      },
+      "recurring_fees": [],
+      "one_time_fees": [
+        {
+          "label": "Application fee",
+          "amount": 49,
+          "timing": "at application"
+        }
+      ],
+      "utilities_included": [
+        "water",
+        "sewer",
+        "trash",
+        "electricity",
+        "one Kent Square garage parking permit"
+      ],
+      "pets": "No cats or dogs",
+      "furnished": false,
+      "appliances": "Stackable washer/dryer, dishwasher, microwave",
+      "manager": "Pointe West Management (540-953-1341)",
+      "address": "250 S Main St, Unit 404, Blacksburg, VA 24060",
+      "evidence_quotes": [
+        "Rent: $2,500 Application Fee: $49 Available 7/16/27 · Utilities Included Water/Sewage/Trash Electricity",
+        "includes ... one parking permit for the Kent Square parking garage ... (unit is NOT furnished)"
+      ],
+      "remaining_gaps": [
+        "Security deposit",
+        "Lease end date",
+        "Internet"
+      ],
+      "billing_note": "Operator whole-unit rent $2,500 for the 2027–28 term (from Jul 16, 2027), 2x2 condo, unfurnished. Includes water, sewer, trash, electricity and one garage parking permit. $49 application; no pets.",
+      "location_note": "Operator street address; map uses the geocoded point."
+    },
+    "additional-north-main-rentals": {
+      "status": "operator_observed",
+      "source_url": "https://granitesl.appfolio.com/listings",
+      "checked_at": "2026-10-25T08:10:00+00:00",
+      "method": "Property manager AppFolio listings and listing details (Granite Student Living / Pointe West Management), read in a browser",
+      "entry_kind": "listing",
+      "has_mixed_basis": true,
+      "prices": [
+        {
+          "label": "209 Tee St · 3 bed 1.5 bath townhome · available Aug 13, 2027",
+          "bedrooms": 3,
+          "minimum": 1725.0,
+          "maximum": 1725.0,
+          "group_label": "Whole-unit apartment · per month",
+          "deposit": 1200,
+          "utilities_included": "trash"
+        },
+        {
+          "label": "209-05 Tee St · 1 bed 1 bath with den · 27/28 term, available Aug 3, 2027",
+          "bedrooms": 1,
+          "minimum": 1130.0,
+          "maximum": 1130.0,
+          "group_label": "Whole-unit apartment · per month",
+          "deposit": 600,
+          "utilities_included": "trash"
+        },
+        {
+          "label": "105 Tee St Unit C · 3 bed 1.5 bath townhome, 1,100 sq ft · 2027/28, available Jul 15, 2027",
+          "bedrooms": 3,
+          "minimum": 1890.0,
+          "maximum": 1890.0,
+          "group_label": "Whole-unit apartment · per month",
+          "utilities_included": "trash"
+        },
+        {
+          "label": "300 McDonald St · 2 bed 1 bath · 27/28, available Jul 29, 2027",
+          "bedrooms": 2,
+          "minimum": 1660.0,
+          "maximum": 1660.0,
+          "group_label": "Whole-unit apartment · per month",
+          "deposit": 600,
+          "utilities_included": "water/sewer/trash/internet"
+        },
+        {
+          "label": "300 McDonald St A21 · 2 bed 1 bath with den, 800 sq ft · available Jul 8, 2027",
+          "bedrooms": 2,
+          "minimum": 1660.0,
+          "maximum": 1660.0,
+          "group_label": "Whole-unit apartment · per month",
+          "utilities_included": "water/sewer/trash/internet"
+        },
+        {
+          "label": "300 McDonald St A24 · 3 bed with den, 1 bath · 27/28, available Jul 8, 2027",
+          "bedrooms": 3,
+          "minimum": 2220.0,
+          "maximum": 2220.0,
+          "group_label": "Whole-unit apartment · per month",
+          "deposit": 900,
+          "utilities_included": "water/sewer/trash/internet"
+        },
+        {
+          "label": "300 McDonald St · room, 3 bed 1 bath with den (individual lease) · 27/28, available Jul 8, 2027",
+          "bedrooms": 3,
+          "minimum": 773.0,
+          "maximum": 773.0,
+          "group_label": "Room listing · per month",
+          "deposit": 300,
+          "utilities_included": "water/sewer/trash/internet"
+        },
+        {
+          "label": "300 McDonald St · room, 2 bed 1 bath, 800 sq ft (individual lease) · 27/28, available Jul 22, 2027",
+          "bedrooms": 2,
+          "minimum": 825.0,
+          "maximum": 825.0,
+          "group_label": "Room listing · per month",
+          "deposit": 300,
+          "utilities_included": "water/sewer/trash/internet"
+        },
+        {
+          "label": "709/711 Giles Rd · 2 bed 1 bath, 683 sq ft · available Jul 9, 2027",
+          "bedrooms": 2,
+          "minimum": 1495.0,
+          "maximum": 1495.0,
+          "group_label": "Whole-unit apartment · per month"
+        }
+      ],
+      "billing_period": "calendar_month",
+      "one_time_fees": [
+        {
+          "label": "Application fee",
+          "amount": 49,
+          "timing": "at application",
+          "note": "shown on each listing detail"
+        }
+      ],
+      "deposit_note": "Security deposit shown per listing where published ($300–$1,200)",
+      "utilities_note": "Tee St: trash only. 300 McDonald: water, sewer, trash and internet included. Giles: not stated.",
+      "manager": "Pointe West Management / Granite Student Living",
+      "address": "203–209 & 105 Tee St; 300 McDonald St; 709–711 Giles Rd, Blacksburg, VA 24060",
+      "remaining_gaps": [
+        "The Odyssey (200 Fairfax) and larger Giles Rd houses not currently listed",
+        "Lease end dates",
+        "Deposits where not shown"
+      ],
+      "billing_note": "2027–28 listings: Tee St 1BR+den $1,130, 3BR townhomes $1,725–$1,890; 300 McDonald 2BR $1,660, 3BR $2,220, rooms $773–$825 (water/sewer/trash/internet included); Giles Rd 2BR $1,495. $49 application; deposits $300–$1,200.",
+      "location_note": "Map uses the geocoded guide address."
+    },
+    "clover-valley-phase-i-cv2": {
+      "status": "operator_observed",
+      "source_url": "https://granitesl.appfolio.com/listings",
+      "checked_at": "2026-10-25T08:10:00+00:00",
+      "method": "Property manager AppFolio listings and listing details (Granite Student Living / Pointe West Management), read in a browser",
+      "entry_kind": "listing",
+      "has_mixed_basis": true,
+      "prices": [
+        {
+          "label": "136 Clover Valley Cir · 4 bed 2.5 bath, 1,480 sq ft · 2027–28, available Jul 29, 2027",
+          "bedrooms": 4,
+          "minimum": 2200.0,
+          "maximum": 2200.0,
+          "group_label": "Whole-unit apartment · per month",
+          "utilities_included": "trash"
+        },
+        {
+          "label": "CV2 (105–131 Clover Valley Cir) · private room in 4 bed 2.5 bath, 2,332 sq ft · 2027–28, available Jul 26, 2027",
+          "bedrooms": 4,
+          "minimum": 890.0,
+          "maximum": 890.0,
+          "group_label": "Per bed (private room) · per month"
+        }
+      ],
+      "billing_period": "calendar_month",
+      "one_time_fees": [
+        {
+          "label": "Application fee",
+          "amount": 49,
+          "timing": "at application",
+          "note": "shown on each listing detail"
+        }
+      ],
+      "deposit_note": "Security deposit shown per listing where published ($300–$1,200)",
+      "utilities_note": "136: trash included. CV2: not stated on the list view.",
+      "manager": "Pointe West Management (136); Roost Real Estate Group (CV2)",
+      "address": "105–175 Clover Valley Cir, Blacksburg, VA 24060",
+      "remaining_gaps": [
+        "Deposit",
+        "CV2 utilities and fees (Roost $50 application on other listings)"
+      ],
+      "billing_note": "2027–28: 136 Clover Valley Cir 4x2.5 $2,200 whole unit (Granite/Pointe West, $49 application); CV2 rooms $890/bed (Roost Real Estate).",
+      "location_note": "Map uses the geocoded guide address.",
+      "secondary_source": "https://roostrealestategroup.appfolio.com/listings"
+    },
+    "hearthstone-creekside-hilltop": {
+      "status": "operator_observed",
+      "source_url": "https://granitesl.appfolio.com/listings",
+      "checked_at": "2026-10-25T08:10:00+00:00",
+      "method": "Property manager AppFolio listings and listing details (Granite Student Living / Pointe West Management), read in a browser",
+      "entry_kind": "listing",
+      "has_mixed_basis": false,
+      "prices": [
+        {
+          "label": "Hilltop · 116 Hearthstone Dr Apt 200 · 2 bed 2 bath, 820 sq ft · available Aug 13, 2027",
+          "bedrooms": 2,
+          "minimum": 1950.0,
+          "maximum": 1950.0,
+          "group_label": "Whole-unit apartment · per month",
+          "deposit": 600,
+          "utilities_included": "electricity, water/sewer/trash, internet"
+        },
+        {
+          "label": "Bennett Hill · 112/114 Hearthstone Dr · 2 bed 2.5 bath, 1,216 sq ft · 27/28, available Jul 23, 2027",
+          "bedrooms": 2,
+          "minimum": 2100.0,
+          "maximum": 2100.0,
+          "group_label": "Whole-unit apartment · per month",
+          "deposit": 600,
+          "utilities_included": "water/sewer/trash"
+        },
+        {
+          "label": "Hearthstone 120-A · 1 bed 1 bath, 650 sq ft · 27/28, available Jul 9, 2027",
+          "bedrooms": 1,
+          "minimum": 1095.0,
+          "maximum": 1095.0,
+          "group_label": "Whole-unit apartment · per month",
+          "deposit": 300
+        },
+        {
+          "label": "117/119 Hearthstone · 119 Apt D · 2 bed 1 bath, 820 sq ft · available Jul 9, 2027",
+          "bedrooms": 2,
+          "minimum": 1295.0,
+          "maximum": 1295.0,
+          "group_label": "Whole-unit apartment · per month",
+          "deposit": 600,
+          "utilities_included": "water/sewer"
+        },
+        {
+          "label": "117 Hearthstone Apt F · 2 bed 1 bath, 820 sq ft · 27/28, available Jul 9, 2027",
+          "bedrooms": 2,
+          "minimum": 1260.0,
+          "maximum": 1260.0,
+          "group_label": "Whole-unit apartment · per month",
+          "utilities_included": "water/sewer"
+        },
+        {
+          "label": "Creekside · 115 Hearthstone Dr Apt 204 · 1 bed 1 bath, 500 sq ft · lease takeover from Dec 21, 2026",
+          "bedrooms": 1,
+          "minimum": 1365.0,
+          "maximum": 1365.0,
+          "group_label": "Whole-unit apartment · per month",
+          "utilities_included": "electricity, water/sewer/trash, internet"
+        },
+        {
+          "label": "Bennett Hill · 114 Hearthstone Dr Apt 202 · 2 bed 2.5 bath · lease takeover from Dec 23, 2026",
+          "bedrooms": 2,
+          "minimum": 1920.0,
+          "maximum": 1920.0,
+          "group_label": "Whole-unit apartment · per month",
+          "utilities_included": "water/sewer/trash"
+        }
+      ],
+      "billing_period": "calendar_month",
+      "one_time_fees": [
+        {
+          "label": "Application fee",
+          "amount": 49,
+          "timing": "at application",
+          "note": "shown on each listing detail"
+        }
+      ],
+      "deposit_note": "Security deposit shown per listing where published ($300–$1,200)",
+      "utilities_note": "Creekside and Hilltop: all utilities (electricity, water/sewer/trash, internet). Bennett Hill: water/sewer/trash. 117/119: water/sewer.",
+      "manager": "Pointe West Management / Granite Student Living",
+      "address": "112–120 Hearthstone Dr, Blacksburg, VA 24060",
+      "remaining_gaps": [
+        "Creekside 2027–28 rate (only a lease takeover is listed)",
+        "Lease end dates"
+      ],
+      "billing_note": "2027–28: Hilltop 2x2 $1,950 (all utilities), Bennett Hill 2x2.5 $2,100, 117/119 2x1 $1,260–$1,295, 120-A 1BR $1,095. Creekside 1BR takeover $1,365 (all utilities). $49 application; deposits $300–$600; cats allowed, no dogs.",
+      "location_note": "Map uses the geocoded guide address."
+    },
+    "oak-manor-camelot-court": {
+      "status": "operator_observed",
+      "source_url": "https://granitesl.appfolio.com/listings",
+      "checked_at": "2026-10-25T08:10:00+00:00",
+      "method": "Property manager AppFolio listings and listing details (Granite Student Living / Pointe West Management), read in a browser",
+      "entry_kind": "listing",
+      "has_mixed_basis": false,
+      "prices": [
+        {
+          "label": "613 Cambridge Rd · 3 bed 2.5 bath, 1,584 sq ft · 2027–28, available Aug 17, 2027",
+          "bedrooms": 3,
+          "minimum": 1745.0,
+          "maximum": 1745.0,
+          "group_label": "Whole-unit apartment · per month"
+        }
+      ],
+      "billing_period": "calendar_month",
+      "one_time_fees": [
+        {
+          "label": "Application fee",
+          "amount": 49,
+          "timing": "at application",
+          "note": "shown on each listing detail"
+        }
+      ],
+      "deposit_note": "Security deposit shown per listing where published ($300–$1,200)",
+      "utilities_note": "No utilities included.",
+      "manager": "Pointe West Management / Granite Student Living",
+      "address": "613 Cambridge Rd, Blacksburg, VA 24060",
+      "remaining_gaps": [
+        "113 Camelot Ct, 1700 Aden Ln and Oak Manor not currently listed",
+        "Deposit"
+      ],
+      "billing_note": "613 Cambridge Rd 3x2.5 $1,745 whole unit for 2027–28 (from Aug 17, 2027); no utilities included; $49 application; cats and dogs allowed.",
+      "location_note": "Map uses the geocoded guide address."
+    },
+    "pheasant-run-townhomes": {
+      "status": "operator_observed",
+      "source_url": "https://granitesl.appfolio.com/listings",
+      "checked_at": "2026-10-25T08:10:00+00:00",
+      "method": "Property manager AppFolio listings and listing details (Granite Student Living / Pointe West Management), read in a browser",
+      "entry_kind": "listing",
+      "has_mixed_basis": false,
+      "prices": [
+        {
+          "label": "202 Pheasant Run Dr · 4 bed 2.5 bath townhouse, 1,480 sq ft · available Aug 13, 2027",
+          "bedrooms": 4,
+          "minimum": 2520.0,
+          "maximum": 2520.0,
+          "group_label": "Whole-unit apartment · per month",
+          "utilities_included": "trash"
+        }
+      ],
+      "billing_period": "calendar_month",
+      "one_time_fees": [
+        {
+          "label": "Application fee",
+          "amount": 49,
+          "timing": "at application",
+          "note": "shown on each listing detail"
+        }
+      ],
+      "deposit_note": "Security deposit shown per listing where published ($300–$1,200)",
+      "utilities_note": "Trash only included.",
+      "manager": "Pointe West Management / Granite Student Living",
+      "address": "202 Pheasant Run Dr, Blacksburg, VA 24060",
+      "remaining_gaps": [
+        "Other Pheasant Run addresses not currently listed",
+        "Deposit",
+        "Per-room option (guide mentions $550–$735/bed)"
+      ],
+      "billing_note": "202 Pheasant Run Dr 4x2.5 townhouse $2,520 whole unit from Aug 13, 2027; trash included; $49 application; no pets.",
+      "location_note": "Map uses the geocoded guide address."
+    },
+    "university-terrace-progress-st": {
+      "status": "operator_observed",
+      "source_url": "https://granitesl.appfolio.com/listings",
+      "checked_at": "2026-10-25T08:10:00+00:00",
+      "method": "Property manager AppFolio listings and listing details (Granite Student Living / Pointe West Management), read in a browser",
+      "entry_kind": "listing",
+      "has_mixed_basis": true,
+      "prices": [
+        {
+          "label": "1210 University Terrace Unit D · 4 bed 2 bath · 2027–28, available Jul 10, 2027",
+          "bedrooms": 4,
+          "minimum": 2290.0,
+          "maximum": 2290.0,
+          "group_label": "Whole-unit apartment · per month",
+          "utilities_included": "trash"
+        },
+        {
+          "label": "1205 University Terrace Unit D · bed space in 4 bed 2 bath, 935 sq ft · 2027–28, available Jul 20, 2027",
+          "bedrooms": 4,
+          "minimum": 570.0,
+          "maximum": 570.0,
+          "group_label": "Room listing · per month"
+        },
+        {
+          "label": "1213K University Terrace · room in 4 bed 2 bath · 2027–28, available Jul 10, 2027",
+          "bedrooms": 4,
+          "minimum": 553.0,
+          "maximum": 553.0,
+          "group_label": "Room listing · per month",
+          "utilities_included": "trash"
+        }
+      ],
+      "billing_period": "calendar_month",
+      "one_time_fees": [
+        {
+          "label": "Application fee",
+          "amount": 49,
+          "timing": "at application",
+          "note": "shown on each listing detail"
+        }
+      ],
+      "deposit_note": "Security deposit shown per listing where published ($300–$1,200)",
+      "utilities_note": "Trash included where stated.",
+      "manager": "Pointe West Management / Granite Student Living",
+      "address": "1205–1213 University Terrace, Blacksburg, VA 24060",
+      "remaining_gaps": [
+        "Progress St listings not currently open",
+        "Deposits",
+        "Lease end dates"
+      ],
+      "billing_note": "2027–28: 1210 University Terrace D 4x2 $2,290 whole unit; rooms $553–$570. Trash included; $49 application; no pets at 1210.",
+      "location_note": "Map uses the geocoded guide address."
+    },
+    "downtown-boutique-historic-rentals": {
+      "status": "listing_observed",
+      "source_url": "https://offcampus.vt.edu/housing/property/703-clay-street-se-ada-accessible-2-br-baker-one/ocpnn34r9m",
+      "checked_at": "2026-10-25T08:25:00+00:00",
+      "method": "VT Off-Campus listing (703 Clay St, Jefferson Apartments) and CMG Leasing Entrata portal (Houston Street Apartments), read in a browser",
+      "entry_kind": "listing",
+      "prices": [
+        {
+          "label": "703 Clay St SE · 2 bed 2 bath, 1,249 sq ft (ADA accessible) · available now",
+          "bedrooms": 2,
+          "minimum": 1800.0,
+          "maximum": 1800.0,
+          "group_label": "Whole-unit apartment · per month",
+          "utilities_included": "water, sewer, trash, internet"
+        },
+        {
+          "label": "Houston Street Apartments (CMG, 515 Houston St) · 2 bed 1 bath front, 587 sq ft · waitlist",
+          "bedrooms": 2,
+          "minimum": 1900.0,
+          "maximum": 1900.0,
+          "group_label": "Whole-unit apartment · per month",
+          "deposit": 1900
+        },
+        {
+          "label": "Houston Street Apartments (CMG, 515 Houston St) · 2 bed 1 bath back, 587 sq ft · waitlist (from)",
+          "bedrooms": 2,
+          "minimum": 1950.0,
+          "maximum": 1950.0,
+          "group_label": "Whole-unit apartment · per month",
+          "deposit": 1950
+        }
+      ],
+      "billing_basis": "per_unit",
+      "billing_period": "calendar_month",
+      "lease": {
+        "term": "12 months at CMG (joint and several); not stated for 703 Clay",
+        "start": null,
+        "end": null
+      },
+      "one_time_fees": [
+        {
+          "label": "Security deposit (CMG Houston St)",
+          "amount": 1900,
+          "note": "one month's rent"
+        }
+      ],
+      "utilities_note": "703 Clay: water, sewer, trash and internet included. Houston St: internet via provider of resident's choice; no pets; open parking.",
+      "manager": "Jefferson Apartments (703 Clay); CMG Leasing (Houston St)",
+      "address": "703 Clay St SE; 515 Houston St, Blacksburg, VA 24060",
+      "evidence_quotes": [
+        "703 Clay Street SE 2 Bedrooms 2 Bathrooms $1,800 Plus Fees 1,249 Available Now · Amenities: Water, sewer, trash, Internet",
+        "Houston Street Apartments 2 Bedroom 1 Bath Front 587 sq. ft Total Monthly Leasing Price $1,900 $1,900 deposit"
+      ],
+      "remaining_gaps": [
+        "Old Row on Wharton and Old Row on Clay (Pointe West) publish no prices and have no open listings",
+        "315 Clay 4BR and 410 Houston St (guide) not found; CMG Houston St is at 515 Houston",
+        "703 Clay lease and fees"
+      ],
+      "billing_note": "Downtown whole-unit listings: 703 Clay St 2x2 $1,800 (water/sewer/trash/internet included); CMG Houston Street 2x1 $1,900–$1,950 with a one-month deposit. Listing figures; Old Row on Wharton/Clay rents not published.",
+      "location_note": "Map uses the geocoded guide address."
+    },
+    "east-roanoke-street": {
+      "status": "search_snippet_only",
+      "checked_at": "2026-10-25T08:25:00+00:00",
+      "source_url": "https://www.homes.com/blacksburg-va/apartments-for-rent/under-900/",
+      "method": "Web search snippets only; Homes.com page returned no content in the browser and no VT Off-Campus listing for 442 Roanoke St E was found",
+      "unverified_figures": "Snippets: Unit 442K 3BR from $700 plus fees; 1BR $900, 2BR $1,460, 3BR $2,100 plus utilities; leases 6/20/26–6/13/27; no application fee; assigned off-street parking. VT snippet: $660–$900 per bedroom, 12-month lease.",
+      "remaining_gaps": [
+        "A readable current listing",
+        "Billing basis",
+        "Fees and deposit",
+        "2027–28 term"
+      ],
+      "billing_note": "No source could be opened; figures above are unverified and not used as prices."
+    },
+    "seneca-drive-toms-creek-condos": {
+      "status": "listing_observed",
+      "source_url": "https://offcampus.vt.edu/housing/property/1440-seneca-dr/mcwkfwh",
+      "checked_at": "2026-10-25T08:35:00+00:00",
+      "method": "Virginia Tech Off-Campus listing (updated 1 day ago), read in a browser",
+      "entry_kind": "listing",
+      "prices": [
+        {
+          "label": "1440 Seneca Dr (Hunters Ridge condo) · 4 bed 2 bath, 967 sq ft · available Jul 30, 2027",
+          "bedrooms": 4,
+          "minimum": 1850.0,
+          "maximum": 1850.0,
+          "group_label": "Whole-unit apartment · per month",
+          "deposit": 1850
+        }
+      ],
+      "billing_basis": "per_unit",
+      "billing_period": "calendar_month",
+      "lease": {
+        "term": null,
+        "start": "2027-07-30",
+        "end": null
+      },
+      "one_time_fees": [
+        {
+          "label": "Security deposit (refundable)",
+          "amount": 1850,
+          "timing": "at move-in"
+        }
+      ],
+      "parking": "Off-street parking",
+      "appliances": "Washer & dryer in unit",
+      "manager": "Elevate Property Management LLC",
+      "address": "1440 Seneca Dr, Blacksburg, VA 24060",
+      "evidence_quotes": [
+        "4 Bedrooms 2 Bathrooms $1,850 Plus Fees 967 7/30/27",
+        "Security Deposit - Refundable $1,850"
+      ],
+      "remaining_gaps": [
+        "1407 Toms Creek Rd condos not currently listed",
+        "Lease length",
+        "Application fee",
+        "Utilities"
+      ],
+      "billing_note": "1440 Seneca Dr 4x2 condo $1,850 whole unit from Jul 30, 2027, refundable deposit $1,850. Listing figure, not an operator quote.",
       "location_note": "Map uses the geocoded guide address."
     }
   },
