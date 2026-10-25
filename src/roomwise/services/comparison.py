@@ -21,7 +21,7 @@ def candidates(catalog):
             result.append(dict(id=offer['id'], type=prop.get('listing_type','offer'), property_id=prop['id'], property_name=prop['name'],
                                address=prop['address'], coordinates={'lat':prop['lat'], 'lon':prop['lon']} if prop.get('lat') is not None and prop.get('lon') is not None else None,
                                guide_reference=prop.get('guide_reference'),
-                               coordinate_basis='representative_address' if prop.get('lat') is not None else 'unverified', data_status='guide_reference_only' if prop.get('guide_reference') else 'source_review_required' if offer['amount'] is None else 'reviewed_asking_price',
+                               coordinate_basis=prop.get('coordinate_basis') or ('representative_address' if prop.get('lat') is not None else 'unverified'), data_status='guide_reference_only' if prop.get('guide_reference') else 'source_review_required' if offer['amount'] is None else 'reviewed_asking_price',
                                sources=prop['sources'], offer=dict(id=offer['id'], layout=offer['name'], bedrooms=offer['bedrooms'], contract=offer['contract'],room=offer['room'],
                                price={'amount':offer['amount'], 'currency':'USD', 'basis':{'person':'per_person','unit':'whole_unit'}.get(offer['basis'], 'unknown'),
                                       'frequency':{'monthly':'calendar_month','installment':'installment'}.get(offer['period'], 'other'),

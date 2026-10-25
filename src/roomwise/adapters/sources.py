@@ -21,7 +21,7 @@ class TextParser(HTMLParser):
         if not self.hidden: self.parts.append(data)
 
 
-def fetch(source):
+def fetch(source, *, include_html=False):
     if source.get('refresh_policy') == 'manual_only':
         raise ValueError('This source requires manual review on the official website.')
     url = source['url']; parsed = urlsplit(url)
@@ -42,7 +42,10 @@ def fetch(source):
                 total += len(chunk)
                 if total > 2_000_000: raise ValueError('Source exceeds the download limit.')
                 chunks.append(chunk)
-    parser=TextParser(); parser.feed(b''.join(chunks).decode('utf-8',errors='replace'))
+    html=b''.join(chunks).decode('utf-8',errors='replace')
+    parser=TextParser(); parser.feed(html)
     text=re.sub(r'\s+',' ',' '.join(parser.parts)).strip()[:80_000]
     if len(text)<100: raise ValueError('Source contained too little readable evidence.')
-    return {'text':text,'sha256':hashlib.sha256(text.encode()).hexdigest(),'retrieved_at':now()}
+    result={'text':text,'sha256':hashlib.sha256(text.encode()).hexdigest(),'retrieved_at':now()}
+    if include_html:result['html']=html
+    return result

@@ -54,7 +54,7 @@ function save() {
 
 // transient UI state (not persisted)
 const UI = {
-  selected: null, query: '', filters: { fit: true, conflict: true, insufficient: true }, mapOpen: false,
+  selected: null, query: '', filters: { fit: true, conflict: true, insufficient: true }, mapOpen: true,
   drawer: null, dialog: null, toast: null, editing: null, menu: false, demo: false, errorsShown: false,
   guideErrors: false,
 };

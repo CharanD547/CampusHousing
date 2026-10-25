@@ -108,7 +108,7 @@ function renderConnectionStatus() {
   if (!el) return;
   const h=API.health?.dependencies;
   el.innerHTML=`<b>${API.comparing ? 'Updating comparison…' : API.comparisonError ? esc(API.comparisonError) : 'Connected to Roomwise'}</b>
-    <span>${new Set(CANDIDATES.map(c=>c.property_id)).size} properties · ${CANDIDATES.filter(c=>!c.guide_reference).length} operator plans · ${CANDIDATES.filter(c=>c.guide_reference).length} guide references · ${API.health?.assistant?.status==='configured_requires_verification'?'Gemma chat configured': 'Local research helper'}</span>
+    <span>${new Set(CANDIDATES.map(c=>c.property_id)).size} places · ${CANDIDATES.filter(c=>!c.guide_reference).length} priced floor plans · ${CANDIDATES.filter(c=>c.guide_reference).length} places with additional research · ${API.health?.assistant?.status==='configured_requires_verification'?'Gemma chat configured': 'Local research helper'}</span>
     ${API.account?.required ? '<button class="btn btn-sm" data-action="account-logout">Sign out</button>' : ''}
     ${API.comparisonError ? '<button class="btn btn-sm" data-action="refresh-comparison">Retry comparison</button>' : ''}
     ${API.conflict ? '<span>Workspace sync paused: another tab has saved changes. Your local draft is retained.</span><button class="btn btn-sm" data-action="resolve-workspace-conflict">Back up local draft and load server copy</button>' : ''}`;

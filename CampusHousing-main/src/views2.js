@@ -2,18 +2,7 @@
 function schematicMap(results, opts = {}) {
   if (S.sim.mapFails) return `<div class="map-card panel"><h3>Map unavailable</h3><p>Every offer is still available in the list.</p><button class="btn" data-action="map-retry">Retry map</button></div>`;
   if (API.maps?.enabled && !MAPS.error) return googleMapShell(results);
-  const destinations=[];
-  const points=CANDIDATES.filter(c=>c.coordinates).map(c=>({lat:c.coordinates.lat,lon:c.coordinates.lon}));
-  const lats=points.map(p=>p.lat),lons=points.map(p=>p.lon);
-  const minLat=Math.min(...lats)-.003,maxLat=Math.max(...lats)+.003,minLon=Math.min(...lons)-.003,maxLon=Math.max(...lons)+.003;
-  const xy=p=>[70+(p.lon-minLon)/(maxLon-minLon)*860,620-(p.lat-minLat)/(maxLat-minLat)*540];
-  const seen=new Set();
-  const markers=results.filter(r=>{if(!r.cand.coordinates || seen.has(r.cand.property_id))return false;seen.add(r.cand.property_id);return true;}).map(r=>{
-    const c=r.cand,[x,y]=xy({lat:c.coordinates.lat,lon:c.coordinates.lon});
-    return `<g class="mk" tabindex="0" role="button" aria-label="${esc(c.property_name)}" data-action="select" data-id="${esc(c.id)}" transform="translate(${x},${y})"><circle r="12" fill="var(--ink)"/><text x="${x>750 ? -17:17}" text-anchor="${x>750 ? 'end':'start'}" y="5" font-size="18" fill="var(--ink)">${esc(c.property_name)}</text></g>`;
-  }).join('');
-  const buildings=destinations.map(b=>{const [x,y]=xy(b);return `<g transform="translate(${x},${y})"><rect x="-6" y="-6" width="12" height="12" fill="var(--amber)"/><text x="12" y="-10" font-size="16">${esc(b.short)}</text></g>`;}).join('');
-  return `<div class="map-card"><svg viewBox="0 0 1000 700" role="img" aria-label="Geographic overview of housing"><rect width="1000" height="700" fill="var(--map-bg)"/>${markers}${buildings}<text x="35" y="45" font-size="18">N ↑ · property locations</text></svg><div class="map-bar"><span>Coordinate overview: one marker per property. Select individual offers from the list. No street network or travel-time shading is shown. Property address points and VT GIS building locations are approximate destinations, not verified entrances.</span></div></div>`;
+  return streetMapShell(results);
 }
 
 function candCard(r) {
@@ -38,7 +27,7 @@ function propertyGroups(results) {
   for (const r of results) {
     const key = r.cand.property_id;
     if (!groups.has(key)) groups.set(key, { key, cand: r.cand, plans: [] });
-    groups.get(key).plans.push(r);
+    if (!groups.get(key).plans.some(p=>p.cand.id===r.cand.id)) groups.get(key).plans.push(r);
   }
   return [...groups.values()].map((g) => {
     g.plans.sort((a, z) => (a.cand.offer.bedrooms ?? 0) - (z.cand.offer.bedrooms ?? 0) || (a.cand.offer.price.amount ?? 0) - (z.cand.offer.price.amount ?? 0));
@@ -54,7 +43,22 @@ const bedLabel = (n) => (n === 0 ? 'Studio' : `${n} bed`);
 const FIT_DOT = { fit: 'var(--fit)', conflict: 'var(--conflict)', insufficient: 'var(--unsure)' };
 
 function planPrices(g) {
-  if(g.cand.guide_reference)return `<div class="plan-prices"><div class="plan-head">Housing guide reference · USD</div><p>${esc(g.cand.guide_reference.guide_price_summary)}</p><p class="tiny">Guide figures, not current verified quotes. Confirm billing basis, unit, fees and availability.</p></div>`;
+  if(g.cand.guide_reference) {
+    const update=g.cand.guide_reference.evidence_update;
+    if(update?.prices?.length) {
+      const low=Math.min(...update.prices.map(p=>p.minimum)),high=Math.max(...update.prices.map(p=>p.maximum));
+      const checked=new Date(update.checked_at).toLocaleString('en-US',{timeZone:'America/New_York',month:'short',day:'numeric',hour:'numeric',minute:'2-digit',timeZoneName:'short'});
+      const groups=new Map();
+      for(const p of update.prices) {const label=p.group_label || (/\bS[1-4]\s+Floorplan/i.test(p.label)?'Studio':p.bedrooms==null?'Multiple layouts':bedLabel(p.bedrooms));if(!groups.has(label))groups.set(label,[]);groups.get(label).push(p);}
+      const summary=update.has_mixed_basis?'Room & apartment listings':money(low)+(high!==low?'–'+money(high):'');
+      const priceRows=[...groups].map(([label,rows])=>{
+        const lo=Math.min(...rows.map(p=>p.minimum)),hi=Math.max(...rows.map(p=>p.maximum));
+        return `<li class="research-price-row"><span>${esc(label)} <span class="tiny">${plural(rows.length,update.entry_kind==='listing'?'listing':'plan')}</span></span><b>${money(lo)}${hi!==lo?'–'+money(hi):''}</b></li>`;
+      }).join('');
+      return `<div class="plan-prices"><div class="plan-head">Operator asking figures · USD</div><div class="property-price-range num">${summary}</div><ul>${priceRows}</ul><p class="tiny">${esc(update.billing_note)}</p><p class="tiny price-checked">Checked ${esc(checked)} · <a href="${esc(safeMapsURL(update.source_url))}" target="_blank" rel="noopener noreferrer">Operator source ↗</a></p></div>`;
+    }
+    return `<div class="plan-prices"><div class="plan-head">Housing guide reference · USD</div><p>${esc(g.cand.guide_reference.guide_price_summary)}</p><p class="tiny">Guide figures, not current verified quotes. Confirm billing basis, unit, fees and availability.</p></div>`;
+  }
   const price = g.plans[0].cand.offer.price;
   const head = `${price.basis === 'whole_unit' ? 'Whole unit' : price.basis==='per_person'?'Per person':'Billing basis unconfirmed'} · ${price.frequency === 'installment' ? 'per installment' : price.frequency==='calendar_month'?'per calendar month':'frequency unconfirmed'}`;
   const from = g.plans.some((r) => r.cand.offer.price_confidence_tier === 'ADVERTISED_FROM');
@@ -76,12 +80,18 @@ function planPrices(g) {
       return `<li><a href="#property-${esc(best.cand.id)}">${dot(best.fit)}<span>${bedLabel(n)} <span class="tiny">${plural(rs.length, 'plan')}</span></span><b class="num">${!amounts.length?'Price unconfirmed':(from?'from ':'')+(lo === hi ? money(lo) : `${money(lo)}–${money(hi)}`)}</b></a></li>`;
     });
   }
-  return `<div class="plan-prices"><div class="plan-head">${head}${from ? ' · advertised from' : ''}</div><ul>${rows.join('')}</ul><p class="tiny">Base plan figures. Room upgrades, fees and availability may change the quote.</p></div>`;
+  const amounts=g.plans.map(r=>r.cand.offer.price.amount).filter(n=>n!=null && Number.isFinite(n));
+  const lo=Math.min(...amounts),hi=Math.max(...amounts);
+  const summary=amounts.length ? (lo===hi?money(lo):`${money(lo)}–${money(hi)}`) : 'Price unconfirmed';
+  const source=(g.cand.sources||[]).find(s=>s.id===g.cand.offer.price.source_id) || (g.cand.sources||[]).find(s=>s.checked_at);
+  const checked=source?.checked_at ? new Date(source.checked_at).toLocaleString('en-US',{timeZone:'America/New_York',month:'short',day:'numeric',hour:'numeric',minute:'2-digit',timeZoneName:'short'}) : null;
+  const total=g.plans.every(r=>r.cand.offer.price_confidence_tier==='PUBLISHED_TOTAL_LEASING_PRICE');
+  return `<div class="plan-prices"><div class="plan-head">${head}</div><div class="property-price-range num">${from?'From ':''}${summary}</div><ul>${rows.join('')}</ul><p class="tiny">${total?'Published leasing totals':'Published base rents'} · fees and availability may change the quote.</p>${checked?`<p class="price-checked tiny">Checked ${esc(checked)}${source?.url?` · <a href="${esc(safeMapsURL(source.url))}" target="_blank" rel="noopener noreferrer">Operator source ↗</a>`:''}</p>`:''}</div>`;
 }
 
 function propertyCard(g) {
-  const c = g.cand, r = g.lead, sel = c.property_id === UI.selected;
-  const issue = g.fitting.length ? null : (r.conflicts[0] || r.unknowns[0]);
+  const c = g.lead.cand, r = g.lead, sel = c.property_id === UI.selected;
+  const issue = g.fitting.length ? null : c.guide_reference?.evidence_update?.prices?.length ? {text:'Operator prices found; confirm billing basis, fees and lease terms before comparing totals.'} : (r.conflicts[0] || r.unknowns[0]);
   return `<li class="cand prop-card ${sel ? 'sel' : ''}" id="card-${esc(c.property_id)}" data-action="select" data-id="${esc(c.id)}">
     <div class="cand-photo" style="--pos:${PHOTO_POS[c.property_id] || '47% 50%'}" aria-hidden="true"></div>
     <div class="cand-top">
@@ -90,7 +100,7 @@ function propertyCard(g) {
     </div>
     <div class="cand-meta"><b>${c.guide_reference?esc(c.guide_reference.zone):g.fitting.length ? `${g.fitting.length} of ${plural(g.plans.length, 'plan')} match checked criteria` : g.fit==='insufficient'?'More evidence needed to assess these plans':`All ${plural(g.plans.length, 'plan')} have a conflict`}</b>${r.share ? `<span>· ${esc(r.cand.offer.layout)}: known subtotal ${money(r.share.subtotal)} each</span>` : ''}</div>
     ${issue ? `<div class="cand-unknown ${r.conflicts.length ? 'bad' : ''}">${r.conflicts.length ? I.x : I.q}<span>${esc(issue.text)}</span></div>` : ''}
-    <div class="cand-meta">${c.guide_reference?'<span class="chip chip-neutral">Guide reference · verify current details</span>':freshness(r)+demoChip()}</div>
+    <div class="cand-meta">${c.guide_reference?`<span class="chip chip-neutral">${c.guide_reference.evidence_update?'New operator evidence · remaining details unconfirmed':'Guide reference · researching missing details'}</span>`:freshness(r)+demoChip()}</div>
     ${planPrices(g)}
     <div class="cand-actions"><a class="btn btn-sm" href="#property-${esc(r.cand.id)}">Plans, sources and nearby places</a>${shortlistBtn(r.cand.id)}</div>
   </li>`;
@@ -98,7 +108,8 @@ function propertyCard(g) {
 
 function viewExplore() {
   const q = UI.query.trim().toLowerCase();
-  const all = S.sim.emptyInventory ? [] : propertyGroups(compareAll());
+  const collection = S.sim.emptyInventory ? [] : propertyGroups(compareAll());
+  const all = collection;
   const total = all.length;
   const text = (g) => [g.cand.property_name, g.cand.area, g.cand.address, ...g.plans.map((r) => r.cand.offer.layout)].join(' ').toLowerCase();
   const rs = all.filter((g) => UI.filters[g.fit] && (!q || text(g).includes(q)));
@@ -112,7 +123,7 @@ function viewExplore() {
       ? `<div class="empty"><h3>Nothing matches “${esc(UI.query)}”</h3><p>Search covers place names, streets and floor plans.</p><button class="btn btn-sm" data-action="clear-search">Clear search and filters</button></div>`
       : `<ul class="cand-list">${rs.map(propertyCard).join('')}</ul>`;
   return `
-  <div class="page-head"><div class="kicker">Explore · Blacksburg, VA</div><h1 tabindex="-1" id="page-title">Places near Virginia Tech</h1><p>${plural(total, 'housing option')}: ${all.filter(g=>!g.cand.guide_reference).length} properties with operator-checked plans and ${all.filter(g=>g.cand.guide_reference).length} additional community and neighborhood references from the housing guide. Guide prices stay labeled; extra costs, lease dates and availability need confirmation.</p><p class="small">Map markers appear only for properties with verified address points. References without a verified point remain fully browsable in this list.</p></div>
+  <div class="page-head"><div class="kicker">Explore · Blacksburg, VA</div><h1 tabindex="-1" id="page-title">Places near Virginia Tech</h1><p>${collection.length} places, one card per property. Checked asking prices and additional housing references appear together, with price evidence on the right. Places with incomplete evidence remain visible while we research their prices and locations.</p></div>
   <div class="explore">
     <div>
       <div class="toolbar"><div class="explore-tools">
@@ -247,6 +258,8 @@ function viewProperty(id) {
 }
 
 function allPlans(c) {
+  const observation=c.guide_reference?.evidence_update;
+  if(observation?.prices?.length)return `<section class="panel stack-sm plan-prices plan-all"><h2>New operator price details</h2><p class="small">${esc(observation.billing_note)}</p><ul>${observation.prices.map(p=>`<li class="research-price-row"><span>${esc(p.label)}</span><b>${money(p.minimum)}${p.maximum!==p.minimum?'–'+money(p.maximum):''}</b></li>`).join('')}</ul><a href="${esc(safeMapsURL(observation.source_url))}" target="_blank" rel="noopener noreferrer">Read the operator page ↗</a></section>`;
   const g = propertyGroups(CANDIDATES.filter((x) => x.property_id === c.property_id).map((x) => compare(x, S.prefs, S.commitments)))[0];
   if (!g || g.plans.length < 2) return '';
   const from = c.offer.price_confidence_tier === 'ADVERTISED_FROM';

@@ -2,6 +2,12 @@
 
 ## Current property workflow
 
+The local app also works without Google credentials: it serves Leaflet 1.9.4 locally and displays OpenStreetMap street tiles with visible attribution. Only the current viewport is requested; browser caching is retained. The map shows one marker per property with a sourced address point. All guide references remain in the main list. Detail pages without coordinates have a clearly labeled address-search embed, with no claimed point or distance. Google Places results are never plotted on the OpenStreetMap fallback.
+
+Explore defaults to all 47 places, including the 41 insufficient-evidence entries. The 68 original priced floor plans and 72 newly researched operator figures are grouped on the right of their property cards. The new figures are observations, not automatically promoted lease quotes. Mobile cards stack prices below the property information. Map containers survive view rerenders, resize when shown, and retain the viewport when selecting a marker. Google Maps remains available when configured.
+
+For the local OpenStreetMap mode, an explicit nearby search uses `https://overpass.maprva.org/api/interpreter` for the selected property, category and radius. Results are filtered to the radius and sorted by straight-line distance, capped at eight, cached in process memory for five minutes, attributed, and plotted as numbered pins. They are not persisted in workspaces, frozen briefs or training. Missing locations and provider failures stay visible. The existing daily request budget also caps these requests. Public service coverage is not proof of a business's current operation or hours.
+
 Explore has one card and map marker per property. Select a plan to open its costs, sources and “Life around” section. Search restaurants, groceries, gas stations, cafes, pharmacies or libraries within 1, 2.5 or 5 km. Each explicit search requests at most eight results ranked by distance. It returns locations, addresses, Maps links and provider attribution; it does not request reviews, ratings, photos or opening hours.
 
 Results show straight-line distances from the approximate property point. Numbered markers identify the returned places, and “Show on map” focuses one. Walk/drive/bike/transit directions open Google Maps using the property origin and destination place ID. The app never asks for device location. Those links do not require an additional app API call or establish a travel-time estimate inside Roomwise.

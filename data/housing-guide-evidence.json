@@ -1,0 +1,957 @@
+{
+  "format": "roomwise-guide-evidence-v1",
+  "properties": {
+    "the-edge-apartments-townhomes": {
+      "status": "operator_observed",
+      "source_url": "https://www.cmgleasing.com/property/the-edge-apts/",
+      "checked_at": "2026-10-25T02:38:38.143173+00:00",
+      "source_sha256": "a5be93e4cd114d39f793d69778b21255e3bfb42b18a01155a38205bac4c9a8cc",
+      "prices": [
+        {
+          "label": "The Edge - B1 floorplan",
+          "bedrooms": 2,
+          "minimum": 1375.0,
+          "maximum": 1415.0
+        },
+        {
+          "label": "The Edge - B2 floorplan",
+          "bedrooms": 2,
+          "minimum": 1415.0,
+          "maximum": 1415.0
+        },
+        {
+          "label": "The Edge - B3 floorplan",
+          "bedrooms": 2,
+          "minimum": 1395.0,
+          "maximum": 1405.0
+        },
+        {
+          "label": "The Edge - C1 floorplan",
+          "bedrooms": 3,
+          "minimum": 1317.0,
+          "maximum": 1317.0
+        },
+        {
+          "label": "The Edge - C2 floorplan",
+          "bedrooms": 3,
+          "minimum": 1317.0,
+          "maximum": 1317.0
+        },
+        {
+          "label": "The Edge - D1 floorplan",
+          "bedrooms": 4,
+          "minimum": 1255.0,
+          "maximum": 1275.0
+        },
+        {
+          "label": "The Edge - D2 floorplan",
+          "bedrooms": 4,
+          "minimum": 1255.0,
+          "maximum": 1295.0
+        },
+        {
+          "label": "The Edge - D3 floorplan",
+          "bedrooms": 4,
+          "minimum": 1295.0,
+          "maximum": 1295.0
+        },
+        {
+          "label": "The Edge, D4 floorplan phase I",
+          "bedrooms": 4,
+          "minimum": 1255.0,
+          "maximum": 1295.0
+        },
+        {
+          "label": "The Edge - D4 floorplan phase II",
+          "bedrooms": 4,
+          "minimum": 1245.0,
+          "maximum": 1245.0
+        }
+      ],
+      "coordinates": {
+        "lat": 37.235262,
+        "lon": -80.424169
+      },
+      "address": "321 Edge Way Blacksburg, VA 24060",
+      "billing_note": "Operator-published asking figures. Confirm billing basis, required fees, lease dates and availability.",
+      "location_note": "Approximate community address point published by the operator; not a verified entrance."
+    },
+    "tech-terrace": {
+      "status": "operator_observed",
+      "source_url": "https://www.cmgleasing.com/property/tech-terrace/",
+      "checked_at": "2026-10-25T02:38:38.596562+00:00",
+      "source_sha256": "5da8c43fae47004d997a3aa62c00955a0b89c3c695b15eb19d1c260b23470a08",
+      "prices": [
+        {
+          "label": "Tech Terrace",
+          "bedrooms": 4,
+          "minimum": 3576.0,
+          "maximum": 3576.0
+        }
+      ],
+      "coordinates": {
+        "lat": 37.23552,
+        "lon": -80.422359
+      },
+      "address": "303-307 Webb St Blacksburg, VA 24060",
+      "billing_note": "Operator-published asking figures. Confirm billing basis, required fees, lease dates and availability.",
+      "location_note": "Approximate community address point published by the operator; not a verified entrance."
+    },
+    "the-lofts-at-316": {
+      "status": "operator_observed",
+      "source_url": "https://www.cmgleasing.com/property/lofts-at-316/",
+      "checked_at": "2026-10-25T02:38:39.042276+00:00",
+      "source_sha256": "da9f5826b1da3b6c70abb23768fe7b3cda7f30991ed808b5b935c33c8e94d0f3",
+      "prices": [
+        {
+          "label": "Lofts at 316-A",
+          "bedrooms": 1,
+          "minimum": 1415.0,
+          "maximum": 1415.0
+        },
+        {
+          "label": "Lofts at 316-B",
+          "bedrooms": 1,
+          "minimum": 1415.0,
+          "maximum": 1415.0
+        },
+        {
+          "label": "Lofts at 316-C",
+          "bedrooms": 1,
+          "minimum": 1415.0,
+          "maximum": 1415.0
+        }
+      ],
+      "coordinates": {
+        "lat": 37.231043,
+        "lon": -80.415279
+      },
+      "address": "316 N. Main Street Blacksburg, VA 24060",
+      "billing_note": "Operator-published asking figures. Confirm billing basis, required fees, lease dates and availability.",
+      "location_note": "Approximate community address point published by the operator; not a verified entrance."
+    },
+    "chase-apartments-the-chase": {
+      "status": "operator_observed",
+      "source_url": "https://www.cmgleasing.com/property/chase/",
+      "checked_at": "2026-10-25T02:38:39.484311+00:00",
+      "source_sha256": "c5a1bf5e67336de22eb9f82d365c79c52d49ef232bd2f867be65bfb1da1a4b04",
+      "prices": [
+        {
+          "label": "The Chase Apartments",
+          "bedrooms": 4,
+          "minimum": 3576.0,
+          "maximum": 3576.0
+        }
+      ],
+      "coordinates": {
+        "lat": 37.232478,
+        "lon": -80.410351
+      },
+      "address": "421, 431, 451, 461 E. Roanoke Street Blacksburg, VA 24060",
+      "billing_note": "Operator-published asking figures. Confirm billing basis, required fees, lease dates and availability.",
+      "location_note": "Approximate community address point published by the operator; not a verified entrance."
+    },
+    "chasewood-downs": {
+      "status": "operator_observed",
+      "source_url": "https://www.cmgleasing.com/property/chasewood-downs/",
+      "checked_at": "2026-10-25T02:38:40.128739+00:00",
+      "source_sha256": "a5b0366ddecbd8e0529f8e460365d8aef000598cf536fee0d24ace46aad8f741",
+      "prices": [
+        {
+          "label": "Chasewood - 1 Bedroom Belmont, 494 sq. ft.",
+          "bedrooms": 1,
+          "minimum": 1050.0,
+          "maximum": 1050.0
+        },
+        {
+          "label": "Chasewood - 1 Bedroom Belmont, 541 sq. ft.",
+          "bedrooms": 1,
+          "minimum": 1080.0,
+          "maximum": 1080.0
+        },
+        {
+          "label": "Chasewood - 1 Bedroom Belmont, 566 sq. ft.",
+          "bedrooms": 1,
+          "minimum": 1100.0,
+          "maximum": 1100.0
+        },
+        {
+          "label": "Chasewood - 1 Bedroom Delmar",
+          "bedrooms": 1,
+          "minimum": 1160.0,
+          "maximum": 1160.0
+        },
+        {
+          "label": "Chasewood - 1 Bedroom Delmar with Balcony",
+          "bedrooms": 1,
+          "minimum": 1180.0,
+          "maximum": 1180.0
+        },
+        {
+          "label": "Chasewood - 2 Bedroom Belmont",
+          "bedrooms": 2,
+          "minimum": 1320.0,
+          "maximum": 1320.0
+        },
+        {
+          "label": "Chasewood - 2 Bedroom Delmar",
+          "bedrooms": 2,
+          "minimum": 1400.0,
+          "maximum": 1400.0
+        },
+        {
+          "label": "Chasewood - 2 Bedroom Delmar with Balcony",
+          "bedrooms": 2,
+          "minimum": 1420.0,
+          "maximum": 1420.0
+        }
+      ],
+      "coordinates": {
+        "lat": 37.24223,
+        "lon": -80.431304
+      },
+      "address": "1304-4 University City Blvd Blacksburg, VA 24060",
+      "billing_note": "Operator-published asking figures. Confirm billing basis, required fees, lease dates and availability.",
+      "location_note": "Approximate community address point published by the operator; not a verified entrance."
+    },
+    "shawnee-apartments": {
+      "status": "operator_observed",
+      "source_url": "https://www.cmgleasing.com/property/shawnee-apartments/",
+      "checked_at": "2026-10-25T02:38:40.732384+00:00",
+      "source_sha256": "a72fab719896b809051d9699d5fe643f188a2377c984c3c8b65d7e46328a84d3",
+      "prices": [
+        {
+          "label": "Shawnee - 1 bedroom",
+          "bedrooms": 1,
+          "minimum": 1130.0,
+          "maximum": 1145.0
+        },
+        {
+          "label": "Shawnee - 2 bedroom",
+          "bedrooms": 2,
+          "minimum": 1325.0,
+          "maximum": 1340.0
+        },
+        {
+          "label": "Shawnee - 3 bedroom",
+          "bedrooms": 3,
+          "minimum": 1660.0,
+          "maximum": 1675.0
+        }
+      ],
+      "coordinates": {
+        "lat": 37.242107,
+        "lon": -80.433223
+      },
+      "address": "1222 University City Blvd Blacksburg, VA 24060",
+      "billing_note": "Operator-published asking figures. Confirm billing basis, required fees, lease dates and availability.",
+      "location_note": "Approximate community address point published by the operator; not a verified entrance."
+    },
+    "cedar-pointe-apartments": {
+      "status": "operator_observed",
+      "source_url": "https://www.cmgleasing.com/property/cedarpointe/",
+      "checked_at": "2026-10-25T02:38:41.454653+00:00",
+      "source_sha256": "187ed6533ca46534887c4ac5031a7ad8bbb919bb812cad588976bf7e27c01ce2",
+      "prices": [
+        {
+          "label": "Cedar Pointe Apartments - B1 Floorplan",
+          "bedrooms": 2,
+          "minimum": 2000.0,
+          "maximum": 2000.0
+        },
+        {
+          "label": "Cedar Pointe Apartments - B2 Floorplan",
+          "bedrooms": 2,
+          "minimum": 2100.0,
+          "maximum": 2100.0
+        },
+        {
+          "label": "Cedar Pointe Apartments - B3 Floorplan",
+          "bedrooms": 2,
+          "minimum": 2000.0,
+          "maximum": 2000.0
+        },
+        {
+          "label": "Cedar Pointe Apartments - S1 Floorplan",
+          "bedrooms": 1,
+          "minimum": 1570.0,
+          "maximum": 1570.0
+        },
+        {
+          "label": "Cedar Pointe Apartments - S2 Floorplan",
+          "bedrooms": 1,
+          "minimum": 1620.0,
+          "maximum": 1620.0
+        },
+        {
+          "label": "Cedar Pointe Apartments - S3 Floorplan",
+          "bedrooms": 1,
+          "minimum": 1520.0,
+          "maximum": 1520.0
+        },
+        {
+          "label": "Cedar Pointe Apartments - S4 Floorplan",
+          "bedrooms": 1,
+          "minimum": 1520.0,
+          "maximum": 1520.0
+        }
+      ],
+      "coordinates": {
+        "lat": 37.200846,
+        "lon": -80.3987542
+      },
+      "address": "200 Cedar Pointe Drive Blacksburg, Virginia 24060",
+      "billing_note": "Operator-published asking figures. Confirm billing basis, required fees, lease dates and availability.",
+      "location_note": "Approximate community address point published by the operator; not a verified entrance."
+    },
+    "cedarfield-apartments-townhomes": {
+      "status": "operator_observed",
+      "source_url": "https://www.cmgleasing.com/property/cedarfield-apts-townhomes/",
+      "checked_at": "2026-10-25T02:38:41.997185+00:00",
+      "source_sha256": "1c3ad03b9956979fcb7a44a49a4353f42ffe23fd081b95e2974e4b93e02085f4",
+      "prices": [
+        {
+          "label": "Cedarfield - 1 bedroom, Phase I and II",
+          "bedrooms": 1,
+          "minimum": 1280.0,
+          "maximum": 1280.0
+        },
+        {
+          "label": "Cedarfield - 1 bedroom, Phase III",
+          "bedrooms": 1,
+          "minimum": 1350.0,
+          "maximum": 1350.0
+        },
+        {
+          "label": "Cedarfield - 2 bedroom, Phase I and II",
+          "bedrooms": 2,
+          "minimum": 1420.0,
+          "maximum": 1420.0
+        },
+        {
+          "label": "Cedarfield - 2 bedroom, Phase III",
+          "bedrooms": 2,
+          "minimum": 1540.0,
+          "maximum": 1570.0
+        },
+        {
+          "label": "Cedarfield - 2 bedroom townhome",
+          "bedrooms": 2,
+          "minimum": 1820.0,
+          "maximum": 1820.0
+        },
+        {
+          "label": "Cedarfield - 3 bedroom townhome",
+          "bedrooms": 3,
+          "minimum": 2035.0,
+          "maximum": 2035.0
+        }
+      ],
+      "coordinates": {
+        "lat": 37.205816,
+        "lon": -80.395657
+      },
+      "address": "Old Cedarfield Dr Blacksburg, VA 24060",
+      "billing_note": "Operator-published asking figures. Confirm billing basis, required fees, lease dates and availability.",
+      "location_note": "Approximate community address point published by the operator; not a verified entrance."
+    },
+    "the-vue-apartments": {
+      "status": "operator_observed",
+      "source_url": "https://www.cmgleasing.com/property/vue-apartments/",
+      "checked_at": "2026-10-25T02:38:42.576106+00:00",
+      "source_sha256": "868b39d8d9f1a310ace3d7c8562b8894311bd80b4a2dc822ce554f02eb55af93",
+      "prices": [
+        {
+          "label": "Vue Apartments - A1 Floorplan",
+          "bedrooms": 1,
+          "minimum": 1660.0,
+          "maximum": 1660.0
+        },
+        {
+          "label": "Vue Apartments - A2 Floorplan",
+          "bedrooms": 1,
+          "minimum": 1710.0,
+          "maximum": 1710.0
+        },
+        {
+          "label": "Vue Apartments - B1-2 Floorplan",
+          "bedrooms": 2,
+          "minimum": 2190.0,
+          "maximum": 2190.0
+        },
+        {
+          "label": "Vue Apartments - B1 Floorplan",
+          "bedrooms": 2,
+          "minimum": 2100.0,
+          "maximum": 2100.0
+        },
+        {
+          "label": "Vue Apartments - B2 Floorplan",
+          "bedrooms": 2,
+          "minimum": 2300.0,
+          "maximum": 2300.0
+        },
+        {
+          "label": "Vue Apartments - B3 Floorplan",
+          "bedrooms": 2,
+          "minimum": 2300.0,
+          "maximum": 2300.0
+        },
+        {
+          "label": "Vue Apartments - B4 Floorplan",
+          "bedrooms": 2,
+          "minimum": 2100.0,
+          "maximum": 2100.0
+        },
+        {
+          "label": "Vue Apartments - C1 Floorplan",
+          "bedrooms": 3,
+          "minimum": 2745.0,
+          "maximum": 2745.0
+        },
+        {
+          "label": "Vue Apartments - C2 Floorplan",
+          "bedrooms": 3,
+          "minimum": 2670.0,
+          "maximum": 2670.0
+        },
+        {
+          "label": "Vue Apartments - C3 Floorplan",
+          "bedrooms": 3,
+          "minimum": 2670.0,
+          "maximum": 2670.0
+        }
+      ],
+      "coordinates": {
+        "lat": 37.2032883,
+        "lon": -80.407982
+      },
+      "address": null,
+      "billing_note": "Operator-published asking figures. Confirm billing basis, required fees, lease dates and availability.",
+      "location_note": "Approximate community address point published by the operator; not a verified entrance."
+    },
+    "the-reserve-at-knollwood": {
+      "status": "operator_observed",
+      "source_url": "https://www.cmgleasing.com/property/reserve-at-knollwood/",
+      "checked_at": "2026-10-25T02:38:43.164814+00:00",
+      "source_sha256": "19bdf736b2383b7447d0813441689154a61074ebcb503b95ee990aa4c4fe5730",
+      "prices": [
+        {
+          "label": "Reserve at Knollwood - A1 floorplan",
+          "bedrooms": 1,
+          "minimum": 1550.0,
+          "maximum": 1570.0
+        },
+        {
+          "label": "Reserve at Knollwood - A2 floorplan",
+          "bedrooms": 1,
+          "minimum": 1570.0,
+          "maximum": 1570.0
+        },
+        {
+          "label": "Reserve at Knollwood - B1 End floorplan",
+          "bedrooms": 2,
+          "minimum": 1890.0,
+          "maximum": 1900.0
+        },
+        {
+          "label": "Reserve at Knollwood - B1 floorplan",
+          "bedrooms": 2,
+          "minimum": 1870.0,
+          "maximum": 1900.0
+        },
+        {
+          "label": "Reserve at Knollwood - B2 floorplan",
+          "bedrooms": 2,
+          "minimum": 1890.0,
+          "maximum": 1900.0
+        },
+        {
+          "label": "Reserve at Knollwood - B3 End floorplan",
+          "bedrooms": 2,
+          "minimum": 1900.0,
+          "maximum": 1900.0
+        },
+        {
+          "label": "Reserve at Knollwood - B3 floorplan",
+          "bedrooms": 2,
+          "minimum": 1900.0,
+          "maximum": 1900.0
+        },
+        {
+          "label": "Reserve at Knollwood - C1 floorplan",
+          "bedrooms": 3,
+          "minimum": 2440.0,
+          "maximum": 2480.0
+        },
+        {
+          "label": "Reserve at Knollwood - C2 floorplan",
+          "bedrooms": 3,
+          "minimum": 2470.0,
+          "maximum": 2480.0
+        }
+      ],
+      "coordinates": {
+        "lat": 37.20288,
+        "lon": -80.404719
+      },
+      "address": "2401 Pamela Way Blacksburg, VA 24060",
+      "billing_note": "Operator-published asking figures. Confirm billing basis, required fees, lease dates and availability.",
+      "location_note": "Approximate community address point published by the operator; not a verified entrance."
+    },
+    "the-crossing-at-knollwood": {
+      "status": "operator_observed",
+      "source_url": "https://www.cmgleasing.com/property/crossing-at-knollwood/",
+      "checked_at": "2026-10-25T02:38:43.670671+00:00",
+      "source_sha256": "fc209547901e6eb747ec867709782064bd2a8efbd5083dc75ddbb05c66ef6d56",
+      "prices": [
+        {
+          "label": "Crossing at Knollwood - 1 bedroom",
+          "bedrooms": 1,
+          "minimum": 1480.0,
+          "maximum": 1490.0
+        },
+        {
+          "label": "Crossing at Knollwood - 2 bedroom",
+          "bedrooms": 2,
+          "minimum": 1755.0,
+          "maximum": 1790.0
+        }
+      ],
+      "coordinates": {
+        "lat": 37.198059,
+        "lon": -80.404252
+      },
+      "address": "2379 Research Center Dr Blacksburg, VA 24060",
+      "billing_note": "Operator-published asking figures. Confirm billing basis, required fees, lease dates and availability.",
+      "location_note": "Approximate community address point published by the operator; not a verified entrance."
+    },
+    "knollwood-condominium": {
+      "status": "operator_observed",
+      "source_url": "https://www.cmgleasing.com/property/knollwood-condos/",
+      "checked_at": "2026-10-25T02:38:44.209444+00:00",
+      "source_sha256": "b94818023970e8e1f750bfdfc1653239375991649ae809d87308a799e3488941",
+      "prices": [
+        {
+          "label": "Knollwood Condominium - 1 bedroom",
+          "bedrooms": 1,
+          "minimum": 1490.0,
+          "maximum": 1500.0
+        },
+        {
+          "label": "Knollwood Condominium - 2 bedroom",
+          "bedrooms": 2,
+          "minimum": 1820.0,
+          "maximum": 1830.0
+        },
+        {
+          "label": "Knollwood Condominium - 2 bedroom with loft",
+          "bedrooms": 2,
+          "minimum": 1900.0,
+          "maximum": 1900.0
+        },
+        {
+          "label": "Knollwood Condominium - 2 bedroom with sunroom",
+          "bedrooms": 2,
+          "minimum": 1840.0,
+          "maximum": 1840.0
+        },
+        {
+          "label": "Knollwood Condominium - 3 bedroom",
+          "bedrooms": 3,
+          "minimum": 2225.0,
+          "maximum": 2225.0
+        },
+        {
+          "label": "Knollwood Condominium - 3 bedroom expanded",
+          "bedrooms": 3,
+          "minimum": 2275.0,
+          "maximum": 2285.0
+        }
+      ],
+      "coordinates": {
+        "lat": 37.201236,
+        "lon": -80.40366
+      },
+      "address": "303 N. Knollwood Dr Blacksburg, VA 24060",
+      "billing_note": "Operator-published asking figures. Confirm billing basis, required fees, lease dates and availability.",
+      "location_note": "Approximate community address point published by the operator; not a verified entrance."
+    },
+    "knollwood-townhomes": {
+      "status": "operator_observed",
+      "source_url": "https://www.cmgleasing.com/property/knollwood-townhomes/",
+      "checked_at": "2026-10-25T02:38:44.698509+00:00",
+      "source_sha256": "ac82259bfb14f79900d0d15e32337b0126013897298e7eaf135a429df00093a8",
+      "prices": [
+        {
+          "label": "Knollwood Townhomes, 245 Sheliah Court",
+          "bedrooms": 2,
+          "minimum": 2200.0,
+          "maximum": 2200.0
+        },
+        {
+          "label": "Knollwood Townhomes, 247 Sheliah Court",
+          "bedrooms": 2,
+          "minimum": 2200.0,
+          "maximum": 2200.0
+        },
+        {
+          "label": "Knollwood Townhomes, 249 Sheliah Court",
+          "bedrooms": 2,
+          "minimum": 2200.0,
+          "maximum": 2200.0
+        },
+        {
+          "label": "Knollwood Townhomes, 268 Sheliah Court",
+          "bedrooms": 3,
+          "minimum": 2500.0,
+          "maximum": 2500.0
+        },
+        {
+          "label": "Knollwood Townhomes, 306 Sheliah Court",
+          "bedrooms": 2,
+          "minimum": 2275.0,
+          "maximum": 2275.0
+        },
+        {
+          "label": "Knollwood Townhomes, 320 Sheliah Court",
+          "bedrooms": 3,
+          "minimum": 2500.0,
+          "maximum": 2500.0
+        }
+      ],
+      "coordinates": {
+        "lat": 37.203208,
+        "lon": -80.403716
+      },
+      "address": "245, 247, 249, 268, 306, 320 Sheliah Ct Blacksburg, VA 24060",
+      "billing_note": "Operator-published asking figures. Confirm billing basis, required fees, lease dates and availability.",
+      "location_note": "Approximate community address point published by the operator; not a verified entrance."
+    },
+    "haven-blacksburg-haven-on-north-main": {
+      "status": "operator_observed",
+      "source_url": "https://www.havenblacksburg.com/haven---north-street",
+      "checked_at": "2026-10-25T02:46:49+00:00",
+      "method": "Rendered public operator listings; selected price locators",
+      "entry_kind": "listing",
+      "has_mixed_basis": true,
+      "coordinates": null,
+      "address": null,
+      "billing_note": "Room and whole-apartment monthly listings are shown separately. Exact fees, lease terms and availability require confirmation. Unpriced rows are excluded.",
+      "prices": [
+        {
+          "label": "1203 North Main St. Apt M - Rm A",
+          "bedrooms": 4,
+          "minimum": 550,
+          "maximum": 550,
+          "group_label": "Room listing \u00b7 per month"
+        },
+        {
+          "label": "1201 North Main St. Apt J",
+          "bedrooms": 3,
+          "minimum": 2697,
+          "maximum": 2697,
+          "group_label": "3 bed apartment \u00b7 per month"
+        },
+        {
+          "label": "1201 North Main St. Apt I",
+          "bedrooms": 3,
+          "minimum": 2697,
+          "maximum": 2697,
+          "group_label": "3 bed apartment \u00b7 per month"
+        },
+        {
+          "label": "1205 North Main St. Apt J",
+          "bedrooms": 4,
+          "minimum": 3716,
+          "maximum": 3716,
+          "group_label": "4 bed apartment \u00b7 per month"
+        },
+        {
+          "label": "1205 North Main St. Apt I",
+          "bedrooms": 4,
+          "minimum": 3636,
+          "maximum": 3636,
+          "group_label": "4 bed apartment \u00b7 per month"
+        },
+        {
+          "label": "1205 North Main St. Apt G",
+          "bedrooms": 3,
+          "minimum": 2697,
+          "maximum": 2697,
+          "group_label": "3 bed apartment \u00b7 per month"
+        },
+        {
+          "label": "1203 North Main St. Apt F",
+          "bedrooms": 2,
+          "minimum": 1938,
+          "maximum": 1938,
+          "group_label": "2 bed apartment \u00b7 per month"
+        },
+        {
+          "label": "1203 North Main St. Apt I",
+          "bedrooms": 4,
+          "minimum": 3596,
+          "maximum": 3596,
+          "group_label": "4 bed apartment \u00b7 per month"
+        },
+        {
+          "label": "1205 North Main St. Apt B",
+          "bedrooms": 3,
+          "minimum": 2697,
+          "maximum": 2697,
+          "group_label": "3 bed apartment \u00b7 per month"
+        },
+        {
+          "label": "1205 North Main St. Apt A",
+          "bedrooms": 4,
+          "minimum": 3596,
+          "maximum": 3596,
+          "group_label": "4 bed apartment \u00b7 per month"
+        },
+        {
+          "label": "1203 North Main St. Apt L",
+          "bedrooms": 4,
+          "minimum": 3596,
+          "maximum": 3596,
+          "group_label": "4 bed apartment \u00b7 per month"
+        },
+        {
+          "label": "1203 North Main St. Apt K",
+          "bedrooms": 4,
+          "minimum": 3596,
+          "maximum": 3596,
+          "group_label": "4 bed apartment \u00b7 per month"
+        },
+        {
+          "label": "1203 North Main St. Apt J",
+          "bedrooms": 4,
+          "minimum": 3596,
+          "maximum": 3596,
+          "group_label": "4 bed apartment \u00b7 per month"
+        },
+        {
+          "label": "1203 North Main St. Apt H",
+          "bedrooms": 3,
+          "minimum": 2697,
+          "maximum": 2697,
+          "group_label": "3 bed apartment \u00b7 per month"
+        },
+        {
+          "label": "1203 North Main St. Apt G",
+          "bedrooms": 2,
+          "minimum": 1938,
+          "maximum": 1938,
+          "group_label": "2 bed apartment \u00b7 per month"
+        },
+        {
+          "label": "1203 North Main St. Apt D",
+          "bedrooms": 2,
+          "minimum": 1938,
+          "maximum": 1938,
+          "group_label": "2 bed apartment \u00b7 per month"
+        },
+        {
+          "label": "1203 North Main St. Apt B",
+          "bedrooms": 2,
+          "minimum": 1938,
+          "maximum": 1938,
+          "group_label": "2 bed apartment \u00b7 per month"
+        },
+        {
+          "label": "1201 North Main St. Apt E",
+          "bedrooms": 3,
+          "minimum": 2697,
+          "maximum": 2697,
+          "group_label": "3 bed apartment \u00b7 per month"
+        },
+        {
+          "label": "1201 North Main St. Apt C",
+          "bedrooms": 4,
+          "minimum": 3596,
+          "maximum": 3596,
+          "group_label": "4 bed apartment \u00b7 per month"
+        },
+        {
+          "label": "1201 North Main St. Apt A",
+          "bedrooms": 3,
+          "minimum": 2697,
+          "maximum": 2697,
+          "group_label": "3 bed apartment \u00b7 per month"
+        },
+        {
+          "label": "1201 North Main St. Apt B",
+          "bedrooms": 3,
+          "minimum": 2697,
+          "maximum": 2697,
+          "group_label": "3 bed apartment \u00b7 per month"
+        },
+        {
+          "label": "1201 North Main St. Apt L",
+          "bedrooms": 4,
+          "minimum": 3596,
+          "maximum": 3596,
+          "group_label": "4 bed apartment \u00b7 per month"
+        },
+        {
+          "label": "1201 North Main St. Apt H",
+          "bedrooms": 4,
+          "minimum": 3596,
+          "maximum": 3596,
+          "group_label": "4 bed apartment \u00b7 per month"
+        }
+      ]
+    },
+    "park37": {
+      "status": "operator_observed",
+      "source_url": "https://www.roostrealestategroup.com/park37",
+      "checked_at": "2026-10-25T02:45:17.584482+00:00",
+      "source_sha256": "8467ab265c943d5d6a8c5423b10fd0fa704ea7fc1738f8a7561628509cc7e008",
+      "prices": [
+        {
+          "label": "Maybrook",
+          "bedrooms": 1,
+          "minimum": 1760.0,
+          "maximum": 1860.0
+        },
+        {
+          "label": "Ellett Valley",
+          "bedrooms": 2,
+          "minimum": 1250.0,
+          "maximum": 1350.0
+        },
+        {
+          "label": "Walker Creek",
+          "bedrooms": 4,
+          "minimum": 1090.0,
+          "maximum": 1190.0
+        },
+        {
+          "label": "Pearis Mountain",
+          "bedrooms": 4,
+          "minimum": 1150.0,
+          "maximum": 1250.0
+        }
+      ],
+      "coordinates": null,
+      "address": null,
+      "billing_note": "Published per-room rates; ranges may include furnishing options. Confirm fees and payment schedule.",
+      "location_note": "Operator community point where provided; otherwise use the address-search map."
+    },
+    "brexx-at-blacksburg-the-retreat": {
+      "status": "operator_observed",
+      "source_url": "https://www.brexxblacksburg.com/floor-plans/",
+      "checked_at": "2026-10-25T02:45:17.955756+00:00",
+      "source_sha256": "fd97ccb8fb3675f11b9d4888937bae38f02d13f60b9dfb13918e2b2a3558425c",
+      "prices": [
+        {
+          "label": "Birchmore 2x2.5",
+          "bedrooms": 2,
+          "minimum": 1399.0,
+          "maximum": 1399.0
+        },
+        {
+          "label": "Birchmore 3x3",
+          "bedrooms": 3,
+          "minimum": 1299.0,
+          "maximum": 1299.0
+        },
+        {
+          "label": "Milledge 3x3",
+          "bedrooms": 3,
+          "minimum": 1299.0,
+          "maximum": 1299.0
+        },
+        {
+          "label": "Courtyard 4x4",
+          "bedrooms": 4,
+          "minimum": 1189.0,
+          "maximum": 1189.0
+        },
+        {
+          "label": "Lumpkin 4x4",
+          "bedrooms": 4,
+          "minimum": 1149.0,
+          "maximum": 1149.0
+        },
+        {
+          "label": "Thornberry 4x4",
+          "bedrooms": 4,
+          "minimum": 1179.0,
+          "maximum": 1179.0
+        },
+        {
+          "label": "Lumpkin 4x4.5",
+          "bedrooms": 4,
+          "minimum": 1199.0,
+          "maximum": 1199.0
+        },
+        {
+          "label": "Milledge 4x4.5",
+          "bedrooms": 4,
+          "minimum": 1199.0,
+          "maximum": 1199.0
+        },
+        {
+          "label": "Springmore 4x4.5",
+          "bedrooms": 4,
+          "minimum": 1179.0,
+          "maximum": 1179.0
+        },
+        {
+          "label": "Cloverhurst 4x4.5",
+          "bedrooms": 4,
+          "minimum": 1179.0,
+          "maximum": 1179.0
+        },
+        {
+          "label": "Stafford 4x4.5",
+          "bedrooms": 4,
+          "minimum": 1189.0,
+          "maximum": 1189.0
+        },
+        {
+          "label": "Bloomfield 4x4",
+          "bedrooms": 4,
+          "minimum": 1179.0,
+          "maximum": 1179.0
+        },
+        {
+          "label": "Rutherford 5x5.5",
+          "bedrooms": 5,
+          "minimum": 1159.0,
+          "maximum": 1159.0
+        },
+        {
+          "label": "Courtyard 5x5",
+          "bedrooms": 5,
+          "minimum": 1119.0,
+          "maximum": 1119.0
+        },
+        {
+          "label": "Hawthorne 5x5",
+          "bedrooms": 5,
+          "minimum": 1169.0,
+          "maximum": 1169.0
+        },
+        {
+          "label": "Magnolia 5x5",
+          "bedrooms": 5,
+          "minimum": 1149.0,
+          "maximum": 1149.0
+        },
+        {
+          "label": "Talmadge 5x5.5",
+          "bedrooms": 5,
+          "minimum": 1069.0,
+          "maximum": 1069.0
+        }
+      ],
+      "coordinates": null,
+      "address": null,
+      "billing_note": "Published starting rates per person/bed. Confirm fees, payment schedule and lease dates.",
+      "location_note": "Operator community point where provided; otherwise use the address-search map."
+    }
+  },
+  "checked_at": "2026-10-25T02:47:19.950875+00:00"
+}

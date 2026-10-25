@@ -1,0 +1,179 @@
+{
+  "format": "roomwise-browser-guide-evidence-v1",
+  "properties": {
+    "haven-blacksburg-haven-on-north-main": {
+      "status": "operator_observed",
+      "source_url": "https://www.havenblacksburg.com/haven---north-street",
+      "checked_at": "2026-10-25T02:46:49+00:00",
+      "method": "Rendered public operator listings; selected price locators",
+      "entry_kind": "listing",
+      "has_mixed_basis": true,
+      "coordinates": null,
+      "address": null,
+      "billing_note": "Room and whole-apartment monthly listings are shown separately. Exact fees, lease terms and availability require confirmation. Unpriced rows are excluded.",
+      "prices": [
+        {
+          "label": "1203 North Main St. Apt M - Rm A",
+          "bedrooms": 4,
+          "minimum": 550,
+          "maximum": 550,
+          "group_label": "Room listing · per month"
+        },
+        {
+          "label": "1201 North Main St. Apt J",
+          "bedrooms": 3,
+          "minimum": 2697,
+          "maximum": 2697,
+          "group_label": "3 bed apartment · per month"
+        },
+        {
+          "label": "1201 North Main St. Apt I",
+          "bedrooms": 3,
+          "minimum": 2697,
+          "maximum": 2697,
+          "group_label": "3 bed apartment · per month"
+        },
+        {
+          "label": "1205 North Main St. Apt J",
+          "bedrooms": 4,
+          "minimum": 3716,
+          "maximum": 3716,
+          "group_label": "4 bed apartment · per month"
+        },
+        {
+          "label": "1205 North Main St. Apt I",
+          "bedrooms": 4,
+          "minimum": 3636,
+          "maximum": 3636,
+          "group_label": "4 bed apartment · per month"
+        },
+        {
+          "label": "1205 North Main St. Apt G",
+          "bedrooms": 3,
+          "minimum": 2697,
+          "maximum": 2697,
+          "group_label": "3 bed apartment · per month"
+        },
+        {
+          "label": "1203 North Main St. Apt F",
+          "bedrooms": 2,
+          "minimum": 1938,
+          "maximum": 1938,
+          "group_label": "2 bed apartment · per month"
+        },
+        {
+          "label": "1203 North Main St. Apt I",
+          "bedrooms": 4,
+          "minimum": 3596,
+          "maximum": 3596,
+          "group_label": "4 bed apartment · per month"
+        },
+        {
+          "label": "1205 North Main St. Apt B",
+          "bedrooms": 3,
+          "minimum": 2697,
+          "maximum": 2697,
+          "group_label": "3 bed apartment · per month"
+        },
+        {
+          "label": "1205 North Main St. Apt A",
+          "bedrooms": 4,
+          "minimum": 3596,
+          "maximum": 3596,
+          "group_label": "4 bed apartment · per month"
+        },
+        {
+          "label": "1203 North Main St. Apt L",
+          "bedrooms": 4,
+          "minimum": 3596,
+          "maximum": 3596,
+          "group_label": "4 bed apartment · per month"
+        },
+        {
+          "label": "1203 North Main St. Apt K",
+          "bedrooms": 4,
+          "minimum": 3596,
+          "maximum": 3596,
+          "group_label": "4 bed apartment · per month"
+        },
+        {
+          "label": "1203 North Main St. Apt J",
+          "bedrooms": 4,
+          "minimum": 3596,
+          "maximum": 3596,
+          "group_label": "4 bed apartment · per month"
+        },
+        {
+          "label": "1203 North Main St. Apt H",
+          "bedrooms": 3,
+          "minimum": 2697,
+          "maximum": 2697,
+          "group_label": "3 bed apartment · per month"
+        },
+        {
+          "label": "1203 North Main St. Apt G",
+          "bedrooms": 2,
+          "minimum": 1938,
+          "maximum": 1938,
+          "group_label": "2 bed apartment · per month"
+        },
+        {
+          "label": "1203 North Main St. Apt D",
+          "bedrooms": 2,
+          "minimum": 1938,
+          "maximum": 1938,
+          "group_label": "2 bed apartment · per month"
+        },
+        {
+          "label": "1203 North Main St. Apt B",
+          "bedrooms": 2,
+          "minimum": 1938,
+          "maximum": 1938,
+          "group_label": "2 bed apartment · per month"
+        },
+        {
+          "label": "1201 North Main St. Apt E",
+          "bedrooms": 3,
+          "minimum": 2697,
+          "maximum": 2697,
+          "group_label": "3 bed apartment · per month"
+        },
+        {
+          "label": "1201 North Main St. Apt C",
+          "bedrooms": 4,
+          "minimum": 3596,
+          "maximum": 3596,
+          "group_label": "4 bed apartment · per month"
+        },
+        {
+          "label": "1201 North Main St. Apt A",
+          "bedrooms": 3,
+          "minimum": 2697,
+          "maximum": 2697,
+          "group_label": "3 bed apartment · per month"
+        },
+        {
+          "label": "1201 North Main St. Apt B",
+          "bedrooms": 3,
+          "minimum": 2697,
+          "maximum": 2697,
+          "group_label": "3 bed apartment · per month"
+        },
+        {
+          "label": "1201 North Main St. Apt L",
+          "bedrooms": 4,
+          "minimum": 3596,
+          "maximum": 3596,
+          "group_label": "4 bed apartment · per month"
+        },
+        {
+          "label": "1201 North Main St. Apt H",
+          "bedrooms": 4,
+          "minimum": 3596,
+          "maximum": 3596,
+          "group_label": "4 bed apartment · per month"
+        }
+      ]
+    }
+  }
+}

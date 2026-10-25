@@ -23,6 +23,7 @@ from roomwise.adapters.routing import UnconfiguredRoutingAdapter
 from roomwise.adapters.gtfs_routing import FallbackRoutingAdapter, GtfsRoutingAdapter
 from roomwise.adapters.google_routes import GoogleRoutesAdapter
 from roomwise.adapters.places import GooglePlaces
+from roomwise.adapters.osm_places import OpenStreetMapPlaces
 from roomwise.repositories.provider_budget import ProviderBudget
 from roomwise.config import ROOT, Settings
 from roomwise.repositories.catalog import CatalogRepository
@@ -47,7 +48,7 @@ def create_app(settings=None, *, campuses=None, routing=None, gemma=None, assist
     maps_budget=ProviderBudget(settings.data_dir/'maps-requests.sqlite3',settings.maps_daily_requests,
                                reserve_places=min(8,settings.maps_daily_requests//5))
     routing=routing or (FallbackRoutingAdapter(GoogleRoutesAdapter(settings,maps_budget),GtfsRoutingAdapter()) if settings.routes_enabled and settings.routes_api_key else GtfsRoutingAdapter())
-    places=GooglePlaces(settings,maps_budget)
+    places=GooglePlaces(settings,maps_budget) if settings.places_enabled and settings.places_api_key else OpenStreetMapPlaces(maps_budget)
     gemma=gemma or UnconfiguredGemmaRuntime()
     comparisons=ComparisonService(catalog,campuses,routing,store)
     assistant=AssistantService(settings,assistant_model or JSONModel(settings))
@@ -172,7 +173,8 @@ def create_app(settings=None, *, campuses=None, routing=None, gemma=None, assist
     def maps_config():
         return {'enabled':bool(settings.maps_enabled and settings.maps_javascript_api_key),
                 'browser_key':settings.maps_javascript_api_key if settings.maps_enabled else '',
-                'places_available':bool(settings.places_enabled and settings.places_api_key)}
+                'places_available':True,
+                'places_provider':'Google Maps' if settings.places_enabled and settings.places_api_key else 'OpenStreetMap'}
 
     @app.get('/api/v1/properties/{property_id}/nearby')
     def nearby(property_id:str,category:str='groceries',radius:int=2500):

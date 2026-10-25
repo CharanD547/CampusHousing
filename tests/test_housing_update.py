@@ -82,7 +82,11 @@ def test_all_guide_entries_are_explorable_without_invented_prices(client,request
     assert len(catalog)==109 and len(guide)==41
     assert len({c['property_id'] for c in catalog})==47
     assert {c['guide_reference']['id'] for c in guide}=={c['id'] for c in directory if not c['catalog_property_id']}
-    assert all(c['coordinates'] is None and c['offer']['price']['amount'] is None for c in guide)
+    assert all(c['offer']['price']['amount'] is None for c in guide)
+    for candidate in guide:
+        if candidate['coordinates'] is not None:
+            assert candidate['guide_reference']['evidence_update']['coordinates']==candidate['coordinates']
+            assert candidate['coordinate_basis']=='operator_community_point'
     assert all(c['sources'][0]['review_status']!='reviewed' for c in guide)
     request_body.update(commitments=[],candidate_ids=[guide[0]['id'],'alight-east'])
     response=client.post('/api/v1/comparisons',json=request_body)

@@ -38,6 +38,8 @@ def recheck(directory,apply=False):
         age=datetime.now(timezone.utc)-datetime.fromisoformat(record['retrieved_at'].replace('Z','+00:00'))
         if age.total_seconds()<0 or age.total_seconds()>3600:raise ValueError('Capture must be less than one hour old: '+pid)
         text=re.sub(r'\s+',' ',record['text']).strip();quotes=[]
+        record['sha256']=hashlib.sha256(record['text'].encode()).hexdigest()
+        target.write_text(json.dumps(record),encoding='utf-8')
         for plan in spec['plans']:
             name=re.sub(r'\s*\([^)]*\)','',plan['name'])
             if pid=='union' and 'Existing unit' in name:name=name.split()[0]+' - Existing Unit'
@@ -57,7 +59,7 @@ def recheck(directory,apply=False):
                               'plans_checked':len(quotes),'availability_verified':False}
         report.append({'property':pid,'plans':len(quotes),'status':'price_confirmed','retrieved_at':record['retrieved_at']})
     live['retrieved_at']=datetime.now(timezone.utc).isoformat()
-    live['scope']='Public operator asking prices rechecked on Oct 24, 2026 EDT. Per-source observation times retained; availability and a signed quote are unverified.'
+    live['scope']='Public operator asking prices rechecked at '+live['retrieved_at']+'. Per-source observation times retained; availability and a signed quote are unverified.'
     if apply:path.write_text(json.dumps(live,indent=2,ensure_ascii=False),encoding='utf-8')
     return {'applied':apply,'sources':report}
 

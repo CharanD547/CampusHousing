@@ -35,10 +35,11 @@ function render() {
   document.getElementById('overlay').innerHTML = (UI.drawer ? evidenceDrawer(UI.drawer) : '') + (UI.dialog ? dialogView(UI.dialog) : '');
   document.getElementById('demo').innerHTML = UI.demo ? demoPanel() : '';
   document.getElementById('demo-btn').setAttribute('aria-expanded', UI.demo);
+  document.getElementById('demo-btn').hidden=new URLSearchParams(location.search).get('debug')!=='1';
   document.getElementById('toast').innerHTML = UI.toast ? `<div class="toast" role="status">${esc(UI.toast)}</div>` : '';
   document.getElementById('store-note').textContent = workspaceMessage();
   renderConnectionStatus();
-  hydrateGoogleMaps();
+  hydrateMaps();
   if (focus) {
     const el = document.getElementById(focus.id);
     if (el) { el.focus({ preventScroll: true }); try { if (focus.s != null && el.setSelectionRange) el.setSelectionRange(focus.s, focus.e); } catch (e) {} }
@@ -82,7 +83,7 @@ document.addEventListener('click', async (ev) => {
     case 'evidence': UI.drawer = id; render(); document.getElementById('drawer-close')?.focus(); break;
     case 'close-drawer': { const back = UI.drawer; UI.drawer = null; render(); document.querySelector(`[data-action="evidence"][data-id="${back}"]`)?.focus(); break; }
     case 'toggle-map': UI.mapOpen = !UI.mapOpen; render(); break;
-    case 'map-retry': S.sim.mapFails = false; save(); render(); break;
+    case 'map-retry': S.sim.mapFails = false; MAPS.error=null; MAPS.loading=null; STREET.error=null; save(); render(); break;
     case 'clear-search': UI.query = ''; UI.filters = { fit: true, conflict: true, insufficient: true }; render(); break;
     case 'sim-off': S.sim[t.dataset.key] = false; save(); render(); break;
     case 'focus-field': ev.preventDefault(); document.getElementById(t.dataset.field)?.focus(); break;
@@ -179,15 +180,6 @@ document.addEventListener('change', (ev) => {
   if (el.dataset.sim) { S.sim[el.dataset.sim] = el.checked; save(); render(); return; }
   if (el.dataset.gbind && (el.type === 'radio' || el.type === 'checkbox' || el.type === 'date')) { readBind(el, S.prefs); bump(); render(); return; }
   if (el.dataset.bind && (el.tagName === 'SELECT' || el.type === 'range')) { readBind(el, S.draft); render(); return; }
-  if (el.dataset.cl && el.dataset.clf === 'notes') { const i = S.guide.checklist.find((x) => x.id === el.dataset.cl); i.notes = el.value; save(); }
-});
-
-document.addEventListener('change', (ev) => {
-  const el = ev.target;
-  if (el.dataset.filter) { UI.filters[el.dataset.filter] = el.checked; render(); return; }
-  if (el.dataset.sim) { S.sim[el.dataset.sim] = el.checked; save(); render(); return; }
-  if (el.dataset.gbind && (el.type === 'radio' || el.type === 'checkbox' || el.type === 'date')) { readBind(el, S.prefs); bump(); render(); return; }
-  if (el.dataset.bind && (el.tagName === 'SELECT' || el.type === 'range')) { readBind(el, S.draft); render(); return; }
   if (el.dataset.edit) {
     const e = UI.editing, k = el.dataset.edit;
     if (k === 'weekdays') { const s = new Set(e.weekdays); el.checked ? s.add(el.value) : s.delete(el.value); e.weekdays = [...s]; }
@@ -196,6 +188,7 @@ document.addEventListener('change', (ev) => {
     return;
   }
   if (el.dataset.cl && el.dataset.clf === 'status') { const i = S.guide.checklist.find((x) => x.id === el.dataset.cl); i.status = el.value; save(); render(); }
+  if (el.dataset.cl && el.dataset.clf === 'notes') { const i = S.guide.checklist.find((x) => x.id === el.dataset.cl); i.notes = el.value; save(); }
 });
 
 document.addEventListener('submit', (ev) => {
