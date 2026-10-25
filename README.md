@@ -6,7 +6,7 @@
 
 Source-backed housing research for Virginia Tech students, with a locally fine-tuned Gemma 4 assistant.
 
-[![CI](https://github.com/CharanD547/CampusHousing/actions/workflows/ci.yml/badge.svg)](https://github.com/CharanD547/CampusHousing/actions/workflows/ci.yml)
+[![CI](https://github.com/CharanD547/Roomwise/actions/workflows/ci.yml/badge.svg)](https://github.com/CharanD547/Roomwise/actions/workflows/ci.yml)
 [![Application license: MIT](https://img.shields.io/badge/Application-MIT-3c6255)](LICENSE)
 [![Model adapters: Apache 2.0](https://img.shields.io/badge/Adapters-Apache%202.0-8b6848)](models/LICENSE)
 [![Python 3.11+](https://img.shields.io/badge/Python-3.11%2B-356b8c)](pyproject.toml)
@@ -55,8 +55,8 @@ Captured from the running application in visible Chrome on October 25, 2026. The
 **Requirements:** Python 3.11+, Git and a browser. Basic browsing, comparisons and the local research helper need **no API keys or GPU**. Internet access is needed to install dependencies; fonts, map tiles and optional nearby services also depend on their providers. Node.js is only needed for frontend tests.
 
 ```bash
-git clone https://github.com/CharanD547/CampusHousing.git
-cd CampusHousing
+git clone https://github.com/CharanD547/Roomwise.git
+cd Roomwise
 python -m venv .venv
 ```
 
@@ -147,7 +147,7 @@ python tools/build_frontend.py
 python tools/backend/export_contracts.py
 ```
 
-The last local verification passed **105 Python tests and 26 JavaScript tests**, plus isolated HTTP release checks. [CI](.github/workflows/ci.yml) runs the application tests, public model-package checks and fresh-storage HTTP flow on Windows and Linux, with providers disabled. It does not download base weights or run paid APIs.
+The last local verification passed **106 Python tests and 26 JavaScript tests**, plus isolated HTTP release checks. [CI](.github/workflows/ci.yml) runs the application tests, public model-package checks and fresh-storage HTTP flow on Windows and Linux, with providers disabled. It does not download base weights or run paid APIs.
 
 Before updating an existing catalog, back up the local data and preview `tools/backend/sync_catalog.py`; use `--apply` only after reviewing the changes. Startup does not overwrite manually managed catalog rows or saved briefs. See [operations and recovery](docs/OPERATIONS.md).
 
