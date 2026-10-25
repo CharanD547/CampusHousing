@@ -2,7 +2,7 @@
 
 # Roomwise operations
 
-Local prototype, October 24, 2026. The requested LAN development run now binds to `0.0.0.0:8001` with an operator token; see [LAN instructions](LAN_DEVELOPMENT.md). The current `.env` enables Maps, Places and the separately validated Routes credential. Model calls remain disabled. Localhost operator access is explicitly enabled; LAN clients still require the operator token. Never commit real credentials or paste private provider credentials into the application's operator-token form.
+Current operating guidance, updated October 25, 2026. The documented default is loopback-only (`127.0.0.1:8001`), one local operator, and providers disabled. LAN access, local-operator convenience and model/Maps activation depend on the owner's private configuration; see [LAN instructions](LAN_DEVELOPMENT.md) and [AI setup](AI_AND_TRAINING.md). LAN clients still require a configured operator token. Never commit real credentials or paste private provider credentials into the application's operator-token form.
 
 ## Maps and routing
 
@@ -12,7 +12,7 @@ Nearby search is explicit, uses 0.62/1.55/3.11-mile radius labels (meter-based p
 
 Routing supports `single_date` or `representative_week`. Weekly scope expands Monday–Sunday around the selected date and counts every class meeting separately. Transit requests subtract the arrival buffer, apply America/New_York/DST, and supply UTC arrival time. Static walk/bike/drive requests do not claim future closures, parking time, accessibility or indoor walking. Unsupported transit dates remain unsupported. No alternate date is silently selected.
 
-Routes results are transient. Saved comparisons/briefs exclude provider durations and derived commute verdicts; saved route coverage becomes unknown and asks for fresh estimates. This also keeps live provider content outside model context. The adapter deduplicates identical property/building/mode/arrival requests within a comparison, allows at most 12 attempts and checks a 12-second scheduling budget. Transport timeouts bound individual network operations; this is not a strict network wall-clock SLA. The shared persisted Places/Routes daily attempt limit defaults to 40, with failures charged against it. SDK browser usage is outside that cap. Configure provider-side restrictions and quotas in the owner account before sharing.
+Routes results are transient. Saved comparisons/briefs exclude provider durations and derived commute verdicts; saved route coverage becomes unknown and asks for fresh estimates. This also keeps live provider content outside model context. The adapter deduplicates identical property/building/mode/arrival requests within a comparison, allows at most 12 attempts and checks a 12-second scheduling budget. Transport timeouts bound individual network operations; this is not a strict network wall-clock SLA. The shared persisted Places/Routes daily attempt limit defaults to 60 (and is capped at 60), with failures charged against it. SDK browser usage is outside that cap. Configure provider-side restrictions and quotas in the owner account before sharing.
 
 Official references: [Routes request fields](https://developers.google.com/maps/documentation/routes/reference/rest/v2/TopLevel/computeRoutes), [Routes policies](https://developers.google.com/maps/documentation/routes/policies), [Places policies and attribution](https://developers.google.com/maps/documentation/places/web-service/policies), [accessible markers](https://developers.google.com/maps/documentation/javascript/advanced-markers/accessible-markers).
 
@@ -26,7 +26,7 @@ Accounts are disabled in the existing instance to preserve its private operator 
 
 ## Recovery and backups
 
-The Data page lists up to 200 newest records per collection for the current operator/account. JSON export contains private notes/schedules. Moving a workspace or brief to trash blocks API reads and edits; restore returns its original revision/body. Trash is retained indefinitely until an operator performs a documented purge. It is not full deletion of related immutable snapshots, browser drafts, backups or downloaded exports. No permanent purge was run during this work.
+The Data navigation item is hidden; the direct `/#data` recovery route lists up to 200 newest records per collection for the current operator/account. JSON export contains private notes/schedules. Moving a workspace or brief to trash blocks API reads and edits; restore returns its original revision/body. Trash is retained indefinitely until an operator performs a documented purge. It is not full deletion of related immutable snapshots, browser drafts, backups or downloaded exports. No permanent purge was run during this work.
 
 Use `tools/backend/backup.py backup SOURCE NEW-DESTINATION` for SQLite snapshots and a checksum manifest. Use `restore BACKUP NEW-DIRECTORY` for prevalidated restoration without overwriting current storage. Integrity, checksum and path validation reject corrupt/tampered inputs. Backups contain account hashes/session records if present: protect them like the original private data. Backing up an active server is consistent per database, not a cross-database transaction. Stop writes first if a coordinated application snapshot is required.
 

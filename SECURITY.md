@@ -1,23 +1,18 @@
-# Security policy
+# Security and private-data reporting
 
-## Reporting a vulnerability
+Roomwise is a local prototype, not a hardened public housing platform. Only the current `main` branch is maintained; no response-time guarantee or production security certification is claimed.
 
-Please do not open a public issue for a security problem. Report it privately through GitHub's **Report a vulnerability** option on this repository's Security tab, or contact the maintainer through the repository profile.
+## Report a vulnerability privately
 
-Include:
+Use GitHub's private vulnerability reporting on this repository **if it is enabled**. Otherwise contact the repository owner through an existing private channel before sharing details. Do not put exploitable details, credentials or private records in a public issue. No public email address is designated here.
 
-- A description of the issue and its impact
-- Steps to reproduce, or a minimal request that demonstrates it
-- The commit or version you tested
+Include the affected commit, reproduction steps using synthetic data, expected impact and any proposed mitigation. Redact credentials and personal information. For an ordinary UI or public source-data correction, use the issue templates instead.
 
-You can expect an acknowledgement within a few working days. Please allow time for a fix before public disclosure.
+## Operating boundaries
 
-## Scope and expectations
-
-Roomwise is designed for a single local operator on a loopback address by default. Reports about exposing it to a network without the documented safeguards (see [operations](docs/OPERATIONS.md) and [LAN access](docs/LAN_DEVELOPMENT.md)) are still welcome, but please distinguish between a flaw and a misconfiguration.
-
-## Secrets
-
-- Never commit `.env` files, provider keys, backend bearer tokens or local databases.
-- Google's Maps JavaScript key is delivered to the browser by design. Private Places, Routes and model credentials stay on the server.
-- If you accidentally publish a secret, rotate it first, then report it.
+- Keep the default service on loopback. A bearer token is a single-operator access mechanism, not multi-user isolation.
+- Optional local accounts do not provide managed identity, password recovery or a complete shared-hosting solution.
+- Keep `.env`, runtime databases, exports, backups and browser profiles private. The Data navigation item being hidden is not an access-control boundary.
+- Restrict browser Maps keys by origin and provider quotas; keep private Places/Routes/model credentials server-side.
+- Treat housing pages, reviews and model output as untrusted data. Validation and fallback reduce specific failure modes but do not prove every generated claim.
+- Public shared deployment needs separately verified identity, TLS, persistence, access controls and recovery.

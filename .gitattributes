@@ -3,3 +3,7 @@ data/training/**/*.jsonl -text whitespace=cr-at-eol
 data/training/**/*.json -text whitespace=cr-at-eol
 models/**/*.json -text whitespace=cr-at-eol
 models/**/*.safetensors binary
+
+# Keep GitHub language statistics and review diffs focused on maintained source.
+CampusHousing-main/index.html linguist-generated=true
+CampusHousing-main/src/vendor/** linguist-vendored=true

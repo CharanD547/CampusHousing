@@ -11,7 +11,7 @@ Source-backed housing research for Virginia Tech students, with a locally fine-t
 [![Model adapters: Apache 2.0](https://img.shields.io/badge/Adapters-Apache%202.0-8b6848)](models/LICENSE)
 [![Python 3.11+](https://img.shields.io/badge/Python-3.11%2B-356b8c)](pyproject.toml)
 
-[Quick start](#quick-start) · [Screenshots](#screenshots) · [Gemma model](#locally-trained-gemma-4) · [Documentation](docs/README.md) · [Pitch & demo](docs/PITCH.md)
+[Quick start](#quick-start) · [Screenshots](#screenshots) · [Gemma model](#locally-trained-gemma-4) · [Documentation](docs/README.md) · [Pitch & demo](docs/PITCH.md) · [90-second video](docs/demo/roomwise-90-second-walkthrough.mp4) · [Voiceover](docs/demo/VOICEOVER.md)
 
 </div>
 

@@ -1,0 +1,23 @@
+Roomwise helps Virginia Tech students understand housing before choosing a lease.
+
+Search forty-four priced properties, with one card per place. Floor plans, price ranges and original billing labels stay together.
+
+The housing guide adds broader neighborhood context, with forty-seven community and neighborhood references.
+
+Set your budget, household size, bedroom needs and travel preferences. These inputs stay connected across the workflow.
+
+Each plan separates rent, fees and deposits. Open the evidence to inspect source dates, original disclosures and disagreements.
+
+Missing facts become a written-quote request. Copy it to confirm exact fees, dates and availability. Nothing is sent automatically.
+
+Investigate nearby essentials, change the search radius in miles, and review mapped grocery stores and directions links.
+
+Compare shortlisted plans side by side. Monthly rent and installments retain their labels; roommate splits remain planning scenarios.
+
+Here is the locally fine-tuned Gemma four assistant responding to a real question. The interface identifies the actual model and its limitations. Application code owns the calculations; generated guidance still needs verification.
+
+Attach questions to a property and save a decision brief, freezing the prices, sources and inputs behind your comparison.
+
+DormToDoor turns unresolved facts into a practical, editable before-you-sign checklist.
+
+Roomwise: know the trade-offs, and what to verify next.
