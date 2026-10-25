@@ -1,91 +1,172 @@
+<div align="center">
+
 # Roomwise
 
-Student housing decisions for Virginia Tech, combining the supplied frontend with a same-origin FastAPI backend. Explore source-reviewed housing offers, set housing preferences, compare up to three offers, track the DormToDoor checklist, and save immutable server-owned decision briefs.
+### Find your place. Know the trade-offs.
 
-## Run
+Source-backed housing research for Virginia Tech students, with a locally fine-tuned Gemma 4 assistant.
 
-Python 3.11+ is required. The current workspace already has a development environment. For a fresh checkout:
+[![CI](https://github.com/CharanD547/CampusHousing/actions/workflows/ci.yml/badge.svg)](https://github.com/CharanD547/CampusHousing/actions/workflows/ci.yml)
+[![Application license: MIT](https://img.shields.io/badge/Application-MIT-3c6255)](LICENSE)
+[![Model adapters: Apache 2.0](https://img.shields.io/badge/Adapters-Apache%202.0-8b6848)](models/LICENSE)
+[![Python 3.11+](https://img.shields.io/badge/Python-3.11%2B-356b8c)](pyproject.toml)
 
-```powershell
-python -m venv .venv
-.\.venv\Scripts\python.exe -m pip install -r requirements-dev-lock.txt
-.\.venv\Scripts\python.exe tools/build_frontend.py
-.\.venv\Scripts\python.exe -m uvicorn roomwise.main:app --app-dir src --host 127.0.0.1 --port 8001
-```
+[Quick start](#quick-start) · [Screenshots](#screenshots) · [Gemma model](#locally-trained-gemma-4) · [Documentation](docs/README.md) · [Pitch & demo](docs/PITCH.md)
 
-Open http://127.0.0.1:8001/ for Roomwise, http://127.0.0.1:8001/docs for API documentation, and `/api/v1/health` for provider readiness. Loopback is the default for this single-user prototype. The current requested LAN development run listens on all IPv4 interfaces with operator authentication; see [LAN access and restart instructions](docs/LAN_DEVELOPMENT.md). The Python package is now `roomwise`; the existing workspace folder name is unchanged. Database files and collected research remain intact.
+</div>
 
-## Connected behavior
+![Roomwise home: housing search for Virginia Tech students](docs/images/roomwise-home.png)
 
-- The supplied `CampusHousing-main/src/` design is served at `/`. Rebuild after changing the shell or CSS; JavaScript source edits are served directly. JavaScript and the illustrative hero asset are served under `/assets/`. No Node dependencies or frontend build installation are required.
-- Explore shows 44 priced properties with 304 plans, one card per property; the housing directory retains 47 guide references. The six original properties contribute 68 plans. October 25 rent-source rechecks cover all 44 priced properties. Source amount mentions are a screening signal, not verification of the exact plan, complete quote or availability. Price lists and ranges appear on the right. There are 350 official VT GIS building locations; points are not verified entrances or classroom inventories.
-- Housing preferences and dates are saved with comparisons. Whole-unit splits are explicit scenarios; installments remain distinct from calendar-month rent. The schedule UI is removed. The current backend catalog policy includes every candidate; the neutral “Research option” badge does not promise that preferences are satisfied.
-- Shortlists, notes, questions, checklist progress and saved brief references sync to SQLite. Browser storage provides a draft cache; sync failures and revision conflicts are visible. A conflict can be resolved by first backing up the local draft and loading the server copy.
-- DormToDoor requests server-generated checklist items. Regeneration preserves status and notes for stable items. User items remain user-owned and do not become reviewed evidence.
-- Briefs freeze the server comparison, original catalog/building records, selected offers, questions and checklist. Refresh restores them from the backend. Later catalog edits do not alter stored snapshots.
-- Property details distinguish current operator asking prices, research-derived fee assumptions and additional observations. Some research fees are counted provisionally and labeled. A criteria match does not verify the full move-in cost, lease dates or availability.
+## Why Roomwise?
 
-## Current limits
+A listing's price might mean **per person**, **the whole apartment**, **per month**, or **one installment**. Utilities, deposits and lease terms can change the comparison again. Roomwise keeps those distinctions visible and helps students turn missing information into specific questions for the leasing office.
 
-The [assistant](http://127.0.0.1:8001/#assistant) supports a labeled local helper and the existing locally trained Gemma 4 E4B v2 adapter. The current main app connects to the model on loopback port 8002. Compact evidence, citation and monetary/billing-label validation reject some unsupported outputs and explicitly fall back to the helper. Live review found both useful answers and a billing-period error; this is not a production accuracy claim. See [assistant instructions](docs/AI_AND_TRAINING.md) and [current review](docs/HOUSING_UPDATE_REVIEW.md).
+**44 priced properties · 304 plans · 47 housing-guide references** in the October 25, 2026 research snapshot. One card represents each property; its plans and price ranges stay together.
 
-Google Maps renders live property/building markers. Property details search nearby restaurants, groceries, gas stations, cafes, pharmacies and libraries with radius controls, straight-line distances, numbered markers and directions links. Schedule-aware Google Routes supports class journeys with the bundled BT timetable as a limited fallback. Request budgets can leave partial coverage. The imported BT feed covers October 1–31, 2026, direct bus journeys and approximate walks; it does not guarantee transfers, future service or live conditions. Google provider content stays transient and is excluded from saved briefs and training. See the [Maps plan](docs/MAPS_PLAN.md).
+> Asking figures are dated research, not live inventory or guaranteed lease quotes. Missing costs stay unknown. Screenshots show an isolated demo workspace; the home illustration is not a photograph of a verified listing.
 
-The isolated review database contains 720 distinct reviews, including 67 VT records. No public review text or model ingestion is enabled until reuse scope and exact property matching are established. Five additional housing observations and tentative review-subject mappings are stored separately from authoritative prices.
+## What you can do
 
-Default mode remains one local operator. Optional `ROOMWISE_ACCOUNTS_REQUIRED=true` enables local accounts with salted password hashes, expiring HttpOnly sessions and ownership checks for workspaces, comparisons, briefs and recovery. Existing operator records remain separate. This is not managed cloud identity, email recovery or a production hosting claim. Cloud persistence/deployment and cross-device operation remain unverified.
-
-## Configuration and storage
-
-Without Google credentials, local street maps use bundled Leaflet 1.9.4 with OpenStreetMap tiles and attribution. Nearby-category searches use the Virginia MapRVA Overpass service on demand and plot matching numbered pins. A five-minute memory cache reduces repeated nearby requests; a shared persistent UTC daily attempt cap bounds Google Places/Routes calls (60 maximum, configurable lower). Provider quotas must separately bound browser SDK usage. Google Places is used when configured; its content is never plotted on the OpenStreetMap fallback. Entries without sourced coordinates still have a labeled address-search map in their Life around section. Prices are checked snapshots with timestamps. Use `tools/backend/refresh_guide_evidence.py` to preview or apply new operator evidence without hiding unresolved entries; the saved brief history is retained.
-
-`.env.example` documents application, AI and Google Maps settings. The backend reads the workspace `.env` at startup; process environment variables take precedence. Both Git and Docker exclude the real `.env`. Enabling external operations alone does not configure a provider. A configured application access token is entered in the browser connection form and held in session storage; API requests use its bearer header. Private Places/Routes/model keys stay server-side and must not be entered in that browser access-token form. The designated Maps JavaScript key is intentionally returned to the browser SDK. Explicit Maps/Places/Routes switches control integration; Google Places/Routes share a persistent UTC daily attempt cap of at most 60; failures count. Provider quotas must separately bound browser SDK usage. Verify account-level key restrictions and quotas separately.
-
-Default local storage under ignored `var/`:
-
-| File | Contents |
+| Workflow | What Roomwise provides |
 |---|---|
-| `catalog.sqlite3` | Reviewed catalog, evidence and source versions |
-| `workspaces.sqlite3` | Revision-checked workspaces, comparisons and immutable briefs |
-| `offcampusreview.sqlite3` | Isolated public-review research collection |
-| `public-data.sqlite3` | Buildings, transit stops/routes and research observations |
+| **Explore housing** | Search properties, inspect grouped floor plans, retain billing labels and follow dated source links. |
+| **Understand the costs** | Separate recurring charges, refundable deposits and one-time fees. Whole-unit roommate splits are explicit planning scenarios. |
+| **Compare a shortlist** | Put up to three plans side by side. Deterministic backend code owns calculations; the model cannot overwrite prices. |
+| **Ask the assistant** | Explain selected evidence, renting terminology and unresolved questions using local Gemma or an explicitly labeled rules helper. |
+| **Investigate nearby essentials** | Maps, groceries, restaurants, gas stations, cafes, pharmacies and libraries, with mile-based controls and directions links. |
+| **Prepare the next step** | Copy a plan-specific written-quote request, work through DormToDoor and save a brief that freezes the comparison evidence. |
 
-`var/frontend-input-original.zip` preserves the supplied frontend before integration. The earlier backend purge archive remains outside the workspace; see [purge record](docs/backend/PURGE.md).
+## Screenshots
 
-## Verification and maintenance
+Captured from the running application in visible Chrome on October 25, 2026. The demo uses isolated data, the OpenStreetMap fallback and no paid provider calls. Prices shown are historical asking figures; the assistant screenshot uses the labeled local helper, not a claimed Gemma response.
 
-For an existing database after downloading a catalog update, back up `var/`, preview `tools/backend/sync_catalog.py`, then run it with `--apply`. Startup intentionally does not overwrite manually managed catalog rows. The sync archives replaced catalog/source records and never rewrites frozen briefs. See the current review for the backup and commands used.
+| Explore: one card per property | Plan details: costs and evidence |
+|---|---|
+| ![Explore with housing cards, billing labels, price ranges and an OpenStreetMap overview](docs/images/roomwise-explore.png) | ![A Foxridge plan with explicit whole-unit pricing, a splitting scenario and separately classified fees](docs/images/roomwise-property.png) |
 
-```powershell
-.\.venv\Scripts\python.exe -m pytest -q
-node --test tests/frontend_adapter.test.cjs
-.\.venv\Scripts\python.exe tools/backend/export_contracts.py
-.\.venv\Scripts\python.exe tools/backend/sync_catalog.py
-.\.venv\Scripts\python.exe tools/backend/collect_vt_public_data.py
-.\.venv\Scripts\python.exe tools/backend/collect_offcampusreview.py
-.\.venv\Scripts\python.exe tools/backend/supplement_offcampusreview.py
-.\.venv\Scripts\python.exe tools/backend/research_remaining.py
+| Compare: known costs and missing facts | Assistant: scoped research help |
+|---|---|
+| ![Two plans compared with their original billing periods and unresolved lease facts](docs/images/roomwise-compare.png) | ![The explicitly labeled local research helper answering a housing question](docs/images/roomwise-assistant.png) |
+
+[View full-size screenshots and capture notes](docs/images/README.md).
+
+## Quick start
+
+**Requirements:** Python 3.11+, Git and a browser. Basic browsing, comparisons and the local research helper need **no API keys or GPU**. Internet access is needed to install dependencies; fonts, map tiles and optional nearby services also depend on their providers. Node.js is only needed for frontend tests.
+
+```bash
+git clone https://github.com/CharanD547/CampusHousing.git
+cd CampusHousing
+python -m venv .venv
 ```
 
-Node is needed only for the optional adapter checks. Browser verification is recorded in [integration notes](docs/INTEGRATION.md). OpenAPI is generated from the application schemas. The nonroot Dockerfile and loopback-only Compose recipe package the frontend/backend with a persistent volume and a health check. Docker and gcloud are unavailable here, so no container build or cloud deployment is claimed. A fresh production-dependency virtual environment was installed and exercised over HTTP with isolated databases. See [completion report](docs/COMPLETION_REPORT.md).
-
-[Backend PRD](docs/backend/PRD.md) · [architecture](docs/backend/ARCHITECTURE.md) · [remaining work](docs/backend/BACKLOG.md) · [research](docs/backend/RESEARCH_AND_NEXT_STEPS.md) · [reviews](docs/backend/REVIEW_COLLECTION.md).
-
-MIT application license; source content, data and model/provider terms are separate. Original contributor notices remain intact.
-
-## Data recovery and operational checks
-
-The Data page is hidden from desktop/mobile navigation; the direct `/#data` recovery route remains available. It exports individual records and provides recoverable trash/restore for workspaces and briefs. Trash is retained until a documented operator purge; it is not permanent erasure of related snapshots, drafts, exports or backups. Optional accounts scope these actions to their owner. Default operator mode can see all local operator records.
+Activate the environment:
 
 ```powershell
-.\.venv\Scripts\python.exe tools/backend/audit_readiness.py --report var/readiness-audit.json
-.\.venv\Scripts\python.exe tools/backend/backup.py backup var var/backups/NEW-NAME
-.\.venv\Scripts\python.exe tools/backend/backup.py restore var/backups/NEW-NAME var/NEW-RESTORE-DIRECTORY
-.\.venv\Scripts\python.exe tools/backend/verify_release.py --python .venv/Scripts/python.exe --report var/clean-install-verification.json
+# Windows PowerShell
+.\.venv\Scripts\Activate.ps1
 ```
 
-Backups use SQLite snapshots, SHA-256 manifests and integrity checks. Restore requires a new destination, verifies every database before creating it, and never overwrites running storage. Individual databases are consistent; a live multi-database backup is not one global transaction. Credentials, browser drafts and model weights are excluded. The completed seven-database restore drill is in ignored `var/recovery-drill-20261024/`. See [operations](docs/OPERATIONS.md).
+```bash
+# macOS / Linux
+source .venv/bin/activate
+```
 
-## Submission evidence
+Then, from the repository root:
 
-See [rubric readiness](docs/SUBMISSION_READINESS.md), [the full pitch and demo playbook](docs/PITCH.md), [the two-minute demo outline](docs/DEMO_SCRIPT.md), [the Gemma model card](docs/MODEL_CARD.md), and [all remaining fee/lease quote requests](docs/FEES_AND_LEASE_QUOTES.md). Both exact historical synthetic dataset versions and all experiment reports are under `data/training/`. The actual v1/v2/v3 learned LoRA adapters, manifests and Apache-2.0 notices are under [models/](models/README.md); v2 is selected. Base weights, tokenizers, pickle checkpoints, reviews, chats and workspaces are excluded. Property pages provide copy-only written-quote requests and an assistant scoped to that plan without changing the shortlist. `/api/v1/research/lease-gaps` returns the current property-specific follow-up list.
+```bash
+python -m pip install -r requirements-dev-lock.txt
+python tools/build_frontend.py
+python -m uvicorn roomwise.main:app --app-dir src --host 127.0.0.1 --port 8001
+```
+
+Open **[Roomwise](http://127.0.0.1:8001/)** · **[API docs](http://127.0.0.1:8001/docs)** · **[Health](http://127.0.0.1:8001/api/v1/health)**.
+
+No frontend package installation is required. FastAPI serves the UI and API together; opening `index.html` directly will not work. If PowerShell activation is unavailable, use `.\.venv\Scripts\python.exe` in place of `python` without changing execution policy.
+
+### Optional configuration
+
+Copy `.env.example` to `.env` **only if `.env` does not already exist**, then edit the settings you need. Keep the real file private. Process environment variables take precedence.
+
+| Capability | Configuration |
+|---|---|
+| Local single-operator use | Fresh checkout works on loopback with providers disabled. A configured `ROOMWISE_API_TOKEN` must be entered in the browser's backend-token form. |
+| Local Gemma | Use the published v2 adapter, a separately obtained base model and the [model-server instructions](docs/AI_AND_TRAINING.md). |
+| Google Maps / Places / Routes | Separate keys and explicit enable switches in `.env.example`. Places and Routes share at most **60 web-service attempts per UTC day**; failed attempts count. Browser SDK usage needs separate provider quotas. |
+| Accounts or LAN development | Read [operations](docs/OPERATIONS.md) and [LAN access](docs/LAN_DEVELOPMENT.md) before changing the loopback-only setup. |
+
+Google's designated Maps JavaScript key is delivered to the browser by design. Private Places, Routes and model credentials stay server-side. Provider keys are different from the application's backend bearer token.
+
+## Locally trained Gemma 4
+
+The selected runtime is **`roomwise-gemma-4-e4b-v2`**, a LoRA adapter for `google/gemma-4-E4B-it`. Gemma explains scoped evidence and missing terms; arithmetic and catalog amounts remain owned by application code.
+
+| Published artifact | Location |
+|---|---|
+| Both original synthetic dataset versions | [`data/training/`](data/training/README.md) |
+| Actual learned v1, v2 and v3 adapters | [`models/`](models/README.md), about **36.3 MB each** |
+| Historical training and generation reports | [`data/training/reports/`](data/training/reports/) |
+| Training, serving, evaluation and packaging code | [`tools/training/`](tools/training/) |
+| Identity, provenance, safeguards and limitations | [Model card](docs/MODEL_CARD.md) |
+
+The selected model used **240 authored synthetic examples: 192 train / 24 validation / 24 test**. A second version supported the v3 experiment. Versions share templates and may overlap; they are not 480 independent benchmark cases. No resident reviews, user chats or current property rents were used for training.
+
+On the same 24 shared-template generation cases, answer-category correctness was 25% for the base, 58% for v1 and 79% for v2. **These are not factual-accuracy scores.** v3 regressed and remains published for transparency; v2 stays selected.
+
+Tensor and dataset hashes are preserved across Windows checkouts. Adapter configs use a portable base-model identity. Base weights, tokenizer copies, pickle checkpoints and optimizer state are excluded. The measured CUDA recipe uses about **24 GB VRAM**; CPU/quantized inference and a public cloud deployment remain unverified. The application still works without model inference.
+
+## How it fits together
+
+```mermaid
+flowchart LR
+    Browser[Browser UI] --> API[Same-origin FastAPI]
+    API --> Logic[Deterministic comparisons]
+    API --> Storage[SQLite evidence and workspaces]
+    API --> Guard[Assistant validation and fallback]
+    Guard --> Gemma[Optional local Gemma server]
+    API --> Maps[Optional map and nearby providers]
+```
+
+| Path | Responsibility |
+|---|---|
+| `CampusHousing-main/` | Browser UI, styles and bundled Leaflet; the folder name is retained for existing integrations. |
+| `src/roomwise/` | HTTP boundary, services, domain calculations, repositories and provider adapters. |
+| `data/` | Versioned housing evidence, source rechecks and public synthetic training/evaluation artifacts. |
+| `models/` | Published learned adapters, manifests, model license and notices. |
+| `contracts/` | Generated OpenAPI and example integration fixtures. |
+| `tests/`, `tools/` | Regression checks, imports, release verification, backups and training utilities. |
+| `docs/` | Setup, operations, model card, screenshots, audit history and demo materials. |
+| `var/` *(ignored)* | Local databases, private workspaces, research collections, logs and base weights. |
+
+## Development and checks
+
+```bash
+python -m pytest -q
+node --test tests/frontend_adapter.test.cjs tests/property_map.test.cjs
+python tools/build_frontend.py
+python tools/backend/export_contracts.py
+```
+
+The last local verification passed **105 Python tests and 26 JavaScript tests**, plus isolated HTTP release checks. [CI](.github/workflows/ci.yml) runs the application tests, public model-package checks and fresh-storage HTTP flow on Windows and Linux, with providers disabled. It does not download base weights or run paid APIs.
+
+Before updating an existing catalog, back up the local data and preview `tools/backend/sync_catalog.py`; use `--apply` only after reviewing the changes. Startup does not overwrite manually managed catalog rows or saved briefs. See [operations and recovery](docs/OPERATIONS.md).
+
+## Data, privacy and current limits
+
+- Asking prices are dated snapshots. Written plan-specific quotes, complete mandatory fees and live availability still need operator confirmation. [See every remaining request](docs/FEES_AND_LEASE_QUOTES.md).
+- Model validation checks structure, allowed source/candidate IDs, monetary amounts and billing labels. It rejects some unsupported outputs with an explicit fallback; this is not complete hallucination detection.
+- Chat stays in the browser tab and is excluded from training. A configured provider receives the question, bounded recent history and selected public evidence; private workspace notes and raw resident reviews are excluded from prompts.
+- Collected resident reviews remain in an ignored, isolated research database. Public redistribution and model use are disabled until reuse permission and property matching are established.
+- Google content is transient and excluded from saved briefs/training. OpenStreetMap tiles and nearby services have their own availability and attribution requirements. Approximate address points and straight-line distances do not establish travel time.
+- Default use is one local operator. Optional local accounts are not managed cloud identity. The Data navigation item is hidden; `/#data` remains a recovery route. The schedule UI is removed, although compatibility routing paths remain in the backend.
+- Docker/Compose recipes are provided, but no container build or public cloud deployment is claimed. The imported BT timetable only covers October 1–31, 2026, with limited direct journeys.
+
+## Documentation and contributing
+
+[Documentation index](docs/README.md) · [Contribution guide](CONTRIBUTING.md) · [Security reporting](SECURITY.md) · [Two-minute pitch](docs/PITCH.md) · [Submission checklist](docs/SUBMISSION_READINESS.md)
+
+Contributions that improve source evidence, pricing clarity, accessibility, independent model evaluation and deployment reproducibility are especially useful. Keep secrets, private records and unapproved review text out of issues and pull requests.
+
+## License and attribution
+
+Application code and authored synthetic examples use the [MIT license](LICENSE). Published Gemma LoRA adapters use [Apache-2.0](models/LICENSE), with model identity and modifications in [NOTICE](models/NOTICE). Base-model, source-data and provider terms apply separately. Original contributor notices are preserved; bundled Leaflet retains its [license](CampusHousing-main/src/vendor/leaflet/LICENSE). Illustrative imagery is not property evidence.
