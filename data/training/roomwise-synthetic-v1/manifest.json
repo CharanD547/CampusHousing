@@ -1,0 +1,23 @@
+{
+  "base_model": "google/gemma-3-1b-it",
+  "status": "synthetic_smoke_dataset_not_a_validated_benchmark",
+  "base_model_revision": "dcc83ea841ab6100d6b47a070329e1ba4cf78752",
+  "raw_review_records_used": 0,
+  "external_review_training_permission": "not_established",
+  "split_method": "context-group disjoint; templates shared, so not a generalization benchmark",
+  "purpose": "Evidence discipline and renting concepts; never memorization of current rents",
+  "files": {
+    "train": {
+      "records": 192,
+      "sha256": "f30c4b196dbf3433f147ce145425fae4b2079b98ac21890953275f3e454c2c1e"
+    },
+    "validation": {
+      "records": 24,
+      "sha256": "091cedb3287255dc3d2863697a0856ef376608ad6b7c93740259d1c04b14a6ec"
+    },
+    "test": {
+      "records": 24,
+      "sha256": "35d3ead12c8a244de53b79eac8c912c234ae86f4bfe1b9a0988cc6388d6f6caf"
+    }
+  }
+}

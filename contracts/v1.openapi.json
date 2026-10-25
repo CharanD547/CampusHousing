@@ -398,6 +398,22 @@
         }
       }
     },
+    "/api/v1/research/lease-gaps": {
+      "get": {
+        "summary": "Lease Gaps",
+        "operationId": "lease_gaps_api_v1_research_lease_gaps_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/comparisons": {
       "post": {
         "summary": "Compare",
@@ -1273,6 +1289,18 @@
               }
             ],
             "title": "Guide Reference"
+          },
+          "lease_gaps": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Lease Gaps"
           },
           "coordinate_basis": {
             "type": "string",

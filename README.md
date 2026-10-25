@@ -1,6 +1,6 @@
 # Roomwise
 
-Student housing decisions for Virginia Tech, combining the supplied frontend with a same-origin FastAPI backend. Explore source-reviewed housing offers, set preferences and class commitments, compare up to three offers, track the DormToDoor checklist, and save immutable server-owned decision briefs.
+Student housing decisions for Virginia Tech, combining the supplied frontend with a same-origin FastAPI backend. Explore source-reviewed housing offers, set housing preferences, compare up to three offers, track the DormToDoor checklist, and save immutable server-owned decision briefs.
 
 ## Run
 
@@ -17,10 +17,10 @@ Open http://127.0.0.1:8001/ for Roomwise, http://127.0.0.1:8001/docs for API doc
 
 ## Connected behavior
 
-- The supplied `CampusHousing-main/src/` design is served at `/`. Rebuild after changing the shell or CSS. JavaScript and the illustrative hero asset are served under `/assets/`. No Node dependencies or frontend build installation are required.
-- Explore shows all 47 places by default, one card per property, including all 41 insufficient-evidence references. The six original priced properties retain their 68 floor plans. Fresh operator research adds 72 posted plan figures and 13 community map points to guide entries; these observations remain separate from comparable lease quotes until basis, fees and dates are confirmed. Price lists and ranges appear on the right. There are 350 official VT GIS building locations; points are not verified entrances or classroom inventories.
-- Preferences, dates, modes and classes drive server comparisons. Whole-unit splits are explicit scenarios; installments remain distinct from calendar-month rent. Empty schedules permit browsing but cannot establish commute fit.
-- Shortlists, notes, questions, example-schedule provenance, checklist progress and saved brief references sync to SQLite. Browser storage provides a draft cache; sync failures and revision conflicts are visible. A conflict can be resolved by first backing up the local draft and loading the server copy.
+- The supplied `CampusHousing-main/src/` design is served at `/`. Rebuild after changing the shell or CSS; JavaScript source edits are served directly. JavaScript and the illustrative hero asset are served under `/assets/`. No Node dependencies or frontend build installation are required.
+- Explore shows 44 priced properties with 304 plans, one card per property; the housing directory retains 47 guide references. The six original properties contribute 68 plans. October 25 rent-source rechecks cover all 44 priced properties. Source amount mentions are a screening signal, not verification of the exact plan, complete quote or availability. Price lists and ranges appear on the right. There are 350 official VT GIS building locations; points are not verified entrances or classroom inventories.
+- Housing preferences and dates are saved with comparisons. Whole-unit splits are explicit scenarios; installments remain distinct from calendar-month rent. The schedule UI is removed. The current backend catalog policy includes every candidate; the neutral “Research option” badge does not promise that preferences are satisfied.
+- Shortlists, notes, questions, checklist progress and saved brief references sync to SQLite. Browser storage provides a draft cache; sync failures and revision conflicts are visible. A conflict can be resolved by first backing up the local draft and loading the server copy.
 - DormToDoor requests server-generated checklist items. Regeneration preserves status and notes for stable items. User items remain user-owned and do not become reviewed evidence.
 - Briefs freeze the server comparison, original catalog/building records, selected offers, questions and checklist. Refresh restores them from the backend. Later catalog edits do not alter stored snapshots.
 - Property details distinguish current operator asking prices, research-derived fee assumptions and additional observations. Some research fees are counted provisionally and labeled. A criteria match does not verify the full move-in cost, lease dates or availability.
@@ -37,9 +37,9 @@ Default mode remains one local operator. Optional `ROOMWISE_ACCOUNTS_REQUIRED=tr
 
 ## Configuration and storage
 
-Without Google credentials, local street maps use bundled Leaflet 1.9.4 with OpenStreetMap tiles and attribution. Nearby-category searches use the Virginia MapRVA Overpass service on demand and plot matching numbered pins. The shared request cap and a five-minute memory cache limit traffic. Google Places is used when configured; its content is never plotted on the OpenStreetMap fallback. Entries without sourced coordinates still have a labeled address-search map in their Life around section. Prices are checked snapshots with timestamps. Use `tools/backend/refresh_guide_evidence.py` to preview or apply new operator evidence without hiding unresolved entries; the saved brief history is retained.
+Without Google credentials, local street maps use bundled Leaflet 1.9.4 with OpenStreetMap tiles and attribution. Nearby-category searches use the Virginia MapRVA Overpass service on demand and plot matching numbered pins. A five-minute memory cache reduces repeated nearby requests; a shared persistent UTC daily attempt cap bounds Google Places/Routes calls (60 maximum, configurable lower). Provider quotas must separately bound browser SDK usage. Google Places is used when configured; its content is never plotted on the OpenStreetMap fallback. Entries without sourced coordinates still have a labeled address-search map in their Life around section. Prices are checked snapshots with timestamps. Use `tools/backend/refresh_guide_evidence.py` to preview or apply new operator evidence without hiding unresolved entries; the saved brief history is retained.
 
-`.env.example` documents application, AI and Google Maps settings. The backend reads the workspace `.env` at startup; process environment variables take precedence. Both Git and Docker exclude the real `.env`. Enabling external operations alone does not configure a provider. A configured application access token is entered in the browser connection form and held in session storage; API requests use its bearer header. Private Places/Routes/model keys stay server-side and must not be entered in that browser access-token form. The designated Maps JavaScript key is intentionally returned to the browser SDK. Explicit Maps/Places/Routes switches control integration; the shared daily web-service attempt limit defaults to 40 and includes failures. Browser map usage is outside that server cap. Verify account-level key restrictions and quotas separately.
+`.env.example` documents application, AI and Google Maps settings. The backend reads the workspace `.env` at startup; process environment variables take precedence. Both Git and Docker exclude the real `.env`. Enabling external operations alone does not configure a provider. A configured application access token is entered in the browser connection form and held in session storage; API requests use its bearer header. Private Places/Routes/model keys stay server-side and must not be entered in that browser access-token form. The designated Maps JavaScript key is intentionally returned to the browser SDK. Explicit Maps/Places/Routes switches control integration; Google Places/Routes share a persistent UTC daily attempt cap of at most 60; failures count. Provider quotas must separately bound browser SDK usage. Verify account-level key restrictions and quotas separately.
 
 Default local storage under ignored `var/`:
 
@@ -75,7 +75,7 @@ MIT application license; source content, data and model/provider terms are separ
 
 ## Data recovery and operational checks
 
-The Data page exports individual records and provides recoverable trash/restore for workspaces and briefs. Trash is retained until a documented operator purge; it is not permanent erasure of related snapshots, drafts, exports or backups. Optional accounts scope these actions to their owner. Default operator mode can see all local operator records.
+The Data page is hidden from desktop/mobile navigation; the direct `/#data` recovery route remains available. It exports individual records and provides recoverable trash/restore for workspaces and briefs. Trash is retained until a documented operator purge; it is not permanent erasure of related snapshots, drafts, exports or backups. Optional accounts scope these actions to their owner. Default operator mode can see all local operator records.
 
 ```powershell
 .\.venv\Scripts\python.exe tools/backend/audit_readiness.py --report var/readiness-audit.json
@@ -85,3 +85,7 @@ The Data page exports individual records and provides recoverable trash/restore 
 ```
 
 Backups use SQLite snapshots, SHA-256 manifests and integrity checks. Restore requires a new destination, verifies every database before creating it, and never overwrites running storage. Individual databases are consistent; a live multi-database backup is not one global transaction. Credentials, browser drafts and model weights are excluded. The completed seven-database restore drill is in ignored `var/recovery-drill-20261024/`. See [operations](docs/OPERATIONS.md).
+
+## Submission evidence
+
+See [rubric readiness](docs/SUBMISSION_READINESS.md), [the two-minute demo script](docs/DEMO_SCRIPT.md), [the Gemma model card](docs/MODEL_CARD.md), and [all remaining fee/lease quote requests](docs/FEES_AND_LEASE_QUOTES.md). Both exact historical synthetic dataset versions and all experiment reports are under `data/training/`. The actual v1/v2/v3 learned LoRA adapters, manifests and Apache-2.0 notices are under [models/](models/README.md); v2 is selected. Base weights, tokenizers, pickle checkpoints, reviews, chats and workspaces are excluded. Property pages provide copy-only written-quote requests and an assistant scoped to that plan without changing the shortlist. `/api/v1/research/lease-gaps` returns the current property-specific follow-up list.

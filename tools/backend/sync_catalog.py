@@ -27,13 +27,13 @@ def sync_catalog(repository,seed,snapshots,apply=False):
         db.execute('BEGIN IMMEDIATE')
         for prop in seed['properties']:
             previous=db.execute('SELECT body FROM housing_catalog WHERE id=?',(prop['id'],)).fetchone()
-            if previous and json.loads(previous[0])==prop:continue
+            property_changed = not previous or json.loads(previous[0]) != prop
             source_ids={s['id'] for s in prop['sources']}
             if any(o['source_id'] not in source_ids for o in prop['offers']):raise ValueError('Missing price source.')
-            changed.append(prop['id'])
+            if property_changed: changed.append(prop['id'])
             if not apply:continue
             db.execute('CREATE TABLE IF NOT EXISTS housing_catalog_versions(id TEXT PRIMARY KEY,property_id TEXT,created_at TEXT,body TEXT)')
-            if previous:
+            if previous and property_changed:
                 digest=sha256(previous[0].encode()).hexdigest()
                 db.execute('INSERT OR IGNORE INTO housing_catalog_versions VALUES (?,?,?,?)',(digest,prop['id'],now(),previous[0]))
             db.execute('INSERT INTO housing_catalog VALUES (?,?) ON CONFLICT(id) DO UPDATE SET body=excluded.body',

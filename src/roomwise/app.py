@@ -24,7 +24,6 @@ from roomwise.adapters.gtfs_routing import FallbackRoutingAdapter, GtfsRoutingAd
 from roomwise.adapters.google_routes import GoogleRoutesAdapter
 from roomwise.adapters.places import GooglePlaces
 from roomwise.adapters.osm_places import OpenStreetMapPlaces
-from roomwise.repositories.provider_budget import ProviderBudget
 from roomwise.config import ROOT, Settings
 from roomwise.repositories.catalog import CatalogRepository
 from roomwise.repositories.campus import CampusRepository
@@ -35,6 +34,7 @@ from roomwise.api.schemas import AccountInput
 from roomwise.services.comparison import ComparisonService, candidates, catalog_fingerprint
 from roomwise.services.gemma import explain
 from roomwise.services.guide import checklist
+from roomwise.services.lease_gaps import property_lease_gaps, quote_request
 
 
 def create_app(settings=None, *, campuses=None, routing=None, gemma=None, assistant_model=None):
@@ -45,10 +45,8 @@ def create_app(settings=None, *, campuses=None, routing=None, gemma=None, assist
     store=WorkspaceStore(settings.data_dir)
     accounts=Accounts(settings.data_dir)
     evidence=EvidenceRepository(catalog)
-    maps_budget=ProviderBudget(settings.data_dir/'maps-requests.sqlite3',settings.maps_daily_requests,
-                               reserve_places=min(8,settings.maps_daily_requests//5))
-    routing=routing or (FallbackRoutingAdapter(GoogleRoutesAdapter(settings,maps_budget),GtfsRoutingAdapter()) if settings.routes_enabled and settings.routes_api_key else GtfsRoutingAdapter())
-    places=GooglePlaces(settings,maps_budget) if settings.places_enabled and settings.places_api_key else OpenStreetMapPlaces(maps_budget)
+    routing=routing or (FallbackRoutingAdapter(GoogleRoutesAdapter(settings),GtfsRoutingAdapter()) if settings.routes_enabled and settings.routes_api_key else GtfsRoutingAdapter())
+    places=GooglePlaces(settings) if settings.places_enabled and settings.places_api_key else OpenStreetMapPlaces()
     gemma=gemma or UnconfiguredGemmaRuntime()
     comparisons=ComparisonService(catalog,campuses,routing,store)
     assistant=AssistantService(settings,assistant_model or JSONModel(settings))
@@ -210,6 +208,15 @@ def create_app(settings=None, *, campuses=None, routing=None, gemma=None, assist
         return {'property_id':property_id,'reviewed_on':research['reviewed_on'],
                 'status':'research_requires_offer_reconciliation','included_in_comparison_totals':False,
                 'observations':[o for o in research['observations'] if o['property_id']==property_id]}
+
+    @app.get('/api/v1/research/lease-gaps')
+    def lease_gaps():
+        items = [property_lease_gaps(p) for p in catalog.catalog()]
+        for item in items:
+            item['quote_request'] = quote_request(item)
+        return {'status':'operator_confirmation_needed', 'properties':items,
+                'priced_properties':sum(bool(p['plan_count']) for p in items),
+                'limitation':'No current individualized written operator quote is stored. Listed fees do not establish a complete fee schedule.'}
 
     @app.post('/api/v1/comparisons',response_model=ComparisonResponse)
     def compare(body:ComparisonInput): return comparisons.compare(body)

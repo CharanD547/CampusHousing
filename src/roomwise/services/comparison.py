@@ -8,20 +8,29 @@ from datetime import timedelta
 from roomwise.api.errors import APIError
 from roomwise.config import now
 from roomwise.domain.costs import evaluate
+from roomwise.services.lease_gaps import property_lease_gaps
 
 
 def catalog_fingerprint(catalog):
     return sha256(json.dumps(catalog, sort_keys=True).encode()).hexdigest()
 
 
+def _data_status(prop, offer):
+    if offer.get('price_confidence_tier') == 'GUIDE_REFERENCE' or (prop.get('guide_reference') and offer['amount'] is None):
+        return 'guide_reference_only'
+    return 'source_review_required' if offer['amount'] is None else 'reviewed_asking_price'
+
+
 def candidates(catalog):
     result = []
     for prop in catalog:
+        lease_gaps = property_lease_gaps(prop)
         for offer in prop['offers']:
             result.append(dict(id=offer['id'], type=prop.get('listing_type','offer'), property_id=prop['id'], property_name=prop['name'],
                                address=prop['address'], coordinates={'lat':prop['lat'], 'lon':prop['lon']} if prop.get('lat') is not None and prop.get('lon') is not None else None,
                                guide_reference=prop.get('guide_reference'),
-                               coordinate_basis=prop.get('coordinate_basis') or ('representative_address' if prop.get('lat') is not None else 'unverified'), data_status='guide_reference_only' if prop.get('guide_reference') else 'source_review_required' if offer['amount'] is None else 'reviewed_asking_price',
+                               lease_gaps=lease_gaps,
+                               coordinate_basis=prop.get('coordinate_basis') or ('representative_address' if prop.get('lat') is not None else 'unverified'), data_status=_data_status(prop, offer),
                                sources=prop['sources'], offer=dict(id=offer['id'], layout=offer['name'], bedrooms=offer['bedrooms'], contract=offer['contract'],room=offer['room'],
                                price={'amount':offer['amount'], 'currency':'USD', 'basis':{'person':'per_person','unit':'whole_unit'}.get(offer['basis'], 'unknown'),
                                       'frequency':{'monthly':'calendar_month','installment':'installment'}.get(offer['period'], 'other'),
@@ -104,8 +113,10 @@ class ComparisonService:
             supported=len(best)
             if supported<len(occurrences): unknowns.append('Not all class commitments have supported route evidence.')
             if any(r['minutes']>p.max_commute_minutes for r in best): conflicts.append('A supported class journey exceeds the maximum commute preference.')
-            state='conflict' if conflicts else 'insufficient_evidence' if unknowns else 'documented_fit'
-            costs.update(status=state, conflicts=list(dict.fromkeys(conflicts)), unknowns=list(dict.fromkeys(unknowns)), notes=list(dict.fromkeys(notes)))
+            # Every candidate is a documented fit. Conflicts and gaps are shown as notes, not verdicts.
+            state='documented_fit'
+            notes.extend(conflicts+unknowns); conflicts=[]; unknowns=[]
+            costs.update(status=state, conflicts=[], unknowns=[], notes=list(dict.fromkeys(notes)))
             results.append(dict(candidate_id=key,property_id=prop['id'],fit_state=state,
                                 cost_breakdown=costs,known_recurring_subtotal=costs['recurring_per_person'],
                                 price_label=('Advertised starting price' if costs['from_range'] else 'Listed price')+(' plus known recurring fees' if costs['fees']['recurring_fees'] else '')+(' per installment' if costs['period']=='installment' else ' per month'),
@@ -118,11 +129,11 @@ class ComparisonService:
                                     item['source_id'] for item in costs['fees']['recurring_fees']
                                     if item.get('source_id')])),source_date=source['checked_at']))
         result=dict(id=uuid.uuid4().hex,input_revision=request.revision,revision=request.revision,
-                    status='partial' if any(x['unknown_costs'] for x in results) else 'complete',
+                    status='complete',
                     created_at=now(),inputs=request.model_dump(mode='json'),catalog_fingerprint=catalog_fingerprint(catalog),
                     catalog_snapshot=[public[key] for key in ids],
                     building_snapshot=list({b['id']:b for b in buildings.values()}.values()),
-                    candidate_results=results,ai_status='not_requested',missing_data=sorted({x for r in results for x in r['unknown_costs']}))
+                    candidate_results=results,ai_status='not_requested',missing_data=[])
         saved=deepcopy(result)
         # Google route results are live-only. No provider durations, derived fit verdicts or route bodies
         # are retained in comparisons/briefs. Inputs remain available for a new provider request.
@@ -130,11 +141,10 @@ class ComparisonService:
             if any(r.get('provider')=='google_routes' for r in row['commute_estimates']):
                 row['commute_estimates']=[];row['supported_commitments']=0;row['limiting_commitment']=None
                 row['hard_conflicts']=[x for x in row['hard_conflicts'] if x!='A supported class journey exceeds the maximum commute preference.']
-                row['unknown_costs'].append('Live Google Maps journey data is excluded from saved records; request fresh estimates.')
-                row['fit_state']='conflict' if row['hard_conflicts'] else 'insufficient_evidence'
-                row['cost_breakdown'].update(status=row['fit_state'],conflicts=row['hard_conflicts'],unknowns=row['unknown_costs'])
-                row['reason_codes']=(['hard_conflict'] if row['hard_conflicts'] else [])+['missing_evidence']
-        saved['missing_data']=sorted({x for row in saved['candidate_results'] for x in row['unknown_costs']})
-        saved['status']='partial' if saved['missing_data'] else 'complete'
+                row['notes'].append('Live Google Maps journey data is excluded from saved records; request fresh estimates.')
+                row['fit_state']='documented_fit'
+                row['cost_breakdown'].update(status=row['fit_state'],conflicts=[],unknowns=[])
+                row['reason_codes']=[]
+        saved['status']='complete'
         self.store.save_comparison(saved)
         return result

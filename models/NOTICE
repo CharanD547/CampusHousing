@@ -1,0 +1,16 @@
+Roomwise Gemma 4 E4B LoRA experiments
+
+Base model: google/gemma-4-E4B-it, published by Google.
+Base model license: Apache License, Version 2.0.
+Official license reference: https://ai.google.dev/gemma/apache_2
+Base model card: https://huggingface.co/google/gemma-4-E4B-it
+
+Roomwise contributors trained the included LoRA tensor deltas on authored
+synthetic housing-evidence examples. They also changed the published PEFT
+configuration's local base path to the public model identity and recorded
+the historical resolved revision, where available. Tensor bytes are unchanged.
+See each manifest for hashes and the v3 revision-verification limitation.
+
+No base weights or tokenizer copies are distributed in this repository.
+These are experimental modifications, not an official Google release or endorsement.
+The application and authored dataset retain their separate MIT license.

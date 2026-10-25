@@ -2,17 +2,18 @@
 const MAPS={loading:null,error:null,map:null,element:null,markers:[],contextKey:null};
 const NEARBY={property:null,category:'groceries',radius:2500,mode:'walking',data:null,pending:false,error:null,serial:0,selected:null};
 const NEARBY_CATEGORIES={groceries:'Groceries',restaurant:'Restaurants',gas_station:'Gas stations',cafe:'Cafes',pharmacy:'Pharmacies',library:'Libraries'};
-const STREET={map:null,element:null,layer:null,context:null,error:null,observer:null,markers:[],nearbyMarkers:new Map()};
+function milesFromMeters(meters) { return Number.isFinite(meters) && meters >= 0 ? (meters / 1609.344).toFixed(2) + ' miles' : 'Distance unavailable'; }
+const STREET={map:null,element:null,layer:null,context:null,error:null,observer:null,markers:[],nearbyMarkers:new Map(),markerKey:null};
 
 function layoutStreetMarkers() {
   const occupied=[];
-  for(const {marker,label,selected} of STREET.markers) {
+  for(const {marker,label,selected} of [...STREET.markers].sort((a,b)=>Number(b.selected)-Number(a.selected))) {
     const point=STREET.map.latLngToContainerPoint(marker.getLatLng());
-    let offset=0;
-    while(occupied.some(r=>Math.abs(point.x-r.x)<92 && Math.abs(point.y+offset-r.y)<40))offset+=42;
-    occupied.push({x:point.x,y:point.y+offset});
-    marker.setIcon(L.divIcon({className:'housing-marker'+(selected?' is-selected':''),
-      html:`<span>${esc(label)}</span>`,iconSize:[86,34],iconAnchor:[43,34-offset]}));
+    const compact=!selected && occupied.some(r=>Math.abs(point.x-r.x)<92 && Math.abs(point.y-r.y)<40);
+    if(!compact)occupied.push(point);
+    marker.setIcon(L.divIcon({className:'housing-marker'+(selected?' is-selected':'')+(compact?' is-compact':''),
+      html:`<span>${esc(label)}</span>`,iconSize:compact?[18,18]:[86,34],iconAnchor:compact?[9,9]:[43,34]}));
+    marker.getElement?.()?.setAttribute('aria-label',(marker.options?.title || 'Housing location')+' · '+label);
   }
 }
 
@@ -52,6 +53,10 @@ function hydrateStreetMap() {
     STREET.observer.observe(el);
   }
   STREET.map.invalidateSize({pan:false});
+  const freshNearby=nearbyView && NEARBY.property===candidate(offers)?.property_id && NEARBY.data?.provider==='OpenStreetMap'?NEARBY.data:null;
+  const markerKey=JSON.stringify([offers,UI.selected,freshNearby?.places,NEARBY.selected]);
+  if(STREET.markerKey===markerKey)return;
+  STREET.markerKey=markerKey;
   STREET.layer.clearLayers();
   STREET.markers=[];
   STREET.nearbyMarkers.clear();
@@ -77,6 +82,7 @@ function hydrateStreetMap() {
     const position=[p.location.latitude,p.location.longitude];bounds.push(position);
     const marker=L.marker(position,{title:p.name,alt:p.name,icon:L.divIcon({className:'nearby-marker',html:`<span class="nearby-pin">${index+1}</span>`,iconSize:[30,30],iconAnchor:[15,15]})}).addTo(STREET.layer);
     marker.bindTooltip(esc(p.name),{direction:'top'});
+    marker.getElement?.()?.setAttribute('aria-label','Nearby '+(index+1)+': '+p.name);
     STREET.nearbyMarkers.set(p.id,marker);
     marker.on('click',()=>document.getElementById('nearby-place-'+index)?.scrollIntoView({block:'nearest',behavior:'smooth'}));
     if(p.id===NEARBY.selected)marker.openTooltip();
@@ -171,13 +177,13 @@ function nearbySection(c) {
   return `<section class="panel stack-sm" id="nearby-essentials"><h2>Life around ${esc(c.property_name)}</h2>
     <p class="small">Find nearby essentials from this property's approximate address. Search one category at a time; up to eight places are ranked by distance. Results stay in this view and are excluded from briefs and AI.</p>
     <div class="nearby-categories" role="group" aria-label="Nearby categories">${Object.entries(NEARBY_CATEGORIES).map(([key,label])=>`<button class="btn btn-sm" data-nearby-category="${key}" aria-pressed="${NEARBY.category===key}" ${NEARBY.pending?'disabled':''}>${label}</button>`).join('')}</div>
-    <div class="nearby-controls"><div><label for="nearby-radius">Search radius</label><select class="input" id="nearby-radius">${[1000,2500,5000].map(n=>`<option value="${n}" ${n===NEARBY.radius?'selected':''}>${n/1000} km</option>`).join('')}</select></div>
+    <div class="nearby-controls"><div><label for="nearby-radius">Search radius</label><select class="input" id="nearby-radius">${[1000,2500,5000].map(n=>`<option value="${n}" ${n===NEARBY.radius?'selected':''}>${milesFromMeters(n)}</option>`).join('')}</select></div>
     <div><label for="nearby-mode">Directions mode</label><select class="input" id="nearby-mode">${[['walking','Walk'],['driving','Drive'],['bicycling','Bike'],['transit','Transit']].map(([key,label])=>`<option value="${key}" ${key===NEARBY.mode?'selected':''}>${label}</option>`).join('')}</select></div></div>
     <button class="btn btn-primary" data-action="nearby-search" data-property="${esc(c.property_id)}" ${NEARBY.pending || !API.maps?.places_available?'disabled':''}>${NEARBY.pending?'Searching…':'Find '+NEARBY_CATEGORIES[NEARBY.category].toLowerCase()}</button>
     ${!API.maps?.places_available?'<p role="status">Nearby search is unavailable. Configure Places API access to search here.</p>':''}
     ${API.maps?.enabled && !MAPS.error?`<div class="google-map nearby-map" data-offers="${esc(c.id)}" data-nearby="true" aria-label="Map of this property and nearby places"></div>`:streetMapShell([{cand:c}],true)}
     <div id="nearby-results" aria-live="polite" aria-busy="${NEARBY.pending}">${NEARBY.error?`<p role="alert">${esc(NEARBY.error)}</p>`:''}
-    ${data?`<p class="small">${esc(data.reason)}</p>${data.status==='available'?`${data.provider==='OpenStreetMap'?'<p class="tiny">© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap contributors</a></p>':'<img src="/assets/google-maps-attribution.svg" height="18" alt="Google Maps" style="height:18px;width:auto">'}<ol class="nearby-list">${data.places.map((p,index)=>`<li id="nearby-place-${index}"><div><b>${esc(p.name)}</b><p class="small">${esc(p.address || 'Address unavailable')}</p><p class="tiny">${p.distance_meters==null?'Distance unavailable':(p.distance_meters/1000).toFixed(2)+' km straight-line'}</p></div><div class="btn-row"><a class="btn btn-sm" href="${esc(nearbyDirections(c,p))}" target="_blank" rel="noopener noreferrer">${NEARBY.mode==='walking'?'Walk':NEARBY.mode==='driving'?'Drive':NEARBY.mode==='bicycling'?'Bike':'Transit'} directions ↗</a><a class="btn btn-sm" href="${esc(safeMapsURL(p.url))}" target="_blank" rel="noopener noreferrer">${data.provider==='OpenStreetMap'?'OpenStreetMap':'Google Maps'} ↗</a>${p.location?`<button class="btn btn-sm" data-nearby-focus="${index}">Show on map</button>`:''}</div>${(p.attributions||[]).map(a=>`<a class="tiny" href="${esc(safeMapsURL(a.providerUri))}" target="_blank" rel="noopener noreferrer">${esc(a.provider||'')}</a>`).join('')}</li>`).join('')}</ol>${!data.places.length?'<p>No results returned in this radius. Try a wider search; this does not prove no businesses exist.</p>':''}`:''}`:''}</div>
+    ${data?`<p class="small">${esc(data.reason)}</p>${data.status==='available'?`${data.provider==='OpenStreetMap'?'<p class="tiny">© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap contributors</a></p>':'<img src="/assets/google-maps-attribution.svg" height="18" alt="Google Maps" style="height:18px;width:auto">'}<ol class="nearby-list">${data.places.map((p,index)=>`<li id="nearby-place-${index}"><div><b>${esc(p.name)}</b><p class="small">${esc(p.address || 'Address unavailable')}</p><p class="tiny">${p.distance_meters==null?'Distance unavailable':milesFromMeters(p.distance_meters)+' straight-line'}</p></div><div class="btn-row"><a class="btn btn-sm" href="${esc(nearbyDirections(c,p))}" target="_blank" rel="noopener noreferrer">${NEARBY.mode==='walking'?'Walk':NEARBY.mode==='driving'?'Drive':NEARBY.mode==='bicycling'?'Bike':'Transit'} directions ↗</a><a class="btn btn-sm" href="${esc(safeMapsURL(p.url))}" target="_blank" rel="noopener noreferrer">${data.provider==='OpenStreetMap'?'OpenStreetMap':'Google Maps'} ↗</a>${p.location?`<button class="btn btn-sm" data-nearby-focus="${index}">Show on map</button>`:''}</div>${(p.attributions||[]).map(a=>`<a class="tiny" href="${esc(safeMapsURL(a.providerUri))}" target="_blank" rel="noopener noreferrer">${esc(a.provider||'')}</a>`).join('')}</li>`).join('')}</ol>${!data.places.length?'<p>No results returned in this radius. Try a wider search; this does not prove no businesses exist.</p>':''}`:''}`:''}</div>
     <p class="tiny">Directions open in Google Maps from the property, not your device location. Opening hours, prices and accessibility are unverified. Search radius is not travel distance.</p></section>`;
 }
 function safeMapsURL(value) {try{const url=new URL(value);return url.protocol==='https:'?url.href:'#';}catch(error){return '#';}}
@@ -195,7 +201,7 @@ document.addEventListener('change',event=>{
 });
 document.addEventListener('click',async event=>{
   const categoryButton=event.target.closest('[data-nearby-category]');
-  if(categoryButton) {NEARBY.category=categoryButton.dataset.nearbyCategory;NEARBY.data=null;NEARBY.error=null;NEARBY.serial++;render();return;}
+  if(categoryButton) {NEARBY.pending=false;NEARBY.selected=null;NEARBY.category=categoryButton.dataset.nearbyCategory;NEARBY.data=null;NEARBY.error=null;NEARBY.serial++;render();return;}
   const focus=event.target.closest('[data-nearby-focus]');
   if(focus) {
     const place=NEARBY.data?.places[Number(focus.dataset.nearbyFocus)];

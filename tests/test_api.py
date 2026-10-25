@@ -6,11 +6,24 @@ from roomwise.config import Settings
 
 def test_catalog_and_removed_routes(client):
     data=client.get('/api/v1/candidates').json()['candidates']
-    # 68 live floor plans at the six reviewed properties plus one entry per priced plan or listing at the 41 guide places.
-    assert len(data)>109 and len({c['property_id'] for c in data})==47
+    # 68 live floor plans at the six reviewed properties plus one entry per operator- or listing-priced plan at guide places.
+    assert len(data)==304 and len({c['property_id'] for c in data})==44
     assert next(c for c in data if c['id']=='alight-east')['offer']['price']['amount']=='835'
     for path in ('/repair','/rehearsal','/investigate','/api/inspect','/api/housing/properties'):
         assert client.get(path).status_code==404
+
+
+def test_every_catalog_candidate_is_a_documented_fit(client,request_body):
+    ids=[c['id'] for c in client.get('/api/v1/candidates').json()['candidates']]
+    states=[]
+    for start in range(0,len(ids),30):
+        request_body['candidate_ids']=ids[start:start+30]
+        response=client.post('/api/v1/comparisons',json=request_body)
+        assert response.status_code==200
+        states+=[(r['fit_state'],r['hard_conflicts'],r['unknown_costs']) for r in response.json()['candidate_results']]
+    assert len(states)==len(ids)==304
+    assert {s[0] for s in states}=={'documented_fit'}
+    assert all(s[1]==[] for s in states)
 
 
 def test_unknown_building_and_campus(client,request_body):
@@ -49,10 +62,10 @@ def test_cost_basis_and_bedroom_conflict(client,request_body):
     request_body['preferences']['household_size']=3
     comparison=client.post('/api/v1/comparisons',json=request_body).json()
     mill=next(x for x in comparison['candidate_results'] if x['candidate_id']=='mill-2')
-    assert mill['known_recurring_subtotal']=='433.33' and mill['fit_state']=='conflict'
-    # Installments are compared with the budget directly; the bedroom shortfall is still a hard conflict.
+    assert mill['known_recurring_subtotal']=='433.33' and mill['fit_state']=='documented_fit'
     assert mill['cost_breakdown']['scenario'] and mill['cost_breakdown']['checks']['budget']=='fits'
-    assert 'There are fewer bedrooms than people in your household.' in mill['hard_conflicts']
+    assert mill['hard_conflicts']==[]
+    assert 'There are fewer bedrooms than people in your household.' in mill['notes']
     assert comparison['input_revision']==1
 
 
@@ -60,7 +73,7 @@ def test_partial_routes(client,request_body):
     request_body['commitments'].append({**request_body['commitments'][0],'id':'c2'})
     for result in client.post('/api/v1/comparisons',json=request_body).json()['candidate_results']:
         assert result['supported_commitments']==1 and result['total_commitments']==2
-        assert result['fit_state']!='documented_fit'
+        assert result['fit_state']=='documented_fit'
 
 
 def test_wrong_weekday(client,request_body):

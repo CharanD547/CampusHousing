@@ -11,7 +11,6 @@ from roomwise.config import Settings
 from roomwise.adapters.google_routes import GoogleRoutesAdapter
 from roomwise.adapters.places import GooglePlaces
 from roomwise.api.schemas import Commitment,Preferences
-from roomwise.repositories.provider_budget import ProviderBudget
 from tools.backend.backup import backup,restore
 
 
@@ -34,13 +33,12 @@ def test_places_header_scope_and_failures(tmp_path):
         assert 'key' not in request.url.params
         return httpx.Response(200,json={'places':[{'id':'p','displayName':{'text':'Test supermarket'},'googleMapsUri':'https://maps.google.com/?cid=123'}]})
     settings=Settings(tmp_path,places_enabled=True,places_api_key='private-places-test-key')
-    budget=ProviderBudget(tmp_path/'budget.sqlite3',1)
-    places=GooglePlaces(settings,budget,httpx.MockTransport(provider))
+    places=GooglePlaces(settings,httpx.MockTransport(provider))
     assert places.nearby({'lat':37.2,'lon':-80.4},'groceries')['places'][0]['name']=='Test supermarket'
-    assert places.nearby({'lat':37.2,'lon':-80.4},'groceries')['status']=='unavailable'
-    assert len(calls)==1
+    assert places.nearby({'lat':37.2,'lon':-80.4},'groceries')['places'][0]['name']=='Test supermarket'
+    assert len(calls)==2
     assert not any('places' in name for name in [p.name for p in tmp_path.iterdir()])
-    disabled=GooglePlaces(replace(settings,places_enabled=False),budget,httpx.MockTransport(provider))
+    disabled=GooglePlaces(replace(settings,places_enabled=False),httpx.MockTransport(provider))
     assert disabled.nearby({},'cafe')['status']=='unavailable'
 
 
@@ -54,7 +52,7 @@ def test_routes_buffer_modes_and_no_secret_leaks(tmp_path,monkeypatch):
         calls.append(json.loads(request.content))
         return httpx.Response(200,json={'routes':[{'duration':'900s'}]})
     settings=Settings(tmp_path,routes_enabled=True,routes_api_key='private-route-test-key')
-    adapter=GoogleRoutesAdapter(settings,ProviderBudget(tmp_path/'budget.sqlite3',8),httpx.MockTransport(provider))
+    adapter=GoogleRoutesAdapter(settings,httpx.MockTransport(provider))
     candidate={'id':'offer','property_id':'property','coordinate_basis':'representative_address','coordinates':{'lat':37.2,'lon':-80.4}}
     building={'id':'building','lat':37.22,'lon':-80.42}
     commitment=Commitment(id='class',building_id='building',weekdays=['mon'],arrival_time_local='09:00',arrival_buffer_minutes=15)
@@ -68,7 +66,7 @@ def test_routes_buffer_modes_and_no_secret_leaks(tmp_path,monkeypatch):
     adapter.estimate(candidate,building,commitment,'walk',date(2026,10,26),prefs)
     assert 'arrivalTime' not in calls[1]
     assert 'private-route-test-key' not in json.dumps(transit)
-    denied=GoogleRoutesAdapter(settings,ProviderBudget(tmp_path/'denied.sqlite3',2),httpx.MockTransport(lambda request:httpx.Response(403,json={'error':{'message':'private-route-test-key'}})))
+    denied=GoogleRoutesAdapter(settings,httpx.MockTransport(lambda request:httpx.Response(403,json={'error':{'message':'private-route-test-key'}})))
     failed=denied.estimate(candidate,building,commitment,'walk',date(2026,10,26),prefs)
     assert failed['minutes'] is None and failed['status']=='unavailable'
     assert 'private-route-test-key' not in json.dumps(failed)
@@ -78,7 +76,7 @@ def test_routes_buffer_modes_and_no_secret_leaks(tmp_path,monkeypatch):
 
 def test_google_routes_not_retained_in_comparisons_or_briefs(tmp_path,request_body):
     settings=Settings(tmp_path,routes_enabled=True,routes_api_key='test-key')
-    adapter=GoogleRoutesAdapter(settings,ProviderBudget(tmp_path/'budget.sqlite3',12),httpx.MockTransport(lambda request:httpx.Response(200,json={'routes':[{'duration':'999s'}]})))
+    adapter=GoogleRoutesAdapter(settings,httpx.MockTransport(lambda request:httpx.Response(200,json={'routes':[{'duration':'999s'}]})))
     client=TestClient(create_app(settings,routing=adapter))
     request_body['commitments'][0]['building_id']='vt-0151'
     comparison=client.post('/api/v1/comparisons',json=request_body).json()

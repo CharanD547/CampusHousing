@@ -84,6 +84,9 @@ wandb/
 .huggingface/
 .hf/
 *.safetensors
+!/models/roomwise-gemma-4-e4b-v1/adapter_model.safetensors
+!/models/roomwise-gemma-4-e4b-v2/adapter_model.safetensors
+!/models/roomwise-gemma-4-e4b-v3/adapter_model.safetensors
 *.gguf
 *.ckpt
 *.pt

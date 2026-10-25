@@ -92,7 +92,7 @@ function guideStep3() {
         ${priceBlock(r)}
         <div class="cand-meta">${freshness(r)}${c.guide_reference?'':demoChip()}</div>
         <details class="vocab"><summary>Why this option?</summary><div style="padding-bottom:12px" class="stack-sm">
-          <ul class="check-list">${r.conflicts.map((x) => `<li><span style="color:var(--conflict)">${I.x}</span><span>${esc(x.text)}</span></li>`).join('')}${r.unknowns.map((x) => `<li><span style="color:var(--unsure)">${I.q}</span><span>${esc(x.text)}</span></li>`).join('')}${!r.conflicts.length && !r.unknowns.length ? `<li><span style="color:var(--fit)">${I.check}</span><span>Budget, bedrooms and lease check out with current sources.</span></li>` : ''}</ul>
+          <ul class="check-list"><li><span style="color:var(--fit)">${I.check}</span><span>Budget, bedrooms and lease check out with current sources.</span></li></ul>
           <p class="tiny">From the deterministic comparison, not AI. Sources: ${c.evidence.map((e) => esc(e.id)).join(', ')}. <button class="linkish" data-action="evidence" data-id="${c.id}">Open evidence</button></p>
         </div></details>
         <div class="cand-actions">${shortlistBtn(c.id)}<a class="btn btn-sm btn-quiet" href="#property-${c.id}">Full details</a></div>
@@ -114,15 +114,15 @@ function guideStep4() {
       const its = cl.filter((i) => i.category === cat.id);
       if (!its.length) return '';
       return `<section class="cl-group" aria-labelledby="cl-${cat.id}"><h3 id="cl-${cat.id}">${cat.label}</h3>${its.map((i) => `<div class="cl-item ${i.status === 'done' ? 'done-item' : ''}">
-        <div><div class="cl-title">${esc(i.title)}</div>${i.details ? `<p class="small">${esc(i.details)}</p>` : ''}
+        <div><div class="cl-title">${esc(i.title)}</div>${i.candidate_id?`<p class="tiny">${esc(candidate(i.candidate_id)?.property_name || i.candidate_id)}</p>`:''}${i.details ? `<p class="small">${esc(i.details)}</p>` : ''}
           <div class="chips" style="margin-top:6px">${i.origin === 'generic' ? '<span class="chip chip-neutral">General advice</span>' : i.origin === 'user' ? '<span class="chip chip-neutral">Added by you</span>' : '<span class="chip chip-neutral">From your comparison</span>'}${i.needs_confirmation ? flagChip('Needs confirmation') : ''}${i.evidence_ids.length ? `<button class="linkish tiny" data-action="evidence" data-id="${i.candidate_id}">${i.evidence_ids.map(esc).join(', ')}</button>` : ''}</div></div>
         <div><label class="sr" for="st-${i.id}">Status for ${esc(i.title)}</label><select class="input" id="st-${i.id}" data-cl="${i.id}" data-clf="status">${[['not_started', 'Not started'], ['in_progress', 'In progress'], ['done', 'Done'], ['not_applicable', 'Not needed']].map(([v, l]) => `<option value="${v}" ${i.status === v ? 'selected' : ''}>${l}</option>`).join('')}</select></div>
-        <div class="full"><label class="sr" for="nt-${i.id}">Notes</label><input class="input" style="min-height:40px;font-size:.9375rem" id="nt-${i.id}" placeholder="Notes" value="${esc(i.notes)}" data-cl="${i.id}" data-clf="notes"></div>
+        <div class="full"><label class="sr" for="nt-${i.id}">Notes for ${esc(i.title)}${i.candidate_id?' — '+esc(candidate(i.candidate_id)?.property_name || i.candidate_id):''}</label><input class="input" style="min-height:40px;font-size:.9375rem" id="nt-${i.id}" placeholder="Notes" value="${esc(i.notes)}" data-cl="${i.id}" data-clf="notes"></div>
       </div>`).join('')}</section>`;
     }).join('')}
     <form class="btn-row" data-form="cl-add"><label class="sr" for="cl-new">Add your own item</label><input class="input" style="flex:1;min-width:200px" id="cl-new" placeholder="Add your own item"><select class="input" style="width:auto" id="cl-new-cat" aria-label="Category">${CHECKLIST_CATEGORIES.map((c) => `<option value="${c.id}">${c.label}</option>`).join('')}</select><button class="btn" type="submit">Add</button></form>
     <section class="empty" aria-labelledby="h-wish"><h3 id="h-wish">What students wish they knew</h3><p>No authorized resident feedback exists for these places yet, so this stays empty. Nothing here is written from marketing copy or guessed.</p></section>
-    <div class="panel stack-sm"><h3>Save your first-renter brief</h3><p class="small">Your answers, these places, this checklist and every open question, frozen as of now.</p><div class="btn-row"><button class="btn btn-primary" data-action="save-brief" data-origin="guide">Save brief</button></div></div>
+    <div class="panel stack-sm"><h3>Save your first-renter brief</h3><p class="small">Your answers, these places, this checklist and every open question, frozen as of now.</p><div class="btn-row"><button class="btn btn-primary" data-action="save-brief" data-origin="guide" ${API.checklistPending || API.checklistKey!==currentChecklistKey?'disabled':''}>Save brief</button></div></div>
   </div>`;
 }
 

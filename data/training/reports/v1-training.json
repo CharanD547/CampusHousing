@@ -1,0 +1,68 @@
+{
+  "mode": "training",
+  "base_model": "var/models/gemma-4-E4B-it",
+  "dependencies": {
+    "torch": true,
+    "transformers": true,
+    "peft": true,
+    "datasets": true,
+    "accelerate": true
+  },
+  "hf_token_present": false,
+  "examples": {
+    "train": 192,
+    "validation": 24,
+    "test": 24
+  },
+  "weights_downloaded": true,
+  "model_trained": true,
+  "base_revision": "ee0ef6023621cff504d758262d4e04895a5af4a2",
+  "validation_before": {
+    "eval_loss": 4.715637683868408,
+    "eval_model_preparation_time": 0.0258,
+    "eval_runtime": 3.5172,
+    "eval_samples_per_second": 6.824,
+    "eval_steps_per_second": 6.824,
+    "epoch": 0
+  },
+  "validation_after": {
+    "eval_loss": 0.018960950896143913,
+    "eval_model_preparation_time": 0.0258,
+    "eval_runtime": 2.4917,
+    "eval_samples_per_second": 9.632,
+    "eval_steps_per_second": 9.632,
+    "epoch": 2.0
+  },
+  "dataset_manifest": {
+    "base_model": "google/gemma-3-1b-it",
+    "status": "synthetic_smoke_dataset_not_a_validated_benchmark",
+    "base_model_revision": "dcc83ea841ab6100d6b47a070329e1ba4cf78752",
+    "raw_review_records_used": 0,
+    "external_review_training_permission": "not_established",
+    "split_method": "context-group disjoint; templates shared, so not a generalization benchmark",
+    "purpose": "Evidence discipline and renting concepts; never memorization of current rents",
+    "files": {
+      "train": {
+        "records": 192,
+        "sha256": "f30c4b196dbf3433f147ce145425fae4b2079b98ac21890953275f3e454c2c1e"
+      },
+      "validation": {
+        "records": 24,
+        "sha256": "091cedb3287255dc3d2863697a0856ef376608ad6b7c93740259d1c04b14a6ec"
+      },
+      "test": {
+        "records": 24,
+        "sha256": "35d3ead12c8a244de53b79eac8c912c234ae86f4bfe1b9a0988cc6388d6f6caf"
+      }
+    }
+  },
+  "task_quality_status": "not_established; held-out generation and baseline comparison still required",
+  "adapter_type": "LoRA; base model weights remain separately licensed",
+  "packages": {
+    "torch": "2.11.0+cu128",
+    "transformers": "5.20.2",
+    "peft": "0.21.2",
+    "datasets": "4.8.5",
+    "accelerate": "1.15.0"
+  }
+}

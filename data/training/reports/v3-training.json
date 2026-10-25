@@ -1,0 +1,74 @@
+{
+  "mode": "training",
+  "base_model": "var/models/gemma-4-E4B-it",
+  "dependencies": {
+    "torch": true,
+    "transformers": true,
+    "peft": true,
+    "datasets": true,
+    "accelerate": true
+  },
+  "hf_token_present": false,
+  "examples": {
+    "train": 192,
+    "validation": 24,
+    "test": 24
+  },
+  "weights_downloaded": false,
+  "model_trained": true,
+  "local_weights_used": true,
+  "base_revision": null,
+  "declared_revision": "ee0ef6023621cff504d758262d4e04895a5af4a2",
+  "revision_verification": "Local directory; supplied revision is not independently verified",
+  "init_adapter": null,
+  "epochs": 2,
+  "learning_rate": 0.0002,
+  "validation_before": {
+    "eval_loss": 4.416243553161621,
+    "eval_model_preparation_time": 0.015,
+    "eval_runtime": 5.4411,
+    "eval_samples_per_second": 4.411,
+    "eval_steps_per_second": 4.411,
+    "epoch": 0
+  },
+  "validation_after": {
+    "eval_loss": 0.009860132820904255,
+    "eval_model_preparation_time": 0.015,
+    "eval_runtime": 3.2122,
+    "eval_samples_per_second": 7.472,
+    "eval_steps_per_second": 7.472,
+    "epoch": 2.0
+  },
+  "dataset_manifest": {
+    "base_model": "google/gemma-4-E4B-it",
+    "status": "synthetic_smoke_dataset_not_a_validated_benchmark",
+    "base_model_revision": "ee0ef6023621cff504d758262d4e04895a5af4a2",
+    "raw_review_records_used": 0,
+    "external_review_training_permission": "not_established",
+    "split_method": "context-group disjoint; templates shared, so not a generalization benchmark",
+    "purpose": "Evidence discipline and renting concepts; never memorization of current rents",
+    "files": {
+      "train": {
+        "records": 192,
+        "sha256": "b1e49410b4feccfefa5e7d13546d04577b62dc52baabc0980138b5182d3eefc7"
+      },
+      "validation": {
+        "records": 24,
+        "sha256": "81e9aea3d4326eebf890688534eb543c7e8070cf6e36977c582da6535062c486"
+      },
+      "test": {
+        "records": 24,
+        "sha256": "ded2a4572d316b68b0d4a174d4fc6d7a433d41cc1caf68b93910d25e2c12f8db"
+      }
+    }
+  },
+  "task_quality_status": "not_established; held-out generation and baseline comparison still required",
+  "adapter_type": "LoRA; base model weights remain separately licensed",
+  "packages": {
+    "torch": "2.11.0+cu128",
+    "transformers": "5.20.2",
+    "peft": "0.21.2",
+    "datasets": "4.8.5",
+    "accelerate": "1.15.0"
+  }
+}

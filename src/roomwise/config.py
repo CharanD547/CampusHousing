@@ -28,9 +28,9 @@ class Settings:
     maps_enabled: bool = False
     places_enabled: bool = False
     routes_enabled: bool = False
-    maps_daily_requests: int = 40
     accounts_required: bool = False
     local_operator_enabled: bool = False
+    maps_daily_requests: int = 60
 
     @classmethod
     def from_env(cls):
@@ -46,6 +46,7 @@ class Settings:
                    min(1000,max(0,int(get('ROOMWISE_AI_DAILY_REQUESTS','30')))),
                    get('ROOMWISE_MAPS_JAVASCRIPT_API_KEY'),get('ROOMWISE_PLACES_API_KEY'),get('ROOMWISE_ROUTES_API_KEY'),
                    get('ROOMWISE_MAPS_ENABLED','false').lower()=='true',get('ROOMWISE_PLACES_ENABLED','false').lower()=='true',
-                   get('ROOMWISE_ROUTES_ENABLED','false').lower()=='true',min(500,max(0,int(get('ROOMWISE_MAPS_DAILY_REQUESTS','40')))),
+                   get('ROOMWISE_ROUTES_ENABLED','false').lower()=='true',
                    get('ROOMWISE_ACCOUNTS_REQUIRED','false').lower()=='true',
-                   get('ROOMWISE_LOCAL_OPERATOR_ENABLED','false').lower()=='true')
+                   get('ROOMWISE_LOCAL_OPERATOR_ENABLED','false').lower()=='true',
+                   min(60,max(0,int(get('ROOMWISE_MAPS_DAILY_REQUESTS','60')))))

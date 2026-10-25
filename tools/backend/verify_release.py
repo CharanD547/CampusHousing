@@ -39,8 +39,11 @@ def verify(python,port=8003):
             assert 'Roomwise privacy' in call('/privacy',auth=False)
             try:call('/api/v1/records',auth=False);raise AssertionError('Bearer protection missing.')
             except urllib.error.HTTPError as error:assert error.code==401
-            catalog=call('/api/v1/candidates')['candidates'];assert len(catalog)==109
-            assert len({c['property_id'] for c in catalog})==47
+            catalog=call('/api/v1/candidates')['candidates'];assert len(catalog)==304
+            assert len({c['property_id'] for c in catalog})==44
+            gaps=call('/api/v1/research/lease-gaps')
+            assert gaps['priced_properties']==44 and len(gaps['properties'])==47
+            assert all(c.get('lease_gaps',{}).get('written_quote_status')=='not_collected' for c in catalog)
             assert len(call('/api/v1/housing-guide')['communities'])==47
             buildings=call('/api/v1/campuses/vt/buildings')['buildings'];assert len(buildings)>=350
             request={'campus_id':'vt','revision':1,'route_date':'2026-10-26','routing_scope':'representative_week',
@@ -81,5 +84,7 @@ def verify(python,port=8003):
 if __name__=='__main__':
     parser=argparse.ArgumentParser();parser.add_argument('--python',type=Path,required=True);parser.add_argument('--port',type=int,default=8003);parser.add_argument('--report',type=Path)
     args=parser.parse_args();result=verify(args.python.resolve(),args.port)
-    if args.report:args.report.write_text(json.dumps(result,indent=2),encoding='utf-8')
+    if args.report:
+        args.report.parent.mkdir(parents=True,exist_ok=True)
+        args.report.write_text(json.dumps(result,indent=2),encoding='utf-8')
     print(json.dumps(result,indent=2))

@@ -1,0 +1,1445 @@
+{
+  "properties": [
+    {
+      "property_id": "1711-apartments",
+      "property_name": "1711 Apartments",
+      "plan_count": 2,
+      "written_quote_status": "not_collected",
+      "complete_fee_schedule_status": "not_confirmed",
+      "listed_fee_labels": [
+        "Administrative fee",
+        "Application fee (per applicant)",
+        "Reconditioning fee"
+      ],
+      "fees_with_missing_amounts": [],
+      "plans_missing_lease_dates": 2,
+      "installment_plans_missing_payment_count": 0,
+      "plans_with_unknown_billing_basis": 0,
+      "questions": [
+        "Please provide a dated written quote for the exact floor plan/unit and move-in date, with quote expiry and current availability.",
+        "Please confirm the complete mandatory fee schedule in writing, including which listed charges are included, refundable, credited or conditional.",
+        "Please state utility inclusions, usage-based charges and required services; unknown costs must not be treated as zero.",
+        "Exact start/end dates are missing for 2 plan(s). Please provide the selected lease dates and early-termination terms.",
+        "Please confirm payment frequency/count, due dates, total contractual rent and any proration.",
+        "Please confirm joint versus individual liability, guarantor requirements and deposit deductions/refund rules.",
+        "Security deposit",
+        "Lease end date",
+        "Utilities included (search snippets mention water/sewer/trash; not on the listing read)"
+      ],
+      "source_urls": [
+        "https://offcampus.vt.edu/housing/property/1711-apartments/d0d2e8j",
+        "https://www.apartments.com/off-campus-housing/va/blacksburg/virginia-polytechnic-institute-and-state-university/"
+      ],
+      "limitation": "Public asking figures and listed fees are not a current written operator quote. This is a research checklist, not legal advice."
+    },
+    {
+      "property_id": "additional-north-main-rentals",
+      "property_name": "Additional North Main Rentals",
+      "plan_count": 9,
+      "written_quote_status": "not_collected",
+      "complete_fee_schedule_status": "not_confirmed",
+      "listed_fee_labels": [
+        "Application fee"
+      ],
+      "fees_with_missing_amounts": [],
+      "plans_missing_lease_dates": 9,
+      "installment_plans_missing_payment_count": 0,
+      "plans_with_unknown_billing_basis": 0,
+      "questions": [
+        "Please provide a dated written quote for the exact floor plan/unit and move-in date, with quote expiry and current availability.",
+        "Please confirm the complete mandatory fee schedule in writing, including which listed charges are included, refundable, credited or conditional.",
+        "Please state utility inclusions, usage-based charges and required services; unknown costs must not be treated as zero.",
+        "Exact start/end dates are missing for 9 plan(s). Please provide the selected lease dates and early-termination terms.",
+        "Please confirm payment frequency/count, due dates, total contractual rent and any proration.",
+        "Please confirm joint versus individual liability, guarantor requirements and deposit deductions/refund rules.",
+        "The Odyssey (200 Fairfax) and larger Giles Rd houses not currently listed",
+        "Lease end dates",
+        "Deposits where not shown"
+      ],
+      "source_urls": [
+        "https://granitesl.appfolio.com/listings",
+        "https://www.apartments.com/off-campus-housing/va/blacksburg/virginia-polytechnic-institute-and-state-university/"
+      ],
+      "limitation": "Public asking figures and listed fees are not a current written operator quote. This is a research checklist, not legal advice."
+    },
+    {
+      "property_id": "alight",
+      "property_name": "Alight Blacksburg",
+      "plan_count": 4,
+      "written_quote_status": "not_collected",
+      "complete_fee_schedule_status": "not_confirmed",
+      "listed_fee_labels": [
+        "Mandatory fees in the published annual total"
+      ],
+      "fees_with_missing_amounts": [],
+      "plans_missing_lease_dates": 0,
+      "installment_plans_missing_payment_count": 0,
+      "plans_with_unknown_billing_basis": 0,
+      "questions": [
+        "Please provide a dated written quote for the exact floor plan/unit and move-in date, with quote expiry and current availability.",
+        "Please confirm the complete mandatory fee schedule in writing, including which listed charges are included, refundable, credited or conditional.",
+        "Please state utility inclusions, usage-based charges and required services; unknown costs must not be treated as zero.",
+        "Please confirm that the published lease dates apply to the selected unit and move-in date.",
+        "Please confirm payment frequency/count, due dates, total contractual rent and any proration.",
+        "Please confirm joint versus individual liability, guarantor requirements and deposit deductions/refund rules."
+      ],
+      "source_urls": [
+        "https://alight-blacksburg.com/faqs/",
+        "https://alight-blacksburg.com/one-sheet/",
+        "https://alight-blacksburg.com/rates-floorplans/"
+      ],
+      "limitation": "Public asking figures and listed fees are not a current written operator quote. This is a research checklist, not legal advice."
+    },
+    {
+      "property_id": "brexx-at-blacksburg-the-retreat",
+      "property_name": "Brexx at Blacksburg / The Retreat",
+      "plan_count": 17,
+      "written_quote_status": "not_collected",
+      "complete_fee_schedule_status": "not_confirmed",
+      "listed_fee_labels": [
+        "Administration fee",
+        "Application fee",
+        "Credit reporting fee",
+        "Rental insurance waiver",
+        "Trash reimbursement billback",
+        "Utility billing fee"
+      ],
+      "fees_with_missing_amounts": [],
+      "plans_missing_lease_dates": 0,
+      "installment_plans_missing_payment_count": 17,
+      "plans_with_unknown_billing_basis": 0,
+      "questions": [
+        "Please provide a dated written quote for the exact floor plan/unit and move-in date, with quote expiry and current availability.",
+        "Please confirm the complete mandatory fee schedule in writing, including which listed charges are included, refundable, credited or conditional.",
+        "Please state utility inclusions, usage-based charges and required services; unknown costs must not be treated as zero.",
+        "Please confirm that the published lease dates apply to the selected unit and move-in date.",
+        "The payment count is missing for 17 installment plan(s). Please state payment count, due dates, total rent and any proration.",
+        "Please confirm joint versus individual liability, guarantor requirements and deposit deductions/refund rules.",
+        "Number of installments for the Aug 19, 2027 \u2013 Jul 31, 2028 term",
+        "Security deposit",
+        "Usage-based utilities beyond the billing fee"
+      ],
+      "source_urls": [
+        "https://findmyplace.co/blog/where-virginia-tech-students-live-off-campus/",
+        "https://www.brexxblacksburg.com/floor-plans/"
+      ],
+      "limitation": "Public asking figures and listed fees are not a current written operator quote. This is a research checklist, not legal advice."
+    },
+    {
+      "property_id": "cedar-pointe-apartments",
+      "property_name": "Cedar Pointe Apartments",
+      "plan_count": 7,
+      "written_quote_status": "not_collected",
+      "complete_fee_schedule_status": "not_confirmed",
+      "listed_fee_labels": [
+        "Security deposit (refundable less damages)"
+      ],
+      "fees_with_missing_amounts": [],
+      "plans_missing_lease_dates": 7,
+      "installment_plans_missing_payment_count": 0,
+      "plans_with_unknown_billing_basis": 0,
+      "questions": [
+        "Please provide a dated written quote for the exact floor plan/unit and move-in date, with quote expiry and current availability.",
+        "Please confirm the complete mandatory fee schedule in writing, including which listed charges are included, refundable, credited or conditional.",
+        "Please state utility inclusions, usage-based charges and required services; unknown costs must not be treated as zero.",
+        "Exact start/end dates are missing for 7 plan(s). Please provide the selected lease dates and early-termination terms.",
+        "Please confirm payment frequency/count, due dates, total contractual rent and any proration.",
+        "Please confirm joint versus individual liability, guarantor requirements and deposit deductions/refund rules.",
+        "Application fee (not published)",
+        "Exact lease start/end dates"
+      ],
+      "source_urls": [
+        "https://cedarpointeapts.prospectportal.com/blacksburg/cedar-pointe-apartments/conventional/",
+        "https://www.apartments.com/off-campus-housing/va/blacksburg/virginia-polytechnic-institute-and-state-university/"
+      ],
+      "limitation": "Public asking figures and listed fees are not a current written operator quote. This is a research checklist, not legal advice."
+    },
+    {
+      "property_id": "cedarfield-apartments-townhomes",
+      "property_name": "Cedarfield Apartments & Townhomes",
+      "plan_count": 8,
+      "written_quote_status": "not_collected",
+      "complete_fee_schedule_status": "not_confirmed",
+      "listed_fee_labels": [
+        "Security deposit (refundable less damages)"
+      ],
+      "fees_with_missing_amounts": [],
+      "plans_missing_lease_dates": 8,
+      "installment_plans_missing_payment_count": 0,
+      "plans_with_unknown_billing_basis": 0,
+      "questions": [
+        "Please provide a dated written quote for the exact floor plan/unit and move-in date, with quote expiry and current availability.",
+        "Please confirm the complete mandatory fee schedule in writing, including which listed charges are included, refundable, credited or conditional.",
+        "Please state utility inclusions, usage-based charges and required services; unknown costs must not be treated as zero.",
+        "Exact start/end dates are missing for 8 plan(s). Please provide the selected lease dates and early-termination terms.",
+        "Please confirm payment frequency/count, due dates, total contractual rent and any proration.",
+        "Please confirm joint versus individual liability, guarantor requirements and deposit deductions/refund rules.",
+        "Application fee (not published)",
+        "Exact lease start/end dates"
+      ],
+      "source_urls": [
+        "https://cedarfield.prospectportal.com/blacksburg/cedarfield-apartments-and-townhomes/conventional/",
+        "https://www.cmgleasing.com/property/cedarfield-apts-townhomes/"
+      ],
+      "limitation": "Public asking figures and listed fees are not a current written operator quote. This is a research checklist, not legal advice."
+    },
+    {
+      "property_id": "chase-apartments-the-chase",
+      "property_name": "Chase Apartments (The Chase)",
+      "plan_count": 1,
+      "written_quote_status": "not_collected",
+      "complete_fee_schedule_status": "not_confirmed",
+      "listed_fee_labels": [
+        "Security deposit (refundable less damages)"
+      ],
+      "fees_with_missing_amounts": [],
+      "plans_missing_lease_dates": 1,
+      "installment_plans_missing_payment_count": 0,
+      "plans_with_unknown_billing_basis": 0,
+      "questions": [
+        "Please provide a dated written quote for the exact floor plan/unit and move-in date, with quote expiry and current availability.",
+        "Please confirm the complete mandatory fee schedule in writing, including which listed charges are included, refundable, credited or conditional.",
+        "Please state utility inclusions, usage-based charges and required services; unknown costs must not be treated as zero.",
+        "Exact start/end dates are missing for 1 plan(s). Please provide the selected lease dates and early-termination terms.",
+        "Please confirm payment frequency/count, due dates, total contractual rent and any proration.",
+        "Please confirm joint versus individual liability, guarantor requirements and deposit deductions/refund rules.",
+        "Application fee (not published)",
+        "Exact lease start/end dates"
+      ],
+      "source_urls": [
+        "https://findmyplace.co/blog/where-virginia-tech-students-live-off-campus/",
+        "https://thechaseapts.prospectportal.com/blacksburg/the-chase-apartments/conventional/"
+      ],
+      "limitation": "Public asking figures and listed fees are not a current written operator quote. This is a research checklist, not legal advice."
+    },
+    {
+      "property_id": "chasewood-downs",
+      "property_name": "Chasewood Downs",
+      "plan_count": 10,
+      "written_quote_status": "not_collected",
+      "complete_fee_schedule_status": "not_confirmed",
+      "listed_fee_labels": [
+        "Security deposit (refundable less damages)"
+      ],
+      "fees_with_missing_amounts": [],
+      "plans_missing_lease_dates": 10,
+      "installment_plans_missing_payment_count": 0,
+      "plans_with_unknown_billing_basis": 0,
+      "questions": [
+        "Please provide a dated written quote for the exact floor plan/unit and move-in date, with quote expiry and current availability.",
+        "Please confirm the complete mandatory fee schedule in writing, including which listed charges are included, refundable, credited or conditional.",
+        "Please state utility inclusions, usage-based charges and required services; unknown costs must not be treated as zero.",
+        "Exact start/end dates are missing for 10 plan(s). Please provide the selected lease dates and early-termination terms.",
+        "Please confirm payment frequency/count, due dates, total contractual rent and any proration.",
+        "Please confirm joint versus individual liability, guarantor requirements and deposit deductions/refund rules.",
+        "Application fee (not published)",
+        "Exact lease start/end dates"
+      ],
+      "source_urls": [
+        "https://chasewood.prospectportal.com/blacksburg/chasewood-apartments/conventional/"
+      ],
+      "limitation": "Public asking figures and listed fees are not a current written operator quote. This is a research checklist, not legal advice."
+    },
+    {
+      "property_id": "clover-valley-phase-i-cv2",
+      "property_name": "Clover Valley (Phase I & CV2)",
+      "plan_count": 2,
+      "written_quote_status": "not_collected",
+      "complete_fee_schedule_status": "not_confirmed",
+      "listed_fee_labels": [
+        "Application fee"
+      ],
+      "fees_with_missing_amounts": [],
+      "plans_missing_lease_dates": 2,
+      "installment_plans_missing_payment_count": 0,
+      "plans_with_unknown_billing_basis": 0,
+      "questions": [
+        "Please provide a dated written quote for the exact floor plan/unit and move-in date, with quote expiry and current availability.",
+        "Please confirm the complete mandatory fee schedule in writing, including which listed charges are included, refundable, credited or conditional.",
+        "Please state utility inclusions, usage-based charges and required services; unknown costs must not be treated as zero.",
+        "Exact start/end dates are missing for 2 plan(s). Please provide the selected lease dates and early-termination terms.",
+        "Please confirm payment frequency/count, due dates, total contractual rent and any proration.",
+        "Please confirm joint versus individual liability, guarantor requirements and deposit deductions/refund rules.",
+        "Deposit",
+        "CV2 utilities and fees (Roost $50 application on other listings)"
+      ],
+      "source_urls": [
+        "https://granitesl.appfolio.com/listings",
+        "https://www.apartments.com/off-campus-housing/va/blacksburg/virginia-polytechnic-institute-and-state-university/"
+      ],
+      "limitation": "Public asking figures and listed fees are not a current written operator quote. This is a research checklist, not legal advice."
+    },
+    {
+      "property_id": "collegiate-court",
+      "property_name": "Collegiate Court",
+      "plan_count": 2,
+      "written_quote_status": "not_collected",
+      "complete_fee_schedule_status": "not_confirmed",
+      "listed_fee_labels": [
+        "Application fee (per applicant)"
+      ],
+      "fees_with_missing_amounts": [],
+      "plans_missing_lease_dates": 2,
+      "installment_plans_missing_payment_count": 0,
+      "plans_with_unknown_billing_basis": 0,
+      "questions": [
+        "Please provide a dated written quote for the exact floor plan/unit and move-in date, with quote expiry and current availability.",
+        "Please confirm the complete mandatory fee schedule in writing, including which listed charges are included, refundable, credited or conditional.",
+        "Please state utility inclusions, usage-based charges and required services; unknown costs must not be treated as zero.",
+        "Exact start/end dates are missing for 2 plan(s). Please provide the selected lease dates and early-termination terms.",
+        "Please confirm payment frequency/count, due dates, total contractual rent and any proration.",
+        "Please confirm joint versus individual liability, guarantor requirements and deposit deductions/refund rules.",
+        "Security deposit",
+        "Lease length and end date",
+        "Electric/water costs"
+      ],
+      "source_urls": [
+        "https://offcampus.vt.edu/housing/property/collegiate-court-apartments/v9cvgxg",
+        "https://www.collegestudentapartments.com/college/virginia-tech-blacksburg-virginia/apartments/"
+      ],
+      "limitation": "Public asking figures and listed fees are not a current written operator quote. This is a research checklist, not legal advice."
+    },
+    {
+      "property_id": "collegiate-suites-hunters-ridge",
+      "property_name": "Collegiate Suites & Hunters Ridge",
+      "plan_count": 9,
+      "written_quote_status": "not_collected",
+      "complete_fee_schedule_status": "not_confirmed",
+      "listed_fee_labels": [
+        "Administrative fee",
+        "Application fee (per applicant)"
+      ],
+      "fees_with_missing_amounts": [],
+      "plans_missing_lease_dates": 0,
+      "installment_plans_missing_payment_count": 0,
+      "plans_with_unknown_billing_basis": 0,
+      "questions": [
+        "Please provide a dated written quote for the exact floor plan/unit and move-in date, with quote expiry and current availability.",
+        "Please confirm the complete mandatory fee schedule in writing, including which listed charges are included, refundable, credited or conditional.",
+        "Please state utility inclusions, usage-based charges and required services; unknown costs must not be treated as zero.",
+        "Please confirm that the published lease dates apply to the selected unit and move-in date.",
+        "Please confirm payment frequency/count, due dates, total contractual rent and any proration.",
+        "Please confirm joint versus individual liability, guarantor requirements and deposit deductions/refund rules.",
+        "Security deposit amount (when used to qualify)",
+        "Pet fee amounts",
+        "Typical electric/water/sewer cost"
+      ],
+      "source_urls": [
+        "https://collegiatesuitesblacksburg.com/all-floor-plans",
+        "https://www.apartments.com/off-campus-housing/va/blacksburg/virginia-polytechnic-institute-and-state-university/"
+      ],
+      "limitation": "Public asking figures and listed fees are not a current written operator quote. This is a research checklist, not legal advice."
+    },
+    {
+      "property_id": "downtown-boutique-historic-rentals",
+      "property_name": "Downtown Boutique & Historic Rentals",
+      "plan_count": 3,
+      "written_quote_status": "not_collected",
+      "complete_fee_schedule_status": "not_confirmed",
+      "listed_fee_labels": [
+        "Security deposit (CMG Houston St)"
+      ],
+      "fees_with_missing_amounts": [],
+      "plans_missing_lease_dates": 3,
+      "installment_plans_missing_payment_count": 0,
+      "plans_with_unknown_billing_basis": 0,
+      "questions": [
+        "Please provide a dated written quote for the exact floor plan/unit and move-in date, with quote expiry and current availability.",
+        "Please confirm the complete mandatory fee schedule in writing, including which listed charges are included, refundable, credited or conditional.",
+        "Please state utility inclusions, usage-based charges and required services; unknown costs must not be treated as zero.",
+        "Exact start/end dates are missing for 3 plan(s). Please provide the selected lease dates and early-termination terms.",
+        "Please confirm payment frequency/count, due dates, total contractual rent and any proration.",
+        "Please confirm joint versus individual liability, guarantor requirements and deposit deductions/refund rules.",
+        "Old Row on Wharton and Old Row on Clay (Pointe West) publish no prices and have no open listings",
+        "315 Clay 4BR and 410 Houston St (guide) not found; CMG Houston St is at 515 Houston",
+        "703 Clay lease and fees"
+      ],
+      "source_urls": [
+        "https://houstonst.prospectportal.com/blacksburg/houston-street-apartments/conventional/",
+        "https://offcampus.vt.edu/housing/property/703-clay-street-se-ada-accessible-2-br-baker-one/ocpnn34r9m",
+        "https://www.apartments.com/off-campus-housing/va/blacksburg/virginia-polytechnic-institute-and-state-university/"
+      ],
+      "limitation": "Public asking figures and listed fees are not a current written operator quote. This is a research checklist, not legal advice."
+    },
+    {
+      "property_id": "east-roanoke-street",
+      "property_name": "East Roanoke Street",
+      "plan_count": 0,
+      "written_quote_status": "not_collected",
+      "complete_fee_schedule_status": "not_confirmed",
+      "listed_fee_labels": [],
+      "fees_with_missing_amounts": [],
+      "plans_missing_lease_dates": 0,
+      "installment_plans_missing_payment_count": 0,
+      "plans_with_unknown_billing_basis": 0,
+      "questions": [
+        "Please provide a dated written quote for the exact floor plan/unit and move-in date, with quote expiry and current availability.",
+        "Please provide the full mandatory fee schedule: application/admin charges, recurring charges, deposits and prepaid rent; state which are included in the advertised price.",
+        "Please state utility inclusions, usage-based charges and required services; unknown costs must not be treated as zero.",
+        "Please confirm that the published lease dates apply to the selected unit and move-in date.",
+        "Please confirm payment frequency/count, due dates, total contractual rent and any proration.",
+        "Please confirm joint versus individual liability, guarantor requirements and deposit deductions/refund rules."
+      ],
+      "source_urls": [
+        "https://findmyplace.co/blog/where-virginia-tech-students-live-off-campus/"
+      ],
+      "limitation": "Public asking figures and listed fees are not a current written operator quote. This is a research checklist, not legal advice."
+    },
+    {
+      "property_id": "fourteen35-apartments",
+      "property_name": "Fourteen35 Apartments",
+      "plan_count": 3,
+      "written_quote_status": "not_collected",
+      "complete_fee_schedule_status": "not_confirmed",
+      "listed_fee_labels": [
+        "Administrative fee",
+        "Application fee (per applicant)",
+        "Reconditioning fee"
+      ],
+      "fees_with_missing_amounts": [],
+      "plans_missing_lease_dates": 3,
+      "installment_plans_missing_payment_count": 0,
+      "plans_with_unknown_billing_basis": 0,
+      "questions": [
+        "Please provide a dated written quote for the exact floor plan/unit and move-in date, with quote expiry and current availability.",
+        "Please confirm the complete mandatory fee schedule in writing, including which listed charges are included, refundable, credited or conditional.",
+        "Please state utility inclusions, usage-based charges and required services; unknown costs must not be treated as zero.",
+        "Exact start/end dates are missing for 3 plan(s). Please provide the selected lease dates and early-termination terms.",
+        "Please confirm payment frequency/count, due dates, total contractual rent and any proration.",
+        "Please confirm joint versus individual liability, guarantor requirements and deposit deductions/refund rules.",
+        "Security deposit",
+        "Exact lease end date",
+        "Which utilities are included (earlier VT listing said electricity, heat, trash, water/sewer included)",
+        "Parking fee"
+      ],
+      "source_urls": [
+        "https://offcampus.vt.edu/housing/property/fourteen35-apartments/edgcljq",
+        "https://www.homes.com/montgomery-county-va/homes-for-rent/"
+      ],
+      "limitation": "Public asking figures and listed fees are not a current written operator quote. This is a research checklist, not legal advice."
+    },
+    {
+      "property_id": "foxridge",
+      "property_name": "Foxridge",
+      "plan_count": 7,
+      "written_quote_status": "not_collected",
+      "complete_fee_schedule_status": "not_confirmed",
+      "listed_fee_labels": [
+        "Administrative fee",
+        "Application fee",
+        "Internet service",
+        "Move-out inspection fee",
+        "Refuse removal",
+        "Rent billing fee",
+        "Reservation payment",
+        "Security deposit"
+      ],
+      "fees_with_missing_amounts": [],
+      "plans_missing_lease_dates": 7,
+      "installment_plans_missing_payment_count": 0,
+      "plans_with_unknown_billing_basis": 0,
+      "questions": [
+        "Please provide a dated written quote for the exact floor plan/unit and move-in date, with quote expiry and current availability.",
+        "Please confirm the complete mandatory fee schedule in writing, including which listed charges are included, refundable, credited or conditional.",
+        "Please state utility inclusions, usage-based charges and required services; unknown costs must not be treated as zero.",
+        "Exact start/end dates are missing for 7 plan(s). Please provide the selected lease dates and early-termination terms.",
+        "Please confirm payment frequency/count, due dates, total contractual rent and any proration.",
+        "Please confirm joint versus individual liability, guarantor requirements and deposit deductions/refund rules."
+      ],
+      "source_urls": [
+        "https://www.apartments.com/foxridge-apartment-homes-blacksburg-va/xrqgm5p/",
+        "https://www.foxridgeliving.com/floorplans/",
+        "https://www.foxridgeliving.com/gridmedia/img/fees.pdf",
+        "https://www.rentcafe.com/apartments/va/blacksburg/foxridge-apartments-0/default.aspx"
+      ],
+      "limitation": "Public asking figures and listed fees are not a current written operator quote. This is a research checklist, not legal advice."
+    },
+    {
+      "property_id": "haven-blacksburg-haven-on-north-main",
+      "property_name": "Haven Blacksburg (Haven on North Main)",
+      "plan_count": 23,
+      "written_quote_status": "not_collected",
+      "complete_fee_schedule_status": "not_confirmed",
+      "listed_fee_labels": [
+        "Admin fee (per person)",
+        "Application fee",
+        "Non-refundable reconditioning fee (per bedroom)"
+      ],
+      "fees_with_missing_amounts": [],
+      "plans_missing_lease_dates": 23,
+      "installment_plans_missing_payment_count": 0,
+      "plans_with_unknown_billing_basis": 0,
+      "questions": [
+        "Please provide a dated written quote for the exact floor plan/unit and move-in date, with quote expiry and current availability.",
+        "Please confirm the complete mandatory fee schedule in writing, including which listed charges are included, refundable, credited or conditional.",
+        "Please state utility inclusions, usage-based charges and required services; unknown costs must not be treated as zero.",
+        "Exact start/end dates are missing for 23 plan(s). Please provide the selected lease dates and early-termination terms.",
+        "Please confirm payment frequency/count, due dates, total contractual rent and any proration.",
+        "Please confirm joint versus individual liability, guarantor requirements and deposit deductions/refund rules.",
+        "Security deposit",
+        "Lease end date",
+        "Utilities included (not stated for North Main)",
+        "Whether the brand-wide fees apply to North Main whole-unit leases"
+      ],
+      "source_urls": [
+        "https://findmyplace.co/blog/where-virginia-tech-students-live-off-campus/",
+        "https://www.havenblacksburg.com/haven---north-street"
+      ],
+      "limitation": "Public asking figures and listed fees are not a current written operator quote. This is a research checklist, not legal advice."
+    },
+    {
+      "property_id": "hearthstone-creekside-hilltop",
+      "property_name": "Hearthstone / Creekside / Hilltop",
+      "plan_count": 7,
+      "written_quote_status": "not_collected",
+      "complete_fee_schedule_status": "not_confirmed",
+      "listed_fee_labels": [
+        "Application fee"
+      ],
+      "fees_with_missing_amounts": [],
+      "plans_missing_lease_dates": 7,
+      "installment_plans_missing_payment_count": 0,
+      "plans_with_unknown_billing_basis": 0,
+      "questions": [
+        "Please provide a dated written quote for the exact floor plan/unit and move-in date, with quote expiry and current availability.",
+        "Please confirm the complete mandatory fee schedule in writing, including which listed charges are included, refundable, credited or conditional.",
+        "Please state utility inclusions, usage-based charges and required services; unknown costs must not be treated as zero.",
+        "Exact start/end dates are missing for 7 plan(s). Please provide the selected lease dates and early-termination terms.",
+        "Please confirm payment frequency/count, due dates, total contractual rent and any proration.",
+        "Please confirm joint versus individual liability, guarantor requirements and deposit deductions/refund rules.",
+        "Creekside 2027\u201328 rate (only a lease takeover is listed)",
+        "Lease end dates"
+      ],
+      "source_urls": [
+        "https://granitesl.appfolio.com/listings",
+        "https://www.apartments.com/off-campus-housing/va/blacksburg/virginia-polytechnic-institute-and-state-university/"
+      ],
+      "limitation": "Public asking figures and listed fees are not a current written operator quote. This is a research checklist, not legal advice."
+    },
+    {
+      "property_id": "highlands-at-huckleberry-ridge",
+      "property_name": "Highlands at Huckleberry Ridge",
+      "plan_count": 5,
+      "written_quote_status": "not_collected",
+      "complete_fee_schedule_status": "not_confirmed",
+      "listed_fee_labels": [
+        "Application fee (per applicant)"
+      ],
+      "fees_with_missing_amounts": [],
+      "plans_missing_lease_dates": 5,
+      "installment_plans_missing_payment_count": 0,
+      "plans_with_unknown_billing_basis": 0,
+      "questions": [
+        "Please provide a dated written quote for the exact floor plan/unit and move-in date, with quote expiry and current availability.",
+        "Please confirm the complete mandatory fee schedule in writing, including which listed charges are included, refundable, credited or conditional.",
+        "Please state utility inclusions, usage-based charges and required services; unknown costs must not be treated as zero.",
+        "Exact start/end dates are missing for 5 plan(s). Please provide the selected lease dates and early-termination terms.",
+        "Please confirm payment frequency/count, due dates, total contractual rent and any proration.",
+        "Please confirm joint versus individual liability, guarantor requirements and deposit deductions/refund rules.",
+        "Lease length and dates",
+        "Security deposit",
+        "Utilities",
+        "Garage rent",
+        "Operator site publishes no prices"
+      ],
+      "source_urls": [
+        "https://offcampus.vt.edu/housing/property/highlands-at-huckleberry-ridge/gfhtn2z",
+        "https://www.homes.com/montgomery-county-va/homes-for-rent/"
+      ],
+      "limitation": "Public asking figures and listed fees are not a current written operator quote. This is a research checklist, not legal advice."
+    },
+    {
+      "property_id": "hub-blacksburg",
+      "property_name": "Hub Blacksburg",
+      "plan_count": 18,
+      "written_quote_status": "not_collected",
+      "complete_fee_schedule_status": "not_confirmed",
+      "listed_fee_labels": [
+        "Administrative fee",
+        "Application fee",
+        "Conservice (utility billing) fee"
+      ],
+      "fees_with_missing_amounts": [],
+      "plans_missing_lease_dates": 18,
+      "installment_plans_missing_payment_count": 0,
+      "plans_with_unknown_billing_basis": 0,
+      "questions": [
+        "Please provide a dated written quote for the exact floor plan/unit and move-in date, with quote expiry and current availability.",
+        "Please confirm the complete mandatory fee schedule in writing, including which listed charges are included, refundable, credited or conditional.",
+        "Please state utility inclusions, usage-based charges and required services; unknown costs must not be treated as zero.",
+        "Exact start/end dates are missing for 18 plan(s). Please provide the selected lease dates and early-termination terms.",
+        "Please confirm payment frequency/count, due dates, total contractual rent and any proration.",
+        "Please confirm joint versus individual liability, guarantor requirements and deposit deductions/refund rules.",
+        "Exact 2027\u201328 lease start/end dates",
+        "Operator-confirmed per-plan rents (operator site says call for pricing)",
+        "Security deposit"
+      ],
+      "source_urls": [
+        "https://huboncampusblacksburg.prospectportal.com/blacksburg/hub-blacksburg-hunt/student",
+        "https://www.apartments.com/off-campus-housing/va/blacksburg/virginia-polytechnic-institute-and-state-university/"
+      ],
+      "limitation": "Public asking figures and listed fees are not a current written operator quote. This is a research checklist, not legal advice."
+    },
+    {
+      "property_id": "kent-square-condos",
+      "property_name": "Kent Square Condos",
+      "plan_count": 1,
+      "written_quote_status": "not_collected",
+      "complete_fee_schedule_status": "not_confirmed",
+      "listed_fee_labels": [
+        "Application fee"
+      ],
+      "fees_with_missing_amounts": [],
+      "plans_missing_lease_dates": 1,
+      "installment_plans_missing_payment_count": 0,
+      "plans_with_unknown_billing_basis": 0,
+      "questions": [
+        "Please provide a dated written quote for the exact floor plan/unit and move-in date, with quote expiry and current availability.",
+        "Please confirm the complete mandatory fee schedule in writing, including which listed charges are included, refundable, credited or conditional.",
+        "Please state utility inclusions, usage-based charges and required services; unknown costs must not be treated as zero.",
+        "Exact start/end dates are missing for 1 plan(s). Please provide the selected lease dates and early-termination terms.",
+        "Please confirm payment frequency/count, due dates, total contractual rent and any proration.",
+        "Please confirm joint versus individual liability, guarantor requirements and deposit deductions/refund rules.",
+        "Security deposit",
+        "Lease end date",
+        "Internet"
+      ],
+      "source_urls": [
+        "https://granitesl.appfolio.com/listings/detail/ccafc6d6-60b9-4f02-bba5-4de0c6f97ceb",
+        "https://www.apartmentlist.com/va/blacksburg"
+      ],
+      "limitation": "Public asking figures and listed fees are not a current written operator quote. This is a research checklist, not legal advice."
+    },
+    {
+      "property_id": "knollwood-condominium",
+      "property_name": "Knollwood Condominium",
+      "plan_count": 7,
+      "written_quote_status": "not_collected",
+      "complete_fee_schedule_status": "not_confirmed",
+      "listed_fee_labels": [
+        "Security deposit (refundable less damages)"
+      ],
+      "fees_with_missing_amounts": [],
+      "plans_missing_lease_dates": 7,
+      "installment_plans_missing_payment_count": 0,
+      "plans_with_unknown_billing_basis": 0,
+      "questions": [
+        "Please provide a dated written quote for the exact floor plan/unit and move-in date, with quote expiry and current availability.",
+        "Please confirm the complete mandatory fee schedule in writing, including which listed charges are included, refundable, credited or conditional.",
+        "Please state utility inclusions, usage-based charges and required services; unknown costs must not be treated as zero.",
+        "Exact start/end dates are missing for 7 plan(s). Please provide the selected lease dates and early-termination terms.",
+        "Please confirm payment frequency/count, due dates, total contractual rent and any proration.",
+        "Please confirm joint versus individual liability, guarantor requirements and deposit deductions/refund rules.",
+        "Application fee (not published)",
+        "Exact lease start/end dates"
+      ],
+      "source_urls": [
+        "https://www.cmgleasing.com/property/knollwood-condos/",
+        "https://www.trulia.com/building/windsor-hills-apartments-200-hampton-ct-blacksburg-va-24060-1002191688"
+      ],
+      "limitation": "Public asking figures and listed fees are not a current written operator quote. This is a research checklist, not legal advice."
+    },
+    {
+      "property_id": "knollwood-townhomes",
+      "property_name": "Knollwood Townhomes",
+      "plan_count": 4,
+      "written_quote_status": "not_collected",
+      "complete_fee_schedule_status": "not_confirmed",
+      "listed_fee_labels": [
+        "Security deposit (refundable less damages)"
+      ],
+      "fees_with_missing_amounts": [],
+      "plans_missing_lease_dates": 4,
+      "installment_plans_missing_payment_count": 0,
+      "plans_with_unknown_billing_basis": 0,
+      "questions": [
+        "Please provide a dated written quote for the exact floor plan/unit and move-in date, with quote expiry and current availability.",
+        "Please confirm the complete mandatory fee schedule in writing, including which listed charges are included, refundable, credited or conditional.",
+        "Please state utility inclusions, usage-based charges and required services; unknown costs must not be treated as zero.",
+        "Exact start/end dates are missing for 4 plan(s). Please provide the selected lease dates and early-termination terms.",
+        "Please confirm payment frequency/count, due dates, total contractual rent and any proration.",
+        "Please confirm joint versus individual liability, guarantor requirements and deposit deductions/refund rules.",
+        "Application fee (not published)",
+        "Exact lease start/end dates"
+      ],
+      "source_urls": [
+        "https://www.cmgleasing.com/property/knollwood-townhomes/"
+      ],
+      "limitation": "Public asking figures and listed fees are not a current written operator quote. This is a research checklist, not legal advice."
+    },
+    {
+      "property_id": "legacy-on-main-the-orchards",
+      "property_name": "Legacy on Main & The Orchards",
+      "plan_count": 0,
+      "written_quote_status": "not_collected",
+      "complete_fee_schedule_status": "not_confirmed",
+      "listed_fee_labels": [],
+      "fees_with_missing_amounts": [],
+      "plans_missing_lease_dates": 0,
+      "installment_plans_missing_payment_count": 0,
+      "plans_with_unknown_billing_basis": 0,
+      "questions": [
+        "Please provide a dated written quote for the exact floor plan/unit and move-in date, with quote expiry and current availability.",
+        "Please provide the full mandatory fee schedule: application/admin charges, recurring charges, deposits and prepaid rent; state which are included in the advertised price.",
+        "Please state utility inclusions, usage-based charges and required services; unknown costs must not be treated as zero.",
+        "Please confirm that the published lease dates apply to the selected unit and move-in date.",
+        "Please confirm payment frequency/count, due dates, total contractual rent and any proration.",
+        "Please confirm joint versus individual liability, guarantor requirements and deposit deductions/refund rules."
+      ],
+      "source_urls": [
+        "https://www.apartments.com/off-campus-housing/va/blacksburg/virginia-polytechnic-institute-and-state-university/",
+        "https://www.communityhousingpartners.org/properties/legacy-on-main/"
+      ],
+      "limitation": "Public asking figures and listed fees are not a current written operator quote. This is a research checklist, not legal advice."
+    },
+    {
+      "property_id": "maple-ridge-townhomes",
+      "property_name": "Maple Ridge Townhomes",
+      "plan_count": 7,
+      "written_quote_status": "not_collected",
+      "complete_fee_schedule_status": "not_confirmed",
+      "listed_fee_labels": [],
+      "fees_with_missing_amounts": [],
+      "plans_missing_lease_dates": 0,
+      "installment_plans_missing_payment_count": 0,
+      "plans_with_unknown_billing_basis": 0,
+      "questions": [
+        "Please provide a dated written quote for the exact floor plan/unit and move-in date, with quote expiry and current availability.",
+        "Please provide the full mandatory fee schedule: application/admin charges, recurring charges, deposits and prepaid rent; state which are included in the advertised price.",
+        "Please state utility inclusions, usage-based charges and required services; unknown costs must not be treated as zero.",
+        "Please confirm that the published lease dates apply to the selected unit and move-in date.",
+        "Please confirm payment frequency/count, due dates, total contractual rent and any proration.",
+        "Please confirm joint versus individual liability, guarantor requirements and deposit deductions/refund rules.",
+        "Application and admin fees (not published by the operator; VT listing removed)",
+        "Deposit amount when not qualifying by income/guarantor",
+        "Pet fee amounts"
+      ],
+      "source_urls": [
+        "https://mapleridgeblacksburg.com/all-floor-plans",
+        "https://www.rentable.co/blacksburg-va/collegiate-suites-hunters-ridge"
+      ],
+      "limitation": "Public asking figures and listed fees are not a current written operator quote. This is a research checklist, not legal advice."
+    },
+    {
+      "property_id": "oak-manor-camelot-court",
+      "property_name": "Oak Manor & Camelot Court",
+      "plan_count": 1,
+      "written_quote_status": "not_collected",
+      "complete_fee_schedule_status": "not_confirmed",
+      "listed_fee_labels": [
+        "Application fee"
+      ],
+      "fees_with_missing_amounts": [],
+      "plans_missing_lease_dates": 1,
+      "installment_plans_missing_payment_count": 0,
+      "plans_with_unknown_billing_basis": 0,
+      "questions": [
+        "Please provide a dated written quote for the exact floor plan/unit and move-in date, with quote expiry and current availability.",
+        "Please confirm the complete mandatory fee schedule in writing, including which listed charges are included, refundable, credited or conditional.",
+        "Please state utility inclusions, usage-based charges and required services; unknown costs must not be treated as zero.",
+        "Exact start/end dates are missing for 1 plan(s). Please provide the selected lease dates and early-termination terms.",
+        "Please confirm payment frequency/count, due dates, total contractual rent and any proration.",
+        "Please confirm joint versus individual liability, guarantor requirements and deposit deductions/refund rules.",
+        "113 Camelot Ct, 1700 Aden Ln and Oak Manor not currently listed",
+        "Deposit"
+      ],
+      "source_urls": [
+        "https://granitesl.appfolio.com/listings",
+        "https://www.apartmentlist.com/va/blacksburg"
+      ],
+      "limitation": "Public asking figures and listed fees are not a current written operator quote. This is a research checklist, not legal advice."
+    },
+    {
+      "property_id": "old-row-on-north-main",
+      "property_name": "Old Row on North Main",
+      "plan_count": 2,
+      "written_quote_status": "not_collected",
+      "complete_fee_schedule_status": "not_confirmed",
+      "listed_fee_labels": [
+        "Admin fee (per person)",
+        "Application fee",
+        "Non-refundable reconditioning fee (per bedroom)"
+      ],
+      "fees_with_missing_amounts": [],
+      "plans_missing_lease_dates": 2,
+      "installment_plans_missing_payment_count": 0,
+      "plans_with_unknown_billing_basis": 0,
+      "questions": [
+        "Please provide a dated written quote for the exact floor plan/unit and move-in date, with quote expiry and current availability.",
+        "Please confirm the complete mandatory fee schedule in writing, including which listed charges are included, refundable, credited or conditional.",
+        "Please state utility inclusions, usage-based charges and required services; unknown costs must not be treated as zero.",
+        "Exact start/end dates are missing for 2 plan(s). Please provide the selected lease dates and early-termination terms.",
+        "Please confirm payment frequency/count, due dates, total contractual rent and any proration.",
+        "Please confirm joint versus individual liability, guarantor requirements and deposit deductions/refund rules.",
+        "Security deposit",
+        "Lease end date",
+        "Electric/water billing",
+        "Parking fee"
+      ],
+      "source_urls": [
+        "https://findmyplace.co/blog/where-virginia-tech-students-live-off-campus/",
+        "https://offcampus.vt.edu/housing/property/old-row-on-north-main/6y68vyt"
+      ],
+      "limitation": "Public asking figures and listed fees are not a current written operator quote. This is a research checklist, not legal advice."
+    },
+    {
+      "property_id": "pack-place-apartments",
+      "property_name": "Pack Place Apartments",
+      "plan_count": 1,
+      "written_quote_status": "not_collected",
+      "complete_fee_schedule_status": "not_confirmed",
+      "listed_fee_labels": [
+        "Application fee"
+      ],
+      "fees_with_missing_amounts": [],
+      "plans_missing_lease_dates": 1,
+      "installment_plans_missing_payment_count": 0,
+      "plans_with_unknown_billing_basis": 0,
+      "questions": [
+        "Please provide a dated written quote for the exact floor plan/unit and move-in date, with quote expiry and current availability.",
+        "Please confirm the complete mandatory fee schedule in writing, including which listed charges are included, refundable, credited or conditional.",
+        "Please state utility inclusions, usage-based charges and required services; unknown costs must not be treated as zero.",
+        "Exact start/end dates are missing for 1 plan(s). Please provide the selected lease dates and early-termination terms.",
+        "Please confirm payment frequency/count, due dates, total contractual rent and any proration.",
+        "Please confirm joint versus individual liability, guarantor requirements and deposit deductions/refund rules.",
+        "Lease length and end date",
+        "Security deposit",
+        "Electric/internet"
+      ],
+      "source_urls": [
+        "https://granitesl.appfolio.com/listings/detail/1c4e7d51-54fb-48ca-bec0-a86406c5a068",
+        "https://www.apartments.com/off-campus-housing/va/blacksburg/virginia-polytechnic-institute-and-state-university/"
+      ],
+      "limitation": "Public asking figures and listed fees are not a current written operator quote. This is a research checklist, not legal advice."
+    },
+    {
+      "property_id": "park37",
+      "property_name": "Park37",
+      "plan_count": 8,
+      "written_quote_status": "not_collected",
+      "complete_fee_schedule_status": "not_confirmed",
+      "listed_fee_labels": [
+        "Application fee"
+      ],
+      "fees_with_missing_amounts": [],
+      "plans_missing_lease_dates": 8,
+      "installment_plans_missing_payment_count": 0,
+      "plans_with_unknown_billing_basis": 0,
+      "questions": [
+        "Please provide a dated written quote for the exact floor plan/unit and move-in date, with quote expiry and current availability.",
+        "Please confirm the complete mandatory fee schedule in writing, including which listed charges are included, refundable, credited or conditional.",
+        "Please state utility inclusions, usage-based charges and required services; unknown costs must not be treated as zero.",
+        "Exact start/end dates are missing for 8 plan(s). Please provide the selected lease dates and early-termination terms.",
+        "Please confirm payment frequency/count, due dates, total contractual rent and any proration.",
+        "Please confirm joint versus individual liability, guarantor requirements and deposit deductions/refund rules.",
+        "Security deposit",
+        "Lease end date and number of payments",
+        "Electricity billing"
+      ],
+      "source_urls": [
+        "https://findmyplace.co/blog/where-virginia-tech-students-live-off-campus/",
+        "https://www.roostrealestategroup.com/park37"
+      ],
+      "limitation": "Public asking figures and listed fees are not a current written operator quote. This is a research checklist, not legal advice."
+    },
+    {
+      "property_id": "pheasant-run-townhomes",
+      "property_name": "Pheasant Run Townhomes",
+      "plan_count": 1,
+      "written_quote_status": "not_collected",
+      "complete_fee_schedule_status": "not_confirmed",
+      "listed_fee_labels": [
+        "Application fee"
+      ],
+      "fees_with_missing_amounts": [],
+      "plans_missing_lease_dates": 1,
+      "installment_plans_missing_payment_count": 0,
+      "plans_with_unknown_billing_basis": 0,
+      "questions": [
+        "Please provide a dated written quote for the exact floor plan/unit and move-in date, with quote expiry and current availability.",
+        "Please confirm the complete mandatory fee schedule in writing, including which listed charges are included, refundable, credited or conditional.",
+        "Please state utility inclusions, usage-based charges and required services; unknown costs must not be treated as zero.",
+        "Exact start/end dates are missing for 1 plan(s). Please provide the selected lease dates and early-termination terms.",
+        "Please confirm payment frequency/count, due dates, total contractual rent and any proration.",
+        "Please confirm joint versus individual liability, guarantor requirements and deposit deductions/refund rules.",
+        "Other Pheasant Run addresses not currently listed",
+        "Deposit",
+        "Per-room option (guide mentions $550\u2013$735/bed)"
+      ],
+      "source_urls": [
+        "https://granitesl.appfolio.com/listings",
+        "https://offcampus.vt.edu/housing/property/pheasant-run/ocpdl5d91h"
+      ],
+      "limitation": "Public asking figures and listed fees are not a current written operator quote. This is a research checklist, not legal advice."
+    },
+    {
+      "property_id": "seneca-drive-toms-creek-condos",
+      "property_name": "Seneca Drive & Toms Creek Condos",
+      "plan_count": 1,
+      "written_quote_status": "not_collected",
+      "complete_fee_schedule_status": "not_confirmed",
+      "listed_fee_labels": [
+        "Security deposit (refundable)"
+      ],
+      "fees_with_missing_amounts": [],
+      "plans_missing_lease_dates": 1,
+      "installment_plans_missing_payment_count": 0,
+      "plans_with_unknown_billing_basis": 0,
+      "questions": [
+        "Please provide a dated written quote for the exact floor plan/unit and move-in date, with quote expiry and current availability.",
+        "Please confirm the complete mandatory fee schedule in writing, including which listed charges are included, refundable, credited or conditional.",
+        "Please state utility inclusions, usage-based charges and required services; unknown costs must not be treated as zero.",
+        "Exact start/end dates are missing for 1 plan(s). Please provide the selected lease dates and early-termination terms.",
+        "Please confirm payment frequency/count, due dates, total contractual rent and any proration.",
+        "Please confirm joint versus individual liability, guarantor requirements and deposit deductions/refund rules.",
+        "1407 Toms Creek Rd condos not currently listed",
+        "Lease length",
+        "Application fee",
+        "Utilities"
+      ],
+      "source_urls": [
+        "https://offcampus.vt.edu/housing/property/1440-seneca-dr/mcwkfwh",
+        "https://www.rentable.co/blacksburg-va/collegiate-suites-hunters-ridge"
+      ],
+      "limitation": "Public asking figures and listed fees are not a current written operator quote. This is a research checklist, not legal advice."
+    },
+    {
+      "property_id": "shawnee-apartments",
+      "property_name": "Shawnee Apartments",
+      "plan_count": 2,
+      "written_quote_status": "not_collected",
+      "complete_fee_schedule_status": "not_confirmed",
+      "listed_fee_labels": [
+        "Security deposit (refundable less damages)"
+      ],
+      "fees_with_missing_amounts": [],
+      "plans_missing_lease_dates": 2,
+      "installment_plans_missing_payment_count": 0,
+      "plans_with_unknown_billing_basis": 0,
+      "questions": [
+        "Please provide a dated written quote for the exact floor plan/unit and move-in date, with quote expiry and current availability.",
+        "Please confirm the complete mandatory fee schedule in writing, including which listed charges are included, refundable, credited or conditional.",
+        "Please state utility inclusions, usage-based charges and required services; unknown costs must not be treated as zero.",
+        "Exact start/end dates are missing for 2 plan(s). Please provide the selected lease dates and early-termination terms.",
+        "Please confirm payment frequency/count, due dates, total contractual rent and any proration.",
+        "Please confirm joint versus individual liability, guarantor requirements and deposit deductions/refund rules.",
+        "Application fee (not published)",
+        "Exact lease start/end dates"
+      ],
+      "source_urls": [
+        "https://shawnee.prospectportal.com/blacksburg/shawnee-apartments-phase-i/conventional/",
+        "https://www.cmgleasing.com/office/shawnee/"
+      ],
+      "limitation": "Public asking figures and listed fees are not a current written operator quote. This is a research checklist, not legal advice."
+    },
+    {
+      "property_id": "smith-s-landing",
+      "property_name": "Smith's Landing",
+      "plan_count": 6,
+      "written_quote_status": "not_collected",
+      "complete_fee_schedule_status": "not_confirmed",
+      "listed_fee_labels": [
+        "Administrative fee",
+        "Application fee",
+        "Internet & wireless",
+        "Security deposit",
+        "Utility billing administrative fee",
+        "Water/sewer (submetered)"
+      ],
+      "fees_with_missing_amounts": [
+        "Internet & wireless",
+        "Security deposit",
+        "Water/sewer (submetered)"
+      ],
+      "plans_missing_lease_dates": 6,
+      "installment_plans_missing_payment_count": 0,
+      "plans_with_unknown_billing_basis": 0,
+      "questions": [
+        "Please provide a dated written quote for the exact floor plan/unit and move-in date, with quote expiry and current availability.",
+        "Please confirm the complete mandatory fee schedule in writing, including which listed charges are included, refundable, credited or conditional.",
+        "Please state utility inclusions, usage-based charges and required services; unknown costs must not be treated as zero.",
+        "Exact start/end dates are missing for 6 plan(s). Please provide the selected lease dates and early-termination terms.",
+        "Please confirm payment frequency/count, due dates, total contractual rent and any proration.",
+        "Please provide amounts or calculation rules for: Internet & wireless, Security deposit, Water/sewer (submetered).",
+        "Please confirm joint versus individual liability, guarantor requirements and deposit deductions/refund rules.",
+        "Exact 2027\u201328 lease start/end dates",
+        "Internet fee amount",
+        "Electric billing",
+        "Exact deposit amount"
+      ],
+      "source_urls": [
+        "https://offcampus.vt.edu/housing/property/smiths-landing-apartments/eqb2jwp",
+        "https://www.apartmentlist.com/va/blacksburg"
+      ],
+      "limitation": "Public asking figures and listed fees are not a current written operator quote. This is a research checklist, not legal advice."
+    },
+    {
+      "property_id": "stonegate-carlton-scott",
+      "property_name": "Stonegate & Carlton Scott",
+      "plan_count": 4,
+      "written_quote_status": "not_collected",
+      "complete_fee_schedule_status": "not_confirmed",
+      "listed_fee_labels": [
+        "Administrative fee",
+        "Application fee (per applicant)",
+        "Utility package"
+      ],
+      "fees_with_missing_amounts": [],
+      "plans_missing_lease_dates": 4,
+      "installment_plans_missing_payment_count": 0,
+      "plans_with_unknown_billing_basis": 0,
+      "questions": [
+        "Please provide a dated written quote for the exact floor plan/unit and move-in date, with quote expiry and current availability.",
+        "Please confirm the complete mandatory fee schedule in writing, including which listed charges are included, refundable, credited or conditional.",
+        "Please state utility inclusions, usage-based charges and required services; unknown costs must not be treated as zero.",
+        "Exact start/end dates are missing for 4 plan(s). Please provide the selected lease dates and early-termination terms.",
+        "Please confirm payment frequency/count, due dates, total contractual rent and any proration.",
+        "Please confirm joint versus individual liability, guarantor requirements and deposit deductions/refund rules.",
+        "Lease start/end dates",
+        "Security deposit",
+        "What the $50 utility package covers",
+        "400 Broce Dr 4BR units (guide) not on this listing"
+      ],
+      "source_urls": [
+        "https://findmyplace.co/blog/where-virginia-tech-students-live-off-campus/",
+        "https://offcampus.vt.edu/housing/property/stonegate-and-carlton-scott-apartments/bv6cxqb"
+      ],
+      "limitation": "Public asking figures and listed fees are not a current written operator quote. This is a research checklist, not legal advice."
+    },
+    {
+      "property_id": "tech-terrace",
+      "property_name": "Tech Terrace",
+      "plan_count": 1,
+      "written_quote_status": "not_collected",
+      "complete_fee_schedule_status": "not_confirmed",
+      "listed_fee_labels": [
+        "Security deposit (refundable less damages)"
+      ],
+      "fees_with_missing_amounts": [],
+      "plans_missing_lease_dates": 1,
+      "installment_plans_missing_payment_count": 0,
+      "plans_with_unknown_billing_basis": 0,
+      "questions": [
+        "Please provide a dated written quote for the exact floor plan/unit and move-in date, with quote expiry and current availability.",
+        "Please confirm the complete mandatory fee schedule in writing, including which listed charges are included, refundable, credited or conditional.",
+        "Please state utility inclusions, usage-based charges and required services; unknown costs must not be treated as zero.",
+        "Exact start/end dates are missing for 1 plan(s). Please provide the selected lease dates and early-termination terms.",
+        "Please confirm payment frequency/count, due dates, total contractual rent and any proration.",
+        "Please confirm joint versus individual liability, guarantor requirements and deposit deductions/refund rules.",
+        "Application fee (not published)",
+        "Exact lease start/end dates"
+      ],
+      "source_urls": [
+        "https://findmyplace.co/blog/where-virginia-tech-students-live-off-campus/",
+        "https://techterrace.prospectportal.com/blacksburg/tech-terrace-apartments/conventional/"
+      ],
+      "limitation": "Public asking figures and listed fees are not a current written operator quote. This is a research checklist, not legal advice."
+    },
+    {
+      "property_id": "terrace",
+      "property_name": "Terrace View",
+      "plan_count": 36,
+      "written_quote_status": "not_collected",
+      "complete_fee_schedule_status": "not_confirmed",
+      "listed_fee_labels": [
+        "Administrative fee",
+        "Application fee",
+        "Pet fee",
+        "Pet rent",
+        "Security deposit",
+        "Technology fee",
+        "Trash fee",
+        "Utility billing fee"
+      ],
+      "fees_with_missing_amounts": [],
+      "plans_missing_lease_dates": 0,
+      "installment_plans_missing_payment_count": 0,
+      "plans_with_unknown_billing_basis": 0,
+      "questions": [
+        "Please provide a dated written quote for the exact floor plan/unit and move-in date, with quote expiry and current availability.",
+        "Please confirm the complete mandatory fee schedule in writing, including which listed charges are included, refundable, credited or conditional.",
+        "Please state utility inclusions, usage-based charges and required services; unknown costs must not be treated as zero.",
+        "Please confirm that the published lease dates apply to the selected unit and move-in date.",
+        "Please confirm payment frequency/count, due dates, total contractual rent and any proration.",
+        "Please confirm joint versus individual liability, guarantor requirements and deposit deductions/refund rules."
+      ],
+      "source_urls": [
+        "https://entratasnipit.terraceviewblacksburg.com/blacksburg/terrace-view/?&is_responsive_snippet=1&snippet_type=website&occupancy_type=10",
+        "https://terraceviewblacksburg.com/fees",
+        "https://terraceviewblacksburg.com/pricing",
+        "https://www.homes.com/property/terrace-view-blacksburg-va/vy6l95q4xdchq/",
+        "https://www.zillow.com/apartments/blacksburg-va/terrace-view/5XnfjS/"
+      ],
+      "limitation": "Public asking figures and listed fees are not a current written operator quote. This is a research checklist, not legal advice."
+    },
+    {
+      "property_id": "the-crossing-at-knollwood",
+      "property_name": "The Crossing at Knollwood",
+      "plan_count": 4,
+      "written_quote_status": "not_collected",
+      "complete_fee_schedule_status": "not_confirmed",
+      "listed_fee_labels": [
+        "Security deposit (refundable less damages)"
+      ],
+      "fees_with_missing_amounts": [],
+      "plans_missing_lease_dates": 4,
+      "installment_plans_missing_payment_count": 0,
+      "plans_with_unknown_billing_basis": 0,
+      "questions": [
+        "Please provide a dated written quote for the exact floor plan/unit and move-in date, with quote expiry and current availability.",
+        "Please confirm the complete mandatory fee schedule in writing, including which listed charges are included, refundable, credited or conditional.",
+        "Please state utility inclusions, usage-based charges and required services; unknown costs must not be treated as zero.",
+        "Exact start/end dates are missing for 4 plan(s). Please provide the selected lease dates and early-termination terms.",
+        "Please confirm payment frequency/count, due dates, total contractual rent and any proration.",
+        "Please confirm joint versus individual liability, guarantor requirements and deposit deductions/refund rules.",
+        "Application fee (not published)",
+        "Exact lease start/end dates"
+      ],
+      "source_urls": [
+        "https://thecrossingapts.prospectportal.com/blacksburg/the-crossing-at-knollwood-apartments/conventional/",
+        "https://www.cmgleasing.com/property/crossing-at-knollwood/"
+      ],
+      "limitation": "Public asking figures and listed fees are not a current written operator quote. This is a research checklist, not legal advice."
+    },
+    {
+      "property_id": "the-edge-apartments-townhomes",
+      "property_name": "The Edge Apartments & Townhomes",
+      "plan_count": 11,
+      "written_quote_status": "not_collected",
+      "complete_fee_schedule_status": "not_confirmed",
+      "listed_fee_labels": [
+        "Application fee",
+        "One-time deposit",
+        "Security deposit"
+      ],
+      "fees_with_missing_amounts": [],
+      "plans_missing_lease_dates": 0,
+      "installment_plans_missing_payment_count": 11,
+      "plans_with_unknown_billing_basis": 0,
+      "questions": [
+        "Please provide a dated written quote for the exact floor plan/unit and move-in date, with quote expiry and current availability.",
+        "Please confirm the complete mandatory fee schedule in writing, including which listed charges are included, refundable, credited or conditional.",
+        "Please state utility inclusions, usage-based charges and required services; unknown costs must not be treated as zero.",
+        "Please confirm that the published lease dates apply to the selected unit and move-in date.",
+        "The payment count is missing for 11 installment plan(s). Please state payment count, due dates, total rent and any proration.",
+        "Please confirm joint versus individual liability, guarantor requirements and deposit deductions/refund rules.",
+        "Whether the move-in $500 one-time deposit is refundable",
+        "Usage-based utility estimates",
+        "Live availability per floor plan"
+      ],
+      "source_urls": [
+        "https://theedgeapartmentsva.prospectportal.com/blacksburg/the-edge-apartments-and-townhomes/student/",
+        "https://www.apartmenthomeliving.com/apartment-finder/The-Edge-Apartments-and-Townhomes-Blacksburg-VA-24060-1955685"
+      ],
+      "limitation": "Public asking figures and listed fees are not a current written operator quote. This is a research checklist, not legal advice."
+    },
+    {
+      "property_id": "the-farm",
+      "property_name": "The Farm",
+      "plan_count": 18,
+      "written_quote_status": "not_collected",
+      "complete_fee_schedule_status": "not_confirmed",
+      "listed_fee_labels": [
+        "Admin fee (per person)",
+        "Application fee",
+        "Non-refundable reconditioning fee (per bedroom)"
+      ],
+      "fees_with_missing_amounts": [],
+      "plans_missing_lease_dates": 18,
+      "installment_plans_missing_payment_count": 0,
+      "plans_with_unknown_billing_basis": 0,
+      "questions": [
+        "Please provide a dated written quote for the exact floor plan/unit and move-in date, with quote expiry and current availability.",
+        "Please confirm the complete mandatory fee schedule in writing, including which listed charges are included, refundable, credited or conditional.",
+        "Please state utility inclusions, usage-based charges and required services; unknown costs must not be treated as zero.",
+        "Exact start/end dates are missing for 18 plan(s). Please provide the selected lease dates and early-termination terms.",
+        "Please confirm payment frequency/count, due dates, total contractual rent and any proration.",
+        "Please confirm joint versus individual liability, guarantor requirements and deposit deductions/refund rules.",
+        "Security deposit",
+        "Lease end date",
+        "Utilities included",
+        "Whether 900 Glade Rd Apt 12 is part of The Farm community"
+      ],
+      "source_urls": [
+        "https://www.apartments.com/off-campus-housing/va/blacksburg/virginia-polytechnic-institute-and-state-university/",
+        "https://www.havenblacksburg.com/availability"
+      ],
+      "limitation": "Public asking figures and listed fees are not a current written operator quote. This is a research checklist, not legal advice."
+    },
+    {
+      "property_id": "the-lofts-at-316",
+      "property_name": "The Lofts at 316",
+      "plan_count": 2,
+      "written_quote_status": "not_collected",
+      "complete_fee_schedule_status": "not_confirmed",
+      "listed_fee_labels": [
+        "Security deposit (refundable less damages)"
+      ],
+      "fees_with_missing_amounts": [],
+      "plans_missing_lease_dates": 2,
+      "installment_plans_missing_payment_count": 0,
+      "plans_with_unknown_billing_basis": 0,
+      "questions": [
+        "Please provide a dated written quote for the exact floor plan/unit and move-in date, with quote expiry and current availability.",
+        "Please confirm the complete mandatory fee schedule in writing, including which listed charges are included, refundable, credited or conditional.",
+        "Please state utility inclusions, usage-based charges and required services; unknown costs must not be treated as zero.",
+        "Exact start/end dates are missing for 2 plan(s). Please provide the selected lease dates and early-termination terms.",
+        "Please confirm payment frequency/count, due dates, total contractual rent and any proration.",
+        "Please confirm joint versus individual liability, guarantor requirements and deposit deductions/refund rules.",
+        "Application fee (not published)",
+        "Exact lease start/end dates"
+      ],
+      "source_urls": [
+        "https://loftsat316.prospectportal.com/blacksburg/lofts-at-316/conventional/",
+        "https://stepintoblacksburg.org/listing/the-lofts-at-316-2/"
+      ],
+      "limitation": "Public asking figures and listed fees are not a current written operator quote. This is a research checklist, not legal advice."
+    },
+    {
+      "property_id": "mill",
+      "property_name": "The Mill",
+      "plan_count": 3,
+      "written_quote_status": "not_collected",
+      "complete_fee_schedule_status": "not_confirmed",
+      "listed_fee_labels": [
+        "Application fee",
+        "Security deposit"
+      ],
+      "fees_with_missing_amounts": [],
+      "plans_missing_lease_dates": 3,
+      "installment_plans_missing_payment_count": 0,
+      "plans_with_unknown_billing_basis": 0,
+      "questions": [
+        "Please provide a dated written quote for the exact floor plan/unit and move-in date, with quote expiry and current availability.",
+        "Please confirm the complete mandatory fee schedule in writing, including which listed charges are included, refundable, credited or conditional.",
+        "Please state utility inclusions, usage-based charges and required services; unknown costs must not be treated as zero.",
+        "Exact start/end dates are missing for 3 plan(s). Please provide the selected lease dates and early-termination terms.",
+        "Please confirm payment frequency/count, due dates, total contractual rent and any proration.",
+        "Please confirm joint versus individual liability, guarantor requirements and deposit deductions/refund rules."
+      ],
+      "source_urls": [
+        "https://www.apartments.com/the-mill-at-blacksburg-blacksburg-va/ydldhfr/",
+        "https://www.blacksburgmill.com/faq/",
+        "https://www.blacksburgmill.com/floor-plans/"
+      ],
+      "limitation": "Public asking figures and listed fees are not a current written operator quote. This is a research checklist, not legal advice."
+    },
+    {
+      "property_id": "the-reserve-at-knollwood",
+      "property_name": "The Reserve at Knollwood",
+      "plan_count": 7,
+      "written_quote_status": "not_collected",
+      "complete_fee_schedule_status": "not_confirmed",
+      "listed_fee_labels": [
+        "Security deposit (refundable less damages)"
+      ],
+      "fees_with_missing_amounts": [],
+      "plans_missing_lease_dates": 7,
+      "installment_plans_missing_payment_count": 0,
+      "plans_with_unknown_billing_basis": 0,
+      "questions": [
+        "Please provide a dated written quote for the exact floor plan/unit and move-in date, with quote expiry and current availability.",
+        "Please confirm the complete mandatory fee schedule in writing, including which listed charges are included, refundable, credited or conditional.",
+        "Please state utility inclusions, usage-based charges and required services; unknown costs must not be treated as zero.",
+        "Exact start/end dates are missing for 7 plan(s). Please provide the selected lease dates and early-termination terms.",
+        "Please confirm payment frequency/count, due dates, total contractual rent and any proration.",
+        "Please confirm joint versus individual liability, guarantor requirements and deposit deductions/refund rules.",
+        "Application fee (not published)",
+        "Exact lease start/end dates"
+      ],
+      "source_urls": [
+        "https://reservekwapts.prospectportal.com/blacksburg/the-reserve-at-knollwood-apartments/conventional/",
+        "https://www.apartmentfinder.com/Virginia/Blacksburg-Apartments/Maple-Ridge-Townhomes-Apartments"
+      ],
+      "limitation": "Public asking figures and listed fees are not a current written operator quote. This is a research checklist, not legal advice."
+    },
+    {
+      "property_id": "the-summit-at-uptown",
+      "property_name": "The Summit at Uptown",
+      "plan_count": 6,
+      "written_quote_status": "not_collected",
+      "complete_fee_schedule_status": "not_confirmed",
+      "listed_fee_labels": [
+        "Application fee"
+      ],
+      "fees_with_missing_amounts": [],
+      "plans_missing_lease_dates": 6,
+      "installment_plans_missing_payment_count": 0,
+      "plans_with_unknown_billing_basis": 0,
+      "questions": [
+        "Please provide a dated written quote for the exact floor plan/unit and move-in date, with quote expiry and current availability.",
+        "Please confirm the complete mandatory fee schedule in writing, including which listed charges are included, refundable, credited or conditional.",
+        "Please state utility inclusions, usage-based charges and required services; unknown costs must not be treated as zero.",
+        "Exact start/end dates are missing for 6 plan(s). Please provide the selected lease dates and early-termination terms.",
+        "Please confirm payment frequency/count, due dates, total contractual rent and any proration.",
+        "Please confirm joint versus individual liability, guarantor requirements and deposit deductions/refund rules.",
+        "Security deposit",
+        "Lease end date",
+        "Electric/water/internet billing"
+      ],
+      "source_urls": [
+        "https://findmyplace.co/blog/where-virginia-tech-students-live-off-campus/",
+        "https://roostrealestategroup.appfolio.com/listings"
+      ],
+      "limitation": "Public asking figures and listed fees are not a current written operator quote. This is a research checklist, not legal advice."
+    },
+    {
+      "property_id": "the-vue-apartments",
+      "property_name": "The Vue Apartments",
+      "plan_count": 13,
+      "written_quote_status": "not_collected",
+      "complete_fee_schedule_status": "not_confirmed",
+      "listed_fee_labels": [
+        "Security deposit (refundable less damages)"
+      ],
+      "fees_with_missing_amounts": [],
+      "plans_missing_lease_dates": 13,
+      "installment_plans_missing_payment_count": 0,
+      "plans_with_unknown_billing_basis": 0,
+      "questions": [
+        "Please provide a dated written quote for the exact floor plan/unit and move-in date, with quote expiry and current availability.",
+        "Please confirm the complete mandatory fee schedule in writing, including which listed charges are included, refundable, credited or conditional.",
+        "Please state utility inclusions, usage-based charges and required services; unknown costs must not be treated as zero.",
+        "Exact start/end dates are missing for 13 plan(s). Please provide the selected lease dates and early-termination terms.",
+        "Please confirm payment frequency/count, due dates, total contractual rent and any proration.",
+        "Please confirm joint versus individual liability, guarantor requirements and deposit deductions/refund rules.",
+        "Application fee (not published)",
+        "Exact lease start/end dates",
+        "2027\u201328 rents (operator says not yet set)"
+      ],
+      "source_urls": [
+        "https://offcampus.vt.edu/housing/property/vue-apartments/esvspwq",
+        "https://vueblacksburg.prospectportal.com/blacksburg/vue-apartments/conventional/"
+      ],
+      "limitation": "Public asking figures and listed fees are not a current written operator quote. This is a research checklist, not legal advice."
+    },
+    {
+      "property_id": "union",
+      "property_name": "Union Blacksburg",
+      "plan_count": 11,
+      "written_quote_status": "not_collected",
+      "complete_fee_schedule_status": "not_confirmed",
+      "listed_fee_labels": [
+        "Administrative fee",
+        "Application fee",
+        "Liability insurance",
+        "Security deposit",
+        "Utility billing administrative fee"
+      ],
+      "fees_with_missing_amounts": [
+        "Security deposit"
+      ],
+      "plans_missing_lease_dates": 0,
+      "installment_plans_missing_payment_count": 11,
+      "plans_with_unknown_billing_basis": 0,
+      "questions": [
+        "Please provide a dated written quote for the exact floor plan/unit and move-in date, with quote expiry and current availability.",
+        "Please confirm the complete mandatory fee schedule in writing, including which listed charges are included, refundable, credited or conditional.",
+        "Please state utility inclusions, usage-based charges and required services; unknown costs must not be treated as zero.",
+        "Please confirm that the published lease dates apply to the selected unit and move-in date.",
+        "The payment count is missing for 11 installment plan(s). Please state payment count, due dates, total rent and any proration.",
+        "Please provide amounts or calculation rules for: Security deposit.",
+        "Please confirm joint versus individual liability, guarantor requirements and deposit deductions/refund rules."
+      ],
+      "source_urls": [
+        "https://offcampus.vt.edu/housing/property/union-blacksburg/c93z2yf",
+        "https://www.forrent.com/va/blacksburg/union-blacksburg/eb396yp",
+        "https://www.unionblacksburg.com/blacksburg/union-blacksburg/faqs/",
+        "https://www.unionblacksburg.com/blacksburg/union-blacksburg/student/"
+      ],
+      "limitation": "Public asking figures and listed fees are not a current written operator quote. This is a research checklist, not legal advice."
+    },
+    {
+      "property_id": "university-terrace-progress-st",
+      "property_name": "University Terrace & Progress St",
+      "plan_count": 3,
+      "written_quote_status": "not_collected",
+      "complete_fee_schedule_status": "not_confirmed",
+      "listed_fee_labels": [
+        "Application fee"
+      ],
+      "fees_with_missing_amounts": [],
+      "plans_missing_lease_dates": 3,
+      "installment_plans_missing_payment_count": 0,
+      "plans_with_unknown_billing_basis": 0,
+      "questions": [
+        "Please provide a dated written quote for the exact floor plan/unit and move-in date, with quote expiry and current availability.",
+        "Please confirm the complete mandatory fee schedule in writing, including which listed charges are included, refundable, credited or conditional.",
+        "Please state utility inclusions, usage-based charges and required services; unknown costs must not be treated as zero.",
+        "Exact start/end dates are missing for 3 plan(s). Please provide the selected lease dates and early-termination terms.",
+        "Please confirm payment frequency/count, due dates, total contractual rent and any proration.",
+        "Please confirm joint versus individual liability, guarantor requirements and deposit deductions/refund rules.",
+        "Progress St listings not currently open",
+        "Deposits",
+        "Lease end dates"
+      ],
+      "source_urls": [
+        "https://granitesl.appfolio.com/listings",
+        "https://www.rentable.co/blacksburg-va/collegiate-suites-hunters-ridge"
+      ],
+      "limitation": "Public asking figures and listed fees are not a current written operator quote. This is a research checklist, not legal advice."
+    },
+    {
+      "property_id": "windsor",
+      "property_name": "Windsor Hills",
+      "plan_count": 7,
+      "written_quote_status": "not_collected",
+      "complete_fee_schedule_status": "not_confirmed",
+      "listed_fee_labels": [
+        "Administrative fee",
+        "Amenity fee",
+        "Application fee",
+        "Move-out inspection fee",
+        "Refuse removal",
+        "Rent billing fee",
+        "Reservation payment",
+        "Security deposit"
+      ],
+      "fees_with_missing_amounts": [],
+      "plans_missing_lease_dates": 7,
+      "installment_plans_missing_payment_count": 0,
+      "plans_with_unknown_billing_basis": 0,
+      "questions": [
+        "Please provide a dated written quote for the exact floor plan/unit and move-in date, with quote expiry and current availability.",
+        "Please confirm the complete mandatory fee schedule in writing, including which listed charges are included, refundable, credited or conditional.",
+        "Please state utility inclusions, usage-based charges and required services; unknown costs must not be treated as zero.",
+        "Exact start/end dates are missing for 7 plan(s). Please provide the selected lease dates and early-termination terms.",
+        "Please confirm payment frequency/count, due dates, total contractual rent and any proration.",
+        "Please confirm joint versus individual liability, guarantor requirements and deposit deductions/refund rules."
+      ],
+      "source_urls": [
+        "https://offcampus.vt.edu/housing/property/windsor-hills-apartments/1gptl24",
+        "https://www.apartments.com/windsor-hills-apartments-blacksburg-va/kdpdh28/",
+        "https://www.rentcafe.com/apartments/va/blacksburg/windsor-hills/default.aspx",
+        "https://www.windsorhillsapts.com/floorplans/",
+        "https://www.windsorhillsapts.com/gridmedia/img/fees.pdf"
+      ],
+      "limitation": "Public asking figures and listed fees are not a current written operator quote. This is a research checklist, not legal advice."
+    },
+    {
+      "property_id": "zillow-detached-single-family-executive-homes",
+      "property_name": "Zillow Detached Single-Family & Executive Homes",
+      "plan_count": 0,
+      "written_quote_status": "not_collected",
+      "complete_fee_schedule_status": "not_confirmed",
+      "listed_fee_labels": [],
+      "fees_with_missing_amounts": [],
+      "plans_missing_lease_dates": 0,
+      "installment_plans_missing_payment_count": 0,
+      "plans_with_unknown_billing_basis": 0,
+      "questions": [
+        "Please provide a dated written quote for the exact floor plan/unit and move-in date, with quote expiry and current availability.",
+        "Please provide the full mandatory fee schedule: application/admin charges, recurring charges, deposits and prepaid rent; state which are included in the advertised price.",
+        "Please state utility inclusions, usage-based charges and required services; unknown costs must not be treated as zero.",
+        "Please confirm that the published lease dates apply to the selected unit and move-in date.",
+        "Please confirm payment frequency/count, due dates, total contractual rent and any proration.",
+        "Please confirm joint versus individual liability, guarantor requirements and deposit deductions/refund rules."
+      ],
+      "source_urls": [
+        "https://www.apartmentlist.com/va/blacksburg"
+      ],
+      "limitation": "Public asking figures and listed fees are not a current written operator quote. This is a research checklist, not legal advice."
+    }
+  ],
+  "scope": "Public catalog research gaps; no personalized written lease quotes are stored."
+}

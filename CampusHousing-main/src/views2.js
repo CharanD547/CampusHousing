@@ -7,7 +7,6 @@ function schematicMap(results, opts = {}) {
 
 function candCard(r) {
   const c = r.cand, sel = c.id === UI.selected;
-  const top = r.conflicts[0] || r.unknowns[0];
   return `<li class="cand ${sel ? 'sel' : ''}" id="card-${c.id}" data-action="select" data-id="${c.id}">
     <div class="cand-photo" style="--pos:${PHOTO_POS[c.id] || '47% 50%'}" aria-hidden="true"></div>
     <div class="cand-top">
@@ -15,7 +14,6 @@ function candCard(r) {
       ${fitChip(r.fit)}
     </div>
     ${priceBlock(r)}
-    ${top ? `<div class="cand-unknown ${r.conflicts.length ? 'bad' : ''}">${r.conflicts.length ? I.x : I.q}<span>${esc(top.text)}${(r.conflicts.length + r.unknowns.length) > 1 ? ` <span class="small">+${r.conflicts.length + r.unknowns.length - 1} more</span>` : ''}</span></div>` : ''}
     <div class="cand-meta">${freshness(r)}${demoChip()}</div>
     <div class="cand-actions"><a class="btn btn-sm" href="#property-${c.id}">Details and sources</a><button class="btn btn-sm btn-quiet" data-action="evidence" data-id="${c.id}">Evidence</button>${c.type === 'offer' ? shortlistBtn(c.id) : ''}</div>
   </li>`;
@@ -31,8 +29,8 @@ function propertyGroups(results) {
   }
   return [...groups.values()].map((g) => {
     g.plans.sort((a, z) => (a.cand.offer.bedrooms ?? 0) - (z.cand.offer.bedrooms ?? 0) || (a.cand.offer.price.amount ?? 0) - (z.cand.offer.price.amount ?? 0));
-    g.fit = g.plans.reduce((best, r) => (FIT_ORDER[r.fit] < FIT_ORDER[best] ? r.fit : best), 'conflict');
-    g.fitting = g.plans.filter((r) => r.fit === 'fit');
+    g.fit = 'fit';
+    g.fitting = g.plans;
     // Lead with the cheapest plan that fits, otherwise the cheapest plan.
     g.lead = [...(g.fitting.length ? g.fitting : g.plans)].sort((a, z) => (a.share?.subtotal ?? 1e9) - (z.share?.subtotal ?? 1e9))[0];
     return g;
@@ -44,7 +42,36 @@ const TIER_CHIP = { OPERATOR_OBSERVED: 'Operator asking figures · fees and basi
 const TIER_NOTE = { OPERATOR_OBSERVED: 'Operator-published asking figures', LISTING_OBSERVED: 'Listing-site figures, not operator quotes', GUIDE_REFERENCE: 'Housing guide reference figures, not current quotes' };
 
 const bedLabel = (n) => (n === 0 ? 'Studio' : `${n} bed`);
-const FIT_DOT = { fit: 'var(--fit)', conflict: 'var(--conflict)', insufficient: 'var(--unsure)' };
+const FIT_DOT = { fit: 'var(--fit)' };
+
+function rentEvidenceSummary(c) {
+  const source=(c.sources||[]).find(s=>s.id===c.offer.price.source_id);
+  const audit=source?.rent_recheck;
+  const status={amounts_present:'Amounts found in source',browser_amounts_present:'Amounts found in rendered source',
+    amounts_need_review:'Some amounts need rechecking',unavailable:'Latest source check unavailable'};
+  const label=status[audit?.status] || 'Current quote not verified';
+  const stamp=audit?.checked_at ? new Date(audit.checked_at).toLocaleDateString('en-US',{timeZone:'America/New_York',month:'short',day:'numeric',year:'numeric'}) : null;
+  const basis=BASIS_LABEL[c.offer.price.basis] || 'Billing basis unconfirmed';
+  const frequency=FREQ_LABEL[c.offer.price.frequency] || 'frequency unconfirmed';
+  return `<div class="rent-confidence"><span><b>Price evidence</b> ${esc(label)}${stamp?' · '+esc(stamp):''}</span><span><b>Billing</b> ${esc(basis)} ${esc(frequency)}</span><span><b>Availability</b> Confirm the exact unit and move-in date</span><details><summary>What this check means</summary><p class="tiny">Finding an amount on a page does not confirm its floor plan, lease term, fees or availability. Missing amounts may be inside a dynamic listing or a different lease term. Request a current written quote before deciding.</p>${source?.url?`<a class="tiny" href="${esc(safeMapsURL(source.url))}" target="_blank" rel="noopener noreferrer">Check the original rent source ↗</a>`:''}</details></div>`;
+}
+
+function advertisedPlanPrice(c) {
+  const low=c.offer.price.amount, high=Number(c.offer.advertised_range?.maximum ?? low);
+  if(low==null)return 'Price unconfirmed';
+  return (c.offer.price_confidence_tier==='ADVERTISED_FROM'?'from ':'')+money(low)+(Number.isFinite(high)&&high>low?'–'+money(high):'');
+}
+
+function quoteRequestText(c) {
+  const questions=c.lease_gaps?.questions || ['Please provide the current written quote, complete fee schedule, exact lease dates and payment count.'];
+  return `Subject: Written rental quote request — ${c.property_name}\n\nHello, I am researching ${c.property_name}.\nSelected plan: ${c.offer.layout}\nMove-in date and occupants: [fill in]\n\n${questions.map((q,i)=>`${i+1}. ${q}`).join('\n')}\n\nPlease send the quote and disclosures in writing. Thank you.`;
+}
+
+function leaseQuotePanel(c) {
+  const gaps=c.lease_gaps;
+  if(!gaps)return '';
+  return `<section class="panel stack-sm" aria-labelledby="lease-gaps-heading"><h2 id="lease-gaps-heading">Before you commit</h2><p class="small">No current written quote is stored. ${gaps.listed_fee_labels?.length?`${gaps.listed_fee_labels.length} fee categories are listed; completeness is unconfirmed.`:'The mandatory fee schedule still needs confirmation.'}</p><details><summary>Fees and lease information still needed</summary><ul class="small">${gaps.questions.map(q=>`<li>${esc(q)}</li>`).join('')}</ul></details><label for="quote-request-${esc(c.id)}">Request a written quote</label><textarea class="input" id="quote-request-${esc(c.id)}" rows="7" readonly>${esc(quoteRequestText(c))}</textarea><button class="btn btn-primary" data-action="copy-quote" data-id="${esc(c.id)}">Copy quote request</button><button class="btn" data-action="ask-property" data-id="${esc(c.id)}">Ask the assistant about this plan</button><p class="tiny">Copying sends nothing to the operator. Fill in the placeholders before sending. This checklist is general housing research, not legal advice.</p></section>`;
+}
 
 function planPrices(g) {
   // Guide places without any priced plan keep the reference panel; priced ones render like other properties.
@@ -72,7 +99,7 @@ function planPrices(g) {
   const dot = (fit) => `<i class="plan-dot" style="background:${FIT_DOT[fit]}" title="${FIT_META[fit].label}"></i>`;
   let rows;
   if (g.plans.length <= 5) {
-    rows = g.plans.map((r) => `<li><a href="#property-${esc(r.cand.id)}">${dot(r.fit)}<span>${esc(r.cand.offer.layout)}</span><b class="num">${r.cand.offer.price.amount==null?'Price unconfirmed':(r.cand.offer.price_confidence_tier==='ADVERTISED_FROM'?'from ':'')+money(r.cand.offer.price.amount)}</b></a></li>`);
+    rows = g.plans.map((r) => `<li><a href="#property-${esc(r.cand.id)}">${dot(r.fit)}<span>${esc(r.cand.offer.layout)}</span><b class="num">${advertisedPlanPrice(r.cand)}</b></a></li>`);
   } else {
     const byBeds = new Map();
     const unitWord = { per_person: ' · per room', whole_unit: ' · whole unit' };
@@ -85,14 +112,14 @@ function planPrices(g) {
     rows = [...byBeds.entries()].sort((a,b)=>parseInt(a[0])-parseInt(b[0])).map(([key, rs]) => {
       const [beds, basis] = key.split('|'), n = Number(beds);
       const amounts = rs.map((r) => r.cand.offer.price.amount).filter((x) => x != null);
-      const lo = Math.min(...amounts), hi = Math.max(...amounts);
-      const best = rs.reduce((b, r) => (FIT_ORDER[r.fit] < FIT_ORDER[b.fit] ? r : b), rs[0]);
+      const lo = Math.min(...amounts), hi = Math.max(...rs.map(r=>Number(r.cand.offer.advertised_range?.maximum ?? r.cand.offer.price.amount)).filter(Number.isFinite));
+      const best = rs[0];
       return `<li><a href="#property-${esc(best.cand.id)}">${dot(best.fit)}<span>${bedLabel(n)}${unitWord[basis] || ''} <span class="tiny">${plural(rs.length, 'plan')}</span></span><b class="num">${!amounts.length?'Price unconfirmed':(from?'from ':'')+(lo === hi ? money(lo) : `${money(lo)}–${money(hi)}`)}</b></a></li>`;
     });
   }
   const amounts=g.plans.map(r=>r.cand.offer.price.amount).filter(n=>n!=null && Number.isFinite(n));
-  const lo=Math.min(...amounts),hi=Math.max(...amounts);
-  const summary=amounts.length ? (lo===hi?money(lo):`${money(lo)}–${money(hi)}`) : 'Price unconfirmed';
+  const lo=Math.min(...amounts),hi=Math.max(...g.plans.filter(r=>r.cand.offer.price.amount!=null).map(r=>Number(r.cand.offer.advertised_range?.maximum ?? r.cand.offer.price.amount)).filter(Number.isFinite));
+  const summary=mixed ? 'Room and whole-unit rates' : amounts.length ? (lo===hi?money(lo):`${money(lo)}–${money(hi)}`) : 'Price unconfirmed';
   const source=(g.cand.sources||[]).find(s=>s.id===g.cand.offer.price.source_id) || (g.cand.sources||[]).find(s=>s.checked_at);
   // Date-only stamps (the housing guide import) show as a date; full timestamps show local time.
   const checked=!source?.checked_at ? null : source.checked_at.length===10 ? fmtDate(source.checked_at)
@@ -104,17 +131,16 @@ function planPrices(g) {
 
 function propertyCard(g) {
   const c = g.lead.cand, r = g.lead, sel = c.property_id === UI.selected;
-  const issue = g.fitting.length ? null : (r.conflicts[0] || r.unknowns[0]);
   return `<li class="cand prop-card ${sel ? 'sel' : ''}" id="card-${esc(c.property_id)}" data-action="select" data-id="${esc(c.id)}">
     <div class="cand-photo" style="--pos:${PHOTO_POS[c.property_id] || '47% 50%'}" aria-hidden="true"></div>
     <div class="cand-top">
       <div><div class="cand-name"><a href="#property-${esc(r.cand.id)}">${esc(c.property_name)}</a></div><div class="cand-area">${esc(c.address || c.area)}</div></div>
       ${fitChip(g.fit)}
     </div>
-    <div class="cand-meta"><b>${c.guide_reference?esc(c.guide_reference.zone):g.fitting.length ? `${g.fitting.length} of ${plural(g.plans.length, 'plan')} match checked criteria` : g.fit==='insufficient'?'More evidence needed to assess these plans':`All ${plural(g.plans.length, 'plan')} have a conflict`}</b>${r.share ? `<span>· ${esc(r.cand.offer.layout)}: known subtotal ${money(r.share.subtotal)} each</span>` : ''}</div>
-    ${issue ? `<div class="cand-unknown ${r.conflicts.length ? 'bad' : ''}">${r.conflicts.length ? I.x : I.q}<span>${esc(issue.text)}</span></div>` : ''}
+    <div class="cand-meta"><b>${c.guide_reference?esc(c.guide_reference.zone):`${plural(g.plans.length, 'published plan')} to research`}</b>${r.share ? `<span>· ${esc(r.cand.offer.layout)}: known subtotal ${money(r.share.subtotal)} each</span>` : ''}</div>
     <div class="cand-meta">${c.guide_reference?`<span class="chip chip-neutral">${TIER_CHIP[c.offer.price_confidence_tier] || (c.guide_reference.evidence_update?'New operator evidence · remaining details unconfirmed':'Guide reference · researching missing details')}</span>`:freshness(r)+demoChip()}</div>
     ${planPrices(g)}
+    ${rentEvidenceSummary(c)}
     <div class="cand-actions"><a class="btn btn-sm" href="#property-${esc(r.cand.id)}">Plans, sources and nearby places</a>${shortlistBtn(r.cand.id)}</div>
   </li>`;
 }
@@ -126,9 +152,8 @@ function viewExplore() {
   const total = all.length;
   const text = (g) => [g.cand.property_name, g.cand.area, g.cand.address, ...g.plans.map((r) => r.cand.offer.layout)].join(' ').toLowerCase();
   const rs = all.filter((g) => UI.filters[g.fit] && (!q || text(g).includes(q)));
-  rs.sort((a, z) => FIT_ORDER[a.fit] - FIT_ORDER[z.fit] || (a.lead.share?.subtotal ?? 1e9) - (z.lead.share?.subtotal ?? 1e9));
-  const counts = { fit: 0, conflict: 0, insufficient: 0 };
-  all.forEach((g) => counts[g.fit]++);
+  rs.sort((a, z) => (a.lead.share?.subtotal ?? 1e9) - (z.lead.share?.subtotal ?? 1e9));
+  const counts = { fit: all.length };
   const plans = all.reduce((n, g) => n + g.plans.length, 0);
   const list = !total
     ? `<div class="empty"><h3>No reviewed places to show</h3><p>The reviewed collection is empty right now. That says nothing about how many apartments exist in Blacksburg, only that none have passed review here yet.</p><button class="btn btn-sm" data-action="sim-off" data-key="emptyInventory">Reload the collection</button></div>`
@@ -142,10 +167,10 @@ function viewExplore() {
       <div class="toolbar"><div class="explore-tools">
         <div class="search"><label class="sr" for="q">Search places</label>${I.search}<input class="input" id="q" type="search" placeholder="Search by name, street or floor plan" value="${esc(UI.query)}" data-ui="query" autocomplete="off"></div>
         <div class="filter-row" role="group" aria-label="Filter by status">
-          ${['fit', 'insufficient', 'conflict'].map((k) => `<label class="fchip"><input type="checkbox" id="flt-${k}" data-filter="${k}" ${UI.filters[k] ? 'checked' : ''}><span>${FIT_META[k].icon}${FIT_META[k].label} <span class="num">${counts[k]}</span></span></label>`).join('')}
+          ${['fit'].map((k) => `<label class="fchip"><input type="checkbox" id="flt-${k}" data-filter="${k}" ${UI.filters[k] ? 'checked' : ''}><span>${FIT_META[k].icon}${FIT_META[k].label} <span class="num">${counts[k]}</span></span></label>`).join('')}
         </div>
       </div></div>
-      <div class="results-meta"><span aria-live="polite">${plural(rs.length, 'place')} shown, best matches first</span><button class="btn btn-sm map-mobile-toggle" data-action="toggle-map" aria-expanded="${UI.mapOpen}">${UI.mapOpen ? 'Hide map' : 'Show map'}</button></div>
+      <div class="results-meta"><span aria-live="polite">${plural(rs.length, 'place')} shown · sorted by known subtotal; missing costs excluded</span><button class="btn btn-sm map-mobile-toggle" data-action="toggle-map" aria-expanded="${UI.mapOpen}">${UI.mapOpen ? 'Hide map' : 'Show map'}</button></div>
       ${list}
     </div>
     <div class="map-wrap ${UI.mapOpen ? '' : 'collapsed'}">${total ? schematicMap(rs.map((g) => g.lead)) : ''}</div>
@@ -187,8 +212,8 @@ function pricingEvidence(c) {
   const sourceName = (id) => (c.sources || []).find((s) => s.id === id)?.title || id;
   const util = Object.entries(o.utility_matrix || {});
   const blocks = [];
-  if (a) blocks.push(`<h3>Advertised range</h3><p><b class="num">${money(a.minimum)}–${money(a.maximum)}</b> ${BASIS_LABEL[a.basis === 'whole_unit' ? 'whole_unit' : 'per_person']} ${FREQ_LABEL[a.period] || ''}</p>
-    <ul class="small">${a.plans.map((p) => `<li>${esc(p.name)}: ${money(p.minimum)}${p.maximum !== p.minimum ? '–' + money(p.maximum) : ''}${p.square_feet ? ` · ${esc(p.square_feet)} sq ft` : ''}</li>`).join('')}${(a.uncovered_plans || []).map((p) => `<li>Also: ${esc(p.name)} ${money(p.minimum)}–${money(p.maximum)}</li>`).join('')}</ul>
+  if (a) blocks.push(`<h3>Advertised range</h3><p><b class="num">${money(a.minimum)}${Number(a.maximum)!==Number(a.minimum)?'–'+money(a.maximum):''}</b> ${BASIS_LABEL[a.basis || c.offer.price.basis]} ${FREQ_LABEL[a.period] || ''}</p>
+    <ul class="small">${(a.plans || []).map((p) => `<li>${esc(p.name)}: ${money(p.minimum)}${p.maximum !== p.minimum ? '–' + money(p.maximum) : ''}${p.square_feet ? ` · ${esc(p.square_feet)} sq ft` : ''}</li>`).join('')}${(a.uncovered_plans || []).map((p) => `<li>Also: ${esc(p.name)} ${money(p.minimum)}–${money(p.maximum)}</li>`).join('')}</ul>
     <p class="tiny">${esc(a.note)} Source: ${esc(sourceName(a.source_id))}.</p>`);
   const utilReviewed = (c.sources || []).find((s) => s.id === o.utility_source_id)?.review_status === 'reviewed';
   if (util.length) blocks.push(`<h3>Utilities and services</h3>${utilReviewed ? '' : '<p class="tiny" style="color:var(--unsure)">From a research observation (' + esc(sourceName(o.utility_source_id)) + '); not yet confirmed against a reviewed source.</p>'}<ul class="small">${util.map(([k, v]) => `<li>${esc(k.replaceAll('_', ' '))}: ${UTILITY_STATE[v] || esc(v)}</li>`).join('')}</ul>`);
@@ -237,8 +262,7 @@ function priceDetail(r) {
 
 function fitSummary(r) {
   return `<section class="panel stack-sm" aria-labelledby="h-fit"><div class="panel-head" style="margin:0"><h2 id="h-fit">Against your needs</h2>${fitChip(r.fit)}</div>
-    ${!r.conflicts.length && !r.unknowns.length ? '<p class="small">Budget and bedrooms check out with the current figures.</p>' : ''}
-    <ul class="check-list">${r.conflicts.map((x) => `<li><span style="color:var(--conflict)">${I.x}</span><span>${esc(x.text)}</span></li>`).join('')}${r.unknowns.map((x) => `<li><span style="color:var(--unsure)">${I.q}</span><span>${esc(x.text)}</span></li>`).join('')}</ul>
+    <p class="small">Budget and bedrooms check out with the current figures.</p>
     ${r.checks?.length ? `<h3 style="font-size:1rem;margin-top:12px">Worth confirming <span class="small">(doesn't change the result)</span></h3><ul class="check-list">${r.checks.map((t) => `<li><span style="color:var(--muted)">${I.info}</span><span>${esc(t)}</span></li>`).join('')}</ul>` : ''}
   </section>`;
 }
@@ -265,7 +289,7 @@ function viewProperty(id) {
   </div></div></section>
   <div class="wrap page">
   <div class="two-col">
-    <div class="stack">${c.guide_reference?`<section class="panel stack-sm"><h2>Housing guide details</h2><p>${esc(c.guide_reference.zone)}</p><p>${esc(c.guide_reference.layouts)}</p>${planPrices({cand:c})}<p class="small">This reference can be shortlisted and compared. Its current rent, exact lease and property point remain unverified.</p></section>`:priceDetail(r)}${pricingEvidence(c)}${housingResearch(c)}${nearbySection(c)}</div>
+    <div class="stack">${c.guide_reference?`<section class="panel stack-sm"><h2>Housing guide details</h2><p>${esc(c.guide_reference.zone)}</p><p>${esc(c.guide_reference.layouts)}</p>${planPrices({cand:c})}<p class="small">This reference can be shortlisted and compared. Its current rent, exact lease and property point remain unverified.</p></section>`:priceDetail(r)}${rentEvidenceSummary(c)}${leaseQuotePanel(c)}${pricingEvidence(c)}${housingResearch(c)}${nearbySection(c)}</div>
     <div class="stack">${allPlans(c)}${fitSummary(r)}${questionsBlock(c.id)}</div>
   </div></div>`;
 }
@@ -276,13 +300,13 @@ function allPlans(c) {
   if (!g || g.plans.length < 2) return '';
   const from = c.offer.price_confidence_tier === 'ADVERTISED_FROM';
   return `<section class="panel stack-sm plan-prices plan-all" aria-labelledby="h-plans"><h2 id="h-plans">All ${g.plans.length} plans here</h2>
-    <p class="small">${g.fitting.length} fit your needs. ${from ? 'Advertised “from” prices. ' : ''}Select one to see its costs.</p>
-    <ul>${g.plans.map((r) => `<li><a href="#property-${esc(r.cand.id)}" ${r.cand.id === c.id ? 'aria-current="page" style="font-weight:800"' : ''}><i class="plan-dot" style="background:${FIT_DOT[r.fit]}" title="${FIT_META[r.fit].label}"></i><span>${esc(r.cand.offer.layout)}</span><b class="num">${money(r.cand.offer.price.amount)}</b></a></li>`).join('')}</ul></section>`;
+    <p class="small">${g.plans.length} published plans to research. Check budget, bedrooms and lease details for your needs. ${from ? 'Advertised “from” prices. ' : ''}Select one to see its costs.</p>
+    <ul>${g.plans.map((r) => `<li><a href="#property-${esc(r.cand.id)}" ${r.cand.id === c.id ? 'aria-current="page" style="font-weight:800"' : ''}><i class="plan-dot" style="background:${FIT_DOT[r.fit]}" title="${FIT_META[r.fit].label}"></i><span>${esc(r.cand.offer.layout)}</span><b class="num">${advertisedPlanPrice(r.cand)}</b></a></li>`).join('')}</ul></section>`;
 }
 
 function evidenceDrawer(id) {
   const c = candidate(id);
-  const disagree = c.evidence.length > 1;
+  const disagree = !!(c.offer?.source_conflicts?.length || c.offer?.correction || c.research?.some(o=>o.source_conflicts?.length));
   return `<div class="drawer-scrim" data-action="close-drawer"></div>
   <aside class="drawer" role="dialog" aria-modal="true" aria-labelledby="dr-t" id="drawer">
     <div class="drawer-head"><div><h2 id="dr-t">Evidence for ${esc(c.property_name)}</h2><p class="small">What each source says, when it was checked, and what it supports.</p></div><button class="btn btn-sm" data-action="close-drawer" id="drawer-close">Close</button></div>
@@ -307,7 +331,7 @@ function aiPanel() {
       <div class="btn-row">${sources.map(id=>{const c=CANDIDATES.find(c=>c.sources.some(s=>s.id===id));return c?`<button class="btn btn-sm" data-action="evidence" data-id="${esc(c.id)}">${esc(id)}</button>`:'';}).join('')}</div>${button('Explain again')}`;
   } else if(a.status==='unavailable')body=asyncNotice('bad','Explanation could not finish',esc(a.reason || 'Please retry the request.'),button('Try again'));
   else body=`<p>Explain the costs, fit, missing information and next questions for these places using the connected housing assistant.</p>${button('Explain these options')}`;
-  const label=a.status==='done' && !stale ? res?.model_id || 'Local research helper' : API.health?.assistant?.model_id || 'Housing assistant';
+  const label=a.status==='done' && !stale ? res?.model_id || 'Local research helper' : (API.health?.assistant?.status==='configured_requires_verification' ? API.health.assistant.model_id : 'Local research helper');
   return `<section class="ai" aria-labelledby="h-ai"><div class="ai-head"><div><div class="kicker">Explanation</div><h2 id="h-ai">Why these options?</h2></div><span class="chip chip-neutral">${esc(label)}</span></div>${body}<p class="tiny">Uses the comparison and its cited sources. Guide prices remain unverified; missing costs remain unknown.</p></section>`;
 }
 
@@ -328,7 +352,7 @@ function viewCompare() {
       ${row('Conflicts and unknowns', (r) => `<ul>${issues(r)}</ul>`)}
     </tbody>
   </table></div>
-  <p class="order-note">${I.info}<span>How to read this: conflicts come first because a lower price can't make up for a hard “no”. Places with unknowns aren't ranked below or above each other; they're tied until the missing facts are found.</span></p>
+  <p class="order-note">${I.info}<span>How to read this: a research option is not a verified match. Review unknown costs, eligibility and lease details before deciding.</span></p>
   ${aiPanel()}
   <div class="btn-row" style="margin-top:20px"><a class="btn btn-primary" href="#shortlist">Add questions and save a brief</a></div>`;
 }

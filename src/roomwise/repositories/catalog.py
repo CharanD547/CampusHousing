@@ -54,8 +54,15 @@ class CatalogRepository:
         if db is None:
             with self.connect() as connection: return self.catalog(connection)
         props = [json.loads(r[0]) for r in db.execute('SELECT body FROM housing_catalog ORDER BY rowid')]
+        audit_path = ROOT / 'data/rent-source-recheck.json'
+        audit = json.loads(audit_path.read_text(encoding='utf-8')).get('properties', {}) if audit_path.exists() else {}
         for prop in props:
             prop['sources'] = [self.source(s['id'], db=db) for s in prop['sources']]
+            checks = audit.get(prop['id'], {}).get('sources', [])
+            for source in prop['sources']:
+                check = next((c for c in checks if c['source_id'] == source['id'] and c['source_url'] == source.get('url')), None)
+                if check:
+                    source['rent_recheck'] = check
         return props
 
     def source(self, key, db=None, with_text=False):

@@ -1,0 +1,1117 @@
+{
+  "checked_at": "2026-10-25T14:47:07.307386+00:00",
+  "scope": "All catalog properties; amount mentions do not verify billing basis, plan, term, fees or availability.",
+  "properties": {
+    "foxridge": {
+      "name": "Foxridge",
+      "plan_count": 7,
+      "sources": [
+        {
+          "source_id": "foxridge-plans",
+          "source_url": "https://www.foxridgeliving.com/floorplans/",
+          "status": "browser_amounts_present",
+          "checked_at": "2026-10-25T14:38:24.505191+00:00",
+          "source_sha256": null,
+          "error": null,
+          "verification_url": "https://www.foxridgeliving.com/floorplans/",
+          "amounts_checked": [
+            1379.0,
+            1444.0,
+            1544.0,
+            1679.0,
+            1899.0,
+            2919.0,
+            3564.0
+          ],
+          "amounts_not_found": [],
+          "note": "Source retrieved; amount mentions alone do not verify the exact plan or rental quote."
+        }
+      ]
+    },
+    "alight": {
+      "name": "Alight Blacksburg",
+      "plan_count": 4,
+      "sources": [
+        {
+          "source_id": "alight-plans",
+          "source_url": "https://alight-blacksburg.com/rates-floorplans/",
+          "status": "amounts_present",
+          "checked_at": "2026-10-25T14:47:05.165008+00:00",
+          "source_sha256": "efbb25b9691b191d36fb95ec890acf47dcb458d2faf55a42d28aa527a28fdc6c",
+          "error": null,
+          "verification_url": "https://alight-blacksburg.com/rates-floorplans/",
+          "amounts_checked": [
+            835.0,
+            855.0,
+            955.0,
+            999.0
+          ],
+          "amounts_not_found": [],
+          "note": "Source retrieved; amount mentions alone do not verify the exact plan or rental quote."
+        }
+      ]
+    },
+    "union": {
+      "name": "Union Blacksburg",
+      "plan_count": 11,
+      "sources": [
+        {
+          "source_id": "union-plans",
+          "source_url": "https://www.unionblacksburg.com/blacksburg/union-blacksburg/student/",
+          "status": "browser_amounts_present",
+          "checked_at": "2026-10-25T14:41:46.134128+00:00",
+          "source_sha256": null,
+          "error": null,
+          "verification_url": "https://www.unionblacksburg.com/blacksburg/union-blacksburg/student/",
+          "amounts_checked": [
+            1030.0,
+            1110.0,
+            1204.0,
+            1213.0,
+            1222.0,
+            1253.0,
+            1340.0,
+            1385.0,
+            1414.0,
+            1678.0,
+            1886.0
+          ],
+          "amounts_not_found": [],
+          "note": "Source retrieved; amount mentions alone do not verify the exact plan or rental quote."
+        }
+      ]
+    },
+    "terrace": {
+      "name": "Terrace View",
+      "plan_count": 36,
+      "sources": [
+        {
+          "source_id": "terrace-widget",
+          "source_url": "https://entratasnipit.terraceviewblacksburg.com/blacksburg/terrace-view/?&is_responsive_snippet=1&snippet_type=website&occupancy_type=10",
+          "status": "browser_amounts_present",
+          "checked_at": "2026-10-25T14:41:54.668111+00:00",
+          "source_sha256": null,
+          "error": null,
+          "verification_url": "https://entratasnipit.terraceviewblacksburg.com/blacksburg/terrace-view/?&is_responsive_snippet=1&snippet_type=website&occupancy_type=10",
+          "amounts_checked": [
+            865.0,
+            890.0,
+            900.0,
+            905.0,
+            910.0,
+            920.0,
+            925.0,
+            930.0,
+            935.0,
+            950.0,
+            955.0,
+            960.0,
+            965.0,
+            985.0,
+            990.0,
+            995.0,
+            1000.0,
+            1025.0,
+            1040.0,
+            1045.0,
+            1050.0,
+            1055.0,
+            1080.0,
+            1085.0,
+            1110.0,
+            1125.0,
+            1450.0,
+            1505.0,
+            1520.0,
+            1550.0,
+            1610.0
+          ],
+          "amounts_not_found": [],
+          "note": "Source retrieved; amount mentions alone do not verify the exact plan or rental quote."
+        }
+      ]
+    },
+    "windsor": {
+      "name": "Windsor Hills",
+      "plan_count": 7,
+      "sources": [
+        {
+          "source_id": "windsor-plans",
+          "source_url": "https://www.windsorhillsapts.com/floorplans/",
+          "status": "browser_amounts_present",
+          "checked_at": "2026-10-25T14:38:27.517742+00:00",
+          "source_sha256": null,
+          "error": null,
+          "verification_url": "https://www.windsorhillsapts.com/floorplans/",
+          "amounts_checked": [
+            1234.0,
+            1250.0,
+            1294.0,
+            1403.0,
+            1441.0,
+            1680.0,
+            1844.0
+          ],
+          "amounts_not_found": [],
+          "note": "Source retrieved; amount mentions alone do not verify the exact plan or rental quote."
+        }
+      ]
+    },
+    "mill": {
+      "name": "The Mill",
+      "plan_count": 3,
+      "sources": [
+        {
+          "source_id": "mill-plans",
+          "source_url": "https://www.blacksburgmill.com/floor-plans/",
+          "status": "amounts_present",
+          "checked_at": "2026-10-25T14:47:07.024248+00:00",
+          "source_sha256": "c6c6d04e353ba93bb0701101ff05580ac5828e78b1c707160a6045d84f9a8f3f",
+          "error": null,
+          "verification_url": "https://www.blacksburgmill.com/floor-plans/",
+          "amounts_checked": [
+            1100.0,
+            1300.0,
+            1680.0
+          ],
+          "amounts_not_found": [],
+          "note": "Source retrieved; amount mentions alone do not verify the exact plan or rental quote."
+        }
+      ]
+    },
+    "the-edge-apartments-townhomes": {
+      "name": "The Edge Apartments & Townhomes",
+      "plan_count": 11,
+      "sources": [
+        {
+          "source_id": "operator-guide-the-edge-apartments-townhomes",
+          "source_url": "https://theedgeapartmentsva.prospectportal.com/blacksburg/the-edge-apartments-and-townhomes/student/",
+          "status": "browser_amounts_present",
+          "checked_at": "2026-10-25T14:34:49.926502+00:00",
+          "source_sha256": null,
+          "error": null,
+          "verification_url": "https://theedgeapartmentsva.prospectportal.com/blacksburg/the-edge-apartments-and-townhomes/student/",
+          "amounts_checked": [
+            1245.0,
+            1255.0,
+            1285.0,
+            1295.0,
+            1317.0,
+            1375.0,
+            1395.0,
+            1415.0
+          ],
+          "amounts_not_found": [],
+          "note": "Source retrieved; amount mentions alone do not verify the exact plan or rental quote."
+        }
+      ]
+    },
+    "tech-terrace": {
+      "name": "Tech Terrace",
+      "plan_count": 1,
+      "sources": [
+        {
+          "source_id": "operator-guide-tech-terrace",
+          "source_url": "https://techterrace.prospectportal.com/blacksburg/tech-terrace-apartments/conventional/",
+          "status": "browser_amounts_present",
+          "checked_at": "2026-10-25T14:35:31.323118+00:00",
+          "source_sha256": null,
+          "error": null,
+          "verification_url": "https://techterrace.prospectportal.com/blacksburg/tech-terrace-apartments/conventional/",
+          "amounts_checked": [
+            3576.0
+          ],
+          "amounts_not_found": [],
+          "note": "Source retrieved; amount mentions alone do not verify the exact plan or rental quote."
+        }
+      ]
+    },
+    "haven-blacksburg-haven-on-north-main": {
+      "name": "Haven Blacksburg (Haven on North Main)",
+      "plan_count": 23,
+      "sources": [
+        {
+          "source_id": "operator-guide-haven-blacksburg-haven-on-north-main",
+          "source_url": "https://www.havenblacksburg.com/haven---north-street",
+          "status": "browser_amounts_present",
+          "checked_at": "2026-10-25T14:40:21.074387+00:00",
+          "source_sha256": null,
+          "error": null,
+          "verification_url": "https://www.havenblacksburg.com/haven---north-street",
+          "amounts_checked": [
+            550.0,
+            1938.0,
+            2697.0,
+            3596.0,
+            3636.0,
+            3716.0
+          ],
+          "amounts_not_found": [],
+          "note": "Source retrieved; amount mentions alone do not verify the exact plan or rental quote."
+        }
+      ]
+    },
+    "old-row-on-north-main": {
+      "name": "Old Row on North Main",
+      "plan_count": 2,
+      "sources": [
+        {
+          "source_id": "operator-guide-old-row-on-north-main",
+          "source_url": "https://offcampus.vt.edu/housing/property/old-row-on-north-main/6y68vyt",
+          "status": "amounts_present",
+          "checked_at": "2026-10-25T14:47:05.047798+00:00",
+          "source_sha256": "934377bd4fca9736e15ce428f7def18638fb1c3cf63a01fd7ee61fd4904a859a",
+          "error": null,
+          "verification_url": "https://offcampus.vt.edu/housing/property/old-row-on-north-main/6y68vyt",
+          "amounts_checked": [
+            1319.0,
+            1419.0
+          ],
+          "amounts_not_found": [],
+          "note": "Source retrieved; amount mentions alone do not verify the exact plan or rental quote."
+        }
+      ]
+    },
+    "collegiate-court": {
+      "name": "Collegiate Court",
+      "plan_count": 2,
+      "sources": [
+        {
+          "source_id": "operator-guide-collegiate-court",
+          "source_url": "https://offcampus.vt.edu/housing/property/collegiate-court-apartments/v9cvgxg",
+          "status": "amounts_present",
+          "checked_at": "2026-10-25T14:47:04.446802+00:00",
+          "source_sha256": "ea277950dea64c7db357fae225934c876fd00e3800a6ac6412ef8fea87a3ae6d",
+          "error": null,
+          "verification_url": "https://offcampus.vt.edu/housing/property/collegiate-court-apartments/v9cvgxg",
+          "amounts_checked": [
+            2850.0,
+            2940.0,
+            3640.0,
+            4040.0
+          ],
+          "amounts_not_found": [],
+          "note": "Source retrieved; amount mentions alone do not verify the exact plan or rental quote."
+        }
+      ]
+    },
+    "the-lofts-at-316": {
+      "name": "The Lofts at 316",
+      "plan_count": 2,
+      "sources": [
+        {
+          "source_id": "operator-guide-the-lofts-at-316",
+          "source_url": "https://loftsat316.prospectportal.com/blacksburg/lofts-at-316/conventional/",
+          "status": "browser_amounts_present",
+          "checked_at": "2026-10-25T14:35:33.114455+00:00",
+          "source_sha256": null,
+          "error": null,
+          "verification_url": "https://loftsat316.prospectportal.com/blacksburg/lofts-at-316/conventional/",
+          "amounts_checked": [
+            1415.0
+          ],
+          "amounts_not_found": [],
+          "note": "Source retrieved; amount mentions alone do not verify the exact plan or rental quote."
+        }
+      ]
+    },
+    "kent-square-condos": {
+      "name": "Kent Square Condos",
+      "plan_count": 1,
+      "sources": [
+        {
+          "source_id": "operator-guide-kent-square-condos",
+          "source_url": "https://granitesl.appfolio.com/listings/detail/ccafc6d6-60b9-4f02-bba5-4de0c6f97ceb",
+          "status": "amounts_present",
+          "checked_at": "2026-10-25T14:47:03.381046+00:00",
+          "source_sha256": "259fa7836aa8bb4325ff1bc8edbb0c705a13c60275bacb91556f4d74d67984c4",
+          "error": null,
+          "verification_url": "https://granitesl.appfolio.com/listings/detail/ccafc6d6-60b9-4f02-bba5-4de0c6f97ceb",
+          "amounts_checked": [
+            2500.0
+          ],
+          "amounts_not_found": [],
+          "note": "Source retrieved; amount mentions alone do not verify the exact plan or rental quote."
+        }
+      ]
+    },
+    "chase-apartments-the-chase": {
+      "name": "Chase Apartments (The Chase)",
+      "plan_count": 1,
+      "sources": [
+        {
+          "source_id": "operator-guide-chase-apartments-the-chase",
+          "source_url": "https://thechaseapts.prospectportal.com/blacksburg/the-chase-apartments/conventional/",
+          "status": "browser_amounts_present",
+          "checked_at": "2026-10-25T14:35:34.419067+00:00",
+          "source_sha256": null,
+          "error": null,
+          "verification_url": "https://thechaseapts.prospectportal.com/blacksburg/the-chase-apartments/conventional/",
+          "amounts_checked": [
+            3576.0
+          ],
+          "amounts_not_found": [],
+          "note": "Source retrieved; amount mentions alone do not verify the exact plan or rental quote."
+        }
+      ]
+    },
+    "east-roanoke-street": {
+      "name": "East Roanoke Street",
+      "plan_count": 0,
+      "sources": []
+    },
+    "downtown-boutique-historic-rentals": {
+      "name": "Downtown Boutique & Historic Rentals",
+      "plan_count": 3,
+      "sources": [
+        {
+          "source_id": "operator-guide-downtown-boutique-historic-rentals",
+          "source_url": "https://offcampus.vt.edu/housing/property/703-clay-street-se-ada-accessible-2-br-baker-one/ocpnn34r9m",
+          "status": "amounts_present",
+          "checked_at": "2026-10-25T14:47:05.913393+00:00",
+          "source_sha256": "cffdb83fa54a586b7d24868401cc3cce49d9ba6a0c451201ec1aa3e453a94a31",
+          "error": null,
+          "verification_url": "https://offcampus.vt.edu/housing/property/703-clay-street-se-ada-accessible-2-br-baker-one/ocpnn34r9m",
+          "amounts_checked": [
+            1800.0
+          ],
+          "amounts_not_found": [],
+          "note": "Source retrieved; amount mentions alone do not verify the exact plan or rental quote."
+        },
+        {
+          "source_id": "operator-guide-downtown-boutique-historic-rentals-3258285a",
+          "source_url": "https://houstonst.prospectportal.com/blacksburg/houston-street-apartments/conventional/",
+          "status": "browser_amounts_present",
+          "checked_at": "2026-10-25T14:45:21.023548+00:00",
+          "source_sha256": null,
+          "error": null,
+          "verification_url": "https://houstonst.prospectportal.com/blacksburg/houston-street-apartments/conventional/",
+          "amounts_checked": [
+            1900.0,
+            1950.0
+          ],
+          "amounts_not_found": [],
+          "note": "Source retrieved; amount mentions alone do not verify the exact plan or rental quote."
+        }
+      ]
+    },
+    "hub-blacksburg": {
+      "name": "Hub Blacksburg",
+      "plan_count": 18,
+      "sources": [
+        {
+          "source_id": "operator-guide-hub-blacksburg",
+          "source_url": "https://huboncampusblacksburg.prospectportal.com/blacksburg/hub-blacksburg-hunt/student",
+          "status": "browser_amounts_present",
+          "checked_at": "2026-10-25T14:42:16.524210+00:00",
+          "source_sha256": null,
+          "error": null,
+          "verification_url": "https://huboncampusblacksburg.prospectportal.com/blacksburg/hub-blacksburg-hunt/student",
+          "amounts_checked": [
+            999.0,
+            1140.0,
+            1165.0,
+            1175.0,
+            1189.0,
+            1190.0,
+            1210.0,
+            1235.0,
+            1239.0,
+            1375.0,
+            1415.0,
+            1425.0,
+            1445.0,
+            1465.0,
+            1859.0,
+            1884.0,
+            1909.0,
+            2019.0
+          ],
+          "amounts_not_found": [],
+          "note": "Source retrieved; amount mentions alone do not verify the exact plan or rental quote."
+        }
+      ]
+    },
+    "park37": {
+      "name": "Park37",
+      "plan_count": 8,
+      "sources": [
+        {
+          "source_id": "operator-guide-park37",
+          "source_url": "https://www.roostrealestategroup.com/park37",
+          "status": "amounts_present",
+          "checked_at": "2026-10-25T14:47:06.755270+00:00",
+          "source_sha256": "8467ab265c943d5d6a8c5423b10fd0fa704ea7fc1738f8a7561628509cc7e008",
+          "error": null,
+          "verification_url": "https://www.roostrealestategroup.com/park37",
+          "amounts_checked": [
+            1090.0,
+            1150.0,
+            1190.0,
+            1250.0,
+            1350.0,
+            1760.0,
+            1860.0
+          ],
+          "amounts_not_found": [],
+          "note": "Source retrieved; amount mentions alone do not verify the exact plan or rental quote."
+        }
+      ]
+    },
+    "fourteen35-apartments": {
+      "name": "Fourteen35 Apartments",
+      "plan_count": 3,
+      "sources": [
+        {
+          "source_id": "operator-guide-fourteen35-apartments",
+          "source_url": "https://offcampus.vt.edu/housing/property/fourteen35-apartments/edgcljq",
+          "status": "amounts_present",
+          "checked_at": "2026-10-25T14:47:04.764973+00:00",
+          "source_sha256": "2c68d784b26422969f38bbdf82fd0dc68a9c93259c3612786791b04226df7953",
+          "error": null,
+          "verification_url": "https://offcampus.vt.edu/housing/property/fourteen35-apartments/edgcljq",
+          "amounts_checked": [
+            965.0,
+            995.0,
+            1005.0
+          ],
+          "amounts_not_found": [],
+          "note": "Source retrieved; amount mentions alone do not verify the exact plan or rental quote."
+        }
+      ]
+    },
+    "collegiate-suites-hunters-ridge": {
+      "name": "Collegiate Suites & Hunters Ridge",
+      "plan_count": 9,
+      "sources": [
+        {
+          "source_id": "operator-guide-collegiate-suites-hunters-ridge",
+          "source_url": "https://collegiatesuitesblacksburg.com/all-floor-plans",
+          "status": "browser_amounts_present",
+          "checked_at": "2026-10-25T14:39:14.771594+00:00",
+          "source_sha256": null,
+          "error": null,
+          "verification_url": "https://entratasnipit.collegiatesuitesblacksburg.com/blacksburg/collegiate-suites-&-hunters-ridge/?&is_responsive_snippet=1&snippet_type=website&occupancy_type=10&locale_code=&is_collapsed=0&include_paragraph_content=0&is_show_map=0&host_domain=collegiatesuitesblacksburg.com",
+          "amounts_checked": [
+            925.0,
+            985.0,
+            995.0,
+            999.0,
+            1055.0,
+            1065.0,
+            1075.0,
+            1599.0
+          ],
+          "amounts_not_found": [],
+          "note": "Source retrieved; amount mentions alone do not verify the exact plan or rental quote."
+        }
+      ]
+    },
+    "chasewood-downs": {
+      "name": "Chasewood Downs",
+      "plan_count": 10,
+      "sources": [
+        {
+          "source_id": "operator-guide-chasewood-downs",
+          "source_url": "https://chasewood.prospectportal.com/blacksburg/chasewood-apartments/conventional/",
+          "status": "browser_amounts_present",
+          "checked_at": "2026-10-25T14:36:22.556860+00:00",
+          "source_sha256": null,
+          "error": null,
+          "verification_url": "https://chasewood.prospectportal.com/blacksburg/chasewood-apartments/conventional/",
+          "amounts_checked": [
+            865.0,
+            1050.0,
+            1080.0,
+            1100.0,
+            1160.0,
+            1180.0,
+            1320.0,
+            1400.0,
+            1430.0,
+            1700.0
+          ],
+          "amounts_not_found": [],
+          "note": "Source retrieved; amount mentions alone do not verify the exact plan or rental quote."
+        }
+      ]
+    },
+    "shawnee-apartments": {
+      "name": "Shawnee Apartments",
+      "plan_count": 2,
+      "sources": [
+        {
+          "source_id": "operator-guide-shawnee-apartments",
+          "source_url": "https://shawnee.prospectportal.com/blacksburg/shawnee-apartments-phase-i/conventional/",
+          "status": "browser_amounts_present",
+          "checked_at": "2026-10-25T14:36:24.178101+00:00",
+          "source_sha256": null,
+          "error": null,
+          "verification_url": "https://shawnee.prospectportal.com/blacksburg/shawnee-apartments-phase-i/conventional/",
+          "amounts_checked": [
+            1095.0,
+            1105.0
+          ],
+          "amounts_not_found": [],
+          "note": "Source retrieved; amount mentions alone do not verify the exact plan or rental quote."
+        }
+      ]
+    },
+    "stonegate-carlton-scott": {
+      "name": "Stonegate & Carlton Scott",
+      "plan_count": 4,
+      "sources": [
+        {
+          "source_id": "operator-guide-stonegate-carlton-scott",
+          "source_url": "https://offcampus.vt.edu/housing/property/stonegate-and-carlton-scott-apartments/bv6cxqb",
+          "status": "amounts_present",
+          "checked_at": "2026-10-25T14:47:05.317713+00:00",
+          "source_sha256": "d5400321a4d4c45beb4c9f7370a85f7c3a980388ecf2013f39fe0cd710d6eeaa",
+          "error": null,
+          "verification_url": "https://offcampus.vt.edu/housing/property/stonegate-and-carlton-scott-apartments/bv6cxqb",
+          "amounts_checked": [
+            545.0,
+            720.0
+          ],
+          "amounts_not_found": [],
+          "note": "Source retrieved; amount mentions alone do not verify the exact plan or rental quote."
+        }
+      ]
+    },
+    "brexx-at-blacksburg-the-retreat": {
+      "name": "Brexx at Blacksburg / The Retreat",
+      "plan_count": 17,
+      "sources": [
+        {
+          "source_id": "operator-guide-brexx-at-blacksburg-the-retreat",
+          "source_url": "https://www.brexxblacksburg.com/floor-plans/",
+          "status": "amounts_present",
+          "checked_at": "2026-10-25T14:47:05.929915+00:00",
+          "source_sha256": "fd97ccb8fb3675f11b9d4888937bae38f02d13f60b9dfb13918e2b2a3558425c",
+          "error": null,
+          "verification_url": "https://www.brexxblacksburg.com/floor-plans/",
+          "amounts_checked": [
+            1069.0,
+            1119.0,
+            1149.0,
+            1159.0,
+            1169.0,
+            1179.0,
+            1189.0,
+            1199.0,
+            1299.0,
+            1399.0
+          ],
+          "amounts_not_found": [],
+          "note": "Source retrieved; amount mentions alone do not verify the exact plan or rental quote."
+        }
+      ]
+    },
+    "smith-s-landing": {
+      "name": "Smith's Landing",
+      "plan_count": 6,
+      "sources": [
+        {
+          "source_id": "operator-guide-smith-s-landing",
+          "source_url": "https://offcampus.vt.edu/housing/property/smiths-landing-apartments/eqb2jwp",
+          "status": "amounts_present",
+          "checked_at": "2026-10-25T14:47:05.192136+00:00",
+          "source_sha256": "26c00d1bbe1d012a7d8606f456eb878482c29c571311fe64b2375d9113d55f94",
+          "error": null,
+          "verification_url": "https://offcampus.vt.edu/housing/property/smiths-landing-apartments/eqb2jwp",
+          "amounts_checked": [
+            1550.0,
+            1910.0,
+            2525.0,
+            2545.0
+          ],
+          "amounts_not_found": [],
+          "note": "Source retrieved; amount mentions alone do not verify the exact plan or rental quote."
+        }
+      ]
+    },
+    "pack-place-apartments": {
+      "name": "Pack Place Apartments",
+      "plan_count": 1,
+      "sources": [
+        {
+          "source_id": "operator-guide-pack-place-apartments",
+          "source_url": "https://granitesl.appfolio.com/listings/detail/1c4e7d51-54fb-48ca-bec0-a86406c5a068",
+          "status": "amounts_present",
+          "checked_at": "2026-10-25T14:47:03.321884+00:00",
+          "source_sha256": "8557734b555f57ae32c50fcaed00ecdfde9414a90fc8c60fb348ae55bdc038e3",
+          "error": null,
+          "verification_url": "https://granitesl.appfolio.com/listings/detail/1c4e7d51-54fb-48ca-bec0-a86406c5a068",
+          "amounts_checked": [
+            1670.0
+          ],
+          "amounts_not_found": [],
+          "note": "Source retrieved; amount mentions alone do not verify the exact plan or rental quote."
+        }
+      ]
+    },
+    "the-farm": {
+      "name": "The Farm",
+      "plan_count": 18,
+      "sources": [
+        {
+          "source_id": "operator-guide-the-farm",
+          "source_url": "https://www.havenblacksburg.com/availability",
+          "status": "browser_amounts_present",
+          "checked_at": "2026-10-25T14:40:45.490063+00:00",
+          "source_sha256": null,
+          "error": null,
+          "verification_url": "https://www.havenblacksburg.com/availability",
+          "amounts_checked": [
+            819.0,
+            1529.0,
+            2378.0,
+            2495.0,
+            3387.0,
+            3507.0
+          ],
+          "amounts_not_found": [],
+          "note": "Source retrieved; amount mentions alone do not verify the exact plan or rental quote."
+        }
+      ]
+    },
+    "maple-ridge-townhomes": {
+      "name": "Maple Ridge Townhomes",
+      "plan_count": 7,
+      "sources": [
+        {
+          "source_id": "operator-guide-maple-ridge-townhomes",
+          "source_url": "https://mapleridgeblacksburg.com/all-floor-plans",
+          "status": "browser_amounts_present",
+          "checked_at": "2026-10-25T14:38:57.954419+00:00",
+          "source_sha256": null,
+          "error": null,
+          "verification_url": "https://entratasnipit.mapleridgeblacksburg.com/blacksburg/maple-ridge-townhomes/?&is_responsive_snippet=1&snippet_type=website&occupancy_type=10&locale_code=&is_collapsed=0&include_paragraph_content=0&is_show_map=0&host_domain=mapleridgeblacksburg.com",
+          "amounts_checked": [
+            965.0,
+            995.0,
+            999.0,
+            1030.0,
+            1055.0,
+            1065.0,
+            1095.0
+          ],
+          "amounts_not_found": [],
+          "note": "Source retrieved; amount mentions alone do not verify the exact plan or rental quote."
+        }
+      ]
+    },
+    "the-summit-at-uptown": {
+      "name": "The Summit at Uptown",
+      "plan_count": 6,
+      "sources": [
+        {
+          "source_id": "operator-guide-the-summit-at-uptown",
+          "source_url": "https://roostrealestategroup.appfolio.com/listings",
+          "status": "amounts_present",
+          "checked_at": "2026-10-25T14:47:05.796274+00:00",
+          "source_sha256": "00cae69f9eaa1d7de756df021615e3790c6799db5e8e6389140828c42fd2a377",
+          "error": null,
+          "verification_url": "https://roostrealestategroup.appfolio.com/listings",
+          "amounts_checked": [
+            970.0,
+            995.0,
+            1070.0,
+            1095.0,
+            1195.0
+          ],
+          "amounts_not_found": [],
+          "note": "Source retrieved; amount mentions alone do not verify the exact plan or rental quote."
+        }
+      ]
+    },
+    "1711-apartments": {
+      "name": "1711 Apartments",
+      "plan_count": 2,
+      "sources": [
+        {
+          "source_id": "operator-guide-1711-apartments",
+          "source_url": "https://offcampus.vt.edu/housing/property/1711-apartments/d0d2e8j",
+          "status": "amounts_present",
+          "checked_at": "2026-10-25T14:47:04.119065+00:00",
+          "source_sha256": "220c28071eba3a7adebeb20fa7af9b813177a3717a38163838665c8ae4e8cdfa",
+          "error": null,
+          "verification_url": "https://offcampus.vt.edu/housing/property/1711-apartments/d0d2e8j",
+          "amounts_checked": [
+            565.0,
+            675.0
+          ],
+          "amounts_not_found": [],
+          "note": "Source retrieved; amount mentions alone do not verify the exact plan or rental quote."
+        }
+      ]
+    },
+    "cedar-pointe-apartments": {
+      "name": "Cedar Pointe Apartments",
+      "plan_count": 7,
+      "sources": [
+        {
+          "source_id": "operator-guide-cedar-pointe-apartments",
+          "source_url": "https://cedarpointeapts.prospectportal.com/blacksburg/cedar-pointe-apartments/conventional/",
+          "status": "browser_amounts_present",
+          "checked_at": "2026-10-25T14:36:25.563272+00:00",
+          "source_sha256": null,
+          "error": null,
+          "verification_url": "https://cedarpointeapts.prospectportal.com/blacksburg/cedar-pointe-apartments/conventional/",
+          "amounts_checked": [
+            1520.0,
+            1570.0,
+            1620.0,
+            2000.0,
+            2100.0
+          ],
+          "amounts_not_found": [],
+          "note": "Source retrieved; amount mentions alone do not verify the exact plan or rental quote."
+        }
+      ]
+    },
+    "cedarfield-apartments-townhomes": {
+      "name": "Cedarfield Apartments & Townhomes",
+      "plan_count": 8,
+      "sources": [
+        {
+          "source_id": "operator-guide-cedarfield-apartments-townhomes",
+          "source_url": "https://cedarfield.prospectportal.com/blacksburg/cedarfield-apartments-and-townhomes/conventional/",
+          "status": "browser_amounts_present",
+          "checked_at": "2026-10-25T14:36:27.545623+00:00",
+          "source_sha256": null,
+          "error": null,
+          "verification_url": "https://cedarfield.prospectportal.com/blacksburg/cedarfield-apartments-and-townhomes/conventional/",
+          "amounts_checked": [
+            1280.0,
+            1350.0,
+            1420.0,
+            1540.0,
+            1550.0,
+            1570.0,
+            1820.0,
+            2035.0
+          ],
+          "amounts_not_found": [],
+          "note": "Source retrieved; amount mentions alone do not verify the exact plan or rental quote."
+        }
+      ]
+    },
+    "additional-north-main-rentals": {
+      "name": "Additional North Main Rentals",
+      "plan_count": 9,
+      "sources": [
+        {
+          "source_id": "operator-guide-additional-north-main-rentals",
+          "source_url": "https://granitesl.appfolio.com/listings",
+          "status": "amounts_present",
+          "checked_at": "2026-10-25T14:47:04.568309+00:00",
+          "source_sha256": "0cea21046301dcdb54022cc5894c323b55d78737c1693c298a7d989ddc6ba5b9",
+          "error": null,
+          "verification_url": "https://granitesl.appfolio.com/listings",
+          "amounts_checked": [
+            773.0,
+            825.0,
+            1130.0,
+            1495.0,
+            1660.0,
+            1725.0,
+            1890.0,
+            2220.0
+          ],
+          "amounts_not_found": [],
+          "note": "Source retrieved; amount mentions alone do not verify the exact plan or rental quote."
+        }
+      ]
+    },
+    "the-vue-apartments": {
+      "name": "The Vue Apartments",
+      "plan_count": 13,
+      "sources": [
+        {
+          "source_id": "operator-guide-the-vue-apartments",
+          "source_url": "https://vueblacksburg.prospectportal.com/blacksburg/vue-apartments/conventional/",
+          "status": "browser_amounts_present",
+          "checked_at": "2026-10-25T14:36:29.712343+00:00",
+          "source_sha256": null,
+          "error": null,
+          "verification_url": "https://vueblacksburg.prospectportal.com/blacksburg/vue-apartments/conventional/",
+          "amounts_checked": [
+            1660.0,
+            1710.0,
+            2100.0,
+            2190.0,
+            2300.0,
+            2670.0,
+            2745.0
+          ],
+          "amounts_not_found": [],
+          "note": "Source retrieved; amount mentions alone do not verify the exact plan or rental quote."
+        }
+      ]
+    },
+    "the-reserve-at-knollwood": {
+      "name": "The Reserve at Knollwood",
+      "plan_count": 7,
+      "sources": [
+        {
+          "source_id": "operator-guide-the-reserve-at-knollwood",
+          "source_url": "https://reservekwapts.prospectportal.com/blacksburg/the-reserve-at-knollwood-apartments/conventional/",
+          "status": "browser_amounts_present",
+          "checked_at": "2026-10-25T14:36:33.189653+00:00",
+          "source_sha256": null,
+          "error": null,
+          "verification_url": "https://reservekwapts.prospectportal.com/blacksburg/the-reserve-at-knollwood-apartments/conventional/",
+          "amounts_checked": [
+            1550.0,
+            1570.0,
+            1870.0,
+            1900.0,
+            2440.0,
+            2480.0
+          ],
+          "amounts_not_found": [],
+          "note": "Source retrieved; amount mentions alone do not verify the exact plan or rental quote."
+        }
+      ]
+    },
+    "the-crossing-at-knollwood": {
+      "name": "The Crossing at Knollwood",
+      "plan_count": 4,
+      "sources": [
+        {
+          "source_id": "operator-guide-the-crossing-at-knollwood",
+          "source_url": "https://thecrossingapts.prospectportal.com/blacksburg/the-crossing-at-knollwood-apartments/conventional/",
+          "status": "browser_amounts_present",
+          "checked_at": "2026-10-25T14:36:34.557413+00:00",
+          "source_sha256": null,
+          "error": null,
+          "verification_url": "https://thecrossingapts.prospectportal.com/blacksburg/the-crossing-at-knollwood-apartments/conventional/",
+          "amounts_checked": [
+            1480.0,
+            1490.0,
+            1755.0,
+            1790.0
+          ],
+          "amounts_not_found": [],
+          "note": "Source retrieved; amount mentions alone do not verify the exact plan or rental quote."
+        }
+      ]
+    },
+    "knollwood-condominium": {
+      "name": "Knollwood Condominium",
+      "plan_count": 7,
+      "sources": [
+        {
+          "source_id": "operator-guide-knollwood-condominium",
+          "source_url": "https://www.cmgleasing.com/property/knollwood-condos/",
+          "status": "amounts_present",
+          "checked_at": "2026-10-25T14:47:06.275269+00:00",
+          "source_sha256": "b94818023970e8e1f750bfdfc1653239375991649ae809d87308a799e3488941",
+          "error": null,
+          "verification_url": "https://www.cmgleasing.com/property/knollwood-condos/",
+          "amounts_checked": [
+            1490.0,
+            1500.0,
+            1820.0,
+            1830.0,
+            1840.0,
+            1900.0,
+            2225.0,
+            2275.0,
+            2285.0
+          ],
+          "amounts_not_found": [],
+          "note": "Source retrieved; amount mentions alone do not verify the exact plan or rental quote."
+        }
+      ]
+    },
+    "knollwood-townhomes": {
+      "name": "Knollwood Townhomes",
+      "plan_count": 4,
+      "sources": [
+        {
+          "source_id": "operator-guide-knollwood-townhomes",
+          "source_url": "https://www.cmgleasing.com/property/knollwood-townhomes/",
+          "status": "amounts_present",
+          "checked_at": "2026-10-25T14:47:06.394103+00:00",
+          "source_sha256": "ac82259bfb14f79900d0d15e32337b0126013897298e7eaf135a429df00093a8",
+          "error": null,
+          "verification_url": "https://www.cmgleasing.com/property/knollwood-townhomes/",
+          "amounts_checked": [
+            2200.0,
+            2275.0,
+            2500.0
+          ],
+          "amounts_not_found": [],
+          "note": "Source retrieved; amount mentions alone do not verify the exact plan or rental quote."
+        }
+      ]
+    },
+    "highlands-at-huckleberry-ridge": {
+      "name": "Highlands at Huckleberry Ridge",
+      "plan_count": 5,
+      "sources": [
+        {
+          "source_id": "operator-guide-highlands-at-huckleberry-ridge",
+          "source_url": "https://offcampus.vt.edu/housing/property/highlands-at-huckleberry-ridge/gfhtn2z",
+          "status": "amounts_present",
+          "checked_at": "2026-10-25T14:47:04.935330+00:00",
+          "source_sha256": "22a5f2f93292517e40fb1703d951a8482b5d11a9d29680313534e73979f4ba94",
+          "error": null,
+          "verification_url": "https://offcampus.vt.edu/housing/property/highlands-at-huckleberry-ridge/gfhtn2z",
+          "amounts_checked": [
+            1787.0,
+            1790.0,
+            1865.0,
+            1870.0,
+            1895.0,
+            1965.0,
+            2015.0
+          ],
+          "amounts_not_found": [],
+          "note": "Source retrieved; amount mentions alone do not verify the exact plan or rental quote."
+        }
+      ]
+    },
+    "legacy-on-main-the-orchards": {
+      "name": "Legacy on Main & The Orchards",
+      "plan_count": 0,
+      "sources": []
+    },
+    "pheasant-run-townhomes": {
+      "name": "Pheasant Run Townhomes",
+      "plan_count": 1,
+      "sources": [
+        {
+          "source_id": "operator-guide-pheasant-run-townhomes",
+          "source_url": "https://granitesl.appfolio.com/listings",
+          "status": "amounts_present",
+          "checked_at": "2026-10-25T14:47:04.568309+00:00",
+          "source_sha256": "0cea21046301dcdb54022cc5894c323b55d78737c1693c298a7d989ddc6ba5b9",
+          "error": null,
+          "verification_url": "https://granitesl.appfolio.com/listings",
+          "amounts_checked": [
+            2520.0
+          ],
+          "amounts_not_found": [],
+          "note": "Source retrieved; amount mentions alone do not verify the exact plan or rental quote."
+        }
+      ]
+    },
+    "clover-valley-phase-i-cv2": {
+      "name": "Clover Valley (Phase I & CV2)",
+      "plan_count": 2,
+      "sources": [
+        {
+          "source_id": "operator-guide-clover-valley-phase-i-cv2",
+          "source_url": "https://granitesl.appfolio.com/listings",
+          "status": "amounts_present",
+          "checked_at": "2026-10-25T14:47:04.568309+00:00",
+          "source_sha256": "0cea21046301dcdb54022cc5894c323b55d78737c1693c298a7d989ddc6ba5b9",
+          "error": null,
+          "verification_url": "https://granitesl.appfolio.com/listings",
+          "amounts_checked": [
+            890.0,
+            2200.0
+          ],
+          "amounts_not_found": [],
+          "note": "Source retrieved; amount mentions alone do not verify the exact plan or rental quote."
+        }
+      ]
+    },
+    "university-terrace-progress-st": {
+      "name": "University Terrace & Progress St",
+      "plan_count": 3,
+      "sources": [
+        {
+          "source_id": "operator-guide-university-terrace-progress-st",
+          "source_url": "https://granitesl.appfolio.com/listings",
+          "status": "amounts_present",
+          "checked_at": "2026-10-25T14:47:04.568309+00:00",
+          "source_sha256": "0cea21046301dcdb54022cc5894c323b55d78737c1693c298a7d989ddc6ba5b9",
+          "error": null,
+          "verification_url": "https://granitesl.appfolio.com/listings",
+          "amounts_checked": [
+            553.0,
+            570.0,
+            2290.0
+          ],
+          "amounts_not_found": [],
+          "note": "Source retrieved; amount mentions alone do not verify the exact plan or rental quote."
+        }
+      ]
+    },
+    "seneca-drive-toms-creek-condos": {
+      "name": "Seneca Drive & Toms Creek Condos",
+      "plan_count": 1,
+      "sources": [
+        {
+          "source_id": "operator-guide-seneca-drive-toms-creek-condos",
+          "source_url": "https://offcampus.vt.edu/housing/property/1440-seneca-dr/mcwkfwh",
+          "status": "amounts_present",
+          "checked_at": "2026-10-25T14:47:03.908035+00:00",
+          "source_sha256": "a17f5d292f12aa5b0ba9754e8a3f80752d3937a2b84dbb9aa2cffa513606b192",
+          "error": null,
+          "verification_url": "https://offcampus.vt.edu/housing/property/1440-seneca-dr/mcwkfwh",
+          "amounts_checked": [
+            1850.0
+          ],
+          "amounts_not_found": [],
+          "note": "Source retrieved; amount mentions alone do not verify the exact plan or rental quote."
+        }
+      ]
+    },
+    "hearthstone-creekside-hilltop": {
+      "name": "Hearthstone / Creekside / Hilltop",
+      "plan_count": 7,
+      "sources": [
+        {
+          "source_id": "operator-guide-hearthstone-creekside-hilltop",
+          "source_url": "https://granitesl.appfolio.com/listings",
+          "status": "amounts_present",
+          "checked_at": "2026-10-25T14:47:04.568309+00:00",
+          "source_sha256": "0cea21046301dcdb54022cc5894c323b55d78737c1693c298a7d989ddc6ba5b9",
+          "error": null,
+          "verification_url": "https://granitesl.appfolio.com/listings",
+          "amounts_checked": [
+            1095.0,
+            1260.0,
+            1295.0,
+            1365.0,
+            1920.0,
+            1950.0,
+            2100.0
+          ],
+          "amounts_not_found": [],
+          "note": "Source retrieved; amount mentions alone do not verify the exact plan or rental quote."
+        }
+      ]
+    },
+    "oak-manor-camelot-court": {
+      "name": "Oak Manor & Camelot Court",
+      "plan_count": 1,
+      "sources": [
+        {
+          "source_id": "operator-guide-oak-manor-camelot-court",
+          "source_url": "https://granitesl.appfolio.com/listings",
+          "status": "amounts_present",
+          "checked_at": "2026-10-25T14:47:04.568309+00:00",
+          "source_sha256": "0cea21046301dcdb54022cc5894c323b55d78737c1693c298a7d989ddc6ba5b9",
+          "error": null,
+          "verification_url": "https://granitesl.appfolio.com/listings",
+          "amounts_checked": [
+            1745.0
+          ],
+          "amounts_not_found": [],
+          "note": "Source retrieved; amount mentions alone do not verify the exact plan or rental quote."
+        }
+      ]
+    },
+    "zillow-detached-single-family-executive-homes": {
+      "name": "Zillow Detached Single-Family & Executive Homes",
+      "plan_count": 0,
+      "sources": []
+    }
+  }
+}

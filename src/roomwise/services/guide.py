@@ -10,7 +10,7 @@ def checklist(comparison, request):
     prompts=[('money','Confirm the complete mandatory fee and utility schedule.'),
              ('lease','Confirm exact lease dates, payment count and deposit return conditions.'),
              ('roommates','Confirm bedroom arrangement and each roommate’s contractual responsibility.'),
-             ('commute','Verify each class journey, including walks, transfers and timetable dates.'),
+             ('commute','Check walking access, nearby essentials and travel timetables.'),
              ('move_in','Confirm availability, move-in arrangements and required documents.')]
     prompts += [('money', 'Resolve: '+x) for x in candidate['unknown_costs']]
     prompts += [('lease', 'Resolve documented conflict: '+x) for x in candidate['hard_conflicts']]
@@ -18,6 +18,9 @@ def checklist(comparison, request):
     for category,title in prompts:
         key=sha256((request.candidate_id+':'+category+':'+title).encode()).hexdigest()[:20]
         old=previous.get(key)
+        if old is None and category=='commute':
+            legacy=sha256((request.candidate_id+':commute:Verify each class journey, including walks, transfers and timetable dates.').encode()).hexdigest()[:20]
+            old=previous.get(legacy)
         items.append(dict(id=key,candidate_id=request.candidate_id,category=category,title=title,status=old.status if old else 'not_started',
                           notes=old.notes if old else '',evidence_ids=candidate['evidence_ids'],needs_confirmation=True,origin='deterministic'))
     # Preserve user-created items, but never accept submitted evidence as backend-reviewed facts.

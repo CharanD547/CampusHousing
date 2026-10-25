@@ -178,6 +178,7 @@ class Candidate(Model):
     address: str | None
     coordinates: dict[str, float] | None
     guide_reference: dict | None = None
+    lease_gaps: dict | None = None
     coordinate_basis: str
     data_status: str
     sources: list[dict]

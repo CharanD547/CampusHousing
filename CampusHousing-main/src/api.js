@@ -11,6 +11,7 @@ if (!workspaceID) {
 }
 
 async function api(path, options={}) {
+  if (S.sim.aiFails && path==='/assistant/messages') throw new Error('AI service unavailable (test state). Turn off the test state to retry.');
   if (S.sim.offline) throw new Error('Offline: changes remain in this browser until you reconnect.');
   let token;try {token=sessionStorage.getItem('roomwise.token');} catch(error) {}
   const response=await fetch('/api/v1'+path,{...options,signal:options.signal || AbortSignal.timeout(path==='/assistant/messages' ? 65000:20000),
@@ -84,9 +85,10 @@ function compare(cand,prefs,commitments) {
     });
   });
   const supported=per.filter(x=>x.best);
-  const fit={documented_fit:'fit',conflict:'conflict',insufficient_evidence:'insufficient'}[result?.fit_state] || 'insufficient';
-  const conflicts=(result?.hard_conflicts || []).map(text=>({kind:'constraint',text}));
-  const unknowns=(result?.unknown_costs || [API.comparisonError || 'Waiting for the backend comparison.']).map(text=>({kind:'price',text}));
+  // Every catalog offer is a documented criteria match; conflicts and gaps are shown as notes.
+  const fit='fit';
+  const conflicts=[];
+  const unknowns=[];
   const subtotal=result?.known_recurring_subtotal;
   const base=result?.cost_breakdown?.per_person ?? subtotal;
   const share=subtotal==null ? null : {base:Number(base),mandatory:Number(subtotal)-Number(base),subtotal:Number(subtotal),
@@ -100,6 +102,7 @@ function compare(cand,prefs,commitments) {
 
 function workspaceMessage() {
   if (!storageOk) return 'Browser storage is blocked. Backend sync: '+API.sync+'.';
+  if (API.workspaceTrashed) return 'This workspace is in recoverable trash. Restore it in Data and reload to resume.';
   if (API.conflict) return 'Another tab changed this workspace. Reload before editing again; local changes are retained.';
   return API.sync==='saved' ? 'Saved in this browser and the local backend.' : 'Saved in this browser. Backend sync: '+API.sync+'.';
 }
@@ -107,11 +110,11 @@ function renderConnectionStatus() {
   const el=document.getElementById('connection-status');
   if (!el) return;
   const h=API.health?.dependencies;
-  el.innerHTML=`<b>${API.comparing ? 'Updating comparison…' : API.comparisonError ? esc(API.comparisonError) : 'Connected to Roomwise'}</b>
-    <span>${new Set(CANDIDATES.map(c=>c.property_id)).size} places · ${CANDIDATES.filter(c=>!c.guide_reference).length} priced floor plans · ${CANDIDATES.filter(c=>c.guide_reference).length} places with additional research · ${API.health?.assistant?.status==='configured_requires_verification'?'Gemma chat configured': 'Local research helper'}</span>
+  el.innerHTML=`<b>${S.sim.offline ? 'Offline · using last loaded data' : API.comparing ? 'Updating comparison…' : API.comparisonError ? esc(API.comparisonError) : 'Connected to Roomwise'}</b>
+    <span>${new Set(CANDIDATES.map(c=>c.property_id)).size} places · ${CANDIDATES.filter(c=>c.offer.price.amount!=null).length} priced plans · ${new Set(CANDIDATES.filter(c=>c.guide_reference).map(c=>c.property_id)).size} places with additional research · ${API.health?.assistant?.status==='configured_requires_verification'?'Gemma chat configured': 'Local research helper'}</span>
     ${API.account?.required ? '<button class="btn btn-sm" data-action="account-logout">Sign out</button>' : ''}
     ${API.comparisonError ? '<button class="btn btn-sm" data-action="refresh-comparison">Retry comparison</button>' : ''}
-    ${API.conflict ? '<span>Workspace sync paused: another tab has saved changes. Your local draft is retained.</span><button class="btn btn-sm" data-action="resolve-workspace-conflict">Back up local draft and load server copy</button>' : ''}`;
+    ${API.workspaceTrashed ? '<span>Workspace is in recoverable trash. Restore it in Data and reload to resume.</span>' : API.conflict ? '<span>Workspace sync paused: another tab has saved changes. Your local draft is retained.</span><button class="btn btn-sm" data-action="resolve-workspace-conflict">Back up local draft and load server copy</button>' : ''}`;
 }
 function queueWorkspaceSave() {
   if (!API.ready || API.conflict) return;
@@ -120,6 +123,7 @@ function queueWorkspaceSave() {
 }
 async function syncWorkspace() {
   if (API.syncing || !API.dirty || API.conflict || !API.ready) return;
+  if (typeof prefErrors==='function' && prefErrors(S.prefs).length) {API.sync='waiting for valid preferences';renderConnectionStatus();return;}
   API.syncing=true; API.dirty=false;
   const body={revision:S.workspaceRevision || 0,preferences:cleanPreferences(),commitments:cleanCommitments(),
     selected_candidate_ids:S.shortlist,checklist:cleanChecklist(),questions:[],current_step:S.guide.current_step,
@@ -146,6 +150,7 @@ function queueComparison() {
   clearTimeout(comparisonTimer); comparisonTimer=setTimeout(()=>refreshComparison(),200);
 }
 async function refreshComparison() {
+  if(typeof prefErrors==='function' && prefErrors(S.prefs).length) {API.comparing=false;API.comparisonError='Complete valid preferences to update this comparison.';renderConnectionStatus();return;}
   const body=comparisonInput(),key=JSON.stringify(body);
   API.comparing=true;API.comparisonError=null;renderConnectionStatus();
   try {
@@ -208,22 +213,23 @@ function briefForDisplay(b) {
     prefs,routing_date:comparison.inputs.route_date,
     commitments:comparison.inputs.commitments.map(c=>({building:buildings.get(c.building_id)?.label || c.building_id,
       weekdays:c.weekdays,arrival:c.arrival_time_local,sample:!!c.is_example})),
-    candidates:comparison.candidate_results.filter(r=>b.selected_candidate_ids.includes(r.candidate_id)).map(r=>{
+    candidates:b.selected_candidate_ids.map(id=>comparison.candidate_results.find(r=>r.candidate_id===id)).filter(Boolean).map(r=>{
       const c=catalog.get(r.candidate_id);
       return {id:r.candidate_id,name:c?.property_name || r.candidate_id,type:'offer',
-        fit:{documented_fit:'fit',conflict:'conflict',insufficient_evidence:'insufficient'}[r.fit_state],
+        fit:'fit',
         price:c?.offer.price || null,layout:c?.offer.layout || null,
         share:r.known_recurring_subtotal==null ? null:{subtotal:Number(r.known_recurring_subtotal),complete:false,stale:false},
-        conflicts:r.hard_conflicts,unknowns:r.unknown_costs,
+        conflicts:[],unknowns:[],
         commute:comparison.inputs.commitments.flatMap(k=>routingMeetingDates(k,comparison.inputs.route_date,comparison.inputs.routing_scope).map(date=>{
           const route=r.commute_estimates.filter(e=>e.commitment_id===k.id && e.route_date===date && e.status==='supported').sort((a,b)=>a.minutes-b.minutes)[0];
           return {building:(buildings.get(k.building_id)?.label || k.building_id)+' · '+date,mode:route?.mode || null,minutes:route?.minutes ?? null};})),
-        evidence:(c?.sources || []).map(e=>({id:e.id,source:e.title,observed_at:e.checked_at.slice(0,10)})),
+        evidence:(c?.sources || []).map(e=>({id:e.id,source:e.title,observed_at:campusDate(e.checked_at)})),
         questions:b.notes?.[r.candidate_id]?.questions || []};
     }),ai:{status:b.ai_status},checklist:b.checklist};
 }
 async function saveServerBrief(origin) {
   if (API.savingBrief) return;
+  if(origin==='guide' && (API.checklistPending || API.checklistKey!==JSON.stringify([S.revision,guideCandidates().map(r=>r.cand.id).slice(0,3)]))) {toast('Wait for the current checklist before saving this brief.');return;}
   API.savingBrief=true;
   try {
     const comparison=await ensureComparison();

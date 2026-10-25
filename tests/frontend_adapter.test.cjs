@@ -19,8 +19,8 @@ function context(cryptoOverride) {
     const item=normalizeCandidate(offer);CANDIDATES.push(item);
     S.commitments=[{id:'class',building_id:'classroom',weekdays:['mon'],arrival_time_local:'09:00',sample:true}];
     BUILDINGS.push({id:'classroom',label:'Test classroom',short:'Test classroom'});
-    API.comparison={candidate_results:[{candidate_id:'test-offer',fit_state:'insufficient_evidence',
-      known_recurring_subtotal:'818.37',hard_conflicts:[],unknown_costs:['Test unresolved costs'],commute_estimates:[]}]};
+    API.comparison={candidate_results:[{candidate_id:'test-offer',fit_state:'documented_fit',
+      known_recurring_subtotal:'818.37',hard_conflicts:[],unknown_costs:[],notes:['Test unresolved costs'],commute_estimates:[]}]};
     API.comparisonKey=comparisonKey();
   `,scope);
   return scope;
@@ -33,7 +33,7 @@ test('presentation takes the backend subtotal and never invents missing routes',
   assert.equal(vm.runInContext('compare(item,S.prefs,S.commitments).commute.per[0].ests[0].minutes',scope),null);
   vm.runInContext('S.revision++',scope);
   assert.equal(vm.runInContext('compare(item,S.prefs,S.commitments).share',scope),null);
-  assert.equal(vm.runInContext('compare(item,S.prefs,S.commitments).fit',scope),'insufficient');
+  assert.equal(vm.runInContext('compare(item,S.prefs,S.commitments).fit',scope),'fit');
 });
 
 test('unknown prices stay unknown and removed schedules never reach the API',()=>{
@@ -80,7 +80,7 @@ test('LAN HTTP works when secure-context randomUUID is absent',()=>{
 test('property groups retain one entry and unknown plan prices never become zero or infinity',()=>{
   const scope=context();
   vm.runInContext(fs.readFileSync(path.join(__dirname,'../CampusHousing-main/src/views2.js'),'utf8'),scope);
-  vm.runInContext(`const rows=Array.from({length:6},(_,i)=>({cand:{id:'p-'+i,property_id:'p',offer:{bedrooms:2,layout:'2 bed',price:{amount:null,basis:'unknown',frequency:'other'}}},fit:'insufficient'}));`,scope);
+  vm.runInContext(`const rows=Array.from({length:6},(_,i)=>({cand:{id:'p-'+i,property_id:'p',offer:{bedrooms:2,layout:'2 bed',price:{amount:null,basis:'unknown',frequency:'other'}}},fit:'fit'}));`,scope);
   assert.equal(vm.runInContext('propertyGroups(rows).length',scope),1);
   const html=vm.runInContext('planPrices(propertyGroups(rows)[0])',scope);
   assert.match(html,/Price unconfirmed/);assert.match(html,/Billing basis unconfirmed/);
@@ -141,9 +141,70 @@ test('Compare discards a response when shortlist changes without a revision chan
 test('guide neighborhoods render reference prices without requiring invented area coordinates or ranges',()=>{
   const scope=context();
   vm.runInContext(fs.readFileSync(path.join(__dirname,'../CampusHousing-main/src/views2.js'),'utf8'),scope);
-  vm.runInContext(`const guideRow={cand:{...item,type:'area',coordinates:null,guide_reference:{guide_price_summary:'Guide estimate: $700–$900 / bed'}},share:null};`,scope);
+  vm.runInContext(`const guideRow={cand:{...item,type:'area',coordinates:null,guide_reference:{guide_price_summary:'Guide estimate: $700ï¿½$900 / bed'}},share:null};`,scope);
   const html=vm.runInContext('priceBlock(guideRow)',scope);
-  assert.match(html,/Guide estimate: \$700–\$900/);
+  assert.match(html,/Guide estimate: \$700ï¿½\$900/);
   assert.match(html,/not current verified quotes/);
   assert.doesNotMatch(html,/Infinity|NaN/);
+});
+
+
+test('historical conflict and insufficient briefs remain readable after catalog verdict changes',()=>{
+ const scope=context();
+ vm.runInContext(fs.readFileSync(path.join(__dirname,'../CampusHousing-main/src/views2.js'),'utf8'),scope);
+ vm.runInContext(`S.briefs=[{id:'legacy',saved_at:TODAY,revision:1,origin:'shortlist',prefs:S.prefs,routing_date:TODAY,ai:{status:'not_requested'},checklist:[],
+ candidates:['conflict','insufficient'].map(fit=>({name:'Archived '+fit,fit,price:null,share:null,commute:[],conflicts:[],unknowns:[],questions:[],evidence:[]}))}];`,scope);
+ const html=vm.runInContext("viewBrief('legacy')",scope);
+ assert.match(html,/Archived conflict/);assert.match(html,/Insufficient evidence/);assert.match(html,/Conflict/);
+});
+
+test('brief presentation preserves chosen order and source dates in Blacksburg',()=>{
+ const scope=context();
+ const result=vm.runInContext(`briefForDisplay({id:'b',saved_at:TODAY,selected_candidate_ids:['second','test-offer'],checklist:[],comparison:{input_revision:1,
+ inputs:{preferences:S.prefs,route_date:TODAY,commitments:[]},building_snapshot:[],
+ catalog_snapshot:[offer,{...offer,id:'second',property_name:'Second',sources:[{id:'src',title:'Source',checked_at:'2026-10-25T01:00:00Z'}]}],
+ candidate_results:['test-offer','second'].map(candidate_id=>({candidate_id,fit_state:'documented_fit',known_recurring_subtotal:null,hard_conflicts:[],unknown_costs:[],commute_estimates:[]}))}})`,scope);
+ assert.deepEqual(Array.from(result.candidates,c=>c.id),['second','test-offer']);
+ assert.equal(result.candidates[0].evidence[0].observed_at,'2026-10-24');
+});
+
+
+test('AI failure simulation stops the request before contacting a model',async()=>{
+ const scope=context();vm.runInContext('S.sim.aiFails=true',scope);
+ await assert.rejects(vm.runInContext("api('/assistant/messages')",scope),/AI service unavailable \(test state\)/);
+});
+
+
+function shellContext(){
+ const scope=context(),events={},field={id:'assistant-question',value:'',dataset:{}},main={};
+ Object.defineProperty(main,'innerHTML',{set(){field.value='';}});
+ const node={addEventListener(){},setAttribute(){},toggleAttribute(){},classList:{toggle(){}},focus(){}};
+ scope.document.addEventListener=(name,fn)=>{(events[name] ||= []).push(fn);};
+ scope.document.getElementById=id=>id==='main'?main:node;
+ scope.document.querySelectorAll=selector=>selector==='input[id], textarea[id]'?[field]:[];
+ scope.document.body={classList:{toggle(){}}};scope.document.activeElement=null;
+ scope.URLSearchParams=URLSearchParams;scope.location={hash:'#home',search:''};scope.window.scrollTo=()=>{};
+ vm.runInContext(`initRoomwise=()=>{};let draws=0;
+ ${['viewHome','viewExplore','viewHousingDirectory','viewPreferences','viewCompare','viewShortlist','viewAssistant','viewData','viewProperty','viewBrief','viewGuide'].map(n=>`${n}=()=>{draws++;return 'test view';};`).join('')}
+ renderConnectionStatus=()=>{};workspaceMessage=()=>'';hydrateMaps=()=>{};API.ready=true;`,scope);
+ vm.runInContext(fs.readFileSync(path.join(__dirname,'../CampusHousing-main/src/app.js'),'utf8'),scope);
+ return {scope,events,field};
+}
+
+test('background rendering waits until a pointer click has completed',async()=>{
+ const {scope,events}=shellContext();vm.runInContext('render()',scope);
+ events.pointerdown[0]();vm.runInContext('render()',scope);
+ assert.equal(vm.runInContext('draws',scope),1);
+ assert.equal(vm.runInContext('UI.renderQueued',scope),true);
+ events.pointerup[0]();await new Promise(resolve=>setTimeout(resolve,5));
+ assert.equal(vm.runInContext('draws',scope),2);
+ assert.equal(vm.runInContext('UI.renderQueued',scope),false);
+});
+
+test('unsent question text survives background updates and drawer renders',()=>{
+ const {scope,events,field}=shellContext();field.value='Keep this unfinished question';
+ events.input[0]({target:field});vm.runInContext('render()',scope);
+ assert.equal(field.value,'Keep this unfinished question');
+ vm.runInContext('UI.toast=null;render()',scope);
+ assert.equal(field.value,'Keep this unfinished question');
 });

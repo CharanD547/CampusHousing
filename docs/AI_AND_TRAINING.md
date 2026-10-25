@@ -9,7 +9,7 @@
 
 Model calls are limited to one at a time, with an explicitly configured persistent UTC daily attempt cap (30 by default, 200 in the current local setup). Failed attempts count toward the cap, requests are not retried automatically, and request IDs are replay-protected. Chat is session-only in the browser and is not exported to training data. These controls do not independently establish that every generated sentence is factually accurate.
 
-The limit is explicitly configured in `ROOMWISE_AI_DAILY_REQUESTS`; configuring a model does not automatically raise it. The current local configuration uses 200. The assistant now sends compact comparison facts, validates cited candidate IDs and monetary amounts, and requires per-person, whole-unit and installment labels where relevant. These checks catch some unsupported answers; they do not prove every claim is grounded. A failed validation returns the deterministic helper with `provider: local_rules`, no model ID and an explicit `fallback` notice. Browser requests allow 35 seconds; inference transport remains bounded to 25 seconds with a 30-second response wall-clock limit.
+The limit is explicitly configured in `ROOMWISE_AI_DAILY_REQUESTS`; configuring a model does not automatically raise it. The current local configuration uses 200. The assistant now sends compact comparison facts, validates cited candidate IDs and monetary amounts, and requires per-person, whole-unit and installment labels where relevant. These checks catch some unsupported answers; they do not prove every claim is grounded. A failed validation returns the deterministic helper with `provider: local_rules`, no model ID and an explicit `fallback` notice. Browser requests allow 65 seconds; inference transport is bounded to 50 seconds with a 55-second response wall-clock limit. The local generator has a 45-second time budget.
 
 ## Local Gemma setup
 
@@ -41,7 +41,7 @@ $env:ROOMWISE_EXTERNAL_ENABLED='true'
 .\.venv\Scripts\python.exe tools/training/train_gemma.py --report var/training/preflight.json
 ```
 
-The dataset in `var/training/roomwise-synthetic-v1/` has 240 authored examples: 192 train, 24 validation and 24 test. Context groups do not overlap between splits, but templates are shared across them. The data is therefore a pipeline and evaluation starter, not a validated generalization benchmark. No collected resident reviews were used (`raw_review_records_used: 0`). Their training-use permission has not been established.
+The original dataset is under `var/training/roomwise-synthetic-v1/`; its hash-verified public copy is under `data/training/roomwise-synthetic-v1/` (see `docs/MODEL_CARD.md`). It has 240 authored examples: 192 train, 24 validation and 24 test. Context groups do not overlap between splits, but templates are shared across them. The data is therefore a pipeline and evaluation starter, not a validated generalization benchmark. No collected resident reviews were used (`raw_review_records_used: 0`). Their training-use permission has not been established.
 
 ## Training runs
 
@@ -83,3 +83,7 @@ The current main app on port 8001 is configured for the existing v2 local server
 - Hosted inference needs a compute choice, private artifact storage, access control and a budget.
 
 Do not describe the model as a fine-tuned product feature beyond this measured local evaluation. The base model's license applies separately from the application's MIT license.
+
+## Published experiment package
+
+Both exact historical dataset versions are now under `data/training/`, with all three training reports and the baseline/v1/v2/v3 generation reports. The actual learned v1/v2/v3 LoRA tensors are under `models/`; v2 remains selected. See [package instructions](../models/README.md) and [the model card](MODEL_CARD.md). Use `--adapter models/roomwise-gemma-4-e4b-v2` with the existing local server recipe; the base model/tokenizer are still obtained separately. Each adapter is approximately 36.3 MB. No base weights or pickle/checkpoint files are distributed. v3 used dataset version 2 and a declared, independently unverified local base revision; its weaker generation report is retained and it is not selected.

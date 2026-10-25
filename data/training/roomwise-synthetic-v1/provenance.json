@@ -1,0 +1,19 @@
+{
+  "actual_base_model": "google/gemma-4-E4B-it",
+  "recorded_or_declared_base_revision": "ee0ef6023621cff504d758262d4e04895a5af4a2",
+  "manifest_note": "Original Gemma 3 label retained in v1; v1/v2 reports record Gemma 4. Dataset v2 was used by the v3 experiment with an unverified local base revision. Original data and manifests are byte-preserved.",
+  "used_by_runs": [
+    "v1",
+    "v2"
+  ],
+  "runtime_alias": "roomwise-gemma-4-e4b-v2",
+  "dataset_total": 240,
+  "raw_review_records_used": 0,
+  "base_weights_included": false,
+  "lora_adapters_included": true,
+  "adapter_package": "../../../models/README.md",
+  "base_model_card": "https://huggingface.co/google/gemma-4-E4B-it",
+  "base_license": "Apache-2.0",
+  "base_license_url": "https://ai.google.dev/gemma/apache_2",
+  "limitation": "Shared templates across splits; answer-kind scores are not factual accuracy. v3 regressed and is not selected."
+}

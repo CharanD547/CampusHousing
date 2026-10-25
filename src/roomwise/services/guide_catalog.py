@@ -6,6 +6,7 @@ traces to one of those sources; billing basis is inferred only from explicit "/b
 wording. These offers stay insufficient evidence until fees, lease terms and basis are confirmed.
 """
 from copy import deepcopy
+from hashlib import sha256
 import json
 import re
 from roomwise.config import ROOT
@@ -71,6 +72,29 @@ def guide_rows(summary):
     return rows
 
 
+def _fees(record, key):
+    """Structured fee records from operator/listing evidence, in the shape the cost engine reads."""
+    per_person = record.get('billing_basis') == 'per_person'
+    fees = []
+    for i, fee in enumerate(record.get('one_time_fees') or []):
+        timing = {'at application': 'AT_APPLICATION', 'at move-in': 'AT_MOVE_IN', 'move-in': 'AT_MOVE_IN'}.get(fee.get('timing'), 'UNKNOWN')
+        basis = 'PER_APPLICANT' if 'applicant' in (fee.get('basis') or '') else 'PER_UNIT'
+        kind = 'REFUNDABLE_DEPOSIT' if fee.get('refundable') else 'MANDATORY_ONE_TIME'
+        amount = str(fee['amount']) if fee.get('amount') is not None else None
+        fees.append(dict(id=f'{key}-one-time-{i}', label=fee['label'], classification=kind, timing_event=timing,
+                         scaling_basis=basis, amount_min=amount, amount_max=amount, included_in_advertised_total=False,
+                         credits_target_fee_id=None, source_id='operator-guide-' + key, status='documented'))
+    for i, fee in enumerate(record.get('recurring_fees') or []):
+        monthly = fee.get('period') == 'month' or fee.get('frequency') == 'monthly'
+        timing = 'PER_CALENDAR_MONTH' if monthly else 'PER_INSTALLMENT'
+        basis = 'PER_UNIT' if monthly or not per_person else 'PER_BED_INSTALLMENT'
+        amount = str(fee['amount']) if fee.get('amount') is not None else None
+        fees.append(dict(id=f'{key}-recurring-{i}', label=fee['label'], classification='MANDATORY_RECURRING', timing_event=timing,
+                         scaling_basis=basis, amount_min=amount, amount_max=amount, included_in_advertised_total=None,
+                         credits_target_fee_id=None, source_id='operator-guide-' + key, status='documented'))
+    return fees
+
+
 def guide_properties(guide, enrichment=None, geocodes=None):
     if enrichment is None: enrichment = _load('housing-guide-evidence.json')
     if geocodes is None: geocodes = _load('housing-guide-geocodes.json')
@@ -108,15 +132,27 @@ def guide_properties(guide, enrichment=None, geocodes=None):
         if operator:
             rows = [dict(label=p['label'], bedrooms=p.get('bedrooms'), minimum=p['minimum'], maximum=p['maximum'],
                          basis=_basis(p.get('group_label', '')) if p.get('group_label') else guide_basis,
+                         source_url=p.get('source_url'),
                          quote=f"{p['label']}: ${p['minimum']:,.0f}" + (f"–${p['maximum']:,.0f}" if p['maximum'] != p['minimum'] else ''))
                     for p in update['prices']]
             tier, row_source = ('LISTING_OBSERVED' if kind == 'listing' else 'OPERATOR_OBSERVED'), 'operator-guide-' + key
         else:
-            rows = guide_rows(entry['guide_price_summary'])
+            # Guide prose alone is not comparable evidence: no operator or listing price, so no offer.
+            rows = []
             tier, row_source = 'GUIDE_REFERENCE', source_id
+
+        for row in rows:
+            if row.get('source_url') and row['source_url'] != update.get('source_url'):
+                sid = 'operator-guide-' + key + '-' + sha256(row['source_url'].encode()).hexdigest()[:8]
+                row['source_id'] = sid
+                if not any(s['id'] == sid for s in sources):
+                    detail_source = deepcopy(sources[-1])
+                    detail_source.update(id=sid, url=row['source_url'], title='Rent source: ' + row['label'], excerpt=row['quote'])
+                    sources.append(detail_source)
 
         def offer(oid, name, row=None):
             basis = (row or {}).get('basis', 'unknown')
+            price_source = (row or {}).get('source_id', row_source if row else source_id)
             blocking = []
             if row:
                 blocking.append('Price comes from ' + {'OPERATOR_OBSERVED': 'operator-published asking figures',
@@ -129,12 +165,17 @@ def guide_properties(guide, enrichment=None, geocodes=None):
             if row and row['maximum'] != row['minimum']:
                 notes.insert(0, f"Published range ${row['minimum']:,.0f}–${row['maximum']:,.0f}; compared at the low end.")
             return dict(id=oid, name=name, bedrooms=(row or {}).get('bedrooms'), bathrooms=None,
-                amount=f"{row['minimum']:.0f}" if row else None, basis=basis, period='monthly' if row else 'unknown',
-                contract='unknown', room='unknown', installments=None, start=None, end=None,
-                term_label='Exact term unverified', annual_total=None, upfront=[], unknowns=notes,
-                blocking_unknowns=blocking, conflicts=list(eligibility), property_id=key, source_id=row_source if row else source_id,
-                evidence=[dict(field='amount', quote=row['quote'], source_id=row_source)] if row else [],
-                fees=[], utility_matrix={}, price_confidence_tier=tier if row else 'GUIDE_REFERENCE',
+                amount=f"{row['minimum']:.0f}" if row else None, basis=basis, period=('installment' if update.get('billing_period') == 'installment' else 'monthly') if row else 'unknown',
+                contract='unknown', room='unknown', installments=(update.get('lease') or {}).get('installments'), start=(update.get('lease') or {}).get('start'), end=(update.get('lease') or {}).get('end'),
+                term_label=(update.get('lease') or {}).get('term') or 'Exact term unverified', annual_total=None, upfront=[], unknowns=notes,
+                blocking_unknowns=blocking, conflicts=list(eligibility), property_id=key, source_id=price_source,
+                evidence=[dict(field='amount', quote=row['quote'], source_id=price_source)] if row else [],
+                fees=_fees(update, key) if row else [], utility_matrix={}, price_confidence_tier=tier if row else 'GUIDE_REFERENCE',
+                advertised_range={'minimum': str(row['minimum']), 'maximum': str(row['maximum']),
+                    'basis': {'person':'per_person','unit':'whole_unit'}.get(basis, 'unknown'),
+                    'period': 'installment' if update.get('billing_period') == 'installment' else 'calendar_month',
+                    'plans': [], 'source_id': price_source,
+                    'note': 'Published asking range for this listing; fees, lease and availability require confirmation.'} if row else None,
                 source_conflicts=[], operator_questions=[], plan_details={'maximum': f"{row['maximum']:.0f}"} if row else {})
 
         offers, seen = [], set()
@@ -143,8 +184,6 @@ def guide_properties(guide, enrichment=None, geocodes=None):
             while oid in seen: oid += '-2'
             seen.add(oid)
             offers.append(offer(oid, row['label'], row))
-        if not offers:
-            offers = [offer(source_id, entry['layouts'])]
         result.append(dict(id=key, name=entry['name'], address=update.get('address') or entry['address'],
             lat=point.get('lat'), lon=point.get('lon'), coordinate_basis=basis_label,
             listing_type='area' if entry['zone'] == 'Private rentals and neighborhoods' else 'property',

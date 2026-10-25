@@ -1,5 +1,5 @@
 /* ---------- shell + router ---------- */
-const NAV = [['explore', 'Explore'],['directory','Housing guide'], ['preferences', 'Preferences'], ['compare', 'Compare'], ['shortlist', 'Shortlist'],['assistant','Assistant'],['data','Data']];
+const NAV = [['explore', 'Explore'],['directory','Housing guide'], ['preferences', 'Preferences'], ['compare', 'Compare'], ['shortlist', 'Shortlist'],['assistant','Assistant']];
 
 function route() {
   const h = (location.hash || '#home').slice(1);
@@ -12,7 +12,7 @@ function route() {
 }
 
 function renderNav(rt) {
-  return NAV.map(([k, l]) => `<a href="#${k}" ${rt.nav === k ? 'aria-current="page"' : ''}>${l}${k === 'shortlist' ? `<span class="count num" aria-label="${S.shortlist.length} of 3">(${S.shortlist.length}/3)</span>` : ''}</a>`).join('');
+  return NAV.map(([k, l]) => `<a href="#${k}" ${rt.nav === k ? 'aria-current="page"' : ''}>${l}${k === 'shortlist' ? `<span class="count num" aria-label="${S.shortlist.length} of 3">(${S.shortlist.length}/3)</span>` : ''}</a>`).join('')+`<a class="nav-guide" href="#guide-${S.guide.started?S.guide.current_step:1}">${S.guide.started?'Resume':'Start'} DormToDoor</a>`;
 }
 
 function demoPanel() {
@@ -22,16 +22,19 @@ function demoPanel() {
 
 function render() {
   if (!API.ready) return;
+  if(UI.pointerDown){UI.renderQueued=true;return;}
+  UI.renderQueued=false;
   const rt = route();
   const focus = document.activeElement && document.activeElement.id ? { id: document.activeElement.id, s: document.activeElement.selectionStart, e: document.activeElement.selectionEnd } : null;
   const views = { home: viewHome, explore: viewExplore, directory:viewHousingDirectory, preferences: viewPreferences, compare: viewCompare, shortlist: viewShortlist, assistant:viewAssistant, data:viewData, property: () => viewProperty(rt.id), brief: () => viewBrief(rt.id), guide: () => viewGuide(rt.step) };
+  const html = views[rt.name]();
   document.getElementById('nav').innerHTML = renderNav(rt);
   document.getElementById('nav').classList.toggle('open', UI.menu);
   document.getElementById('menu-btn').setAttribute('aria-expanded', UI.menu);
   const te = document.getElementById('top-end'); te.href = `#guide-${S.guide.started ? S.guide.current_step : 1}`; te.textContent = S.guide.started ? `Resume DormToDoor ↗` : 'Start DormToDoor ↗'; te.toggleAttribute('aria-current', rt.nav === 'guide');
   document.getElementById('offline').hidden = !S.sim.offline;
-  const html = views[rt.name]();
   document.getElementById('main').innerHTML = html.startsWith('<!--full-->') ? html : `<div class="wrap page">${html}</div>`;
+  document.body.classList.toggle('overlay-open',!!(UI.drawer || UI.dialog));
   document.getElementById('overlay').innerHTML = (UI.drawer ? evidenceDrawer(UI.drawer) : '') + (UI.dialog ? dialogView(UI.dialog) : '');
   document.getElementById('demo').innerHTML = UI.demo ? demoPanel() : '';
   document.getElementById('demo-btn').setAttribute('aria-expanded', UI.demo);
@@ -39,6 +42,8 @@ function render() {
   document.getElementById('toast').innerHTML = UI.toast ? `<div class="toast" role="status">${esc(UI.toast)}</div>` : '';
   document.getElementById('store-note').textContent = workspaceMessage();
   renderConnectionStatus();
+  document.querySelectorAll('input[id], textarea[id]').forEach(el=>{if(Object.hasOwn(UI.formDrafts,el.id))el.value=UI.formDrafts[el.id];});
+  document.querySelectorAll('details').forEach((el,index)=>{el.dataset.detailKey=location.hash+':'+index;if(Object.hasOwn(UI.openDetails,el.dataset.detailKey))el.open=UI.openDetails[el.dataset.detailKey];});
   hydrateMaps();
   if (focus) {
     const el = document.getElementById(focus.id);
@@ -58,13 +63,35 @@ function go(hash) { if (location.hash === hash) render(); else location.hash = h
 
 function bump() { S.revision++; save(); queueComparison(); }
 
+/* Finish pointer activation before replacing the clicked element. */
+document.addEventListener('pointerdown',()=>{UI.pointerDown=true;},true);
+function releaseRender(){UI.pointerDown=false;if(UI.renderQueued)setTimeout(()=>{if(UI.renderQueued)render();},0);}
+document.addEventListener('pointerup',releaseRender,true);
+document.addEventListener('pointercancel',releaseRender,true);
+window.addEventListener('blur',releaseRender);
+
 /* ---------- events ---------- */
 document.addEventListener('click', async (ev) => {
+  const navLink=ev.target.closest('#nav a');
+  if(UI.menu && navLink?.getAttribute('href')===location.hash){UI.menu=false;render();}
   const t = ev.target.closest('[data-action]');
   if (!t) { if (UI.demo && !ev.target.closest('#demo, #demo-btn')) { UI.demo = false; render(); } return; }
   if (t.tagName === 'LI' && ev.target.closest('a[href], button, input, select, summary')) return;
   const a = t.dataset.action, id = t.dataset.id;
   switch (a) {
+    case 'ask-property': {
+      const c=candidate(id);if(!c)break;
+      CHAT.contextCandidateID=id;
+      UI.formDrafts['assistant-question']='Explain the asking price and billing basis for this plan. Which fees and lease facts should I confirm in writing?';
+      go('#assistant');break;
+    }
+    case 'clear-assistant-property': CHAT.contextCandidateID=null;render();break;
+    case 'copy-quote': {
+      const c=candidate(id);if(!c)break;
+      const fallback=()=>{const field=document.getElementById('quote-request-'+id);field?.focus();field?.select();toast('Select and copy the quote request below.');};
+      try {await navigator.clipboard.writeText(quoteRequestText(c));toast('Quote request copied. Fill in the placeholders before sending.');} catch(error){fallback();}
+      break;
+    }
     case 'select': {
       const key = candidate(id)?.property_id || id;
       UI.selected = UI.selected === key ? null : key; render();
@@ -84,7 +111,7 @@ document.addEventListener('click', async (ev) => {
     case 'close-drawer': { const back = UI.drawer; UI.drawer = null; render(); document.querySelector(`[data-action="evidence"][data-id="${back}"]`)?.focus(); break; }
     case 'toggle-map': UI.mapOpen = !UI.mapOpen; render(); break;
     case 'map-retry': S.sim.mapFails = false; MAPS.error=null; MAPS.loading=null; STREET.error=null; save(); render(); break;
-    case 'clear-search': UI.query = ''; UI.filters = { fit: true, conflict: true, insufficient: true }; render(); break;
+    case 'clear-search': UI.query = ''; UI.filters = { fit: true }; render(); break;
     case 'sim-off': S.sim[t.dataset.key] = false; save(); render(); break;
     case 'focus-field': ev.preventDefault(); document.getElementById(t.dataset.field)?.focus(); break;
     case 'prefs-apply': {
@@ -128,7 +155,7 @@ document.addEventListener('click', async (ev) => {
     case 'guide-restart': UI.dialog = 'restart'; render(); document.getElementById('dlg-ok')?.focus(); break;
     case 'guide-restart-confirm': S.guide = { ...defaultState().guide }; UI.dialog = null; save(); go('#guide-1'); toast('Guide restarted. Saved briefs were kept.'); break;
     case 'dialog-close': UI.dialog = null; render(); break;
-    case 'reset-all': { const briefs = S.briefs, workspaceRevision = S.workspaceRevision, revision = S.revision + 1; S = defaultState(); S.briefs = briefs; S.workspaceRevision = workspaceRevision; S.revision = revision; queueComparison(); UI.demo = false; save(); go('#home'); toast('Demo reset. Saved briefs were kept.'); break; }
+    case 'reset-all': { const briefs = S.briefs, workspaceRevision = S.workspaceRevision, revision = S.revision + 1; S = defaultState(); S.briefs = briefs; S.workspaceRevision = workspaceRevision; S.revision = revision; queueComparison(); UI.demo = false; UI.formDrafts={};UI.openDetails={};save(); go('#home'); toast('Demo reset. Saved briefs were kept.'); break; }
   }
 });
 
@@ -139,6 +166,7 @@ document.addEventListener('keydown', (ev) => {
   if (ev.key === 'Escape') {
     if (UI.dialog) { UI.dialog = null; render(); }
     else if (UI.drawer) { const back = UI.drawer; UI.drawer = null; render(); document.querySelector(`[data-action="evidence"][data-id="${back}"]`)?.focus(); }
+    else if (UI.menu) {UI.menu=false;render();document.getElementById('menu-btn').focus();}
     else if (UI.demo) { UI.demo = false; render(); document.getElementById('demo-btn').focus(); }
   }
   if ((ev.key === 'Enter' || ev.key === ' ') && ev.target.classList?.contains('mk')) { ev.preventDefault(); ev.target.dispatchEvent(new MouseEvent('click', { bubbles: true })); }
@@ -161,9 +189,12 @@ function readBind(el, target) {
   else target[k] = el.value;
 }
 
+document.addEventListener('toggle',event=>{const el=event.target;if(el.tagName==='DETAILS' && el.isConnected && el.dataset.detailKey)UI.openDetails[el.dataset.detailKey]=el.open;},true);
+
 let guideTimer;
 document.addEventListener('input', (ev) => {
   const el = ev.target;
+  if(el.id==='assistant-question' || el.id==='home-budget' || el.id==='cl-new' || el.id.startsWith('newq-'))UI.formDrafts[el.id]=el.value;
   if (el.dataset.ui === 'query') { UI.query = el.value; render(); return; }
   if (el.dataset.bind && el.type === 'range') { readBind(el, S.draft); document.getElementById('f-max-out').textContent = el.value + ' min'; return; }
   if (el.dataset.bind) { readBind(el, S.draft); render(); return; }
@@ -196,23 +227,23 @@ document.addEventListener('submit', (ev) => {
   const f = ev.target;
   if (f.dataset.form === 'home-search') {
     const v = Number(String(document.getElementById('home-budget').value).replace(/[^0-9.]/g, ''));
-    if (v && v !== S.prefs.monthly_budget_per_person) {
-      if (v < 200 || v > 5000) { toast('Enter a budget between $200 and $5,000 per person'); return; }
+    if (!Number.isFinite(v) || v < 200 || v > 5000) { toast('Enter a budget between $200 and $5,000 per person'); return; }
+    if (v !== S.prefs.monthly_budget_per_person) {
       S.prefs.monthly_budget_per_person = v; S.draft = null; bump();
     }
-    go('#explore'); return;
+    delete UI.formDrafts['home-budget'];go('#explore'); return;
   }
   if (f.dataset.form === 'q-add') {
     const id = f.dataset.id, inp = f.querySelector('input'), v = inp.value.trim();
     if (!v) { inp.focus(); return; }
     S.notes[id] = S.notes[id] || { questions: [] };
-    S.notes[id].questions.push({ id: uid('q'), text: v, answer: '' }); save(); render();
+    S.notes[id].questions.push({ id: uid('q'), text: v, answer: '' }); UI.formDrafts[inp.id]='';save(); render();
     document.getElementById('newq-' + id)?.focus(); toast('Question added');
   }
   if (f.dataset.form === 'cl-add') {
     const v = document.getElementById('cl-new').value.trim(); if (!v) return;
     S.guide.checklist.push({ id: uid('u'), category: document.getElementById('cl-new-cat').value, title: v, details: '', status: 'not_started', notes: '', evidence_ids: [], needs_confirmation: false, origin: 'user' });
-    save(); render(); document.getElementById('cl-new')?.focus();
+    UI.formDrafts['cl-new']='';save(); render(); document.getElementById('cl-new')?.focus();
   }
 });
 
@@ -222,7 +253,7 @@ window.addEventListener('hashchange', () => {
   const r = route();
   if (r.name !== 'preferences' && S.draft && JSON.stringify(S.draft) === JSON.stringify(S.prefs)) S.draft = null;
   render();
-  if (lastRoute !== location.hash) { window.scrollTo(0, 0); document.getElementById('page-title')?.focus({ preventScroll: true }); }
+  if (lastRoute !== location.hash) { window.scrollTo({top:0,left:0,behavior:'instant'}); document.getElementById('page-title')?.focus({ preventScroll: true }); }
   lastRoute = location.hash;
 });
 window.addEventListener('online', () => { S.sim.offline = false; render(); });

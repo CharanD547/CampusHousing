@@ -2,6 +2,7 @@
 import httpx
 from math import asin, cos, radians, sin, sqrt
 from roomwise.api.errors import APIError
+from roomwise.repositories.provider_budget import ProviderBudget
 
 CATEGORIES={'groceries':['supermarket','grocery_store'],'restaurant':['restaurant'],
             'gas_station':['gas_station'],'cafe':['cafe'],'pharmacy':['pharmacy'],'library':['library']}
@@ -17,16 +18,19 @@ def distance_meters(origin, location):
 
 
 class GooglePlaces:
-    def __init__(self,settings,budget,transport=None):self.settings,self.budget,self.transport=settings,budget,transport
+    def __init__(self,settings,transport=None):
+        self.settings,self.transport=settings,transport
+        self.budget=ProviderBudget(settings.data_dir/'maps-requests.sqlite3',settings.maps_daily_requests)
 
     def nearby(self,prop,category,radius=2500):
         if category not in CATEGORIES:raise APIError('invalid_category','Choose groceries, restaurant, gas_station, cafe, pharmacy or library.')
-        if radius not in (1000,2500,5000):raise APIError('invalid_radius','Choose a 1, 2.5 or 5 km search radius.')
+        if radius not in (1000,2500,5000):raise APIError('invalid_radius','Choose a 0.62, 1.55 or 3.11 mile search radius.')
         if prop.get('lat') is None or prop.get('lon') is None:
             return {'status':'unavailable','places':[],'reason':'This guide reference has no verified property point. Confirm its address before using nearby search.'}
         if not self.settings.places_enabled or not self.settings.places_api_key:
             return {'status':'unavailable','places':[],'reason':'Nearby search is disabled or unconfigured.'}
-        if not self.budget.take('places'):return {'status':'unavailable','places':[],'reason':'Daily Maps web-service request limit reached.'}
+        if not self.budget.take('places'):
+            return {'status':'unavailable','places':[],'reason':'Daily Maps web-service request limit reached. Open the external map or try after the UTC daily reset.'}
         try:
             with httpx.Client(timeout=8,transport=self.transport,follow_redirects=False) as client:
                 response=client.post('https://places.googleapis.com/v1/places:searchNearby',
@@ -39,7 +43,7 @@ class GooglePlaces:
                 'address':p.get('formattedAddress'),'url':p.get('googleMapsUri'),'location':p.get('location'),
                 'distance_meters':distance_meters(prop,p.get('location')),'attributions':p.get('attributions',[])} for p in data.get('places',[])],
                 'property_id':prop['id'] if 'id' in prop else None,'category':category,'radius_meters':radius,
-                'reason':f'Within {radius/1000:g} km, ranked by distance. Distances are straight-line from the approximate property point, not walking or driving routes.',
+                'reason':f'Within {radius/1609.344:.2f} miles, ranked by distance. Distances are straight-line from the approximate property point, not walking or driving routes.',
                 'attribution':'Google Maps','storage_scope':'Live response only; excluded from saved briefs and model training.'}
         except Exception:
             return {'status':'unavailable','places':[],'reason':'Google Places could not return a supported result. Check access, billing and quota.'}

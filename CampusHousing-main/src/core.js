@@ -54,9 +54,9 @@ function save() {
 
 // transient UI state (not persisted)
 const UI = {
-  selected: null, query: '', filters: { fit: true, conflict: true, insufficient: true }, mapOpen: true,
+  selected: null, query: '', filters: { fit: true }, mapOpen: true,
   drawer: null, dialog: null, toast: null, editing: null, menu: false, demo: false, errorsShown: false,
-  guideErrors: false,
+  guideErrors: false, pointerDown:false, renderQueued:false, formDrafts: {}, openDetails: {},
 };
 
 /* ---------- formatting ---------- */
@@ -104,11 +104,11 @@ const modeIcon = (m) => I[{transit:'bus',drive:'car'}[m] || m] || '';
 
 /* Comparisons and price shares are supplied by api.js from the backend. */
 const compareAll = () => CANDIDATES.map((c) => compare(c, S.prefs, S.commitments));
-const FIT_ORDER = { fit: 0, insufficient: 1, conflict: 2 };
+
 
 /* ---------- small renderers ---------- */
 const FIT_META = {
-  fit: { label: 'Criteria match', cls: 'chip-fit', icon: I.check },
+  fit: { label: 'Research option', cls: 'chip-neutral', icon: I.info },
   conflict: { label: 'Conflict', cls: 'chip-conflict', icon: I.x },
   insufficient: { label: 'Insufficient evidence', cls: 'chip-insufficient', icon: I.q },
 };

@@ -1,0 +1,17 @@
+{
+  "run": "v1",
+  "selected_runtime": false,
+  "base_model": "google/gemma-4-E4B-it",
+  "recorded_base_revision": "ee0ef6023621cff504d758262d4e04895a5af4a2",
+  "declared_base_revision": "ee0ef6023621cff504d758262d4e04895a5af4a2",
+  "revision_note": "Revision recorded by historical training report.",
+  "dataset": "../../data/training/roomwise-synthetic-v1",
+  "training_report": "../../data/training/reports/v1-training.json",
+  "license": "Apache-2.0",
+  "weights_sha256": "0d62bfbecb27085f846b4d5278cb4d0e354ba247e0129c94585ff6271dfb6be4",
+  "weights_bytes": 36346288,
+  "original_config_sha256": "f3a0120d6d23ac319f127b7c703619c37d2aacb024b9cd27a40488381f2fe1d2",
+  "published_config_sha256": "7bd5d5080d3e0ef4634d3e826eafdff2fa3ecf1ad449c05ea6e95c590b5592d4",
+  "config_changes": "Replaced local base path with Hub identity; recorded resolved revision (null for unverified v3). Tensor bytes unchanged.",
+  "excluded": "Base weights, tokenizer copies, optimizer/checkpoints and pickle training_args.bin."
+}

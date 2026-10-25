@@ -42,7 +42,7 @@
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: auto; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation: none !important; transition: none !important; } }
 
 body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--body); font-size: var(--t-base); line-height: 1.55; -webkit-font-smoothing: antialiased; font-optical-sizing: auto; }
@@ -633,3 +633,22 @@ input[type="range"] { width: 100%; accent-color: #c87649; height: 28px; }
 .directory-toolbar { margin-top:30px; }
 .directory-toolbar > div { flex:1;min-width:200px; }
 @media(max-width:760px) { .directory-grid { grid-template-columns:1fr; } }
+
+/* Keep overlapping map points at their real coordinates; reveal prices on focus. */
+.housing-marker.is-compact { width:18px; }
+.housing-marker.is-compact span { width:18px;height:18px;padding:0;font-size:0;background:var(--ink);border:2px solid white; }
+.housing-marker.is-compact:hover span,.housing-marker.is-compact:focus span { width:auto;height:auto;padding:7px 10px;font-size:12px;background:var(--white);color:var(--ink); }
+body.overlay-open { overflow:hidden; }
+
+.nav .nav-guide { display:none; }
+@media(max-width:960px) { .nav .nav-guide { display:block; } }
+
+.cand-meta .chip { white-space:normal;max-width:100%;line-height:1.5; }
+
+/* SDK children are absolute; keep their containing block when a map is reattached. */
+.google-map { position:relative;overflow:hidden;width:100%;min-width:0; }
+.map-wrap { min-width:0; }
+
+/* Keep price provenance readable beside every property and on narrow screens. */
+.rent-confidence{display:grid;gap:.35rem;padding:.8rem;border:1px solid var(--line,#d9ddd8);border-radius:10px;background:var(--panel,#fafbf8);font-size:.78rem;line-height:1.5;min-width:0;overflow-wrap:anywhere}
+.rent-confidence b{font-weight:700;margin-right:.3rem}.rent-confidence details{margin-top:.2rem}.rent-confidence summary{cursor:pointer;text-decoration:underline;text-underline-offset:3px}.rent-confidence p{margin:.5rem 0}

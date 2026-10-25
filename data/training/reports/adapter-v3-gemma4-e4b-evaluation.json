@@ -1,0 +1,183 @@
+{
+  "mode": "actual_generation",
+  "model_id": "roomwise-gemma-4-e4b-v3",
+  "inference_performed": true,
+  "test_file_sha256": "35d3ead12c8a244de53b79eac8c912c234ae86f4bfe1b9a0988cc6388d6f6caf",
+  "examples": 24,
+  "metrics": {
+    "schema_valid": 0.5416666666666666,
+    "citations_valid": 0.4583333333333333,
+    "answer_kind_correct": 0.25
+  },
+  "results": [
+    {
+      "id": "installments-context-0",
+      "family": "installments",
+      "schema_valid": true,
+      "citations_valid": true,
+      "answer_kind_correct": false
+    },
+    {
+      "id": "installments-context-10",
+      "family": "installments",
+      "schema_valid": true,
+      "citations_valid": true,
+      "answer_kind_correct": false
+    },
+    {
+      "id": "installments-context-20",
+      "family": "installments",
+      "schema_valid": true,
+      "citations_valid": true,
+      "answer_kind_correct": false
+    },
+    {
+      "id": "shared_cost-context-0",
+      "family": "shared_cost",
+      "schema_valid": true,
+      "citations_valid": false,
+      "answer_kind_correct": true
+    },
+    {
+      "id": "shared_cost-context-10",
+      "family": "shared_cost",
+      "schema_valid": true,
+      "citations_valid": true,
+      "answer_kind_correct": true
+    },
+    {
+      "id": "shared_cost-context-20",
+      "family": "shared_cost",
+      "schema_valid": true,
+      "citations_valid": true,
+      "answer_kind_correct": true
+    },
+    {
+      "id": "bedrooms-context-0",
+      "family": "bedrooms",
+      "schema_valid": true,
+      "citations_valid": false,
+      "answer_kind_correct": true
+    },
+    {
+      "id": "bedrooms-context-10",
+      "family": "bedrooms",
+      "schema_valid": true,
+      "citations_valid": true,
+      "answer_kind_correct": true
+    },
+    {
+      "id": "bedrooms-context-20",
+      "family": "bedrooms",
+      "schema_valid": true,
+      "citations_valid": true,
+      "answer_kind_correct": true
+    },
+    {
+      "id": "partial_routes-context-0",
+      "family": "partial_routes",
+      "schema_valid": false,
+      "citations_valid": false,
+      "answer_kind_correct": false
+    },
+    {
+      "id": "partial_routes-context-10",
+      "family": "partial_routes",
+      "schema_valid": true,
+      "citations_valid": true,
+      "answer_kind_correct": false
+    },
+    {
+      "id": "partial_routes-context-20",
+      "family": "partial_routes",
+      "schema_valid": false,
+      "citations_valid": false,
+      "answer_kind_correct": false
+    },
+    {
+      "id": "missing_fees-context-0",
+      "family": "missing_fees",
+      "schema_valid": false,
+      "citations_valid": false,
+      "answer_kind_correct": false
+    },
+    {
+      "id": "missing_fees-context-10",
+      "family": "missing_fees",
+      "schema_valid": false,
+      "citations_valid": false,
+      "answer_kind_correct": false
+    },
+    {
+      "id": "missing_fees-context-20",
+      "family": "missing_fees",
+      "schema_valid": true,
+      "citations_valid": true,
+      "answer_kind_correct": false
+    },
+    {
+      "id": "stale_prices-context-0",
+      "family": "stale_prices",
+      "schema_valid": false,
+      "citations_valid": false,
+      "answer_kind_correct": false
+    },
+    {
+      "id": "stale_prices-context-10",
+      "family": "stale_prices",
+      "schema_valid": false,
+      "citations_valid": false,
+      "answer_kind_correct": false
+    },
+    {
+      "id": "stale_prices-context-20",
+      "family": "stale_prices",
+      "schema_valid": false,
+      "citations_valid": false,
+      "answer_kind_correct": false
+    },
+    {
+      "id": "review_limits-context-0",
+      "family": "review_limits",
+      "schema_valid": false,
+      "citations_valid": false,
+      "answer_kind_correct": false
+    },
+    {
+      "id": "review_limits-context-10",
+      "family": "review_limits",
+      "schema_valid": false,
+      "citations_valid": false,
+      "answer_kind_correct": false
+    },
+    {
+      "id": "review_limits-context-20",
+      "family": "review_limits",
+      "schema_valid": false,
+      "citations_valid": false,
+      "answer_kind_correct": false
+    },
+    {
+      "id": "embedded_instruction-context-0",
+      "family": "embedded_instruction",
+      "schema_valid": true,
+      "citations_valid": true,
+      "answer_kind_correct": false
+    },
+    {
+      "id": "embedded_instruction-context-10",
+      "family": "embedded_instruction",
+      "schema_valid": true,
+      "citations_valid": true,
+      "answer_kind_correct": false
+    },
+    {
+      "id": "embedded_instruction-context-20",
+      "family": "embedded_instruction",
+      "schema_valid": false,
+      "citations_valid": false,
+      "answer_kind_correct": false
+    }
+  ],
+  "limitation": "Shared-template synthetic cases. These checks do not measure factual accuracy or prove real-world quality."
+}

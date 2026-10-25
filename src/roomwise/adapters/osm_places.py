@@ -13,13 +13,13 @@ FILTERS={'groceries':'["shop"~"^(supermarket|convenience|greengrocer)$"]',
  'cafe':'["amenity"="cafe"]','pharmacy':'["amenity"="pharmacy"]','library':'["amenity"="library"]'}
 
 class OpenStreetMapPlaces:
-    def __init__(self,budget,transport=None):
-        self.budget,self.transport=budget,transport
+    def __init__(self,transport=None):
+        self.transport=transport
         self.cache={};self.lock=Lock()
 
     def nearby(self,prop,category,radius=2500):
         if category not in CATEGORIES:raise APIError('invalid_category','Choose a supported nearby category.')
-        if radius not in (1000,2500,5000):raise APIError('invalid_radius','Choose a 1, 2.5 or 5 km search radius.')
+        if radius not in (1000,2500,5000):raise APIError('invalid_radius','Choose a 0.62, 1.55 or 3.11 mile search radius.')
         lat,lon=prop.get('lat'),prop.get('lon')
         if lat is None or lon is None or not isfinite(lat) or not isfinite(lon):
             return {'status':'unavailable','places':[],'reason':'No sourced property point yet. The address-search map remains available.'}
@@ -27,8 +27,6 @@ class OpenStreetMapPlaces:
         with self.lock:
             cached=self.cache.get(key)
             if cached and cached[0]>time.monotonic():return deepcopy(cached[1])
-        if not self.budget.take('places'):
-            return {'status':'unavailable','places':[],'reason':'Daily nearby-search request limit reached.'}
         query=f'[out:json][timeout:15];nwr(around:{radius},{lat},{lon}){FILTERS[category]}["name"];out center tags;'
         try:
             with httpx.Client(timeout=20,transport=self.transport,follow_redirects=False,
@@ -56,7 +54,7 @@ class OpenStreetMapPlaces:
             places.sort(key=lambda p:p['distance_meters'])
             result={'status':'available','provider':'OpenStreetMap','places':places[:8],
                 'property_id':prop.get('id'),'category':category,'radius_meters':radius,'checked_at':now(),
-                'reason':f'Mapped places within {radius/1000:g} km, ranked by straight-line distance. Community map data may be incomplete; business hours and current operation are unverified.',
+                'reason':f'Mapped places within {radius/1609.344:.2f} miles, ranked by straight-line distance. Community map data may be incomplete; business hours and current operation are unverified.',
                 'attribution':'© OpenStreetMap contributors','storage_scope':'Live response only; excluded from saved briefs and model training.'}
             with self.lock:self.cache[key]=(time.monotonic()+300,deepcopy(result))
             return result

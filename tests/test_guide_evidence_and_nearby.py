@@ -4,10 +4,6 @@ from roomwise.adapters.osm_places import OpenStreetMapPlaces
 from roomwise.services.guide_catalog import guide_properties
 from tools.backend.refresh_guide_evidence import extract_cmg
 
-class Budget:
-    def __init__(self):self.used=0
-    def take(self,operation):self.used+=1;return self.used<=2
-
 def test_research_parser_rejects_unrelated_property_and_uses_community_not_office():
     html='''<div data-community="Cedar Pointe" data-lat="37.200846" data-lng="-80.3987542"></div>
       <div class="office-map" data-lat="37.2288459" data-lng="-80.4137966"></div>
@@ -32,28 +28,43 @@ def test_research_prices_become_plans_that_stay_insufficient_evidence():
     assert prop['guide_reference']['evidence_update']['prices'][0]['minimum']==2000
     assert prop['sources'][-1]['url']=='https://example.test/operator'
 
+def test_operator_lease_dates_and_fees_reach_the_offer():
+    guide={'document_sha256':'test','communities':[{'id':'p','name':'Test place','address':'Test street',
+        'zone':'Campus','layouts':'2BR','source_urls':['https://example.test/guide'],'guide_price_summary':'Old reference'}]}
+    evidence={'properties':{'p':{'status':'operator_observed','source_url':'https://example.test/operator',
+        'checked_at':'2026-10-25T02:00:00Z','prices':[{'label':'B1','minimum':1375,'maximum':1375}],
+        'billing_basis':'per_person','billing_period':'installment','lease':{'term':'12 Month','start':'2027-06-01','end':'2028-06-30'},
+        'one_time_fees':[{'label':'Application fee','amount':35,'timing':'at application','basis':'per applicant'},
+                         {'label':'Security deposit','amount':500,'timing':'at application','refundable':True}],
+        'recurring_fees':[],'coordinates':{'lat':37.2,'lon':-80.4},'billing_note':'Operator portal.'}}}
+    offer=guide_properties(guide,evidence,{'places':{}})[0]['offers'][0]
+    assert (offer['start'],offer['end'],offer['term_label'])==('2027-06-01','2028-06-30','12 Month')
+    assert offer['period']=='installment' and offer['basis']=='unknown'
+    fees={f['label']:f for f in offer['fees']}
+    assert fees['Application fee']['classification']=='MANDATORY_ONE_TIME' and fees['Application fee']['scaling_basis']=='PER_APPLICANT'
+    assert fees['Security deposit']['classification']=='REFUNDABLE_DEPOSIT' and fees['Security deposit']['amount_min']=='500'
+
 def test_osm_nearby_sorts_deduplicates_limits_and_caches():
-    budget=Budget();calls=[]
+    calls=[]
     def provider(request):
         calls.append(request)
         assert 'supermarket' in request.url.params['data'] and '2500' in request.url.params['data']
         return httpx.Response(200,json={'elements':[
             {'id':n,'type':'node','lat':37.2+n/10000,'lon':-80.4,'tags':{'name':f'Store {n}'}}
             for n in range(12,0,-1)] + [{'id':99,'type':'node','lat':37.8,'lon':-80.4,'tags':{'name':'Too far'}}]})
-    adapter=OpenStreetMapPlaces(budget,httpx.MockTransport(provider))
+    adapter=OpenStreetMapPlaces(httpx.MockTransport(provider))
     result=adapter.nearby({'id':'p','lat':37.2,'lon':-80.4},'groceries',2500)
     assert result['status']=='available' and result['provider']=='OpenStreetMap'
     assert len(result['places'])==8 and result['places'][0]['name']=='Store 1'
     assert result['places'][0]['url']=='https://www.openstreetmap.org/node/1'
     again=adapter.nearby({'id':'p','lat':37.2,'lon':-80.4},'groceries',2500)
-    assert len(calls)==1 and budget.used==1 and again==result
+    assert len(calls)==1 and again==result
 
 def test_osm_missing_points_and_partial_errors_do_not_invent_places():
-    budget=Budget()
     def provider(request):return httpx.Response(200,json={'remark':'timeout','elements':[]})
-    adapter=OpenStreetMapPlaces(budget,httpx.MockTransport(provider))
+    adapter=OpenStreetMapPlaces(httpx.MockTransport(provider))
     assert adapter.nearby({'lat':None,'lon':None},'groceries')['status']=='unavailable'
-    assert budget.used==0
+    assert adapter.nearby({'lat':None,'lon':None},'groceries')['places']==[]
     assert adapter.nearby({'lat':37.2,'lon':-80.4},'groceries')['status']=='unavailable'
 
 
@@ -68,4 +79,5 @@ def test_guide_text_rows_keep_basis_only_where_stated_and_geocodes_place_maps():
         'layouts':'2BR','source_urls':[],'guide_price_summary':'2BR: $1,495+; 3BR: $2,195 + fees'}]}
     prop=guide_properties(guide,{'properties':{}},{'places':{'g':{'lat':37.21,'lon':-80.39,'basis':'census_street_address'}}})[0]
     assert (prop['lat'],prop['coordinate_basis'])==(37.21,'geocoded_street_address')
-    assert [o['amount'] for o in prop['offers']]==['1495','2195'] and all(o['price_confidence_tier']=='GUIDE_REFERENCE' for o in prop['offers'])
+    # Guide prose without operator or listing evidence produces no comparable offer.
+    assert prop['offers']==[] and prop['name']=='Guide place'

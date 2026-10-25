@@ -1,3 +1,5 @@
+> Current submission status: see [the October 25 rubric review](RUBRIC_IMPROVEMENTS_2026-10-25.md). Some routing details below describe backend compatibility paths; the class-schedule UI is removed.
+
 # Roomwise operations
 
 Local prototype, October 24, 2026. The requested LAN development run now binds to `0.0.0.0:8001` with an operator token; see [LAN instructions](LAN_DEVELOPMENT.md). The current `.env` enables Maps, Places and the separately validated Routes credential. Model calls remain disabled. Localhost operator access is explicitly enabled; LAN clients still require the operator token. Never commit real credentials or paste private provider credentials into the application's operator-token form.
@@ -6,7 +8,7 @@ Local prototype, October 24, 2026. The requested LAN development run now binds t
 
 `GET /api/v1/maps/config` exposes only the designated Maps JavaScript browser key. Places and Routes credentials remain server-side. Browser Maps was rendered and nearby cafes returned live results in Chrome. Grocery search exercised a valid empty result. Empty results remain distinct from proof that a category is absent.
 
-Nearby search is explicit, within 2.5 km, and limited to groceries, cafes, pharmacies or libraries. It requests names, addresses, Maps links and attribution, without photos or reviews. Results are not cached or included in saved decisions/model prompts. Official Maps attribution assets are used under Google's attribution guidelines; they are not MIT-licensed Roomwise artwork. Public `/privacy` and `/terms` disclose data flows and link Google's terms/privacy.
+Nearby search is explicit, uses 0.62/1.55/3.11-mile radius labels (meter-based provider requests), and supports groceries, restaurants, gas stations, cafes, pharmacies and libraries. It requests names, addresses, Maps links and attribution, without photos or reviews. Results are not cached or included in saved decisions/model prompts. Official Maps attribution assets are used under Google's attribution guidelines; they are not MIT-licensed Roomwise artwork. Public `/privacy` and `/terms` disclose data flows and link Google's terms/privacy.
 
 Routing supports `single_date` or `representative_week`. Weekly scope expands Monday–Sunday around the selected date and counts every class meeting separately. Transit requests subtract the arrival buffer, apply America/New_York/DST, and supply UTC arrival time. Static walk/bike/drive requests do not claim future closures, parking time, accessibility or indoor walking. Unsupported transit dates remain unsupported. No alternate date is silently selected.
 
