@@ -59,7 +59,9 @@ def create_app(settings=None, *, campuses=None, routing=None, gemma=None, assist
         started=time.monotonic()
         supplied=request.headers.get('x-request-id','')
         request.state.request_id=supplied if re.fullmatch(r'[A-Za-z0-9_-]{1,80}',supplied) else uuid.uuid4().hex
-        if not settings.api_token and request.url.hostname not in ('127.0.0.1','localhost','::1','testserver'):
+        # Public hosting: anyone with the link may use the app; no operator token or loopback check.
+        open_to_public=settings.public_access
+        if not open_to_public and not settings.api_token and request.url.hostname not in ('127.0.0.1','localhost','::1','testserver'):
             return error_response('local_host_required','Use the local Roomwise address.',403,request.state.request_id)
         if request.url.path.startswith('/api/') and request.headers.get('sec-fetch-site')=='cross-site' and request.headers.get('origin') not in settings.allowed_origins:
             return error_response('origin_rejected','Cross-site API requests are not allowed.',403,request.state.request_id)
@@ -68,7 +70,9 @@ def create_app(settings=None, *, campuses=None, routing=None, gemma=None, assist
                         and request.url.hostname in ('127.0.0.1','localhost','::1')
                         and request.headers.get('sec-fetch-site')!='cross-site'
                         and request.headers.get('origin',str(request.base_url).rstrip('/')).rstrip('/')==str(request.base_url).rstrip('/'))
-        if settings.api_token and not public_asset and not local_operator:
+        if open_to_public:
+            pass
+        elif settings.api_token and not public_asset and not local_operator:
             if not hmac.compare_digest(request.headers.get('authorization',''), 'Bearer '+settings.api_token):
                 return error_response('unauthorized','Valid API bearer token required.',401,request.state.request_id)
         elif not settings.api_token and request.client and request.client.host not in ('127.0.0.1','::1','testclient'):

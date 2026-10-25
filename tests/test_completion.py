@@ -159,6 +159,16 @@ def test_explicit_local_operator_access_keeps_lan_protected(tmp_path):
     assert remote.get('/api/v1/health',headers={'Authorization':'Bearer test-operator-token'}).status_code==200
 
 
+def test_public_access_serves_remote_visitors_without_a_token(tmp_path):
+    remote=TestClient(create_app(Settings(tmp_path,public_access=True)),base_url='https://roomwise.example.run.app',client=('203.0.113.9',50000))
+    assert remote.get('/api/v1/health').status_code==200
+    assert remote.get('/api/v1/candidates').status_code==200
+    # Cross-site API calls stay blocked even when the app is public.
+    assert remote.get('/api/v1/maps/config',headers={'Sec-Fetch-Site':'cross-site','Origin':'https://untrusted.test'}).status_code==403
+    closed=TestClient(create_app(Settings(tmp_path)),base_url='https://roomwise.example.run.app',client=('203.0.113.9',50000))
+    assert closed.get('/api/v1/health').status_code==403
+
+
 def test_backup_restore_detects_corruption_without_overwriting(tmp_path):
     source=tmp_path/'source';source.mkdir()
     (source/'.env').write_text('SECRET=never-backup')
