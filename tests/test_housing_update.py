@@ -75,24 +75,34 @@ def test_route_recomputations_preserve_reserved_nearby_capacity(tmp_path):
     assert not budget.take('places')
 
 
-def test_all_guide_entries_are_explorable_without_invented_prices(client,request_body):
+def test_all_guide_entries_are_explorable_with_traceable_prices(client,request_body):
     directory=client.get('/api/v1/housing-guide').json()['communities']
     catalog=client.get('/api/v1/candidates').json()['candidates']
     guide=[c for c in catalog if c.get('guide_reference')]
-    assert len(catalog)==109 and len(guide)==41
+    assert len(guide)>41 and len(catalog)==68+len(guide)
     assert len({c['property_id'] for c in catalog})==47
     assert {c['guide_reference']['id'] for c in guide}=={c['id'] for c in directory if not c['catalog_property_id']}
-    assert all(c['offer']['price']['amount'] is None for c in guide)
     for candidate in guide:
-        if candidate['coordinates'] is not None:
-            assert candidate['guide_reference']['evidence_update']['coordinates']==candidate['coordinates']
-            assert candidate['coordinate_basis']=='operator_community_point'
+        offer=candidate['offer']
+        # Every guide-place price traces to an operator row or the guide's own text; nothing is filled in.
+        if offer['price']['amount'] is not None:
+            assert offer['price_confidence_tier'] in ('OPERATOR_OBSERVED','LISTING_OBSERVED','GUIDE_REFERENCE') and offer['unknown_costs']
+        # Every guide place has a map point: operator-published, or a geocoded street address.
+        assert candidate['coordinates'] is not None
+        assert candidate['coordinate_basis'] in ('operator_community_point','geocoded_street_address')
     assert all(c['sources'][0]['review_status']!='reviewed' for c in guide)
     request_body.update(commitments=[],candidate_ids=[guide[0]['id'],'alight-east'])
     response=client.post('/api/v1/comparisons',json=request_body)
     assert response.status_code==200
     row=response.json()['candidate_results'][0]
-    assert row['fit_state']=='insufficient_evidence' and row['known_recurring_subtotal'] is None
+    # Unverified prices never make a documented fit; one already over budget is still a real conflict.
+    assert row['fit_state']=='conflict' if row['hard_conflicts'] else row['fit_state']=='insufficient_evidence'
+    assert any('unconfirmed' in u for u in row['unknown_costs'])
+    # A published eligibility rule is carried as a hard conflict on every plan at that place.
+    legacy=[c for c in catalog if c['property_id']=='legacy-on-main-the-orchards']
+    request_body.update(candidate_ids=[legacy[0]['id']])
+    legacy_row=client.post('/api/v1/comparisons',json=request_body).json()['candidate_results'][0]
+    assert legacy_row['fit_state']=='conflict' and any('students' in c for c in legacy_row['hard_conflicts'])
 
 
 def test_guide_reference_nearby_does_not_spend_quota(tmp_path):

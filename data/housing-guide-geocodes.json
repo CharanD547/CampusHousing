@@ -1,0 +1,290 @@
+{
+  "format": "roomwise-guide-geocodes-v1",
+  "source": "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress",
+  "checked_at": "2026-10-25T03:20:33.695396+00:00",
+  "places": {
+    "the-edge-apartments-townhomes": {
+      "lat": 37.2353838,
+      "lon": -80.4243888,
+      "query": "300 Edge Way",
+      "matched_address": "300 EDGE WAY, BLACKSBURG, VA, 24060",
+      "basis": "census_street_address"
+    },
+    "tech-terrace": {
+      "lat": 37.2357208,
+      "lon": -80.4220311,
+      "query": "301 Webb St, Blacksburg, VA",
+      "matched_address": "301, Webb Street, Snidow Heights, Blacksburg, Montgomery County, Virginia, 24060, United States",
+      "basis": "openstreetmap_nominatim"
+    },
+    "haven-blacksburg-haven-on-north-main": {
+      "lat": 37.2412617,
+      "lon": -80.4185927,
+      "query": "1201 N Main St",
+      "matched_address": "1201 N MAIN ST, BLACKSBURG, VA, 24060",
+      "basis": "census_street_address"
+    },
+    "old-row-on-north-main": {
+      "lat": 37.2380755,
+      "lon": -80.4212784,
+      "query": "901 Lunch Pail Ln",
+      "matched_address": "901 LUNCH PAIL LN, BLACKSBURG, VA, 24060",
+      "basis": "census_street_address"
+    },
+    "collegiate-court": {
+      "lat": 37.2341229,
+      "lon": -80.4193927,
+      "query": "100 Collegiate Ct",
+      "matched_address": "100 COLLEGIATE CT, BLACKSBURG, VA, 24060",
+      "basis": "census_street_address"
+    },
+    "the-lofts-at-316": {
+      "lat": 37.2308479,
+      "lon": -80.4154443,
+      "query": "316 N Main St",
+      "matched_address": "316 N MAIN ST, BLACKSBURG, VA, 24060",
+      "basis": "census_street_address"
+    },
+    "kent-square-condos": {
+      "lat": 37.2282354,
+      "lon": -80.4128819,
+      "query": "250 S Main St",
+      "matched_address": "250 S MAIN ST, BLACKSBURG, VA, 24060",
+      "basis": "census_street_address"
+    },
+    "chase-apartments-the-chase": {
+      "lat": 37.2318928,
+      "lon": -80.4102542,
+      "query": "421 Roanoke St E",
+      "matched_address": "421 E ROANOKE ST, BLACKSBURG, VA, 24060",
+      "basis": "census_street_address"
+    },
+    "east-roanoke-street": {
+      "lat": 37.2320362,
+      "lon": -80.4098228,
+      "query": "442 Roanoke St E",
+      "matched_address": "442 E ROANOKE ST, BLACKSBURG, VA, 24060",
+      "basis": "census_street_address"
+    },
+    "downtown-boutique-historic-rentals": {
+      "lat": 37.2240822,
+      "lon": -80.4136134,
+      "query": "410 Houston St",
+      "matched_address": "410 HOUSTON ST, BLACKSBURG, VA, 24060",
+      "basis": "census_street_address"
+    },
+    "hub-blacksburg": {
+      "lat": 37.2431771,
+      "lon": -80.4258868,
+      "query": "1201 Snyder Ln",
+      "matched_address": "1201 SNYDER LN, BLACKSBURG, VA, 24060",
+      "basis": "census_street_address"
+    },
+    "park37": {
+      "lat": 37.2472024,
+      "lon": -80.4200358,
+      "query": "Park37, Blacksburg, VA",
+      "matched_address": "Park37, 1222, Blacksburg, Montgomery County, Virginia, 24060, United States",
+      "basis": "openstreetmap_nominatim"
+    },
+    "fourteen35-apartments": {
+      "lat": 37.244605,
+      "lon": -80.4301367,
+      "query": "1435 Toms Creek Rd, Blacksburg, VA",
+      "matched_address": "1435, Toms Creek Road, Stonegate, Blacksburg, Montgomery County, Virginia, 24060, United States",
+      "basis": "openstreetmap_nominatim"
+    },
+    "collegiate-suites-hunters-ridge": {
+      "lat": 37.2455576,
+      "lon": -80.4168091,
+      "query": "1310 Henry Ln",
+      "matched_address": "1310 HENRY LN, BLACKSBURG, VA, 24060",
+      "basis": "census_street_address"
+    },
+    "chasewood-downs": {
+      "lat": 37.2425778,
+      "lon": -80.4312567,
+      "query": "1304 University City Blvd",
+      "matched_address": "1304 UNIVERSITY CITY BLVD, BLACKSBURG, VA, 24060",
+      "basis": "census_street_address"
+    },
+    "shawnee-apartments": {
+      "lat": 37.2421977,
+      "lon": -80.4333155,
+      "query": "1222 University City Blvd",
+      "matched_address": "1222 UNIVERSITY CITY BLVD, BLACKSBURG, VA, 24060",
+      "basis": "census_street_address"
+    },
+    "stonegate-carlton-scott": {
+      "lat": 37.2419573,
+      "lon": -80.425286,
+      "query": "500 Broce Dr, Blacksburg, VA",
+      "matched_address": "500, Broce Drive, Stonegate, Blacksburg, Montgomery County, Virginia, 24060, United States",
+      "basis": "openstreetmap_nominatim"
+    },
+    "brexx-at-blacksburg-the-retreat": {
+      "lat": 37.2257675,
+      "lon": -80.4476087,
+      "query": "1800 Redd Rd",
+      "matched_address": "1800 REDD RD, BLACKSBURG, VA, 24060",
+      "basis": "census_street_address"
+    },
+    "smith-s-landing": {
+      "lat": 37.2235143,
+      "lon": -80.4426326,
+      "query": "870 Plantation Rd",
+      "matched_address": "870 PLANTATION RD, BLACKSBURG, VA, 24060",
+      "basis": "census_street_address"
+    },
+    "pack-place-apartments": {
+      "lat": 37.2336305,
+      "lon": -80.4245078,
+      "query": "520 Prices Fork Rd",
+      "matched_address": "520 PRICES FORK RD, BLACKSBURG, VA, 24060",
+      "basis": "census_street_address"
+    },
+    "the-farm": {
+      "lat": 37.2353115,
+      "lon": -80.4388579,
+      "query": "900 Glade Rd",
+      "matched_address": "900 GLADE RD, BLACKSBURG, VA, 24060",
+      "basis": "census_street_address"
+    },
+    "maple-ridge-townhomes": {
+      "lat": 37.2547389,
+      "lon": -80.407785,
+      "query": "344 Red Maple Dr, Blacksburg, VA",
+      "matched_address": "344, Red Maple Drive, Alleghany Heights, Blacksburg, Montgomery County, Virginia, 24061, United States",
+      "basis": "openstreetmap_nominatim"
+    },
+    "the-summit-at-uptown": {
+      "lat": 37.2553994,
+      "lon": -80.4106492,
+      "query": "1820 N Main St",
+      "matched_address": "1820 N MAIN ST, BLACKSBURG, VA, 24060",
+      "basis": "census_street_address"
+    },
+    "1711-apartments": {
+      "lat": 37.2537518,
+      "lon": -80.4131915,
+      "query": "1711 Whipple Dr",
+      "matched_address": "1711 WHIPPLE DR, BLACKSBURG, VA, 24060",
+      "basis": "census_street_address"
+    },
+    "cedar-pointe-apartments": {
+      "lat": 37.2003371,
+      "lon": -80.3985103,
+      "query": "200 Cedar Pointe Dr, Blacksburg, VA",
+      "matched_address": "200, Cedar Pointe Drive, Cedar Pointe Apartments, Blacksburg, Montgomery County, Virginia, 24060, United States",
+      "basis": "openstreetmap_nominatim"
+    },
+    "cedarfield-apartments-townhomes": {
+      "unresolved": "Old Cedarfield Dr"
+    },
+    "additional-north-main-rentals": {
+      "lat": 37.2380025,
+      "lon": -80.4193186,
+      "query": "300 McDonald St",
+      "matched_address": "300 MCDONALD ST, BLACKSBURG, VA, 24060",
+      "basis": "census_street_address"
+    },
+    "the-vue-apartments": {
+      "lat": 37.2032388,
+      "lon": -80.4058811,
+      "query": "1906 Research Center Dr",
+      "matched_address": "1906 RESEARCH CENTER DR, BLACKSBURG, VA, 24060",
+      "basis": "census_street_address"
+    },
+    "the-reserve-at-knollwood": {
+      "lat": 37.2032113,
+      "lon": -80.4050849,
+      "query": "2401 Pamela Way",
+      "matched_address": "2401 PAMELA WAY, BLACKSBURG, VA, 24060",
+      "basis": "census_street_address"
+    },
+    "the-crossing-at-knollwood": {
+      "lat": 37.1976887,
+      "lon": -80.4042564,
+      "query": "2379 Research Center Dr",
+      "matched_address": "2379 RESEARCH CENTER DR, BLACKSBURG, VA, 24060",
+      "basis": "census_street_address"
+    },
+    "knollwood-condominium": {
+      "lat": 37.2018644,
+      "lon": -80.4038308,
+      "query": "303 N Knollwood Dr",
+      "matched_address": "303 N KNOLLWOOD DR, BLACKSBURG, VA, 24060",
+      "basis": "census_street_address"
+    },
+    "knollwood-townhomes": {
+      "lat": 37.2032225,
+      "lon": -80.4031761,
+      "query": "245 Sheliah Ct",
+      "matched_address": "245 SHELIAH CT, BLACKSBURG, VA, 24060",
+      "basis": "census_street_address"
+    },
+    "highlands-at-huckleberry-ridge": {
+      "lat": 37.1854491,
+      "lon": -80.4223756,
+      "query": "535 Blackrock Dr, Blacksburg, VA",
+      "matched_address": "535, Blackrock Drive, Highlands at Huckleberry, Blacksburg, Montgomery County, Virginia, 24060, United States",
+      "basis": "openstreetmap_nominatim"
+    },
+    "legacy-on-main-the-orchards": {
+      "lat": 37.2178948,
+      "lon": -80.4015882,
+      "query": "100 Country Club Dr SE",
+      "matched_address": "100 COUNTRY CLUB DR SE, BLACKSBURG, VA, 24060",
+      "basis": "census_street_address"
+    },
+    "pheasant-run-townhomes": {
+      "lat": 37.249314,
+      "lon": -80.4174242,
+      "query": "202 Pheasant Run Dr",
+      "matched_address": "202 PHEASANT RUN DR, BLACKSBURG, VA, 24060",
+      "basis": "census_street_address"
+    },
+    "clover-valley-phase-i-cv2": {
+      "lat": 37.2477476,
+      "lon": -80.4122001,
+      "query": "105 Clover Valley Cir",
+      "matched_address": "105 CLOVER VALLEY CIR, BLACKSBURG, VA, 24060",
+      "basis": "census_street_address"
+    },
+    "university-terrace-progress-st": {
+      "lat": 37.2391461,
+      "lon": -80.4223526,
+      "query": "1011 Progress St",
+      "matched_address": "1011 PROGRESS ST NW, BLACKSBURG, VA, 24060",
+      "basis": "census_street_address"
+    },
+    "seneca-drive-toms-creek-condos": {
+      "lat": 37.2475185,
+      "lon": -80.4174958,
+      "query": "1440 Seneca Dr",
+      "matched_address": "1440 SENECA DR, BLACKSBURG, VA, 24060",
+      "basis": "census_street_address"
+    },
+    "hearthstone-creekside-hilltop": {
+      "lat": 37.2389869,
+      "lon": -80.4185297,
+      "query": "115 Hearthstone Dr",
+      "matched_address": "115 HEARTHSTONE DR, BLACKSBURG, VA, 24060",
+      "basis": "census_street_address"
+    },
+    "oak-manor-camelot-court": {
+      "lat": 37.2238204,
+      "lon": -80.4478366,
+      "query": "113 Camelot Ct",
+      "matched_address": "113 CAMELOT CT, BLACKSBURG, VA, 24060",
+      "basis": "census_street_address"
+    },
+    "zillow-detached-single-family-executive-homes": {
+      "lat": 37.2339056,
+      "lon": -80.4171851,
+      "query": "615 Progress St NE",
+      "matched_address": "615 PROGRESS ST NE, BLACKSBURG, VA, 24060",
+      "basis": "census_street_address"
+    }
+  }
+}

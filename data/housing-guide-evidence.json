@@ -644,161 +644,161 @@
           "bedrooms": 4,
           "minimum": 550,
           "maximum": 550,
-          "group_label": "Room listing \u00b7 per month"
+          "group_label": "Room listing · per month"
         },
         {
           "label": "1201 North Main St. Apt J",
           "bedrooms": 3,
           "minimum": 2697,
           "maximum": 2697,
-          "group_label": "3 bed apartment \u00b7 per month"
+          "group_label": "3 bed apartment · per month"
         },
         {
           "label": "1201 North Main St. Apt I",
           "bedrooms": 3,
           "minimum": 2697,
           "maximum": 2697,
-          "group_label": "3 bed apartment \u00b7 per month"
+          "group_label": "3 bed apartment · per month"
         },
         {
           "label": "1205 North Main St. Apt J",
           "bedrooms": 4,
           "minimum": 3716,
           "maximum": 3716,
-          "group_label": "4 bed apartment \u00b7 per month"
+          "group_label": "4 bed apartment · per month"
         },
         {
           "label": "1205 North Main St. Apt I",
           "bedrooms": 4,
           "minimum": 3636,
           "maximum": 3636,
-          "group_label": "4 bed apartment \u00b7 per month"
+          "group_label": "4 bed apartment · per month"
         },
         {
           "label": "1205 North Main St. Apt G",
           "bedrooms": 3,
           "minimum": 2697,
           "maximum": 2697,
-          "group_label": "3 bed apartment \u00b7 per month"
+          "group_label": "3 bed apartment · per month"
         },
         {
           "label": "1203 North Main St. Apt F",
           "bedrooms": 2,
           "minimum": 1938,
           "maximum": 1938,
-          "group_label": "2 bed apartment \u00b7 per month"
+          "group_label": "2 bed apartment · per month"
         },
         {
           "label": "1203 North Main St. Apt I",
           "bedrooms": 4,
           "minimum": 3596,
           "maximum": 3596,
-          "group_label": "4 bed apartment \u00b7 per month"
+          "group_label": "4 bed apartment · per month"
         },
         {
           "label": "1205 North Main St. Apt B",
           "bedrooms": 3,
           "minimum": 2697,
           "maximum": 2697,
-          "group_label": "3 bed apartment \u00b7 per month"
+          "group_label": "3 bed apartment · per month"
         },
         {
           "label": "1205 North Main St. Apt A",
           "bedrooms": 4,
           "minimum": 3596,
           "maximum": 3596,
-          "group_label": "4 bed apartment \u00b7 per month"
+          "group_label": "4 bed apartment · per month"
         },
         {
           "label": "1203 North Main St. Apt L",
           "bedrooms": 4,
           "minimum": 3596,
           "maximum": 3596,
-          "group_label": "4 bed apartment \u00b7 per month"
+          "group_label": "4 bed apartment · per month"
         },
         {
           "label": "1203 North Main St. Apt K",
           "bedrooms": 4,
           "minimum": 3596,
           "maximum": 3596,
-          "group_label": "4 bed apartment \u00b7 per month"
+          "group_label": "4 bed apartment · per month"
         },
         {
           "label": "1203 North Main St. Apt J",
           "bedrooms": 4,
           "minimum": 3596,
           "maximum": 3596,
-          "group_label": "4 bed apartment \u00b7 per month"
+          "group_label": "4 bed apartment · per month"
         },
         {
           "label": "1203 North Main St. Apt H",
           "bedrooms": 3,
           "minimum": 2697,
           "maximum": 2697,
-          "group_label": "3 bed apartment \u00b7 per month"
+          "group_label": "3 bed apartment · per month"
         },
         {
           "label": "1203 North Main St. Apt G",
           "bedrooms": 2,
           "minimum": 1938,
           "maximum": 1938,
-          "group_label": "2 bed apartment \u00b7 per month"
+          "group_label": "2 bed apartment · per month"
         },
         {
           "label": "1203 North Main St. Apt D",
           "bedrooms": 2,
           "minimum": 1938,
           "maximum": 1938,
-          "group_label": "2 bed apartment \u00b7 per month"
+          "group_label": "2 bed apartment · per month"
         },
         {
           "label": "1203 North Main St. Apt B",
           "bedrooms": 2,
           "minimum": 1938,
           "maximum": 1938,
-          "group_label": "2 bed apartment \u00b7 per month"
+          "group_label": "2 bed apartment · per month"
         },
         {
           "label": "1201 North Main St. Apt E",
           "bedrooms": 3,
           "minimum": 2697,
           "maximum": 2697,
-          "group_label": "3 bed apartment \u00b7 per month"
+          "group_label": "3 bed apartment · per month"
         },
         {
           "label": "1201 North Main St. Apt C",
           "bedrooms": 4,
           "minimum": 3596,
           "maximum": 3596,
-          "group_label": "4 bed apartment \u00b7 per month"
+          "group_label": "4 bed apartment · per month"
         },
         {
           "label": "1201 North Main St. Apt A",
           "bedrooms": 3,
           "minimum": 2697,
           "maximum": 2697,
-          "group_label": "3 bed apartment \u00b7 per month"
+          "group_label": "3 bed apartment · per month"
         },
         {
           "label": "1201 North Main St. Apt B",
           "bedrooms": 3,
           "minimum": 2697,
           "maximum": 2697,
-          "group_label": "3 bed apartment \u00b7 per month"
+          "group_label": "3 bed apartment · per month"
         },
         {
           "label": "1201 North Main St. Apt L",
           "bedrooms": 4,
           "minimum": 3596,
           "maximum": 3596,
-          "group_label": "4 bed apartment \u00b7 per month"
+          "group_label": "4 bed apartment · per month"
         },
         {
           "label": "1201 North Main St. Apt H",
           "bedrooms": 4,
           "minimum": 3596,
           "maximum": 3596,
-          "group_label": "4 bed apartment \u00b7 per month"
+          "group_label": "4 bed apartment · per month"
         }
       ]
     },
@@ -951,6 +951,149 @@
       "address": null,
       "billing_note": "Published starting rates per person/bed. Confirm fees, payment schedule and lease dates.",
       "location_note": "Operator community point where provided; otherwise use the address-search map."
+    },
+    "the-summit-at-uptown": {
+      "status": "operator_observed",
+      "source_url": "https://www.roostrealestategroup.com/the-summit",
+      "checked_at": "2026-10-25T03:27:19.923517+00:00",
+      "source_sha256": "23365b69605ce100515b4aaa6f2f3248a08b871eaf34d13fa4e9549f05230a6b",
+      "method": "Robots-aware public page fetch",
+      "prices": [
+        {
+          "label": "3 bed · 2.5 bath townhome, 1,600 sq ft",
+          "bedrooms": 3,
+          "minimum": 2985.0,
+          "maximum": 2985.0,
+          "group_label": "Whole-unit townhome · per month"
+        },
+        {
+          "label": "3 bed townhome, furnished",
+          "bedrooms": 3,
+          "minimum": 3285.0,
+          "maximum": 3285.0,
+          "group_label": "Whole-unit townhome · per month"
+        },
+        {
+          "label": "4 bed · 3.5 bath townhome, 2,332 sq ft",
+          "bedrooms": 4,
+          "minimum": 3880.0,
+          "maximum": 3880.0,
+          "group_label": "Whole-unit townhome · per month"
+        },
+        {
+          "label": "4 bed townhome, furnished",
+          "bedrooms": 4,
+          "minimum": 4280.0,
+          "maximum": 4280.0,
+          "group_label": "Whole-unit townhome · per month"
+        }
+      ],
+      "coordinates": null,
+      "address": "Staniel Drive, Blacksburg, VA 24060",
+      "billing_note": "Operator rent per townhome; includes parking, lawn care and trash. Confirm other fees, lease dates and availability.",
+      "location_note": "Street-level operator address; map uses the geocoded guide address."
+    },
+    "smith-s-landing": {
+      "status": "listing_observed",
+      "source_url": "https://offcampus.vt.edu/housing/property/smiths-landing-apartments/ocpv98tbhd",
+      "checked_at": "2026-10-25T03:35:00+00:00",
+      "method": "VT Off-Campus Housing listings (web search)",
+      "prices": [
+        {
+          "label": "1 bed · 1 bath, 680 sq ft (12-month)",
+          "bedrooms": 1,
+          "minimum": 1470.0,
+          "maximum": 1470.0,
+          "group_label": "Whole-unit apartment · per month"
+        },
+        {
+          "label": "2 bed · 2 bath, 1,063 sq ft (12-month)",
+          "bedrooms": 2,
+          "minimum": 1840.0,
+          "maximum": 1840.0,
+          "group_label": "Whole-unit apartment · per month"
+        },
+        {
+          "label": "3 bed · 3 bath, 1,235 sq ft (12-month)",
+          "bedrooms": 3,
+          "minimum": 2370.0,
+          "maximum": 2400.0,
+          "group_label": "Whole-unit apartment · per month"
+        }
+      ],
+      "coordinates": null,
+      "address": null,
+      "billing_note": "Plus fees, per VT Off-Campus listings. Listing-site figure, not an operator quote. Confirm current rent, billing basis, fees and availability with the operator.",
+      "location_note": "Map uses the geocoded guide address."
+    },
+    "fourteen35-apartments": {
+      "status": "listing_observed",
+      "source_url": "https://www.apartments.com/fourteen35-apartments-blacksburg-va/yggxhjv/",
+      "checked_at": "2026-10-25T03:35:00+00:00",
+      "method": "Apartments.com listing (web search)",
+      "prices": [
+        {
+          "label": "2–4 bed, bed/bath parity, furnished (12-month)",
+          "bedrooms": null,
+          "minimum": 995.0,
+          "maximum": 1255.0,
+          "group_label": "Room listing · per month"
+        }
+      ],
+      "coordinates": null,
+      "address": "1435 Toms Creek Rd, Blacksburg, VA 24060",
+      "billing_note": "$995–$1,255 plus fees, 12-month lease; VT Off-Campus quotes the same property per bedroom. Listing-site figure, not an operator quote. Confirm current rent, billing basis, fees and availability with the operator.",
+      "location_note": "Map uses the geocoded guide address."
+    },
+    "hub-blacksburg": {
+      "status": "listing_observed",
+      "source_url": "https://www.apartments.com/hub-on-campus-blacksburg-blacksburg-va/b9shm79/",
+      "checked_at": "2026-10-25T03:35:00+00:00",
+      "method": "Apartments.com listing (web search)",
+      "prices": [
+        {
+          "label": "4 bed · 4 bath (4x4+), 1,560 sq ft (11-month)",
+          "bedrooms": 4,
+          "minimum": 1259.0,
+          "maximum": 1259.0,
+          "group_label": "Room listing · per month"
+        }
+      ],
+      "coordinates": null,
+      "address": null,
+      "billing_note": "$1,259 plus fees, 11-month lease, Aug 21 availability. Listing-site figure, not an operator quote. Confirm current rent, billing basis, fees and availability with the operator.",
+      "location_note": "Map uses the geocoded guide address."
+    },
+    "pack-place-apartments": {
+      "status": "listing_observed",
+      "source_url": "https://www.redfin.com/city/2010/VA/Blacksburg/apartments-for-rent/page-2",
+      "checked_at": "2026-10-25T03:35:00+00:00",
+      "method": "Redfin unit listing (web search)",
+      "prices": [
+        {
+          "label": "Unit B-06 · 2 bed · 1 bath, 767 sq ft",
+          "bedrooms": 2,
+          "minimum": 1640.0,
+          "maximum": 1640.0,
+          "group_label": "Whole-unit apartment · per month"
+        }
+      ],
+      "coordinates": null,
+      "address": "524 Prices Fork Rd, Blacksburg, VA 24060",
+      "billing_note": "Listings use 524 Prices Fork Rd, not 520. Listing-site figure, not an operator quote. Confirm current rent, billing basis, fees and availability with the operator.",
+      "location_note": "Map uses the geocoded guide address."
+    },
+    "legacy-on-main-the-orchards": {
+      "status": "eligibility_observed",
+      "source_url": "https://www.communityhousingpartners.org/properties/legacy-on-main/",
+      "checked_at": "2026-10-25T03:35:00+00:00",
+      "method": "Operator property page (web search)",
+      "prices": [],
+      "coordinates": null,
+      "address": "100 Country Club Drive SE, Blacksburg, VA",
+      "eligibility": "Income-restricted affordable housing (up to 80% of area median income); full-time students living on their own do not qualify. Applications by lottery.",
+      "billing_note": "Operator lists 2–3 bed, 2 bath; no published rents.",
+      "location_note": "Map uses the geocoded guide address."
     }
   },
   "checked_at": "2026-10-25T02:47:19.950875+00:00"

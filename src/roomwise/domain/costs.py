@@ -134,7 +134,8 @@ def evaluate(offer, preferences, source, today=None, sources=None):
     """Three-state evaluation. Conflicts and missing prices block; operator confirmations are notes."""
     today = today or date.today()
     sources = sources if sources is not None else {source.get('id'): source}
-    unknown, notes = [], list(offer.get('unknowns', []))
+    # blocking_unknowns are offer-level gaps that keep the result at insufficient evidence (e.g. an unverified price source).
+    unknown, notes = list(offer.get('blocking_unknowns', [])), list(offer.get('unknowns', []))
     conflicts = list(offer.get('conflicts', []))
     reasons = []
     checks = {}

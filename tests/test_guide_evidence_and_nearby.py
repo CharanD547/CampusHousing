@@ -17,14 +17,18 @@ def test_research_parser_rejects_unrelated_property_and_uses_community_not_offic
     assert len(rows)==1 and rows[0]['minimum']==2000 and rows[0]['maximum']==2100
     assert point=={'lat':37.200846,'lon':-80.3987542}
 
-def test_research_prices_do_not_become_unsupported_comparison_quotes():
+def test_research_prices_become_plans_that_stay_insufficient_evidence():
     guide={'document_sha256':'test','communities':[{'id':'p','name':'Test place','address':'Test street',
         'zone':'Campus','layouts':'2BR','source_urls':['https://example.test/guide'],'guide_price_summary':'Old reference'}]}
     evidence={'properties':{'p':{'status':'operator_observed','source_url':'https://example.test/operator',
         'checked_at':'2026-10-25T02:00:00Z','prices':[{'label':'B1','minimum':2000,'maximum':2100}],
         'coordinates':{'lat':37.2,'lon':-80.4},'billing_note':'Basis and fees unconfirmed.'}}}
-    prop=guide_properties(guide,evidence)[0]
-    assert prop['lat']==37.2 and prop['offers'][0]['amount'] is None
+    prop=guide_properties(guide,evidence,{'places':{}})[0]
+    offer=prop['offers'][0]
+    # The operator row becomes a plan at its low end; the evidence quote travels with it.
+    assert prop['lat']==37.2 and offer['amount']=='2000' and offer['plan_details']['maximum']=='2100'
+    assert offer['price_confidence_tier']=='OPERATOR_OBSERVED' and offer['evidence'][0]['quote']=='B1: $2,000–$2,100'
+    assert offer['basis']=='unknown' and offer['blocking_unknowns']
     assert prop['guide_reference']['evidence_update']['prices'][0]['minimum']==2000
     assert prop['sources'][-1]['url']=='https://example.test/operator'
 
@@ -51,3 +55,17 @@ def test_osm_missing_points_and_partial_errors_do_not_invent_places():
     assert adapter.nearby({'lat':None,'lon':None},'groceries')['status']=='unavailable'
     assert budget.used==0
     assert adapter.nearby({'lat':37.2,'lon':-80.4},'groceries')['status']=='unavailable'
+
+
+def test_guide_text_rows_keep_basis_only_where_stated_and_geocodes_place_maps():
+    from roomwise.services.guide_catalog import guide_rows
+    rows=guide_rows('1BR: 1,470– 1,556; 2BR: 1,845– 1,916 ($900/bed in sublets)')
+    assert [(r['label'],r['bedrooms'],r['minimum'],r['basis']) for r in rows]==[('1BR',1,1470,'unknown'),('2BR',2,1845,'unknown')]
+    assert guide_rows('McDonald: $1,660 (2BR) / $675+/bed (3BR)')[0]['basis']=='unknown'
+    assert guide_rows('1,195– 1,419+ / bed ($5,276 for 4BR)')[0]['basis']=='person'
+    assert [r['label'] for r in guide_rows('$1,350 (Wharton 2BR), $1,800 (703 Clay 2BR)')]==['Wharton 2BR','703 Clay 2BR']
+    guide={'document_sha256':'test','communities':[{'id':'g','name':'Guide place','address':'1 Test St','zone':'Campus',
+        'layouts':'2BR','source_urls':[],'guide_price_summary':'2BR: $1,495+; 3BR: $2,195 + fees'}]}
+    prop=guide_properties(guide,{'properties':{}},{'places':{'g':{'lat':37.21,'lon':-80.39,'basis':'census_street_address'}}})[0]
+    assert (prop['lat'],prop['coordinate_basis'])==(37.21,'geocoded_street_address')
+    assert [o['amount'] for o in prop['offers']]==['1495','2195'] and all(o['price_confidence_tier']=='GUIDE_REFERENCE' for o in prop['offers'])

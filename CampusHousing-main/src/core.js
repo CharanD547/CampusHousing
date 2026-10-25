@@ -119,8 +119,9 @@ const typeLabel = (t) => ({ offer: 'Specific offer', property: 'Property', area:
 
 function priceBlock(r, size = 'card') {
   const c = r.cand;
-  if(c.guide_reference)return planPrices({cand:c});
-  if (c.type === 'area') {
+  // Guide places show their reference panel until a priced plan has a comparison result.
+  if(c.guide_reference && (c.offer.price.amount==null || !r.share))return planPrices({cand:c});
+  if (c.type === 'area' && c.area_range) {
     const a = c.area_range;
     return `<div class="cand-price"><span class="amt range num">${money(a.min)}–${money(a.max)}</span><span class="basis">area range ${BASIS_LABEL[a.basis]} ${FREQ_LABEL[a.frequency]}, not an offer</span></div>`;
   }
@@ -132,7 +133,7 @@ function priceBlock(r, size = 'card') {
 
 function freshness(r) {
   const c = r.cand;
-  if(c.guide_reference)return '<span class="chip chip-neutral">Guide reference · unverified</span>';
+  if(c.guide_reference)return `<span class="chip chip-neutral">${{OPERATOR_OBSERVED:'Operator asking figures · unverified',LISTING_OBSERVED:'Listing-site figures · unverified'}[c.offer.price_confidence_tier] || 'Guide reference · unverified'}</span>`;
   const d = c.offer?.price?.last_reviewed_at || c.area_range?.observed_at || c.evidence[0]?.observed_at || TODAY;
   const stale = daysBetween(d, TODAY) > STALE_AFTER_DAYS;
   return stale ? flagChip(`Stale source, reviewed ${ago(d)}`) : `<span class="tiny">Reviewed ${ago(d)}</span>`;

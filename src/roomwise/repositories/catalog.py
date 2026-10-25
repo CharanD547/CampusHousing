@@ -31,7 +31,11 @@ class CatalogRepository:
                 snapshots_path = ROOT / 'data/housing-source-snapshots.json'
                 snapshots = json.loads(snapshots_path.read_text(encoding='utf-8')) if snapshots_path.exists() else {}
                 for prop in seed['properties']+guide_entries:
-                    db.execute('INSERT OR IGNORE INTO housing_catalog VALUES (?,?)', (prop['id'], json.dumps(prop)))
+                    # Guide entries are derived from data files, so they refresh; reviewed seed offers are inserted once.
+                    if prop.get('guide_reference'):
+                        db.execute('INSERT INTO housing_catalog VALUES (?,?) ON CONFLICT(id) DO UPDATE SET body=excluded.body', (prop['id'], json.dumps(prop)))
+                    else:
+                        db.execute('INSERT OR IGNORE INTO housing_catalog VALUES (?,?)', (prop['id'], json.dumps(prop)))
                     for source in prop['sources']:
                         snapshot = snapshots.get(source['id'], {})
                         text = snapshot.get('text', '')
