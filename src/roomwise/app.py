@@ -44,7 +44,8 @@ def create_app(settings=None, *, campuses=None, routing=None, gemma=None, assist
     store=WorkspaceStore(settings.data_dir)
     accounts=Accounts(settings.data_dir)
     evidence=EvidenceRepository(catalog)
-    maps_budget=ProviderBudget(settings.data_dir/'maps-requests.sqlite3',settings.maps_daily_requests)
+    maps_budget=ProviderBudget(settings.data_dir/'maps-requests.sqlite3',settings.maps_daily_requests,
+                               reserve_places=min(8,settings.maps_daily_requests//5))
     routing=routing or (FallbackRoutingAdapter(GoogleRoutesAdapter(settings,maps_budget),GtfsRoutingAdapter()) if settings.routes_enabled and settings.routes_api_key else GtfsRoutingAdapter())
     places=GooglePlaces(settings,maps_budget)
     gemma=gemma or UnconfiguredGemmaRuntime()
@@ -174,10 +175,17 @@ def create_app(settings=None, *, campuses=None, routing=None, gemma=None, assist
                 'places_available':bool(settings.places_enabled and settings.places_api_key)}
 
     @app.get('/api/v1/properties/{property_id}/nearby')
-    def nearby(property_id:str,category:str='groceries'):
+    def nearby(property_id:str,category:str='groceries',radius:int=2500):
         prop=next((p for p in catalog.catalog() if p['id']==property_id),None)
         if not prop:raise APIError('unknown_property','Choose a catalog property.',404)
-        return places.nearby(prop,category)
+        return places.nearby(prop,category,radius)
+
+    @app.get('/api/v1/housing-guide')
+    def housing_guide():
+        with catalog.connect() as db:
+            rows=[json.loads(r[0]) for r in db.execute('SELECT body FROM housing_guide ORDER BY rowid')]
+        return {'status':'research_directory','communities':rows,
+                'scope':'Addresses and layouts extracted from the supplied guide. Guide price ranges, opinions and legal claims are not verified offers. Only linked catalog plans enter comparisons.'}
 
     @app.get('/api/v1/campuses/{key}/buildings')
     def buildings(key:str):

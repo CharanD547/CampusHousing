@@ -55,8 +55,8 @@ def prepare(output):
                 'allowed_evidence_ids':[source],'allowed_candidate_ids':[context['candidate_id']],
                 'source_kind':'authored_synthetic','license':'MIT','messages':[{'role':'user','content':user},
                 {'role':'assistant','content':json.dumps(result)}]})
-    manifest={'base_model':'google/gemma-3-1b-it','status':'synthetic_smoke_dataset_not_a_validated_benchmark',
-              'base_model_revision':'dcc83ea841ab6100d6b47a070329e1ba4cf78752',
+    manifest={'base_model':'google/gemma-4-E4B-it','status':'synthetic_smoke_dataset_not_a_validated_benchmark',
+              'base_model_revision':'ee0ef6023621cff504d758262d4e04895a5af4a2',
               'raw_review_records_used':0,'external_review_training_permission':'not_established',
               'split_method':'context-group disjoint; templates shared, so not a generalization benchmark',
               'purpose':'Evidence discipline and renting concepts; never memorization of current rents', 'files':{}}

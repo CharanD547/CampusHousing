@@ -13,7 +13,7 @@ if (!workspaceID) {
 async function api(path, options={}) {
   if (S.sim.offline) throw new Error('Offline: changes remain in this browser until you reconnect.');
   let token;try {token=sessionStorage.getItem('roomwise.token');} catch(error) {}
-  const response=await fetch('/api/v1'+path,{...options,signal:options.signal || AbortSignal.timeout(20000),
+  const response=await fetch('/api/v1'+path,{...options,signal:options.signal || AbortSignal.timeout(path==='/assistant/messages' ? 65000:20000),
     headers:{'Content-Type':'application/json',...(token ? {Authorization:'Bearer '+token}:{}),...options.headers}});
   const body=await response.json();
   if (!response.ok) {
@@ -27,7 +27,7 @@ function cleanPreferences(p=S.prefs) {
   const {campus_id,...preferences}=p;
   return {...preferences,move_in_date:preferences.move_in_date || null,move_out_date:preferences.move_out_date || null};
 }
-function cleanCommitments() { return S.commitments.map(({sample,...c})=>({...c,is_example:!!sample})); }
+function cleanCommitments() { return []; }
 function cleanChecklist(items=S.guide.checklist || []) {
   return items;
 }
@@ -45,7 +45,7 @@ function routingMeetingDates(commitment,date,scope) {
 
 function normalizeCandidate(c) {
   const price={...c.offer.price,amount:c.offer.price.amount==null ? null : Number(c.offer.price.amount),
-    last_reviewed_at:c.offer.price.last_reviewed_at.slice(0,10)};
+    last_reviewed_at:campusDate(c.offer.price.last_reviewed_at)};
   return {...c,area:'Blacksburg, VA',offer:{...c.offer,price,lease:c.offer.contract,
     term:c.offer.price.term.label,byTheBed:c.offer.price.basis==='per_person',included:[],
     fees:c.offer.fees.map(f=>normalizeFee(f,c.sources))},evidence:[]};
@@ -108,7 +108,7 @@ function renderConnectionStatus() {
   if (!el) return;
   const h=API.health?.dependencies;
   el.innerHTML=`<b>${API.comparing ? 'Updating comparison…' : API.comparisonError ? esc(API.comparisonError) : 'Connected to Roomwise'}</b>
-    <span>${CANDIDATES.length} offers · ${BUILDINGS.length} building locations · ${h?.routing==='not_configured' ? 'Route estimates unavailable' : 'Routing provider connected'} · ${h?.gemma==='not_configured' ? 'AI explanations unavailable' : 'AI runtime requires verification'}</span>
+    <span>${new Set(CANDIDATES.map(c=>c.property_id)).size} properties · ${CANDIDATES.filter(c=>!c.guide_reference).length} operator plans · ${CANDIDATES.filter(c=>c.guide_reference).length} guide references · ${API.health?.assistant?.status==='configured_requires_verification'?'Gemma chat configured': 'Local research helper'}</span>
     ${API.account?.required ? '<button class="btn btn-sm" data-action="account-logout">Sign out</button>' : ''}
     ${API.comparisonError ? '<button class="btn btn-sm" data-action="refresh-comparison">Retry comparison</button>' : ''}
     ${API.conflict ? '<span>Workspace sync paused: another tab has saved changes. Your local draft is retained.</span><button class="btn btn-sm" data-action="resolve-workspace-conflict">Back up local draft and load server copy</button>' : ''}`;
@@ -162,19 +162,17 @@ async function ensureComparison() {
 }
 
 async function runAI() {
-  if (S.ai.status==='pending') return;
-  const revision=S.revision;
-  S.ai={status:'pending',revision,result:null};render();
+  if (S.ai.status==='pending' || !S.shortlist.length) return;
+  const revision=S.revision, ids=S.shortlist.slice(0,3), selection=JSON.stringify(ids);
+  S.ai={flow:'assistant-v2',status:'pending',revision,selection,result:null};render();
   try {
     const comparison=await ensureComparison();
-    const response=await api('/ai/explain',{method:'POST',body:JSON.stringify({comparison_id:comparison.id,revision,request_id:requestID()})});
-    if (S.revision!==revision) {S.ai={...S.ai,status:'discarded'};return;}
-    if (response.status!=='complete') {S.ai={...S.ai,status:'unavailable',reason:response.error?.message || 'No verified Gemma runtime is configured. Comparisons and checklists remain available.'};return;}
-    const rows=response.candidate_explanations.filter(x=>S.shortlist.includes(x.candidate_id)).map(x=>({...x,
-      name:candidate(x.candidate_id)?.property_name,fit:compare(candidate(x.candidate_id),S.prefs,S.commitments).fit,
-      reason:x.summary,limitation:x.limitations.join(' '),next_question:x.next_questions.join(' ')}));
-    S.ai={...S.ai,status:'done',result:{...response,summary:'Explanation based on the saved comparison evidence.',candidate_explanations:rows}};
-  } catch(error) {S.ai={...S.ai,status:'unavailable'};}
+    const response=await api('/assistant/messages',{method:'POST',body:JSON.stringify({comparison_id:comparison.id,revision,request_id:requestID(),candidate_ids:ids,history:[],
+      question:'Explain the differences between these shortlisted housing options. Use only the comparison and its sources: known costs and billing basis, fit, missing information, and what to ask next. Guide references are unverified, not current rental quotes.'})});
+    if (S.revision!==revision || JSON.stringify(S.shortlist.slice(0,3))!==selection) {S.ai={...S.ai,status:'discarded'};return;}
+    if (response.status!=='complete' || !response.result) throw new Error(response.error?.message || 'The explanation could not finish.');
+    S.ai={...S.ai,status:'done',result:{...response.result,provider:response.provider,model_id:response.model_id,fallback:response.fallback}};
+  } catch(error) {S.ai={...S.ai,status:'unavailable',reason:error.message};}
   finally {save();render();}
 }
 
@@ -243,24 +241,23 @@ async function saveServerBrief(origin) {
 async function initRoomwise() {
   if (API.initializing) return;
   API.initializing=true;API.ready=false;
-  document.getElementById('main').innerHTML='<div class="wrap page"><h1>Roomwise</h1><p role="status">Loading housing evidence and campus buildings…</p></div>';
+  document.getElementById('main').innerHTML='<div class="wrap page"><h1>Roomwise</h1><p role="status">Loading housing evidence…</p></div>';
   try {
     const account=await api('/auth/status');API.account=account;
     if (account.required && account.owner) {
       const key='roomwise.account.'+account.owner;
       if (STORE_KEY!==key) {STORE_KEY=key;S=loadState() || defaultState();workspaceID='account-'+account.owner;}
     }
-    const [health,catalog,campus,maps]=await Promise.all([api('/health'),api('/candidates'),api('/campuses/vt/buildings'),api('/maps/config')]);
+    const [health,catalog,maps]=await Promise.all([api('/health'),api('/candidates'),api('/maps/config')]);
     API.maps=maps;
     API.health=health;
     CANDIDATES.splice(0,CANDIDATES.length,...catalog.candidates.map(normalizeCandidate));
     LIVE_PRICES_AT=CANDIDATES.map(c=>c.offer.price.last_reviewed_at).sort().pop() || null;
-    BUILDINGS.splice(0,BUILDINGS.length,...campus.buildings.map(b=>({...b,short:b.label})));
     if (!CANDIDATES.length) throw new Error('No catalog offers are currently available.');
     const evidenceIDs=[...new Set(CANDIDATES.flatMap(c=>c.sources.map(s=>s.id)))];
     const evidence=await Promise.all(evidenceIDs.map(id=>api('/evidence/'+encodeURIComponent(id)).catch(()=>null)));
     for (const c of CANDIDATES) c.evidence=c.sources.map(s=>evidence.find(e=>e?.id===s.id) || {id:s.id,source_name:s.title,
-      source_type:'operator',url:s.url,observed_at:s.checked_at,supports:'Source metadata; full evidence unavailable.'}).map(e=>({...e,observed_at:e.observed_at.slice(0,10)}));
+      source_type:'operator',url:s.url,observed_at:s.checked_at,supports:'Source metadata; full evidence unavailable.'}).map(e=>({...e,observed_at:campusDate(e.observed_at)}));
     const properties=[...new Set(CANDIDATES.map(c=>c.property_id))];
     const research=await Promise.all(properties.map(id=>api('/research/housing/'+id).catch(()=>null)));
     for (const c of CANDIDATES) c.research=research.find(r=>r?.property_id===c.property_id)?.observations || [];
@@ -269,7 +266,7 @@ async function initRoomwise() {
       if (S.pendingSync) {
         if (w.revision!==S.workspaceRevision) {API.conflict=true;API.sync='conflict; local changes retained';}
       } else {
-      S.prefs={campus_id:'vt',...w.preferences};S.commitments=w.commitments.map(c=>({...c,sample:!!c.is_example}));S.shortlist=w.selected_candidate_ids;
+      S.prefs={campus_id:'vt',...w.preferences};S.commitments=[];S.shortlist=w.selected_candidate_ids;
       S.notes=w.notes || {};S.workspaceRevision=w.revision;S.revision=w.input_revision || 0;S.route_date=w.route_date || TODAY;S.routing_scope=w.routing_scope || 'single_date';
       S.guide={...S.guide,current_step:w.current_step,completed_steps:w.completed_steps,checklist:w.checklist.length ? w.checklist:null,
         started:w.guide_started,selected_candidate_ids:w.guide_candidate_ids || []};
@@ -278,10 +275,8 @@ async function initRoomwise() {
       S.briefs=briefs.filter(Boolean).map(briefForDisplay);API.sync='saved';
       }
     } catch(error) {if (error.status!==404) throw error;}
-    S.commitments=S.commitments.filter(c=>building(c.building_id));
+    S.commitments=[];
     S.shortlist=S.shortlist.filter(id=>candidate(id));ROUTING_DATE=S.route_date;
-    SAMPLE_COMMITMENTS.splice(0,SAMPLE_COMMITMENTS.length,...['vt-0151','vt-0174'].filter(id=>building(id)).map((id,i)=>({id:'sample-'+i,
-      building_id:id,weekdays:['mon'],arrival_time_local:i ? '14:00':'09:00',arrival_buffer_minutes:null,sample:true})));
     API.ready=true;save();render();await refreshComparison();
   } catch(error) {
     const tokenForm=error.code==='auth_required' ? '<form data-form="account"><p>This is a local server account. Use a unique password; email recovery is unavailable.</p><label for="account-name">Account name</label><input class="input" id="account-name" autocomplete="username" required minlength="3" maxlength="60" pattern="[A-Za-z0-9_-]+"><label for="account-password">Password (12 characters minimum)</label><input class="input" type="password" id="account-password" autocomplete="current-password" required minlength="12" maxlength="128"><button class="btn" type="submit" value="login">Sign in</button><button class="btn" type="submit" value="register">Create local account</button><p id="account-error" role="alert"></p></form>' : error.status===401 ? '<form data-form="api-token"><p>Use the Roomwise operator token from var/lan-access.txt on the server computer. This is not a Google API key. On the server itself, <a href="http://127.0.0.1:8001/">open local Roomwise</a> for automatic local access.</p><label for="api-token">Backend access token</label><input class="input" type="password" id="api-token" autocomplete="off"><button class="btn" type="submit">Connect</button></form>':'';

@@ -1,6 +1,6 @@
 {
-  "retrieved_at": "2026-10-24T23:10:00+00:00",
-  "scope": "Operator pages read on Oct 24, 2026 (~7:05–7:15 PM EDT). Asking prices for the 2027–28 term unless noted; not unit availability or a signed quote.",
+  "retrieved_at": "2026-10-25T01:08:24.846126+00:00",
+  "scope": "Public operator asking prices rechecked on Oct 24, 2026 EDT. Per-source observation times retained; availability and a signed quote are unverified.",
   "properties": {
     "foxridge": {
       "source": {
@@ -12,58 +12,72 @@
       "period": "monthly",
       "price_type": "from",
       "contract": "unit",
-      "quote": "Burruss Rent: From $1,379 1 bd | 1 ba 725 sq ft 2 Roommates: From $690",
+      "quote": "Burruss Rent: From $1,379",
       "plans": [
         {
           "name": "Burruss",
           "bedrooms": 1,
           "bathrooms": 1,
           "amount": "1379",
-          "square_feet": "725"
+          "square_feet": "725",
+          "verified_quote": "Burruss Rent: From $1,379"
         },
         {
           "name": "Cascade",
           "bedrooms": 1,
           "bathrooms": 1,
           "amount": "1444",
-          "square_feet": "863"
+          "square_feet": "863",
+          "verified_quote": "Cascade Rent: From $1,444"
         },
         {
           "name": "Grove",
           "bedrooms": 2,
           "bathrooms": 1.5,
           "amount": "1544",
-          "square_feet": "921–993"
+          "square_feet": "921–993",
+          "verified_quote": "Grove Rent: From $1,544"
         },
         {
           "name": "Preston",
           "bedrooms": 2,
           "bathrooms": 1.5,
           "amount": "1679",
-          "square_feet": "1,057–1,068"
+          "square_feet": "1,057–1,068",
+          "verified_quote": "Preston Rent: From $1,679"
         },
         {
           "name": "Willow",
           "bedrooms": 3,
           "bathrooms": 2,
           "amount": "1899",
-          "square_feet": "1,008–1,080"
+          "square_feet": "1,008–1,080",
+          "verified_quote": "Willow Rent: From $1,899"
         },
         {
           "name": "Leyland",
           "bedrooms": 4,
           "bathrooms": 2.5,
           "amount": "2919",
-          "square_feet": "1,860"
+          "square_feet": "1,860",
+          "verified_quote": "Leyland Rent: From $2,919"
         },
         {
           "name": "Foxfield",
           "bedrooms": 5,
           "bathrooms": 2.5,
           "amount": "3564",
-          "square_feet": "1,998"
+          "square_feet": "1,998",
+          "verified_quote": "Foxfield Rent: From $3,564"
         }
-      ]
+      ],
+      "verified_at": "2026-10-25T01:03:07.155Z",
+      "verification": {
+        "method": "rendered operator page",
+        "page_sha256": "ebe101a3fe78f7995523e488a8b7ae4410cba0f32ae6c7c180c50c016783141c",
+        "plans_checked": 7,
+        "availability_verified": false
+      }
     },
     "windsor": {
       "source": {
@@ -75,58 +89,72 @@
       "period": "monthly",
       "price_type": "from",
       "contract": "unit",
-      "quote": "The Canterbury Rent: From: $1234 1 bd | 1 ba 836 sq ft Deposit: Call for details.",
+      "quote": "The Ripley Rent: From: $1294",
       "plans": [
         {
           "name": "The Ripley (studio)",
           "bedrooms": 1,
           "bathrooms": 1,
           "amount": "1294",
-          "square_feet": "389"
+          "square_feet": "389",
+          "verified_quote": "The Ripley Rent: From: $1294"
         },
         {
           "name": "The Canterbury",
           "bedrooms": 1,
           "bathrooms": 1,
           "amount": "1234",
-          "square_feet": "836"
+          "square_feet": "836",
+          "verified_quote": "The Canterbury Rent: From: $1234"
         },
         {
           "name": "The Dover",
           "bedrooms": 1,
           "bathrooms": 1,
           "amount": "1250",
-          "square_feet": "936"
+          "square_feet": "936",
+          "verified_quote": "The Dover Rent: From: $1250"
         },
         {
           "name": "The Lincoln",
           "bedrooms": 2,
           "bathrooms": 1,
           "amount": "1403",
-          "square_feet": "1,046"
+          "square_feet": "1,046",
+          "verified_quote": "The Lincoln Rent: From: $1403"
         },
         {
           "name": "The Rochester",
           "bedrooms": 2,
           "bathrooms": 1,
           "amount": "1441",
-          "square_feet": "1,146"
+          "square_feet": "1,146",
+          "verified_quote": "The Rochester Rent: From: $1441"
         },
         {
           "name": "The Lynford",
           "bedrooms": 3,
           "bathrooms": 1.5,
           "amount": "1680",
-          "square_feet": "1,214"
+          "square_feet": "1,214",
+          "verified_quote": "The Lynford Rent: From: $1680"
         },
         {
           "name": "The Warwick",
           "bedrooms": 3,
           "bathrooms": 1.5,
           "amount": "1844",
-          "square_feet": "1,314"
+          "square_feet": "1,314",
+          "verified_quote": "The Warwick Rent: From: $1844"
         }
-      ]
+      ],
+      "verified_at": "2026-10-25T01:04:47.338Z",
+      "verification": {
+        "method": "rendered operator page",
+        "page_sha256": "eabe6975e393e361130b54cdede282b43af647f9c160a2207f98880bb326e47e",
+        "plans_checked": 7,
+        "availability_verified": false
+      }
     },
     "terrace": {
       "source": {
@@ -135,267 +163,310 @@
         "method": "operator leasing widget in a browser"
       },
       "basis": "person",
-      "period": "installment",
+      "period": "monthly",
       "price_type": "total_leasing_price",
       "contract": "unknown",
       "room": "private",
       "start": "2027-08-21",
       "end": "2028-07-31",
-      "quote": "1x1 Tier 3 1 Bed / 1 Bath Options Rent Deposit Private Total Monthly Leasing Price $1,450 Lease term: 27/28 Lease Term (08/21/2027 - 07/31/2028) $200",
+      "quote": "1x1.5TH T1 1 Bed / 1.5 Bath Options Rent Deposit Private Total Monthly Leasing Price $1,610",
       "plans": [
         {
           "name": "1x1.5TH T1",
           "bedrooms": 1,
           "bathrooms": 1.5,
           "amount": "1610",
-          "deposit": "200"
+          "deposit": "200",
+          "verified_quote": "1x1.5TH T1 1 Bed / 1.5 Bath Options Rent Deposit Private Total Monthly Leasing Price $1,610"
         },
         {
           "name": "1x1.5TH T2",
           "bedrooms": 1,
           "bathrooms": 1.5,
           "amount": "1550",
-          "deposit": "200"
+          "deposit": "200",
+          "verified_quote": "1x1.5TH T2 1 Bed / 1.5 Bath Options Rent Deposit Private Total Monthly Leasing Price $1,550"
         },
         {
           "name": "1x1.5TH T3",
           "bedrooms": 1,
           "bathrooms": 1.5,
           "amount": "1505",
-          "deposit": "200"
+          "deposit": "200",
+          "verified_quote": "1x1.5TH T3 1 Bed / 1.5 Bath Options Rent Deposit Private Total Monthly Leasing Price $1,505"
         },
         {
           "name": "1x1 Tier 1",
           "bedrooms": 1,
           "bathrooms": 1.0,
           "amount": "1520",
-          "deposit": "200"
+          "deposit": "200",
+          "verified_quote": "1x1 Tier 1 1 Bed / 1 Bath Options Rent Deposit Private Total Monthly Leasing Price $1,520"
         },
         {
           "name": "1x1 Tier 2",
           "bedrooms": 1,
           "bathrooms": 1.0,
           "amount": "1505",
-          "deposit": "200"
+          "deposit": "200",
+          "verified_quote": "1x1 Tier 2 1 Bed / 1 Bath Options Rent Deposit Private Total Monthly Leasing Price $1,505"
         },
         {
           "name": "1x1 Tier 3",
           "bedrooms": 1,
           "bathrooms": 1.0,
           "amount": "1450",
-          "deposit": "200"
+          "deposit": "200",
+          "verified_quote": "1x1 Tier 3 1 Bed / 1 Bath Options Rent Deposit Private Total Monthly Leasing Price $1,450"
         },
         {
           "name": "2Ax1 T1",
           "bedrooms": 2,
           "bathrooms": 1.0,
           "amount": "910",
-          "deposit": "200"
+          "deposit": "200",
+          "verified_quote": "2Ax1 T1 2 Bed / 1 Bath Options Rent Deposit Private Total Monthly Leasing Price $910"
         },
         {
           "name": "2Ax1 T2",
           "bedrooms": 2,
           "bathrooms": 1.0,
           "amount": "905",
-          "deposit": "200"
+          "deposit": "200",
+          "verified_quote": "2Ax1 T2 2 Bed / 1 Bath Options Rent Deposit Private Total Monthly Leasing Price $905"
         },
         {
           "name": "2Ax1 T3",
           "bedrooms": 2,
           "bathrooms": 1.0,
           "amount": "865",
-          "deposit": "200"
+          "deposit": "200",
+          "verified_quote": "2Ax1 T3 2 Bed / 1 Bath Options Rent Deposit Private Total Monthly Leasing Price $865"
         },
         {
           "name": "2x1.5 T1",
           "bedrooms": 2,
           "bathrooms": 1.5,
           "amount": "1050",
-          "deposit": "200"
+          "deposit": "200",
+          "verified_quote": "2x1.5 T1 2 Bed / 1.5 Bath Options Rent Deposit Private Total Monthly Leasing Price $1,050"
         },
         {
           "name": "2x1.5 T2",
           "bedrooms": 2,
           "bathrooms": 1.5,
           "amount": "1000",
-          "deposit": "200"
+          "deposit": "200",
+          "verified_quote": "2x1.5 T2 2 Bed / 1.5 Bath Options Rent Deposit Private Total Monthly Leasing Price $1,000"
         },
         {
           "name": "2x1.5 T3",
           "bedrooms": 2,
           "bathrooms": 1.5,
           "amount": "990",
-          "deposit": "200"
+          "deposit": "200",
+          "verified_quote": "2x1.5 T3 2 Bed / 1.5 Bath Options Rent Deposit Private Total Monthly Leasing Price $990"
         },
         {
           "name": "2x1.5TH T1",
           "bedrooms": 2,
           "bathrooms": 1.5,
           "amount": "1080",
-          "deposit": "200"
+          "deposit": "200",
+          "verified_quote": "2x1.5TH T1 2 Bed / 1.5 Bath Options Rent Deposit Private Total Monthly Leasing Price $1,080"
         },
         {
           "name": "2x1.5TH T2",
           "bedrooms": 2,
           "bathrooms": 1.5,
           "amount": "1055",
-          "deposit": "200"
+          "deposit": "200",
+          "verified_quote": "2x1.5TH T2 2 Bed / 1.5 Bath Options Rent Deposit Private Total Monthly Leasing Price $1,055"
         },
         {
           "name": "2x1.5TH T3",
           "bedrooms": 2,
           "bathrooms": 1.5,
           "amount": "1025",
-          "deposit": "200"
+          "deposit": "200",
+          "verified_quote": "2x1.5TH T3 2 Bed / 1.5 Bath Options Rent Deposit Private Total Monthly Leasing Price $1,025"
         },
         {
           "name": "2x2.5TH T1",
           "bedrooms": 2,
           "bathrooms": 2.5,
           "amount": "1125",
-          "deposit": "200"
+          "deposit": "200",
+          "verified_quote": "2x2.5TH T1 2 Bed / 2.5 Bath Options Rent Deposit Private Total Monthly Leasing Price $1,125"
         },
         {
           "name": "2x2 Tier 1",
           "bedrooms": 2,
           "bathrooms": 2.0,
           "amount": "1110",
-          "deposit": "200"
+          "deposit": "200",
+          "verified_quote": "2x2 Tier 1 2 Bed / 2 Bath Options Rent Deposit Private Total Monthly Leasing Price $1,110"
         },
         {
           "name": "3Ax1.5 T1",
           "bedrooms": 3,
           "bathrooms": 1.5,
           "amount": "900",
-          "deposit": "200"
+          "deposit": "200",
+          "verified_quote": "3Ax1.5 T1 3 Bed / 1.5 Bath Options Rent Deposit Private Total Monthly Leasing Price $900"
         },
         {
           "name": "3Ax1.5 T2",
           "bedrooms": 3,
           "bathrooms": 1.5,
           "amount": "890",
-          "deposit": "200"
+          "deposit": "200",
+          "verified_quote": "3Ax1.5 T2 3 Bed / 1.5 Bath Options Rent Deposit Private Total Monthly Leasing Price $890"
         },
         {
           "name": "3Ax1.5 T3",
           "bedrooms": 3,
           "bathrooms": 1.5,
           "amount": "865",
-          "deposit": "200"
+          "deposit": "200",
+          "verified_quote": "3Ax1.5 T3 3 Bed / 1.5 Bath Options Rent Deposit Private Total Monthly Leasing Price $865"
         },
         {
           "name": "3Ax2 T1",
           "bedrooms": 3,
           "bathrooms": 2.0,
           "amount": "920",
-          "deposit": "200"
+          "deposit": "200",
+          "verified_quote": "3Ax2 T1 3 Bed / 2 Bath Options Rent Deposit Private Total Monthly Leasing Price $920"
         },
         {
           "name": "3x1.5TH T1",
           "bedrooms": 3,
           "bathrooms": 1.5,
           "amount": "965",
-          "deposit": "200"
+          "deposit": "200",
+          "verified_quote": "3x1.5TH T1 3 Bed / 1.5 Bath Options Rent Deposit Private Total Monthly Leasing Price $965"
         },
         {
           "name": "3x1.5TH T2",
           "bedrooms": 3,
           "bathrooms": 1.5,
           "amount": "950",
-          "deposit": "200"
+          "deposit": "200",
+          "verified_quote": "3x1.5TH T2 3 Bed / 1.5 Bath Options Rent Deposit Private Total Monthly Leasing Price $950"
         },
         {
           "name": "3x1.5TH T3",
           "bedrooms": 3,
           "bathrooms": 1.5,
           "amount": "930",
-          "deposit": "200"
+          "deposit": "200",
+          "verified_quote": "3x1.5TH T3 3 Bed / 1.5 Bath Options Rent Deposit Private Total Monthly Leasing Price $930"
         },
         {
           "name": "3x2.5TH T1",
           "bedrooms": 3,
           "bathrooms": 2.5,
           "amount": "1045",
-          "deposit": "200"
+          "deposit": "200",
+          "verified_quote": "3x2.5TH T1 3 Bed / 2.5 Bath Options Rent Deposit Private Total Monthly Leasing Price $1,045"
         },
         {
           "name": "3x2 Tier 1",
           "bedrooms": 3,
           "bathrooms": 2.0,
           "amount": "935",
-          "deposit": "200"
+          "deposit": "200",
+          "verified_quote": "3x2 Tier 1 3 Bed / 2 Bath Options Rent Deposit Private Total Monthly Leasing Price $935"
         },
         {
           "name": "3x2 Tier 2",
           "bedrooms": 3,
           "bathrooms": 2.0,
           "amount": "920",
-          "deposit": "200"
+          "deposit": "200",
+          "verified_quote": "3x2 Tier 2 3 Bed / 2 Bath Options Rent Deposit Private Total Monthly Leasing Price $920"
         },
         {
           "name": "3x2 Tier 3",
           "bedrooms": 3,
           "bathrooms": 2.0,
           "amount": "900",
-          "deposit": "200"
+          "deposit": "200",
+          "verified_quote": "3x2 Tier 3 3 Bed / 2 Bath Options Rent Deposit Private Total Monthly Leasing Price $900"
         },
         {
           "name": "3x3 Tier 1",
           "bedrooms": 3,
           "bathrooms": 3.0,
           "amount": "1040",
-          "deposit": "200"
+          "deposit": "200",
+          "verified_quote": "3x3 Tier 1 3 Bed / 3 Bath Options Rent Deposit Private Total Monthly Leasing Price $1,040"
         },
         {
           "name": "4x2.5 T1",
           "bedrooms": 4,
           "bathrooms": 2.5,
           "amount": "995",
-          "deposit": "200"
+          "deposit": "200",
+          "verified_quote": "4x2.5 T1 4 Bed / 2.5 Bath Options Rent Deposit Private Total Monthly Leasing Price $995"
         },
         {
           "name": "4x2.5 T2",
           "bedrooms": 4,
           "bathrooms": 2.5,
           "amount": "960",
-          "deposit": "200"
+          "deposit": "200",
+          "verified_quote": "4x2.5 T2 4 Bed / 2.5 Bath Options Rent Deposit Private Total Monthly Leasing Price $960"
         },
         {
           "name": "4x2.5 T3",
           "bedrooms": 4,
           "bathrooms": 2.5,
           "amount": "955",
-          "deposit": "200"
+          "deposit": "200",
+          "verified_quote": "4x2.5 T3 4 Bed / 2.5 Bath Options Rent Deposit Private Total Monthly Leasing Price $955"
         },
         {
           "name": "4x2 Tier 1",
           "bedrooms": 4,
           "bathrooms": 2.0,
           "amount": "925",
-          "deposit": "200"
+          "deposit": "200",
+          "verified_quote": "4x2 Tier 1 4 Bed / 2 Bath Options Rent Deposit Private Total Monthly Leasing Price $925"
         },
         {
           "name": "4x2 Tier 2",
           "bedrooms": 4,
           "bathrooms": 2.0,
           "amount": "920",
-          "deposit": "200"
+          "deposit": "200",
+          "verified_quote": "4x2 Tier 2 4 Bed / 2 Bath Options Rent Deposit Private Total Monthly Leasing Price $920"
         },
         {
           "name": "4x3 Tier 1",
           "bedrooms": 4,
           "bathrooms": 3.0,
           "amount": "985",
-          "deposit": "200"
+          "deposit": "200",
+          "verified_quote": "4x3 Tier 1 4 Bed / 3 Bath Options Rent Deposit Private Total Monthly Leasing Price $985"
         },
         {
           "name": "4x4 Tier 1",
           "bedrooms": 4,
           "bathrooms": 4.0,
           "amount": "1085",
-          "deposit": "200"
+          "deposit": "200",
+          "verified_quote": "4x4 Tier 1 4 Bed / 4 Bath Options Rent Deposit Private Total Monthly Leasing Price $1,085"
         }
-      ]
+      ],
+      "verified_at": "2026-10-25T01:06:49.433Z",
+      "verification": {
+        "method": "rendered operator widget",
+        "page_sha256": "d8902777bb81cf9a98001487b799ba4fd6b46db408eb335a06b4e0081859fcba",
+        "plans_checked": 36,
+        "availability_verified": false
+      }
     },
     "alight": {
       "source": {
@@ -411,7 +482,7 @@
       "start": "2027-08-18",
       "end": "2028-07-24",
       "installments": 12,
-      "quote": "Total price: $10,175 - $10,415 | 2027-28 Academic Year Floorplan Choices: East $ 835 LIMITED SPACES West $ 855",
+      "quote": "East $ 835",
       "also_confirmed_by": {
         "id": "alight-onesheet",
         "url": "https://alight-blacksburg.com/one-sheet/",
@@ -424,7 +495,8 @@
           "bathrooms": 2,
           "amount": "835",
           "annual_total": "10175",
-          "id": "alight-east"
+          "id": "alight-east",
+          "verified_quote": "East $ 835"
         },
         {
           "name": "4 bed · 2 bath, West",
@@ -432,7 +504,8 @@
           "bathrooms": 2,
           "amount": "855",
           "annual_total": "10415",
-          "id": "alight-west"
+          "id": "alight-west",
+          "verified_quote": "West $ 855"
         },
         {
           "name": "2 bed · 1 bath, Standard",
@@ -440,7 +513,8 @@
           "bathrooms": 1,
           "amount": "955",
           "annual_total": "11615",
-          "id": "alight-2"
+          "id": "alight-2",
+          "verified_quote": "STANDARD Standard term of August 18, 2027 to July 24, 2028 IMMEDIATE MOVE-IN Move in on the next 1 st or 15 th of the month* Rates and availability for the 2027-28 academic year 4B 4 Bedroom , 2 Bath* Total price: $10,175 - $10,415 | 2027-28 Academic Year Floorplan Choices: East $ 835 LIMITED SPACES West $ 855 LIMITED SPACES Download Floorplan PDF Apply LIMITED SPOTS LEFT 2B 2 Bedroom , 1 Bath* Total price: $11,615 - $12,143 | 2027-28 Academic Year Floorplan Choices: Standard $ 955"
         },
         {
           "name": "2 bed · 1 bath, with fireplace",
@@ -448,9 +522,17 @@
           "bathrooms": 1,
           "amount": "999",
           "annual_total": "12143",
-          "id": "alight-2-fireplace"
+          "id": "alight-2-fireplace",
+          "verified_quote": "With fireplace $ 999"
         }
-      ]
+      ],
+      "verified_at": "2026-10-25T01:08:22.446687+00:00",
+      "verification": {
+        "method": "robots-aware fetch",
+        "page_sha256": "efbb25b9691b191d36fb95ec890acf47dcb458d2faf55a42d28aa527a28fdc6c",
+        "plans_checked": 4,
+        "availability_verified": false
+      }
     },
     "union": {
       "source": {
@@ -465,7 +547,7 @@
       "room": "private",
       "start": "2027-08-16",
       "end": "2028-07-17",
-      "quote": "Total Monthly Leasing Price $1,420.79 Base Rent: $1,414/per installment Lease term: Annual (08/16/2027 - 07/17/2028)",
+      "quote": "S1 Furnished BEDS / BATHS Studio / 1ba ROOM TYPE * BASE RENT * SECURITY DEPOSIT (REFUNDABLE)* Room type options for S1 Furnished Private Total Monthly Leasing Price $1,684.79 Base Rent: $1,678",
       "plans": [
         {
           "name": "S1 Furnished (studio)",
@@ -479,7 +561,8 @@
             "Pool View": "1730"
           },
           "square_feet": "435",
-          "id": "union-s1"
+          "id": "union-s1",
+          "verified_quote": "S1 Furnished BEDS / BATHS Studio / 1ba ROOM TYPE * BASE RENT * SECURITY DEPOSIT (REFUNDABLE)* Room type options for S1 Furnished Private Total Monthly Leasing Price $1,684.79 Base Rent: $1,678"
         },
         {
           "name": "A1 Furnished",
@@ -490,7 +573,8 @@
             "Private": "1886",
             "Upgraded": "1892"
           },
-          "square_feet": "540"
+          "square_feet": "540",
+          "verified_quote": "A1 Furnished BEDS / BATHS 1bd / 1ba ROOM TYPE * BASE RENT * SECURITY DEPOSIT (REFUNDABLE)* Room type options for A1 Furnished Private Total Monthly Leasing Price $1,892.79 Base Rent: $1,886"
         },
         {
           "name": "B1 Furnished",
@@ -501,7 +585,8 @@
             "Private": "1385",
             "Tiers": "1400–1408"
           },
-          "square_feet": "852"
+          "square_feet": "852",
+          "verified_quote": "B1 Furnished BEDS / BATHS 2bd / 2ba ROOM TYPE * BASE RENT * SECURITY DEPOSIT (REFUNDABLE)* Room type options for B1 Furnished Private Total Monthly Leasing Price $1,391.79 Base Rent: $1,385"
         },
         {
           "name": "B2 Deluxe Furnished",
@@ -515,7 +600,8 @@
             "Top Floor Pool View": "1440"
           },
           "square_feet": "1,069",
-          "id": "union-b2"
+          "id": "union-b2",
+          "verified_quote": "B2 Deluxe Furnished BEDS / BATHS 2bd / 2.5ba ROOM TYPE * BASE RENT * SECURITY DEPOSIT (REFUNDABLE)* Room type options for B2 Deluxe Furnished Private Total Monthly Leasing Price $1,420.79 Base Rent: $1,414"
         },
         {
           "name": "C1 Furnished",
@@ -528,7 +614,8 @@
             "Patio": "1356"
           },
           "square_feet": "1,175",
-          "id": "union-c1"
+          "id": "union-c1",
+          "verified_quote": "C1 Furnished BEDS / BATHS 3bd / 3ba ROOM TYPE * BASE RENT * SECURITY DEPOSIT (REFUNDABLE)* Room type options for C1 Furnished Private Total Monthly Leasing Price $1,346.79 Base Rent: $1,340"
         },
         {
           "name": "D1 Furnished",
@@ -538,7 +625,8 @@
           "tiers": {
             "Tiers": "1213–1231"
           },
-          "square_feet": "1,458"
+          "square_feet": "1,458",
+          "verified_quote": "D1 Furnished BEDS / BATHS 4bd / 4ba ROOM TYPE * BASE RENT * SECURITY DEPOSIT (REFUNDABLE)* Room type options for D1 Furnished Private Total Monthly Leasing Price $1,220.79 Base Rent: $1,214/per installment Lease term: Annual (08/16/2027 - 07/17/2028) N/A Pool View Total Monthly Leasing Price $1,219.79 Base Rent: $1,213"
         },
         {
           "name": "D2 Furnished",
@@ -548,7 +636,8 @@
           "tiers": {
             "Tiers": "1204–1220"
           },
-          "square_feet": "1,576"
+          "square_feet": "1,576",
+          "verified_quote": "D2 Furnished BEDS / BATHS 4bd / 4ba ROOM TYPE * BASE RENT * SECURITY DEPOSIT (REFUNDABLE)* Room type options for D2 Furnished Private Total Monthly Leasing Price $1,217.79 Base Rent: $1,211/per installment Lease term: Annual (08/16/2027 - 07/17/2028) N/A Pool View Total Monthly Leasing Price $1,210.79 Base Rent: $1,204"
         },
         {
           "name": "D3 Furnished",
@@ -558,30 +647,41 @@
           "tiers": {
             "Tiers": "1222–1226"
           },
-          "square_feet": "1,589"
+          "square_feet": "1,589",
+          "verified_quote": "D3 Furnished BEDS / BATHS 4bd / 4ba ROOM TYPE * BASE RENT * SECURITY DEPOSIT (REFUNDABLE)* Room type options for D3 Furnished Private Total Monthly Leasing Price $1,228.79 Base Rent: $1,222"
         },
         {
           "name": "THD4 Furnished (townhome)",
           "bedrooms": 4,
           "bathrooms": 4,
           "amount": "1253",
-          "square_feet": "1,615"
+          "square_feet": "1,615",
+          "verified_quote": "THD4 Furnished BEDS / BATHS 4bd / 4ba ROOM TYPE * BASE RENT * SECURITY DEPOSIT (REFUNDABLE)* Room type options for THD4 Furnished Private Total Monthly Leasing Price $1,259.79 Base Rent: $1,253"
         },
         {
           "name": "D5 Existing unit, unfurnished",
           "bedrooms": 4,
           "bathrooms": 4,
           "amount": "1030",
-          "square_feet": "1,450"
+          "square_feet": "1,450",
+          "verified_quote": "D5 - Existing Unit BEDS / BATHS 4bd / 4ba ROOM TYPE * BASE RENT * SECURITY DEPOSIT (REFUNDABLE)* Room type options for D5 - Existing Unit Unfurnished Total Monthly Leasing Price $1,036.79 Base Rent: $1,030"
         },
         {
           "name": "D6 Existing unit, furnished",
           "bedrooms": 4,
           "bathrooms": 3,
           "amount": "1110",
-          "square_feet": "1,450"
+          "square_feet": "1,450",
+          "verified_quote": "D6 - Existing Unit BEDS / BATHS 4bd / 3ba ROOM TYPE * BASE RENT * SECURITY DEPOSIT (REFUNDABLE)* Room type options for D6 - Existing Unit Furnished Total Monthly Leasing Price $1,116.79 Base Rent: $1,110"
         }
-      ]
+      ],
+      "verified_at": "2026-10-25T01:07:59.928Z",
+      "verification": {
+        "method": "rendered operator page; studio through four-bedroom tabs",
+        "page_sha256": "d42ec30f44fe487e494fca3fd7f164675ea7426bd9417ebc07a31bb5c759e8c6",
+        "plans_checked": 11,
+        "availability_verified": false
+      }
     },
     "mill": {
       "source": {
@@ -594,7 +694,7 @@
       "price_type": "rent",
       "contract": "unit",
       "installments": 12,
-      "quote": "2 Beds | 1 Baths 780 Sq. Ft. Rent: $1300 (Only $650 per room with 2 people) Deposit & Fees: Security Deposit: $900 Application Fee: $35",
+      "quote": "1 Bedroom 2 Bedroom 3 Bedroom Apply Now 1 Beds | 1 Baths 535 Sq. Ft. Rent: $1100",
       "plans": [
         {
           "name": "1 bed · 1 bath",
@@ -603,7 +703,8 @@
           "amount": "1100",
           "deposit": "800",
           "square_feet": "535",
-          "id": "mill-1"
+          "id": "mill-1",
+          "verified_quote": "1 Bedroom 2 Bedroom 3 Bedroom Apply Now 1 Beds | 1 Baths 535 Sq. Ft. Rent: $1100"
         },
         {
           "name": "2 bed · 1 bath",
@@ -612,7 +713,8 @@
           "amount": "1300",
           "deposit": "900",
           "square_feet": "780",
-          "id": "mill-2"
+          "id": "mill-2",
+          "verified_quote": "2 Bedroom 3 Bedroom Apply Now 1 Beds | 1 Baths 535 Sq. Ft. Rent: $1100 Deposit & Fees: Security Deposit: $800 Application Fee: $35 Apply Now 2 Beds | 1 Baths 780 Sq. Ft. Rent: $1300"
         },
         {
           "name": "3 bed · 1 bath",
@@ -621,9 +723,17 @@
           "amount": "1680",
           "deposit": "1050",
           "square_feet": "1,025",
-          "id": "mill-3"
+          "id": "mill-3",
+          "verified_quote": "3 Bedroom Apply Now 1 Beds | 1 Baths 535 Sq. Ft. Rent: $1100 Deposit & Fees: Security Deposit: $800 Application Fee: $35 Apply Now 2 Beds | 1 Baths 780 Sq. Ft. Rent: $1300 (Only $650 per room with 2 people) Deposit & Fees: Security Deposit: $900 Application Fee: $35 Pricing is per unit. All residents share joint and several responsibility for full rent View Virtual Tour Apply Now 3 Beds | 1 Baths 1,025 Sq. Ft. Rent: $1680"
         }
-      ]
+      ],
+      "verified_at": "2026-10-25T01:08:24.845126+00:00",
+      "verification": {
+        "method": "robots-aware fetch",
+        "page_sha256": "c6c6d04e353ba93bb0701101ff05580ac5828e78b1c707160a6045d84f9a8f3f",
+        "plans_checked": 3,
+        "availability_verified": false
+      }
     }
   }
 }

@@ -6,6 +6,8 @@ existing seed. Idempotent: running it twice produces the same seed.
 import json
 import re
 import sys
+from datetime import datetime
+from zoneinfo import ZoneInfo
 from copy import deepcopy
 from pathlib import Path
 
@@ -19,8 +21,8 @@ fetched = {f.stem: json.loads(f.read_text(encoding='utf-8')) for f in Path(sys.a
 snapshots_path = ROOT / 'data/housing-live-snapshots.json'
 snapshots = json.loads(snapshots_path.read_text(encoding='utf-8')) if snapshots_path.exists() else {}
 T = live['retrieved_at']
-TIER = {'from': 'ADVERTISED_FROM', 'total_leasing_price': 'PORTAL_QUOTE', 'rate': 'PORTAL_QUOTE', 'base_rent': 'PORTAL_QUOTE', 'rent': 'PORTAL_QUOTE'}
-LIVE_SCOPE = 'Operator page read on Oct 24, 2026 ({method}). Asking prices only; no unit availability guarantee.'
+TIER = {'from': 'ADVERTISED_FROM', 'total_leasing_price': 'PUBLISHED_TOTAL_LEASING_PRICE', 'rate': 'PUBLISHED_ASKING_PRICE', 'base_rent': 'PUBLISHED_BASE_RENT', 'rent': 'PUBLISHED_ASKING_PRICE'}
+LIVE_SCOPE = 'Operator page read {date} ({method}). Asking prices only; no unit availability guarantee.'
 
 
 def slug(text):
@@ -29,18 +31,25 @@ def slug(text):
 
 for prop in seed['properties']:
     spec = live['properties'][prop['id']]
+    T = spec.get('verified_at',live['retrieved_at'])
+    date = datetime.fromisoformat(T.replace('Z','+00:00')).astimezone(ZoneInfo('America/New_York')).date().isoformat()
+    term = '2027–28' if spec.get('start') else 'Lease dates unconfirmed'
     template = deepcopy(prop['offers'][0]) if prop['offers'] else {}
     src = spec['source']
     # The source the live prices came from: refreshed when it already exists, added otherwise.
     existing = next((s for s in prop['sources'] if s['id'] == src['id']), None)
     record = fetched.get(src['id'])
-    body = dict(id=src['id'], url=(existing or {}).get('url', src['url']), title=(existing or {}).get('title') or src['id'].replace('-', ' ').title(),
-                checked_at=T, excerpt=spec['quote'][:120], applicable_term='2027–28',
+    body = dict(id=src['id'], url=src['url'], title=(existing or {}).get('title') or src['id'].replace('-', ' ').title(),
+                checked_at=T, excerpt=spec['quote'][:120], applicable_term=term,
                 review_status='reviewed' if record else 'live_observation', refresh_policy=(existing or {}).get('refresh_policy', 'manual_only'),
                 sha256=record['sha256'] if record else None, reviewed_at=T if record else None,
-                review_scope=LIVE_SCOPE.format(method=src['method']))
+                review_scope=LIVE_SCOPE.format(date=date,method=src['method']))
     if record:
-        snapshots[src['id']] = dict(url=src['url'], text=record['text'], sha256=record['sha256'], retrieved_at=record['retrieved_at'])
+        # Keep the full captured page private; the checked-in snapshot contains
+        # short price locators only, rather than republishing marketing copy.
+        selected=' '.join(p.get('verified_quote',spec['quote']) for p in spec['plans'])
+        snapshots[src['id']] = dict(url=src['url'], text=selected, sha256=__import__('hashlib').sha256(selected.encode()).hexdigest(), retrieved_at=record['retrieved_at'])
+        body['sha256']=snapshots[src['id']]['sha256']
     prop['sources'] = [body if s['id'] == src['id'] else s for s in prop['sources']] + ([] if existing else [body])
     extra = spec.get('also_confirmed_by')
     if extra:
@@ -48,7 +57,7 @@ for prop in seed['properties']:
         for s in prop['sources']:
             if s['id'] == extra['id']:
                 s.update(checked_at=T, excerpt=extra['quote'][:120], review_status='reviewed' if rec else 'live_observation',
-                         sha256=rec['sha256'] if rec else s.get('sha256'), reviewed_at=T if rec else None, review_scope=LIVE_SCOPE.format(method='robots-aware fetch'))
+                         sha256=rec['sha256'] if rec else s.get('sha256'), reviewed_at=T if rec else None, review_scope=LIVE_SCOPE.format(date=date,method='robots-aware fetch'))
         if rec: snapshots[extra['id']] = dict(url=extra['url'], text=rec['text'], sha256=rec['sha256'], retrieved_at=rec['retrieved_at'])
 
     shared_fees = [f for f in template.get('fees', []) if not f['id'].startswith(tuple(o['id'] for o in prop['offers']))]
@@ -85,10 +94,10 @@ for prop in seed['properties']:
             id=oid, name=plan['name'], bedrooms=plan['bedrooms'], bathrooms=plan['bathrooms'], amount=plan['amount'],
             basis=spec['basis'], period=spec['period'], contract=spec.get('contract', template.get('contract', 'unknown')),
             room=spec.get('room', 'unknown'), installments=spec.get('installments'), start=spec.get('start'), end=spec.get('end'),
-            annual_total=plan.get('annual_total'), term_label='2027–28', advertised_occupants=None,
+            annual_total=plan.get('annual_total'), term_label=term, advertised_occupants=None,
             upfront=[dict(label='Security deposit', amount=plan['deposit'], refundable=True, basis=spec['basis'])] if plan.get('deposit') else [],
             unknowns=notes, conflicts=[], property_id=prop['id'], source_id=src['id'],
-            evidence=[dict(field='amount', quote=spec['quote'], source_id=src['id'], reviewed_at=T, method=src['method'])],
+            evidence=[dict(field='amount', quote=plan.get('verified_quote',spec['quote']), source_id=src['id'], reviewed_at=T, method=src['method'])],
             fees=fees, utility_matrix=utilities, utility_source_id=template.get('utility_source_id'),
             price_confidence_tier=TIER[spec['price_type']], operator_questions=template.get('operator_questions', []),
             source_conflicts=conflicts, plan_details={k: plan[k] for k in ('square_feet', 'tiers') if k in plan}))

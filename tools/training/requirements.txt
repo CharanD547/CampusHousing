@@ -1,8 +1,11 @@
 # Optional environment only; never install these into the production API image.
-# Resolve and record a compatible lock on the selected CUDA runtime before a real run.
+# Tested top-level versions from the local Gemma 4 E4B runs (Windows / CUDA 12.8).
+# This is not a complete transitive or cross-platform lock. Select the matching
+# official PyTorch wheel index when installing the CUDA build.
 -r ../../requirements-lock.txt
-torch>=2.7
-transformers>=4.51,<5
-peft>=0.15,<1
-datasets>=3,<5
-accelerate>=1,<2
+--extra-index-url https://download.pytorch.org/whl/cu128
+torch==2.11.0+cu128
+transformers==5.20.2
+peft==0.21.2
+datasets==4.8.5
+accelerate==1.15.0

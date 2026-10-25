@@ -45,13 +45,13 @@ class JSONModel:
             payload={'model':self.model_id,'messages':[{'role':'user','content':prompt}],
                      'temperature':0,'max_tokens':1800,'response_format':{'type':'json_object'}}
         started=time.monotonic()
-        with httpx.Client(timeout=httpx.Timeout(25,connect=5),follow_redirects=False,transport=self.transport) as client:
+        with httpx.Client(timeout=httpx.Timeout(50,connect=5),follow_redirects=False,transport=self.transport) as client:
             with client.stream('POST',url,headers=headers,json=payload) as response:
                 response.raise_for_status()
                 content=bytearray()
                 for chunk in response.iter_bytes():
                     content.extend(chunk)
-                    if len(content)>128000 or time.monotonic()-started>30:raise ValueError('Inference response exceeded limits.')
+                    if len(content)>128000 or time.monotonic()-started>55:raise ValueError('Inference response exceeded limits.')
         data=json.loads(content)
         if self.provider=='google':
             returned=data.get('modelVersion','')

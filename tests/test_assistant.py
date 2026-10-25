@@ -74,9 +74,34 @@ def test_assistant_citations_idempotency_and_daily_limit(client,tmp_path,request
 def test_assistant_rejects_invalid_citations_and_wrong_revision(client,tmp_path,request_body):
     browser=assistant_client(client,tmp_path,FixtureModel(invalid=True))
     body=message(browser,request_body)
-    assert browser.post('/api/v1/assistant/messages',json=body).json()['error']['code']=='provider_failure'
+    result=browser.post('/api/v1/assistant/messages',json=body).json()
+    assert result['fallback']['code']=='provider_failure' and result['provider']=='local_rules' and result['model_id'] is None
     body['revision']=0
     assert browser.post('/api/v1/assistant/messages',json=body).status_code==409
+
+
+def test_model_cannot_invent_rent_or_omit_per_person_label(client,tmp_path,request_body):
+    class WrongPrice(FixtureModel):
+        def generate(self,prompt,schema):
+            result=super().generate(prompt,schema)
+            result['answer']='The rent is $1.'
+            return result
+    browser=assistant_client(client,tmp_path,WrongPrice())
+    result=browser.post('/api/v1/assistant/messages',json=message(browser,request_body)).json()
+    assert result['provider']=='local_rules' and result['fallback']['code']=='provider_failure'
+    assert '$1300' in result['result']['answer'] and '$1.' not in result['result']['answer']
+
+
+def test_model_cannot_turn_installment_into_term_total(client,tmp_path,request_body):
+    class WrongPeriod(FixtureModel):
+        def generate(self,prompt,schema):
+            result=super().generate(prompt,schema)
+            result['answer']='The whole-unit price is $1300 per 12-month term and $650 per person.'
+            return result
+    browser=assistant_client(client,tmp_path,WrongPeriod())
+    result=browser.post('/api/v1/assistant/messages',json=message(browser,request_body)).json()
+    assert result['provider']=='local_rules' and result['fallback']['code']=='provider_failure'
+    assert 'per installment' in result['result']['answer']
 
 
 def test_google_and_custom_transport_are_server_side_and_model_checked(tmp_path):
@@ -93,3 +118,29 @@ def test_google_and_custom_transport_are_server_side_and_model_checked(tmp_path)
         return httpx.Response(200,json={'model':'roomwise-gemma','choices':[{'message':{'content':json.dumps(answer)}}]})
     local=replace(settings,ai_provider='openai_compatible',ai_model='roomwise-gemma',ai_api_key='')
     assert JSONModel(local,httpx.MockTransport(custom)).generate('test',{})==answer
+
+
+def test_local_server_fenced_json_is_accepted_and_wrong_model_identity_rejected(tmp_path):
+    answer={'answer':'Test'}
+    def fenced(request):
+        assert request.url.path=='/v1/chat/completions'
+        content='```json\n'+json.dumps(answer)+'\n```'
+        return httpx.Response(200,json={'model':'roomwise-gemma-4-e4b-v2','choices':[{'message':{'content':content}}]})
+    settings=Settings(tmp_path,external_operations_enabled=True,ai_provider='openai_compatible',
+                      ai_model='roomwise-gemma-4-e4b-v2',ai_base_url='http://127.0.0.1:8002/v1')
+    assert JSONModel(settings,httpx.MockTransport(fenced)).generate('test',{})==answer
+    def other(request):
+        return httpx.Response(200,json={'model':'some-other-model','choices':[{'message':{'content':json.dumps(answer)}}]})
+    import pytest
+    with pytest.raises(ValueError,match='Unexpected model identity'):
+        JSONModel(settings,httpx.MockTransport(other)).generate('test',{})
+
+
+def test_compare_with_billing_words_summarizes_selected_properties(client,request_body):
+    body=message(client,request_body)
+    body['question']='Explain the differences between shortlisted options, including billing basis and missing costs.'
+    result=client.post('/api/v1/assistant/messages',json=body).json()['result']
+    assert result['answer_kind']=='evidence'
+    assert result['candidate_ids']==['mill-2']
+    assert 'The Mill' in result['answer'] and 'per installment' in result['answer']
+    assert 'mill-plans' in result['evidence_ids']

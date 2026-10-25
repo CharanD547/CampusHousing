@@ -1,12 +1,13 @@
 /* ---------- shell + router ---------- */
-const NAV = [['explore', 'Explore'], ['preferences', 'Preferences'], ['schedule', 'Schedule'], ['compare', 'Compare'], ['shortlist', 'Shortlist'],['assistant','Assistant'],['data','Data']];
+const NAV = [['explore', 'Explore'],['directory','Housing guide'], ['preferences', 'Preferences'], ['compare', 'Compare'], ['shortlist', 'Shortlist'],['assistant','Assistant'],['data','Data']];
 
 function route() {
   const h = (location.hash || '#home').slice(1);
   if (h.startsWith('property-')) return { name: 'property', id: h.slice(9), nav: 'explore' };
   if (h.startsWith('brief-')) return { name: 'brief', id: h.slice(6), nav: 'shortlist' };
   if (h.startsWith('guide')) return { name: 'guide', step: Number(h.split('-')[1]) || 0, nav: 'guide' };
-  const known = ['home', 'explore', 'preferences', 'schedule', 'compare', 'shortlist','assistant','data'];
+  if(h==='schedule')return {name:'explore',nav:'explore'};
+  const known = ['home', 'explore','directory', 'preferences', 'compare', 'shortlist','assistant','data'];
   return { name: known.includes(h) ? h : 'home', nav: known.includes(h) ? h : 'home' };
 }
 
@@ -23,7 +24,7 @@ function render() {
   if (!API.ready) return;
   const rt = route();
   const focus = document.activeElement && document.activeElement.id ? { id: document.activeElement.id, s: document.activeElement.selectionStart, e: document.activeElement.selectionEnd } : null;
-  const views = { home: viewHome, explore: viewExplore, preferences: viewPreferences, schedule: viewSchedule, compare: viewCompare, shortlist: viewShortlist, assistant:viewAssistant, data:viewData, property: () => viewProperty(rt.id), brief: () => viewBrief(rt.id), guide: () => viewGuide(rt.step) };
+  const views = { home: viewHome, explore: viewExplore, directory:viewHousingDirectory, preferences: viewPreferences, compare: viewCompare, shortlist: viewShortlist, assistant:viewAssistant, data:viewData, property: () => viewProperty(rt.id), brief: () => viewBrief(rt.id), guide: () => viewGuide(rt.step) };
   document.getElementById('nav').innerHTML = renderNav(rt);
   document.getElementById('nav').classList.toggle('open', UI.menu);
   document.getElementById('menu-btn').setAttribute('aria-expanded', UI.menu);
@@ -45,7 +46,7 @@ function render() {
 }
 
 function dialogView(d) {
-  if (d === 'restart') return `<div class="dialog-scrim"><div class="dialog" role="alertdialog" aria-modal="true" aria-labelledby="dlg-t" aria-describedby="dlg-d"><h2 id="dlg-t">Restart DormToDoor?</h2><p id="dlg-d">This clears your guide progress and checklist. Your needs, schedule, shortlist and ${plural(S.briefs.length, 'saved brief')} stay as they are.</p><div class="btn-row"><button class="btn btn-danger" data-action="guide-restart-confirm" id="dlg-ok">Restart guide</button><button class="btn" data-action="dialog-close">Keep my progress</button></div></div></div>`;
+  if (d === 'restart') return `<div class="dialog-scrim"><div class="dialog" role="alertdialog" aria-modal="true" aria-labelledby="dlg-t" aria-describedby="dlg-d"><h2 id="dlg-t">Restart DormToDoor?</h2><p id="dlg-d">This clears your guide progress and checklist. Your needs, shortlist and ${plural(S.briefs.length, 'saved brief')} stay as they are.</p><div class="btn-row"><button class="btn btn-danger" data-action="guide-restart-confirm" id="dlg-ok">Restart guide</button><button class="btn" data-action="dialog-close">Keep my progress</button></div></div></div>`;
   return '';
 }
 
@@ -71,6 +72,9 @@ document.addEventListener('click', async (ev) => {
     }
     case 'toggle-shortlist': {
       if (S.shortlist.includes(id)) { S.shortlist = S.shortlist.filter((x) => x !== id); save(); toast(`Removed ${candidate(id).property_name} from your shortlist`); }
+      else if (S.shortlist.some(x=>candidate(x)?.property_id===candidate(id)?.property_id)) {
+        S.shortlist=S.shortlist.map(x=>candidate(x)?.property_id===candidate(id)?.property_id?id:x);save();toast('Updated the selected plan for '+candidate(id).property_name);
+      }
       else if (S.shortlist.length >= 3) toast('Your shortlist holds 3 places. Remove one first.');
       else { S.shortlist.push(id); save(); toast(`Shortlisted ${candidate(id).property_name}`); }
       break;
@@ -89,26 +93,11 @@ document.addEventListener('click', async (ev) => {
       S.draft = null; UI.errorsShown = false; bump(); toast(`Applied. Results now use revision ${S.revision}.`); break;
     }
     case 'prefs-discard': S.draft = null; UI.errorsShown = false; render(); toast('Changes discarded'); break;
-    case 'commit-new': UI.editing = { id: 'new', building_id: '', weekdays: [], arrival_time_local: '09:00', arrival_buffer_minutes: null }; UI.editErr = null; render(); document.getElementById('e-bld')?.focus(); break;
-    case 'commit-edit': { const c = S.commitments.find((x) => x.id === id); UI.editing = clone(c); UI.editErr = null; render(); document.getElementById('e-bld')?.focus(); break; }
-    case 'commit-cancel': UI.editing = null; UI.editErr = null; render(); break;
-    case 'commit-save': {
-      const e = UI.editing;
-      const err = { building: !e.building_id, days: !e.weekdays.length, time: !e.arrival_time_local };
-      if (err.building || err.days || err.time) { UI.editErr = err; render(); return; }
-      if (e.id === 'new' && S.commitments.length >= 10) { toast('Up to 10 class commitments are supported.'); return; }
-      const rec = { id: e.id === 'new' ? uid('c') : e.id, building_id: e.building_id, weekdays: DAYS.map((d) => d[0]).filter((d) => e.weekdays.includes(d)), arrival_time_local: e.arrival_time_local, arrival_buffer_minutes: e.arrival_buffer_minutes, sample: false };
-      if (e.id === 'new') S.commitments.push(rec); else S.commitments = S.commitments.map((c) => (c.id === e.id ? rec : c));
-      UI.editing = null; UI.editErr = null; bump(); toast(`${building(rec.building_id).short} saved. Commutes updated.`); break;
-    }
-    case 'commit-delete': { const c = S.commitments.find((x) => x.id === id); S.commitments = S.commitments.filter((x) => x.id !== id); bump(); toast(`Removed ${building(c.building_id).short}`); break; }
-    case 'sample-clear': S.commitments = S.commitments.filter((c) => !c.sample); bump(); toast('Sample classes cleared'); break;
-    case 'sample-load': S.commitments = clone(SAMPLE_COMMITMENTS); UI.editing = null; bump(); toast('Sample schedule loaded'); break;
     case 'run-ai': runAI(); break;
     case 'retry-api': initRoomwise(); break;
     case 'q-delete': { const n = S.notes[id]; n.questions = n.questions.filter((q) => q.id !== t.dataset.q); save(); render(); break; }
     case 'save-brief': {
-      if (!S.shortlist.length && t.dataset.origin === 'guide') S.shortlist = guideCandidates().filter((r) => r.cand.type === 'offer').map((r) => r.cand.id);
+      if (!S.shortlist.length && t.dataset.origin === 'guide') S.shortlist = guideCandidates().map((r) => r.cand.id);
       await saveServerBrief(t.dataset.origin || 'shortlist'); break;
     }
     case 'copy-brief': {
@@ -186,8 +175,15 @@ document.addEventListener('input', (ev) => {
 
 document.addEventListener('change', (ev) => {
   const el = ev.target;
-  if (el.id === 'routing-scope') { S.routing_scope=el.value; bump(); render(); return; }
-  if (el.id === 'routing-date') { S.route_date = el.value; ROUTING_DATE = el.value; bump(); render(); return; }
+  if (el.dataset.filter) { UI.filters[el.dataset.filter] = el.checked; render(); return; }
+  if (el.dataset.sim) { S.sim[el.dataset.sim] = el.checked; save(); render(); return; }
+  if (el.dataset.gbind && (el.type === 'radio' || el.type === 'checkbox' || el.type === 'date')) { readBind(el, S.prefs); bump(); render(); return; }
+  if (el.dataset.bind && (el.tagName === 'SELECT' || el.type === 'range')) { readBind(el, S.draft); render(); return; }
+  if (el.dataset.cl && el.dataset.clf === 'notes') { const i = S.guide.checklist.find((x) => x.id === el.dataset.cl); i.notes = el.value; save(); }
+});
+
+document.addEventListener('change', (ev) => {
+  const el = ev.target;
   if (el.dataset.filter) { UI.filters[el.dataset.filter] = el.checked; render(); return; }
   if (el.dataset.sim) { S.sim[el.dataset.sim] = el.checked; save(); render(); return; }
   if (el.dataset.gbind && (el.type === 'radio' || el.type === 'checkbox' || el.type === 'date')) { readBind(el, S.prefs); bump(); render(); return; }

@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 import sqlite3
 from roomwise.config import ROOT
+from roomwise.services.guide_catalog import guide_properties
 
 class CatalogRepository:
     def __init__(self, directory):
@@ -14,13 +15,22 @@ class CatalogRepository:
             CREATE TABLE IF NOT EXISTS housing_catalog(id TEXT PRIMARY KEY,body TEXT NOT NULL);
             CREATE TABLE IF NOT EXISTS housing_sources(id TEXT PRIMARY KEY,body TEXT NOT NULL,text TEXT NOT NULL DEFAULT '');
             CREATE TABLE IF NOT EXISTS housing_source_versions(id TEXT PRIMARY KEY,source_id TEXT NOT NULL,body TEXT NOT NULL,text TEXT NOT NULL);
+            CREATE TABLE IF NOT EXISTS housing_guide(id TEXT PRIMARY KEY,body TEXT NOT NULL);
             ''')
+            guide_path=ROOT/'data/housing-guide.json'
+            guide_entries=[]
+            if guide_path.exists():
+                guide=json.loads(guide_path.read_text(encoding='utf-8'))
+                guide_entries=guide_properties(guide)
+                for entry in guide['communities']:
+                    db.execute('INSERT INTO housing_guide VALUES (?,?) ON CONFLICT(id) DO UPDATE SET body=excluded.body',
+                               (entry['id'],json.dumps(entry)))
             seed_path = ROOT / 'data/housing-seed.json'
             if seed_path.exists():
                 seed = json.loads(seed_path.read_text(encoding='utf-8'))
                 snapshots_path = ROOT / 'data/housing-source-snapshots.json'
                 snapshots = json.loads(snapshots_path.read_text(encoding='utf-8')) if snapshots_path.exists() else {}
-                for prop in seed['properties']:
+                for prop in seed['properties']+guide_entries:
                     db.execute('INSERT OR IGNORE INTO housing_catalog VALUES (?,?)', (prop['id'], json.dumps(prop)))
                     for source in prop['sources']:
                         snapshot = snapshots.get(source['id'], {})

@@ -18,9 +18,11 @@ def verify(python,port=8003):
         token=secrets.token_urlsafe(32)
         env={**os.environ,'ROOMWISE_DATA_DIR':directory,'ROOMWISE_API_TOKEN':token,
              'ROOMWISE_MAPS_ENABLED':'false','ROOMWISE_PLACES_ENABLED':'false','ROOMWISE_ROUTES_ENABLED':'false',
-             'ROOMWISE_EXTERNAL_ENABLED':'false','ROOMWISE_AI_PROVIDER':'disabled','ROOMWISE_ACCOUNTS_REQUIRED':'false'}
+             'ROOMWISE_EXTERNAL_ENABLED':'false','ROOMWISE_AI_PROVIDER':'disabled','ROOMWISE_ACCOUNTS_REQUIRED':'false',
+             'ROOMWISE_LOCAL_OPERATOR_ENABLED':'false'}
         process=subprocess.Popen([str(python),'-m','uvicorn','roomwise.main:app','--app-dir','src','--host','127.0.0.1','--port',str(port)],
-            cwd=ROOT,env=env,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
+            cwd=ROOT,env=env,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL,
+            creationflags=subprocess.CREATE_NO_WINDOW if os.name=='nt' else 0)
         def call(path,body=None,method=None,auth=True):
             request=urllib.request.Request(f'http://127.0.0.1:{port}'+path,data=json.dumps(body).encode() if body is not None else None,
                 method=method,headers={'Content-Type':'application/json',**({'Authorization':'Bearer '+token} if auth else {})})
@@ -37,7 +39,9 @@ def verify(python,port=8003):
             assert 'Roomwise privacy' in call('/privacy',auth=False)
             try:call('/api/v1/records',auth=False);raise AssertionError('Bearer protection missing.')
             except urllib.error.HTTPError as error:assert error.code==401
-            catalog=call('/api/v1/candidates')['candidates'];assert len(catalog)==18
+            catalog=call('/api/v1/candidates')['candidates'];assert len(catalog)==109
+            assert len({c['property_id'] for c in catalog})==47
+            assert len(call('/api/v1/housing-guide')['communities'])==47
             buildings=call('/api/v1/campuses/vt/buildings')['buildings'];assert len(buildings)>=350
             request={'campus_id':'vt','revision':1,'route_date':'2026-10-26','routing_scope':'representative_week',
                      'preferences':{'monthly_budget_per_person':1100,'household_size':2,'travel_modes':['walk','transit']},
@@ -45,7 +49,9 @@ def verify(python,port=8003):
                                     {'id':'lab','building_id':'vt-0174','weekdays':['fri'],'arrival_time_local':'14:00'}],
                      'candidate_ids':['alight-east','mill-2']}
             comparison=call('/api/v1/comparisons',request)
-            assert all(row['total_commitments']==3 and row['supported_commitments']==0 for row in comparison['candidate_results'])
+            assert len(comparison['candidate_results'])==2
+            assert all(row['total_commitments']==3 and row['supported_commitments']==3 for row in comparison['candidate_results'])
+            assert all(route['provider']=='bt_gtfs_local' for row in comparison['candidate_results'] for route in row['commute_estimates'])
             workspace={'revision':0,'preferences':request['preferences'],'commitments':request['commitments'],'routing_scope':'representative_week'}
             saved=call('/api/v1/workspaces/smoke',workspace,'PUT');assert saved['revision']==1
             base={'comparison_id':comparison['id'],'revision':1,'request_id':'smoke'}
@@ -62,7 +68,12 @@ def verify(python,port=8003):
                     'buildings':len(buildings),'weekly_meetings':3,'http_flows':['public shell/privacy','bearer rejection','catalog/buildings','weekly comparison',
                     'workspace save','checklist','immutable brief reload','local assistant','export/trash/restore'],'live_provider_calls':0}
         finally:
-            process.terminate()
+            # A Windows venv launcher can spawn a child Python process. Stopping
+            # only the launcher leaves the server holding temporary SQLite files.
+            if os.name=='nt':
+                subprocess.run(['taskkill','/PID',str(process.pid),'/T','/F'],stdout=subprocess.DEVNULL,
+                               stderr=subprocess.DEVNULL,creationflags=subprocess.CREATE_NO_WINDOW,check=False)
+            else:process.terminate()
             try:process.wait(timeout=5)
             except subprocess.TimeoutExpired:process.kill();process.wait(timeout=5)
 

@@ -18,14 +18,15 @@ def candidates(catalog):
     result = []
     for prop in catalog:
         for offer in prop['offers']:
-            result.append(dict(id=offer['id'], type='offer', property_id=prop['id'], property_name=prop['name'],
-                               address=prop['address'], coordinates={'lat':prop['lat'], 'lon':prop['lon']},
-                               coordinate_basis='representative_address', data_status='source_review_required' if offer['amount'] is None else 'reviewed_asking_price',
+            result.append(dict(id=offer['id'], type=prop.get('listing_type','offer'), property_id=prop['id'], property_name=prop['name'],
+                               address=prop['address'], coordinates={'lat':prop['lat'], 'lon':prop['lon']} if prop.get('lat') is not None and prop.get('lon') is not None else None,
+                               guide_reference=prop.get('guide_reference'),
+                               coordinate_basis='representative_address' if prop.get('lat') is not None else 'unverified', data_status='guide_reference_only' if prop.get('guide_reference') else 'source_review_required' if offer['amount'] is None else 'reviewed_asking_price',
                                sources=prop['sources'], offer=dict(id=offer['id'], layout=offer['name'], bedrooms=offer['bedrooms'], contract=offer['contract'],room=offer['room'],
                                price={'amount':offer['amount'], 'currency':'USD', 'basis':{'person':'per_person','unit':'whole_unit'}.get(offer['basis'], 'unknown'),
                                       'frequency':{'monthly':'calendar_month','installment':'installment'}.get(offer['period'], 'other'),
                                       'payment_count':offer.get('installments'), 'term':{'start':offer.get('start'), 'end':offer.get('end'), 'label':offer['term_label']},
-                                      'source_id':offer['source_id'], 'last_reviewed_at':max(s['checked_at'] for s in prop['sources'] if s.get('checked_at'))},
+                                      'source_id':offer['source_id'], 'last_reviewed_at':next(s.get('reviewed_at') or s['checked_at'] for s in prop['sources'] if s['id']==offer['source_id'])},
                                fees=offer.get('fees') or offer['upfront'], unknown_costs=offer['unknowns'],
                                utility_matrix=offer.get('utility_matrix', {}), utility_source_id=offer.get('utility_source_id'), price_confidence_tier=offer.get('price_confidence_tier'),
                                advertised_range=offer.get('advertised_range'), operator_questions=offer.get('operator_questions', []),
@@ -80,8 +81,6 @@ class ComparisonService:
             if costs['period']=='installment':
                 notes.append('Compared per installment. Installments follow the lease schedule and are not calendar months.')
             routes=[]
-            if not request.commitments:
-                notes.append('Add your classes to check commutes.')
             for commitment,route_day in occurrences:
                 for mode in p.travel_modes:
                     if route_day.strftime('%a').lower() not in commitment.weekdays:
@@ -115,7 +114,9 @@ class ComparisonService:
                                 reason_codes=(['hard_conflict'] if conflicts else [])+(['missing_evidence'] if unknowns else []),
                                 supported_commitments=supported,total_commitments=len(occurrences),
                                 limiting_commitment=max(best,key=lambda x:x['minutes'])['commitment_id'] if best else None,
-                                commute_estimates=routes,evidence_ids=[source['id']],source_date=source['checked_at']))
+                                commute_estimates=routes,evidence_ids=list(dict.fromkeys([source['id']]+[
+                                    item['source_id'] for item in costs['fees']['recurring_fees']
+                                    if item.get('source_id')])),source_date=source['checked_at']))
         result=dict(id=uuid.uuid4().hex,input_revision=request.revision,revision=request.revision,
                     status='partial' if any(x['unknown_costs'] for x in results) else 'complete',
                     created_at=now(),inputs=request.model_dump(mode='json'),catalog_fingerprint=catalog_fingerprint(catalog),

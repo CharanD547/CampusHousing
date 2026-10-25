@@ -1,0 +1,711 @@
+{
+  "format": "roomwise-guide-v1",
+  "document_sha256": "4bf1174dd35cf44b313bba748de77222c935d5f96fe48567e5baf4998c404609",
+  "source_name": "Virginia Tech Area Housing Guide.docx",
+  "communities": [
+    {
+      "id": "the-edge-apartments-townhomes",
+      "name": "The Edge Apartments & Townhomes",
+      "address": "300–321 Edge Way & 693 Toms Creek Rd",
+      "zone": "Campus and downtown",
+      "layouts": "2x2, 3x3, 4x4 Apts (918–1,592 sq ft); 4x4 Townhomes",
+      "catalog_property_id": null,
+      "guide_price_summary": "1,190– 1,415 / bed ($1,150 in sublets)",
+      "source_urls": [
+        "https://www.apartmenthomeliving.com/apartment-finder/The-Edge-Apartments-and-Townhomes-Blacksburg-VA-24060-1955685",
+        "https://findmyplace.co/blog/where-virginia-tech-students-live-off-campus/",
+        "https://www.cmgleasing.com/office/the-edge/"
+      ],
+      "evidence_status": "guide_reference_only",
+      "price_status": "Research reference only; use current linked operator plans for comparisons."
+    },
+    {
+      "id": "tech-terrace",
+      "name": "Tech Terrace",
+      "address": "301–307 Webb St",
+      "zone": "Campus and downtown",
+      "layouts": "3BR/2BA & 4BR/2BA Apts",
+      "catalog_property_id": null,
+      "guide_price_summary": "799– 894 / bed ( 3,196– 3,576 / unit)",
+      "source_urls": [
+        "https://findmyplace.co/blog/where-virginia-tech-students-live-off-campus/",
+        "https://www.homes.com/montgomery-county-va/homes-for-rent/"
+      ],
+      "evidence_status": "guide_reference_only",
+      "price_status": "Research reference only; use current linked operator plans for comparisons."
+    },
+    {
+      "id": "haven-blacksburg-haven-on-north-main",
+      "name": "Haven Blacksburg (Haven on North Main)",
+      "address": "Lunch Pail Ln / 1201–1207 N Main St",
+      "zone": "Campus and downtown",
+      "layouts": "2BR to 4BR Apts",
+      "catalog_property_id": null,
+      "guide_price_summary": "550– 650+ / bed (up to $3,716 / unit)",
+      "source_urls": [
+        "https://findmyplace.co/blog/where-virginia-tech-students-live-off-campus/"
+      ],
+      "evidence_status": "guide_reference_only",
+      "price_status": "Research reference only; use current linked operator plans for comparisons."
+    },
+    {
+      "id": "old-row-on-north-main",
+      "name": "Old Row on North Main",
+      "address": "901–917 Lunch Pail Ln",
+      "zone": "Campus and downtown",
+      "layouts": "2BR & 4BR Units",
+      "catalog_property_id": null,
+      "guide_price_summary": "1,195– 1,419+ / bed ($5,276 for 4BR)",
+      "source_urls": [
+        "https://findmyplace.co/blog/where-virginia-tech-students-live-off-campus/",
+        "https://www.apartments.com/off-campus-housing/va/blacksburg/virginia-polytechnic-institute-and-state-university/"
+      ],
+      "evidence_status": "guide_reference_only",
+      "price_status": "Research reference only; use current linked operator plans for comparisons."
+    },
+    {
+      "id": "collegiate-court",
+      "name": "Collegiate Court",
+      "address": "100–103 Collegiate Ct",
+      "zone": "Campus and downtown",
+      "layouts": "3BR & 4BR/2BA Apts (1,420 sq ft)",
+      "catalog_property_id": null,
+      "guide_price_summary": "2,850– 4,040 / unit ($1,010 / bed in 4BR)",
+      "source_urls": [
+        "https://www.collegestudentapartments.com/college/virginia-tech-blacksburg-virginia/apartments/"
+      ],
+      "evidence_status": "guide_reference_only",
+      "price_status": "Research reference only; use current linked operator plans for comparisons."
+    },
+    {
+      "id": "the-lofts-at-316",
+      "name": "The Lofts at 316",
+      "address": "316 N Main St (Downtown)",
+      "zone": "Campus and downtown",
+      "layouts": "1BR Open-Plan Lofts",
+      "catalog_property_id": null,
+      "guide_price_summary": "Premium urban tier (CMG managed)",
+      "source_urls": [
+        "https://stepintoblacksburg.org/listing/the-lofts-at-316-2/",
+        "https://www.cmgleasing.com/office/downtown-blacksburg/"
+      ],
+      "evidence_status": "guide_reference_only",
+      "price_status": "Research reference only; use current linked operator plans for comparisons."
+    },
+    {
+      "id": "kent-square-condos",
+      "name": "Kent Square Condos",
+      "address": "250 S Main St (Unit 404)",
+      "zone": "Campus and downtown",
+      "layouts": "2BR Condo",
+      "catalog_property_id": null,
+      "guide_price_summary": "$2,500 / unit",
+      "source_urls": [
+        "https://www.apartmentlist.com/va/blacksburg"
+      ],
+      "evidence_status": "guide_reference_only",
+      "price_status": "Research reference only; use current linked operator plans for comparisons."
+    },
+    {
+      "id": "chase-apartments-the-chase",
+      "name": "Chase Apartments (The Chase)",
+      "address": "421–461 Roanoke St E",
+      "zone": "Campus and downtown",
+      "layouts": "4BR/2BA Apts",
+      "catalog_property_id": null,
+      "guide_price_summary": "819– 894 / bed ($3,274 / unit)",
+      "source_urls": [
+        "https://findmyplace.co/blog/where-virginia-tech-students-live-off-campus/"
+      ],
+      "evidence_status": "guide_reference_only",
+      "price_status": "Research reference only; use current linked operator plans for comparisons."
+    },
+    {
+      "id": "east-roanoke-street",
+      "name": "East Roanoke Street",
+      "address": "442 Roanoke St E",
+      "zone": "Campus and downtown",
+      "layouts": "3BR Apts",
+      "catalog_property_id": null,
+      "guide_price_summary": "Starts at $700 / bed or unit tier",
+      "source_urls": [
+        "https://findmyplace.co/blog/where-virginia-tech-students-live-off-campus/"
+      ],
+      "evidence_status": "guide_reference_only",
+      "price_status": "Research reference only; use current linked operator plans for comparisons."
+    },
+    {
+      "id": "downtown-boutique-historic-rentals",
+      "name": "Downtown Boutique & Historic Rentals",
+      "address": "410 Houston St, 207 Wharton St, 315/703 Clay St",
+      "zone": "Campus and downtown",
+      "layouts": "2BR/1BA to 4BR Apts & Condos",
+      "catalog_property_id": null,
+      "guide_price_summary": "$1,350 (Wharton 2BR), $1,800 (703 Clay 2BR), $2,025 (Houston 2BR), $4,000 (315 Clay 4BR)",
+      "source_urls": [
+        "https://www.apartments.com/off-campus-housing/va/blacksburg/virginia-polytechnic-institute-and-state-university/",
+        "https://www.collegestudentapartments.com/college/virginia-tech-blacksburg-virginia/apartments/"
+      ],
+      "evidence_status": "guide_reference_only",
+      "price_status": "Research reference only; use current linked operator plans for comparisons."
+    },
+    {
+      "id": "hub-blacksburg",
+      "name": "Hub Blacksburg",
+      "address": "612 UCB / 1201 Snyder Ln",
+      "zone": "University City and Toms Creek",
+      "layouts": "1BR, 2BR, 4BR (incl. VIP floor plans); 497 total units",
+      "catalog_property_id": null,
+      "guide_price_summary": "1BR: $1,859+; 2BR: 1,295– 1,375+/bed; 4BR: 1,145– 1,150+/bed + elec & fees",
+      "source_urls": [
+        "https://www.apartments.com/off-campus-housing/va/blacksburg/virginia-polytechnic-institute-and-state-university/",
+        "https://www.forrentuniversity.com/va/blacksburg/hub-blacksburg/z9shl7x",
+        "https://www.reddit.com/r/VirginiaTech/comments/1iqzl7m/possibly_the_worst_most_expensive_apartment_in/"
+      ],
+      "evidence_status": "guide_reference_only",
+      "price_status": "Research reference only; use current linked operator plans for comparisons."
+    },
+    {
+      "id": "union-blacksburg",
+      "name": "Union Blacksburg",
+      "address": "University City Blvd Corridor",
+      "zone": "University City and Toms Creek",
+      "layouts": "1BR to 4BR Student Units",
+      "catalog_property_id": "union",
+      "guide_price_summary": "Starts at $999 / bed",
+      "source_urls": [
+        "https://findmyplace.co/blog/where-virginia-tech-students-live-off-campus/"
+      ],
+      "evidence_status": "guide_reference_only",
+      "price_status": "Research reference only; use current linked operator plans for comparisons."
+    },
+    {
+      "id": "park37",
+      "name": "Park37",
+      "address": "Toms Creek / UCB Corridor",
+      "zone": "University City and Toms Creek",
+      "layouts": "Modern Student Apts",
+      "catalog_property_id": null,
+      "guide_price_summary": "Starts at $1,010 / bed",
+      "source_urls": [
+        "https://findmyplace.co/blog/where-virginia-tech-students-live-off-campus/",
+        "https://findmyplace.co/student-housing/virginia-polytechnic-institute-and-state-university/"
+      ],
+      "evidence_status": "guide_reference_only",
+      "price_status": "Research reference only; use current linked operator plans for comparisons."
+    },
+    {
+      "id": "fourteen35-apartments",
+      "name": "Fourteen35 Apartments",
+      "address": "1435 Toms Creek Rd",
+      "zone": "University City and Toms Creek",
+      "layouts": "4BR Furnished Units (bed/bath parity)",
+      "catalog_property_id": null,
+      "guide_price_summary": "965– 1,045 / bed + fees",
+      "source_urls": [
+        "https://www.homes.com/montgomery-county-va/homes-for-rent/",
+        "https://findmyplace.co/blog/where-virginia-tech-students-live-off-campus/"
+      ],
+      "evidence_status": "guide_reference_only",
+      "price_status": "Research reference only; use current linked operator plans for comparisons."
+    },
+    {
+      "id": "collegiate-suites-hunters-ridge",
+      "name": "Collegiate Suites & Hunters Ridge",
+      "address": "1310 Henry Ln",
+      "zone": "University City and Toms Creek",
+      "layouts": "1x1 (850 sq ft), 2x2 (850–1,310 sq ft), 4x2 (1,088 sq ft), 4x4 (1,312–1,400 sq ft); 1,016 units",
+      "catalog_property_id": null,
+      "guide_price_summary": "1x1: 1,525– 1,599; 2x2: 1,025– 1,050/bed; 4x2: $945/bed; 4x4: 980– 999/bed (Double occ: 1,270– 1,280)",
+      "source_urls": [
+        "https://www.apartments.com/off-campus-housing/va/blacksburg/virginia-polytechnic-institute-and-state-university/",
+        "https://findmyplace.co/blog/where-virginia-tech-students-live-off-campus/",
+        "https://www.rentable.co/blacksburg-va/collegiate-suites-hunters-ridge"
+      ],
+      "evidence_status": "guide_reference_only",
+      "price_status": "Research reference only; use current linked operator plans for comparisons."
+    },
+    {
+      "id": "alight-blacksburg",
+      "name": "Alight Blacksburg",
+      "address": "UCB / Patrick Henry Corridor",
+      "zone": "University City and Toms Creek",
+      "layouts": "Student Suites",
+      "catalog_property_id": "alight",
+      "guide_price_summary": "Starts at $829 / bed",
+      "source_urls": [
+        "https://findmyplace.co/blog/where-virginia-tech-students-live-off-campus/"
+      ],
+      "evidence_status": "guide_reference_only",
+      "price_status": "Research reference only; use current linked operator plans for comparisons."
+    },
+    {
+      "id": "terrace-view-apartments",
+      "name": "Terrace View Apartments",
+      "address": "413 Hunt Club Rd",
+      "zone": "University City and Toms Creek",
+      "layouts": "36 floor plans: 1BR–4BR Apts & Townhomes (renovated & unrenovated)",
+      "catalog_property_id": "terrace",
+      "guide_price_summary": "627– 810+ base ( 900– 1,000/bed with utilities in townhomes)",
+      "source_urls": [
+        "https://www.rentable.co/blacksburg-va/collegiate-suites-hunters-ridge",
+        "https://findmyplace.co/blog/where-virginia-tech-students-live-off-campus/",
+        "https://terraceviewblacksburg.com/reviews"
+      ],
+      "evidence_status": "guide_reference_only",
+      "price_status": "Research reference only; use current linked operator plans for comparisons."
+    },
+    {
+      "id": "chasewood-downs",
+      "name": "Chasewood Downs",
+      "address": "1304 University City Blvd",
+      "zone": "University City and Toms Creek",
+      "layouts": "Studio (268 sq ft), 1BR (494–566 sq ft), 2BR/1BA (787–850 sq ft), 3BR/1BA (951 sq ft)",
+      "catalog_property_id": null,
+      "guide_price_summary": "Studio: 830– 865; 1BR: 1,050– 1,180; 2BR: 1,290– 1,450; 3BR: 1,700– 1,725 (whole unit)",
+      "source_urls": [
+        "https://chasewood.prospectportal.com/blacksburg/chasewood-apartments/conventional/",
+        "https://findmyplace.co/blog/where-virginia-tech-students-live-off-campus/",
+        "https://cmgleasing.com/property/chasewood-downs/?loc&type&beds=2&baths&pets",
+        "https://www.reddit.com/r/VirginiaTech/comments/1wydbql/best_and_worst_places_to_lease_an_apartment_near/"
+      ],
+      "evidence_status": "guide_reference_only",
+      "price_status": "Research reference only; use current linked operator plans for comparisons."
+    },
+    {
+      "id": "shawnee-apartments",
+      "name": "Shawnee Apartments",
+      "address": "1222 University City Blvd",
+      "zone": "University City and Toms Creek",
+      "layouts": "1BR (640 sq ft), 2BR, & 3BR Apts",
+      "catalog_property_id": null,
+      "guide_price_summary": "Starts at $1,095 for 1BR whole unit",
+      "source_urls": [
+        "https://www.cmgleasing.com/office/shawnee/",
+        "https://findmyplace.co/blog/where-virginia-tech-students-live-off-campus/"
+      ],
+      "evidence_status": "guide_reference_only",
+      "price_status": "Research reference only; use current linked operator plans for comparisons."
+    },
+    {
+      "id": "stonegate-carlton-scott",
+      "name": "Stonegate & Carlton Scott",
+      "address": "500 Broce Dr",
+      "zone": "University City and Toms Creek",
+      "layouts": "2BR & 3BR Apts (plus 400 Broce Dr 4BRs)",
+      "catalog_property_id": null,
+      "guide_price_summary": "3BR from $595/person; 2BR from $770 (400 Broce 4BR: 3,980– 4,260/unit)",
+      "source_urls": [
+        "https://findmyplace.co/blog/where-virginia-tech-students-live-off-campus/"
+      ],
+      "evidence_status": "guide_reference_only",
+      "price_status": "Research reference only; use current linked operator plans for comparisons."
+    },
+    {
+      "id": "foxridge-apartment-homes",
+      "name": "Foxridge Apartment Homes",
+      "address": "750 Hethwood Blvd",
+      "zone": "Prices Fork and Hethwood",
+      "layouts": "1BR to 5BR Garden Apts + Optional Dens (725–993+ sq ft)",
+      "catalog_property_id": "foxridge",
+      "guide_price_summary": "1BR Burruss: 1,394– 2,118; 1BR+Den Cascade: 1,479– 2,204; 2BR Grove: 1,490– 2,471; Shared 3BR–5BR: ~ 475– 700/person",
+      "source_urls": [
+        "https://www.apartments.com/off-campus-housing/va/blacksburg/virginia-polytechnic-institute-and-state-university/",
+        "https://www.homes.com/montgomery-county-va/apartments-for-rent/",
+        "https://www.reddit.com/r/VirginiaTech/comments/1ifmylh/foxridge_alternatives/"
+      ],
+      "evidence_status": "guide_reference_only",
+      "price_status": "Research reference only; use current linked operator plans for comparisons."
+    },
+    {
+      "id": "brexx-at-blacksburg-the-retreat",
+      "name": "Brexx at Blacksburg / The Retreat",
+      "address": "1800 Redd Rd",
+      "zone": "Prices Fork and Hethwood",
+      "layouts": "2BR to 5BR Cottage-Style Homes (203 beds across 19+ floorplans)",
+      "catalog_property_id": null,
+      "guide_price_summary": "1,049– 1,429 / bed (11-month lease)",
+      "source_urls": [
+        "https://findmyplace.co/blog/where-virginia-tech-students-live-off-campus/"
+      ],
+      "evidence_status": "guide_reference_only",
+      "price_status": "Research reference only; use current linked operator plans for comparisons."
+    },
+    {
+      "id": "smith-s-landing",
+      "name": "Smith's Landing",
+      "address": "870–880 Plantation Rd",
+      "zone": "Prices Fork and Hethwood",
+      "layouts": "1x1 River/Valley (680–704 sq ft), 2x2 Mountain (1,063 sq ft), 3x3 (1,235 sq ft)",
+      "catalog_property_id": null,
+      "guide_price_summary": "1BR: 1,470– 1,556; 2BR: 1,845– 1,916 ($900/bed in sublets); 3BR: 2,450– 2,551",
+      "source_urls": [
+        "https://www.apartmentlist.com/va/blacksburg",
+        "https://offcampus.vt.edu/housing/property/newly-renovated-downtown-home/ocpgdk0d1y",
+        "https://offcampus.vt.edu/housing/property/smiths-landing-apartments/eqb2jwp"
+      ],
+      "evidence_status": "guide_reference_only",
+      "price_status": "Research reference only; use current linked operator plans for comparisons."
+    },
+    {
+      "id": "pack-place-apartments",
+      "name": "Pack Place Apartments",
+      "address": "520 Prices Fork Rd",
+      "zone": "Prices Fork and Hethwood",
+      "layouts": "2BR & 3BR Apts",
+      "catalog_property_id": null,
+      "guide_price_summary": "2BR: $1,495+; 3BR: $2,195 + fees",
+      "source_urls": [
+        "https://www.apartments.com/off-campus-housing/va/blacksburg/virginia-polytechnic-institute-and-state-university/"
+      ],
+      "evidence_status": "guide_reference_only",
+      "price_status": "Research reference only; use current linked operator plans for comparisons."
+    },
+    {
+      "id": "the-farm",
+      "name": "The Farm",
+      "address": "900 Glade Rd",
+      "zone": "Prices Fork and Hethwood",
+      "layouts": "2BR & 3BR Rentals",
+      "catalog_property_id": null,
+      "guide_price_summary": "2BR: $2,139; 3BR: $2,700 + fees (12-mo lease)",
+      "source_urls": [
+        "https://www.apartments.com/off-campus-housing/va/blacksburg/virginia-polytechnic-institute-and-state-university/"
+      ],
+      "evidence_status": "guide_reference_only",
+      "price_status": "Research reference only; use current linked operator plans for comparisons."
+    },
+    {
+      "id": "maple-ridge-townhomes",
+      "name": "Maple Ridge Townhomes",
+      "address": "344 Red Maple Dr",
+      "zone": "North Main and Givens",
+      "layouts": "2BR (770–1,066 sq ft), 3BR (1,050–1,575 sq ft), 4BR (1,508–1,848 sq ft); 314 units",
+      "catalog_property_id": null,
+      "guide_price_summary": "2BR: 995– 1,050/bed; 3BR: 985– 1,085/bed; 4BR: 949– 1,005/bed + fees",
+      "source_urls": [
+        "https://www.rentable.co/blacksburg-va/collegiate-suites-hunters-ridge",
+        "https://findmyplace.co/blog/where-virginia-tech-students-live-off-campus/",
+        "https://www.apartmenthomeliving.com/apartment-finder/Maple-Ridge-Townhomes-Blacksburg-VA-24060-1874328",
+        "https://amberstudent.com/places/maple-ridge-townhomes-blacksburg-2403019527205"
+      ],
+      "evidence_status": "guide_reference_only",
+      "price_status": "Research reference only; use current linked operator plans for comparisons."
+    },
+    {
+      "id": "the-summit-at-uptown",
+      "name": "The Summit at Uptown",
+      "address": "1820 N Main St",
+      "zone": "North Main and Givens",
+      "layouts": "3BR & 4BR Modern Townhomes",
+      "catalog_property_id": null,
+      "guide_price_summary": "Starts at 941– 995 / bed",
+      "source_urls": [
+        "https://findmyplace.co/blog/where-virginia-tech-students-live-off-campus/",
+        "https://www.homes.com/montgomery-county-va/homes-for-rent/"
+      ],
+      "evidence_status": "guide_reference_only",
+      "price_status": "Research reference only; use current linked operator plans for comparisons."
+    },
+    {
+      "id": "1711-apartments",
+      "name": "1711 Apartments",
+      "address": "1711 Whipple Dr",
+      "zone": "North Main and Givens",
+      "layouts": "4BR Apartments",
+      "catalog_property_id": null,
+      "guide_price_summary": "485– 625 / bed + fees",
+      "source_urls": [
+        "https://www.apartments.com/off-campus-housing/va/blacksburg/virginia-polytechnic-institute-and-state-university/",
+        "https://findmyplace.co/blog/where-virginia-tech-students-live-off-campus/"
+      ],
+      "evidence_status": "guide_reference_only",
+      "price_status": "Research reference only; use current linked operator plans for comparisons."
+    },
+    {
+      "id": "cedar-pointe-apartments",
+      "name": "Cedar Pointe Apartments",
+      "address": "200 Cedar Pointe Dr",
+      "zone": "North Main and Givens",
+      "layouts": "Studios S1–S4 (527+ sq ft) & 2BR B1–B3 (821–848 sq ft)",
+      "catalog_property_id": null,
+      "guide_price_summary": "Studios: 1,520– 1,620; 2BR: 2,000– 2,100 (whole unit)",
+      "source_urls": [
+        "https://www.apartments.com/off-campus-housing/va/blacksburg/virginia-polytechnic-institute-and-state-university/",
+        "https://www.cmgleasing.com/property/cedarpointe/"
+      ],
+      "evidence_status": "guide_reference_only",
+      "price_status": "Research reference only; use current linked operator plans for comparisons."
+    },
+    {
+      "id": "cedarfield-apartments-townhomes",
+      "name": "Cedarfield Apartments & Townhomes",
+      "address": "Old Cedarfield Dr",
+      "zone": "North Main and Givens",
+      "layouts": "1BR & 2BR Apts (Phases I–III); 2BR & 3BR Townhomes",
+      "catalog_property_id": null,
+      "guide_price_summary": "1BR: 1,280– 1,350; 2BR Apt: 1,420– 1,570; 2BR TH: $1,820; 3BR TH: $2,035",
+      "source_urls": [
+        "https://www.cmgleasing.com/property/cedarfield-apts-townhomes/",
+        "https://www.reddit.com/r/VirginiaTech/comments/16y2cto/offcampus_housing_info/"
+      ],
+      "evidence_status": "guide_reference_only",
+      "price_status": "Research reference only; use current linked operator plans for comparisons."
+    },
+    {
+      "id": "additional-north-main-rentals",
+      "name": "Additional North Main Rentals",
+      "address": "300 McDonald St; 203–209 Tee St; 709–1227 Giles Rd; 200 Fairfax (The Odyssey)",
+      "zone": "North Main and Givens",
+      "layouts": "1BR to 5BR Apts & Houses",
+      "catalog_property_id": null,
+      "guide_price_summary": "Tee St: 1,130(1BR)– 1,725 (2BR); McDonald: $1,660 (2BR) / $675+/bed (3BR); Odyssey: $1,640+ (2BR); Giles: $1,450 (2BR) to $3,750 (5BR)",
+      "source_urls": [
+        "https://www.apartments.com/off-campus-housing/va/blacksburg/virginia-polytechnic-institute-and-state-university/"
+      ],
+      "evidence_status": "guide_reference_only",
+      "price_status": "Research reference only; use current linked operator plans for comparisons."
+    },
+    {
+      "id": "windsor-hills-apartments",
+      "name": "Windsor Hills Apartments",
+      "address": "200 Hampton Ct (East / Harding Ave)",
+      "zone": "Harding Avenue and South Main",
+      "layouts": "Studio Ripley (389–536 sq ft), 1BR Canterbury/Dover (836–936 sq ft), 2BR Lincoln/Rochester (1,046–1,146 sq ft), 3BR Lynford/Warwick (1,214–1,314 sq ft)",
+      "catalog_property_id": "windsor",
+      "guide_price_summary": "Studio: 1,292– 1,938; 1BR: 1,234– 1,875; 2BR: 1,403– 2,321; 3BR: 1,452– 2,961",
+      "source_urls": [
+        "https://www.apartments.com/off-campus-housing/va/blacksburg/virginia-polytechnic-institute-and-state-university/",
+        "https://www.point2homes.com/US/Apartment-Buildings/VA/Blacksburg/Windsor-Hills.html",
+        "https://www.apartmentlist.com/va/blacksburg/windsor-hills-apartments--1"
+      ],
+      "evidence_status": "guide_reference_only",
+      "price_status": "Research reference only; use current linked operator plans for comparisons."
+    },
+    {
+      "id": "the-mill-at-blacksburg",
+      "name": "The Mill at Blacksburg",
+      "address": "1811 Grayland St (South Main)",
+      "zone": "Harding Avenue and South Main",
+      "layouts": "1BR/1BA, 2BR/1BA, & 3BR/1BA Apts",
+      "catalog_property_id": "mill",
+      "guide_price_summary": "1BR: $1,060; 2BR: 1,270( 635/bed); 3BR: 1,650( 550/bed) base rent",
+      "source_urls": [
+        "https://findmyplace.co/blog/where-virginia-tech-students-live-off-campus/",
+        "https://www.homes.com/montgomery-county-va/homes-for-rent/"
+      ],
+      "evidence_status": "guide_reference_only",
+      "price_status": "Research reference only; use current linked operator plans for comparisons."
+    },
+    {
+      "id": "the-vue-apartments",
+      "name": "The Vue Apartments",
+      "address": "1906 Research Center Dr (CRC South)",
+      "zone": "Harding Avenue and South Main",
+      "layouts": "1x1 A1/A2 (593–675 sq ft), 2x2 B1–B4 (933–1,067 sq ft), 3x3 C1–C3 (1,118–1,216 sq ft); 206 units",
+      "catalog_property_id": null,
+      "guide_price_summary": "1BR: 1,660– 1,710; 2BR: 2,100– 2,300 ($1,041.50/bed in sublets); 3BR: 2,670– 2,745",
+      "source_urls": [
+        "https://offcampus.vt.edu/housing/property/vue-apartments/esvspwq",
+        "https://www.craigslist.org/view/d/blacksburg-master-bedroomattached/kz5WC2JQLaSR8RyMKN8WLS"
+      ],
+      "evidence_status": "guide_reference_only",
+      "price_status": "Research reference only; use current linked operator plans for comparisons."
+    },
+    {
+      "id": "the-reserve-at-knollwood",
+      "name": "The Reserve at Knollwood",
+      "address": "2401 Pamela Way (South / 460)",
+      "zone": "Harding Avenue and South Main",
+      "layouts": "2x2 B1–B3 (End & Standard) & 3x3 C1–C2 (1,226 sq ft)",
+      "catalog_property_id": null,
+      "guide_price_summary": "2BR: 1,870– 1,900; 3BR: 2,440– 2,480",
+      "source_urls": [
+        "https://www.apartmentfinder.com/Virginia/Blacksburg-Apartments/Maple-Ridge-Townhomes-Apartments",
+        "https://www.cmgleasing.com/property/reserve-at-knollwood/?loc&type&beds=2&baths=1&pets=yes&more=1",
+        "https://dvm.vetmed.vt.edu/content/dam/dvm_vetmed_vt_edu/entering-students/Housing%20Ad.pdf"
+      ],
+      "evidence_status": "guide_reference_only",
+      "price_status": "Research reference only; use current linked operator plans for comparisons."
+    },
+    {
+      "id": "the-crossing-at-knollwood",
+      "name": "The Crossing at Knollwood",
+      "address": "2379 Research Center Dr",
+      "zone": "Harding Avenue and South Main",
+      "layouts": "1BR & 2BR Apartments",
+      "catalog_property_id": null,
+      "guide_price_summary": "1BR: 1,480– 1,490; 2BR: 1,755– 1,790",
+      "source_urls": [
+        "https://www.cmgleasing.com/property/crossing-at-knollwood/"
+      ],
+      "evidence_status": "guide_reference_only",
+      "price_status": "Research reference only; use current linked operator plans for comparisons."
+    },
+    {
+      "id": "knollwood-condominium",
+      "name": "Knollwood Condominium",
+      "address": "303 N Knollwood Dr ( & S Knollwood Dr)",
+      "zone": "Harding Avenue and South Main",
+      "layouts": "1BR (800 sq ft), 2BR, 2BR+Loft, 2BR+Sunroom, 3BR & 3BR Expanded",
+      "catalog_property_id": null,
+      "guide_price_summary": "1BR: 1,490– 1,500; 2BR: 1,820– 1,900; 3BR: 2,225– 2,285 (Private condo rooms ~$613/bed)",
+      "source_urls": [
+        "https://www.trulia.com/building/windsor-hills-apartments-200-hampton-ct-blacksburg-va-24060-1002191688",
+        "https://dvm.vetmed.vt.edu/content/dam/dvm_vetmed_vt_edu/entering-students/Housing%20Ad.pdf",
+        "https://www.cmgleasing.com/property/knollwood-condos/"
+      ],
+      "evidence_status": "guide_reference_only",
+      "price_status": "Research reference only; use current linked operator plans for comparisons."
+    },
+    {
+      "id": "knollwood-townhomes",
+      "name": "Knollwood Townhomes",
+      "address": "245–320 Sheliah Ct",
+      "zone": "Harding Avenue and South Main",
+      "layouts": "2BR & 3BR Townhomes (select units w/ full basement & garage)",
+      "catalog_property_id": null,
+      "guide_price_summary": "2BR/3BR Standard: 2,200– 2,275; With Basement & Garage: $2,500",
+      "source_urls": [
+        "https://www.cmgleasing.com/property/knollwood-townhomes/"
+      ],
+      "evidence_status": "guide_reference_only",
+      "price_status": "Research reference only; use current linked operator plans for comparisons."
+    },
+    {
+      "id": "highlands-at-huckleberry-ridge",
+      "name": "Highlands at Huckleberry Ridge",
+      "address": "535 Blackrock Dr (South Perimeter)",
+      "zone": "Harding Avenue and South Main",
+      "layouts": "Studio, 1BR, 2BR, & 3BR Luxury Apts",
+      "catalog_property_id": null,
+      "guide_price_summary": "Starts at $1,787+ plus fees",
+      "source_urls": [
+        "https://www.homes.com/montgomery-county-va/homes-for-rent/"
+      ],
+      "evidence_status": "guide_reference_only",
+      "price_status": "Research reference only; use current linked operator plans for comparisons."
+    },
+    {
+      "id": "legacy-on-main-the-orchards",
+      "name": "Legacy on Main & The Orchards",
+      "address": "100 Country Club Dr SE / Town Perimeter",
+      "zone": "Harding Avenue and South Main",
+      "layouts": "2BR & 3BR Apts (Legacy); Open-Plan Townhomes (Orchards)",
+      "catalog_property_id": null,
+      "guide_price_summary": "Legacy on Main: 2BR $1,070+, 3BR $1,230+ total monthly price",
+      "source_urls": [
+        "https://www.apartments.com/off-campus-housing/va/blacksburg/virginia-polytechnic-institute-and-state-university/"
+      ],
+      "evidence_status": "guide_reference_only",
+      "price_status": "Research reference only; use current linked operator plans for comparisons."
+    },
+    {
+      "id": "pheasant-run-townhomes",
+      "name": "Pheasant Run Townhomes",
+      "address": "202, 208, 216, 221, 229 Pheasant Run Dr; 303, 311, 329 Pheasant Run Ct",
+      "zone": "Private rentals and neighborhoods",
+      "layouts": "3BR & 4BR / 2–3BA Townhomes (1,400–1,500 sq ft)",
+      "catalog_property_id": null,
+      "guide_price_summary": "2,200– 2,520 / unit ( 550– 735 / bed in individual rooms)",
+      "source_urls": [
+        "https://offcampus.vt.edu/housing/property/pheasant-run/ocpdl5d91h",
+        "https://offcampus.vt.edu/housing/property/pheasant-run-townhomes/ocp33klp1d",
+        "https://www.rent.com/r/202-pheasant-run-dr-blacksburg-va-lv1634178115",
+        "https://www.apartmentlist.com/va/blacksburg"
+      ],
+      "evidence_status": "guide_reference_only",
+      "price_status": "Research reference only; use current linked operator plans for comparisons."
+    },
+    {
+      "id": "clover-valley-phase-i-cv2",
+      "name": "Clover Valley (Phase I & CV2)",
+      "address": "105, 136, 148, 175 Clover Valley Cir",
+      "zone": "Private rentals and neighborhoods",
+      "layouts": "4BR / 2.5BA Condos & Townhomes (1,400–1,480 sq ft)",
+      "catalog_property_id": null,
+      "guide_price_summary": "2,150– 2,600 / unit ( 915– 950 in select CV2 listings)",
+      "source_urls": [
+        "https://www.apartments.com/off-campus-housing/va/blacksburg/virginia-polytechnic-institute-and-state-university/",
+        "https://findmyplace.co/blog/where-virginia-tech-students-live-off-campus/",
+        "https://www.homes.com/montgomery-county-va/homes-for-rent/"
+      ],
+      "evidence_status": "guide_reference_only",
+      "price_status": "Research reference only; use current linked operator plans for comparisons."
+    },
+    {
+      "id": "university-terrace-progress-st",
+      "name": "University Terrace & Progress St",
+      "address": "1203J, 1204K, 1211C, 1213C/K University Ter; 1011, 1215 Progress St",
+      "zone": "Private rentals and neighborhoods",
+      "layouts": "4BR / 2BA Condos (935–1,146 sq ft)",
+      "catalog_property_id": null,
+      "guide_price_summary": "1,700– 2,600 / unit ( 495– 575 / bed)",
+      "source_urls": [
+        "https://www.rentable.co/blacksburg-va/collegiate-suites-hunters-ridge",
+        "https://www.townside.com/listings/detail/452be0eb-6d67-4885-ab1d-f549aa3911c0"
+      ],
+      "evidence_status": "guide_reference_only",
+      "price_status": "Research reference only; use current linked operator plans for comparisons."
+    },
+    {
+      "id": "seneca-drive-toms-creek-condos",
+      "name": "Seneca Drive & Toms Creek Condos",
+      "address": "1440G Seneca Dr; 1407 Toms Creek Rd",
+      "zone": "Private rentals and neighborhoods",
+      "layouts": "4BR / 2BA Condos & Apts",
+      "catalog_property_id": null,
+      "guide_price_summary": "$1,750 (Seneca Dr) to $1,875 (1407 Toms Creek) / unit",
+      "source_urls": [
+        "https://www.rentable.co/blacksburg-va/collegiate-suites-hunters-ridge"
+      ],
+      "evidence_status": "guide_reference_only",
+      "price_status": "Research reference only; use current linked operator plans for comparisons."
+    },
+    {
+      "id": "hearthstone-creekside-hilltop",
+      "name": "Hearthstone / Creekside / Hilltop",
+      "address": "115, 116, 117–120 Hearthstone Dr",
+      "zone": "Private rentals and neighborhoods",
+      "layouts": "1BR & 2BR Apartments/Townhomes",
+      "catalog_property_id": null,
+      "guide_price_summary": "Creekside 1BR: $1,450; Hearthstone 2BR: $1,300; Hilltop 2BR: $1,950",
+      "source_urls": [
+        "https://www.apartments.com/off-campus-housing/va/blacksburg/virginia-polytechnic-institute-and-state-university/"
+      ],
+      "evidence_status": "guide_reference_only",
+      "price_status": "Research reference only; use current linked operator plans for comparisons."
+    },
+    {
+      "id": "oak-manor-camelot-court",
+      "name": "Oak Manor & Camelot Court",
+      "address": "Oak Manor THs; 113 Camelot Ct; 613 Cambridge Rd; 1700 Aden Ln",
+      "zone": "Private rentals and neighborhoods",
+      "layouts": "3BR & 4BR / 2.5BA Townhomes",
+      "catalog_property_id": null,
+      "guide_price_summary": "Cambridge 3BR: $1,745; Camelot 3BR: $2,230; Aden Ln 3BR: $2,410; Oak Manor: $550/2 rooms",
+      "source_urls": [
+        "https://www.apartmentlist.com/va/blacksburg"
+      ],
+      "evidence_status": "guide_reference_only",
+      "price_status": "Research reference only; use current linked operator plans for comparisons."
+    },
+    {
+      "id": "zillow-detached-single-family-executive-homes",
+      "name": "Zillow Detached Single-Family & Executive Homes",
+      "address": "615 Progress St NE; 701 Heartwood Xing; 2645 Blossom Trl E; 419 Willard Dr; 228 Mountain Breeze; 408 Mt Tabor; 904 Giles; 730 Hightop",
+      "zone": "Private rentals and neighborhoods",
+      "layouts": "3BR to 5BR Detached Houses (1,450–3,683 sq ft)",
+      "catalog_property_id": null,
+      "guide_price_summary": "3BR: 1,650– 2,700 (avg $2,240); 4BR: 1,800– 5,250 (avg $2,389); 5BR: 2,350– 5,600 (avg $2,816)",
+      "source_urls": [
+        "https://www.apartmentlist.com/va/blacksburg",
+        "https://www.apartmenthomeliving.com/apartment-finder/Maple-Ridge-Townhomes-Blacksburg-VA-24060-1874328",
+        "https://swansonrealestateva.com/blog/the-blacksburg-rental-rule-that-has-nothing-to-do-with-bedrooms"
+      ],
+      "evidence_status": "guide_reference_only",
+      "price_status": "Research reference only; use current linked operator plans for comparisons."
+    }
+  ],
+  "excluded": "Reputation rankings, demographic recommendations, legal interpretations and fixed transit times. Guide prices remain unverified research references."
+}

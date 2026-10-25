@@ -7,7 +7,7 @@ from roomwise.config import Settings
 def test_catalog_and_removed_routes(client):
     data=client.get('/api/v1/candidates').json()['candidates']
     # One offer per live floor plan across the six properties.
-    assert len(data)==68 and len({c['property_id'] for c in data})==6
+    assert len(data)==109 and len({c['property_id'] for c in data})==47
     assert next(c for c in data if c['id']=='alight-east')['offer']['price']['amount']=='835'
     for path in ('/repair','/rehearsal','/investigate','/api/inspect','/api/housing/properties'):
         assert client.get(path).status_code==404
@@ -124,7 +124,8 @@ def test_browse_without_schedule_stays_incomplete(client,request_body):
     assert response.status_code==200
     for row in response.json()['candidate_results']:
         assert row['total_commitments']==0
-        assert 'Add your classes to check commutes.' in row['notes']
+        assert not row['commute_estimates']
+        assert not any('Add your classes' in note for note in row['notes'])
 
 
 def test_frontend_assets_and_server_owned_snapshot(client,request_body):

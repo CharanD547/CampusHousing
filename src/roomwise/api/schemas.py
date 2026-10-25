@@ -176,7 +176,8 @@ class Candidate(Model):
     property_id: str
     property_name: str
     address: str | None
-    coordinates: dict[str, float]
+    coordinates: dict[str, float] | None
+    guide_reference: dict | None = None
     coordinate_basis: str
     data_status: str
     sources: list[dict]
@@ -282,3 +283,4 @@ class AssistantResponse(Model):
     model_id: str | None
     result: AssistantAnswer | None = None
     error: dict | None = None
+    fallback: dict | None = None

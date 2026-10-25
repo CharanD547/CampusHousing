@@ -48,7 +48,7 @@ def create_server(model_path,adapter_path=None,alias='roomwise-gemma-1b'):
             length=inputs['input_ids'].shape[-1]
             if length>8192:raise HTTPException(413,'Context exceeds the local token limit.')
             with torch.inference_mode():
-                generated=model.generate(**inputs,max_new_tokens=body.max_tokens,max_time=20,do_sample=False,
+                generated=model.generate(**inputs,max_new_tokens=body.max_tokens,max_time=45,do_sample=False,
                     pad_token_id=tokenizer.eos_token_id)
             answer=tokenizer.decode(generated[0][length:],skip_special_tokens=True)
             return {'model':alias,'choices':[{'message':{'role':'assistant','content':answer}}],

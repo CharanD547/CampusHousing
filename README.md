@@ -18,18 +18,18 @@ Open http://127.0.0.1:8001/ for Roomwise, http://127.0.0.1:8001/docs for API doc
 ## Connected behavior
 
 - The supplied `CampusHousing-main/src/` design is served at `/`. Rebuild after changing the shell or CSS. JavaScript and the illustrative hero asset are served under `/assets/`. No Node dependencies or frontend build installation are required.
-- The browser loads 18 offer/category records across six properties and 350 official VT GIS building locations. Fixture properties and fixture commute calculations were removed. Building points are not verified entrances or classroom inventories.
+- Explore loads 68 operator-checked floor plans across six property cards, with plan prices grouped on the right. The Housing guide adds 47 community/neighborhood references from the supplied DOCX, kept separate from comparable offers. There are 350 official VT GIS building locations; points are not verified entrances or classroom inventories.
 - Preferences, dates, modes and classes drive server comparisons. Whole-unit splits are explicit scenarios; installments remain distinct from calendar-month rent. Empty schedules permit browsing but cannot establish commute fit.
 - Shortlists, notes, questions, example-schedule provenance, checklist progress and saved brief references sync to SQLite. Browser storage provides a draft cache; sync failures and revision conflicts are visible. A conflict can be resolved by first backing up the local draft and loading the server copy.
 - DormToDoor requests server-generated checklist items. Regeneration preserves status and notes for stable items. User items remain user-owned and do not become reviewed evidence.
 - Briefs freeze the server comparison, original catalog/building records, selected offers, questions and checklist. Refresh restores them from the backend. Later catalog edits do not alter stored snapshots.
-- Property details show original evidence links and additional fee/range research, excluded from comparison totals until reconciled to an exact offer.
+- Property details distinguish current operator asking prices, research-derived fee assumptions and additional observations. Some research fees are counted provisionally and labeled. A criteria match does not verify the full move-in cost, lease dates or availability.
 
 ## Current limits
 
-The [assistant](http://127.0.0.1:8001/#assistant) now works without credentials as a clearly labeled local research helper. It uses the saved comparison and authored rules; it is not a Gemma/Gemini model run. Hosted/custom-model transports and a separate Gemma LoRA preparation/training/serving/evaluation workflow are available. See [assistant and training instructions](docs/AI_AND_TRAINING.md). No model has been trained or loaded yet.
+The [assistant](http://127.0.0.1:8001/#assistant) supports a labeled local helper and the existing locally trained Gemma 4 E4B v2 adapter. The current main app connects to the model on loopback port 8002. Compact evidence, citation and monetary/billing-label validation reject some unsupported outputs and explicitly fall back to the helper. Live review found both useful answers and a billing-period error; this is not a production accuracy claim. See [assistant instructions](docs/AI_AND_TRAINING.md) and [current review](docs/HOUSING_UPDATE_REVIEW.md).
 
-Google Maps now renders live property/building markers, and property details offer on-demand nearby essentials through server-side Google Places. A schedule-aware Google Routes adapter supports walk/bike/drive/transit requests, explicit per-class buffers and single-date or representative-week scope. A separate Routes credential is now validated and enabled; live walking/transit journeys were verified in Chrome. Request budgets can still leave partial coverage. Genuine Gemma inference also remains unconfigured. Missing results stay unavailable. The imported BT feed covers October 1–31, 2026; it is not a complete classroom routing engine or a future service guarantee. The Google Map and its coordinate fallback show approximate destinations; no travel-time shading is invented. Google provider content remains transient and is excluded from saved briefs and training. Asking figures are dated evidence, not guaranteed availability or complete costs.
+Google Maps renders live property/building markers. Property details search nearby restaurants, groceries, gas stations, cafes, pharmacies and libraries with radius controls, straight-line distances, numbered markers and directions links. Schedule-aware Google Routes supports class journeys with the bundled BT timetable as a limited fallback. Request budgets can leave partial coverage. The imported BT feed covers October 1–31, 2026, direct bus journeys and approximate walks; it does not guarantee transfers, future service or live conditions. Google provider content stays transient and is excluded from saved briefs and training. See the [Maps plan](docs/MAPS_PLAN.md).
 
 The isolated review database contains 720 distinct reviews, including 67 VT records. No public review text or model ingestion is enabled until reuse scope and exact property matching are established. Five additional housing observations and tentative review-subject mappings are stored separately from authoritative prices.
 
@@ -52,11 +52,13 @@ Default local storage under ignored `var/`:
 
 ## Verification and maintenance
 
+For an existing database after downloading a catalog update, back up `var/`, preview `tools/backend/sync_catalog.py`, then run it with `--apply`. Startup intentionally does not overwrite manually managed catalog rows. The sync archives replaced catalog/source records and never rewrites frozen briefs. See the current review for the backup and commands used.
+
 ```powershell
 .\.venv\Scripts\python.exe -m pytest -q
 node --test tests/frontend_adapter.test.cjs
 .\.venv\Scripts\python.exe tools/backend/export_contracts.py
-.\.venv\Scripts\python.exe tools/backend/apply_price_review.py --data-dir var
+.\.venv\Scripts\python.exe tools/backend/sync_catalog.py
 .\.venv\Scripts\python.exe tools/backend/collect_vt_public_data.py
 .\.venv\Scripts\python.exe tools/backend/collect_offcampusreview.py
 .\.venv\Scripts\python.exe tools/backend/supplement_offcampusreview.py

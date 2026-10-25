@@ -8,7 +8,8 @@ function viewAssistant() {
     <div class="two-col"><section class="panel stack-sm"><h2>Your conversation</h2>
       <div class="small" role="status">${enabled ? `Configured model: ${esc(configured.model_id)}. A successful answer will identify its model and sources.` : 'Local research helper · no AI model runs. Ask about your comparison, missing costs, installment billing or next steps. Gemma or Gemini can be connected later.'}</div>
       <div role="log" aria-label="Assistant conversation" aria-live="polite">${CHAT.messages.map(m=>`<article class="panel stack-sm" style="margin:14px 0"><b>${m.role==='user' ? 'You':'Roomwise'}</b><p style="white-space:pre-wrap">${esc(m.content)}</p>
-        ${m.role==='assistant' ? `<p class="tiny">${m.model ? 'Model: '+esc(m.model):'Local rules · no model run'} · input revision ${m.revision}${m.revision!==S.revision ? ' · inputs changed; answer is out of date':''}</p>`:''}
+        ${m.role==='assistant' ? `<p class="tiny">${m.model ? 'Model: '+esc(m.model):m.fallback?'Local rules · Gemma attempt did not pass validation':'Local rules · no model run'} · input revision ${m.revision}${m.revision!==S.revision ? ' · inputs changed; answer is out of date':''}</p>`:''}
+        ${m.fallback?`<p class="small">${esc(m.fallback.message)}</p>`:''}
         ${(m.evidence_ids || []).map(id=>{const e=CANDIDATES.flatMap(c=>c.evidence).find(e=>e.id===id);return e?.url ? `<a class="btn btn-sm" href="${esc(e.url)}" target="_blank" rel="noopener noreferrer">${esc(e.source_name)}</a>`:'';}).join('')}
         ${(m.limitations || []).length ? `<p class="small">Limits: ${m.limitations.map(esc).join(' ')}</p>`:''}</article>`).join('')}
         ${CHAT.pending ? '<p role="status">Checking your saved comparison and available evidence…</p>':''}
@@ -40,7 +41,7 @@ document.addEventListener('submit',async event=>{
       request_id:requestID(),question,candidate_ids:S.shortlist.slice(0,3),history})});
     if(response.status!=='complete') {CHAT.error=response.error?.message || 'The configured model is unavailable.';return;}
     CHAT.messages.push({role:'assistant',content:response.result.answer,model:response.model_id,provider:response.provider,revision,
-      stale:S.revision!==revision,evidence_ids:response.result.evidence_ids,limitations:response.result.limitations});
+      stale:S.revision!==revision,evidence_ids:response.result.evidence_ids,limitations:response.result.limitations,fallback:response.fallback});
   } catch(error) {CHAT.error=error.message;}
   finally {CHAT.pending=false;render();}
 });

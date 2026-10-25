@@ -14,7 +14,7 @@ def answer_local(request, comparison, ids):
     if re.search(r'\b(safe|safety|crime|demographic|reviews?|resident experiences)\b',question):
         answer='I cannot establish neighborhood safety or current property conditions from this evidence. The collected resident reviews remain research-only and are not used in these answers.'
         kind='insufficient_evidence'
-    elif re.search(r'\b(installments?|calendar|billing)\b',question):
+    elif re.search(r'\b(installments?|calendar|billing)\b',question) and not re.search(r'\b(compar\w*|shortlist\w*|options?|differences?)\b',question):
         answer='An installment is a scheduled payment toward a lease term. It is not automatically a calendar-month total. Confirm the payment count, exact term and all required charges before comparing it with a monthly budget.'
         limitations.append('The billing explanation is general; a signed offer and its payment schedule determine what is owed.')
     elif re.search(r'\b(commut\w*|rout\w*|bus|transit|walk\w*|cycling|drive|classes|schedule)\b',question):
@@ -33,10 +33,12 @@ def answer_local(request, comparison, ids):
             price=candidate.get('offer',{}).get('price',{})
             basis={'per_person':'per person','whole_unit':'for the whole unit','unknown':'with unconfirmed billing basis'}.get(price.get('basis'),'with unconfirmed billing basis')
             period={'installment':'per installment','calendar_month':'per calendar month','other':'with unconfirmed frequency'}.get(price.get('frequency'),'with unconfirmed frequency')
-            amount=f"${price['amount']} {basis} {period}" if price.get('amount') is not None else 'No exact reviewed asking price'
+            amount=f"${price['amount']} {basis} {period}" if price.get('amount') is not None else 'No exact reviewed asking price; guide reference only' if candidate.get('guide_reference') else 'No exact reviewed asking price'
+            subtotal=row.get('known_recurring_subtotal')
+            subtotal_line=f"\nKnown recurring subtotal: ${subtotal} per person {period}; usage-based costs and unconfirmed charges may be extra." if subtotal is not None else ''
             questions=row['hard_conflicts'][:2]+row['unknown_costs'][:3]
             lines.append(candidate.get('property_name',row['candidate_id'])+' — '+candidate.get('offer',{}).get('layout','')+
-                         '\n'+amount+'.\nStatus: '+row['fit_state'].replace('_',' ')+'.\n'+ '\n'.join('• '+x for x in questions))
+                         '\n'+amount+'.'+subtotal_line+'\nStatus: '+row['fit_state'].replace('_',' ')+'.\n'+ '\n'.join('• '+x for x in questions))
             citations.extend(row['evidence_ids']);used.append(row['candidate_id'])
         answer='\n\n'.join(lines)
         limitations.append('Dated asking prices are not guaranteed available offers or complete costs. Only a few unresolved items are shown here; the comparison contains the full list.')

@@ -120,6 +120,12 @@ def test_required_fee_with_no_amount_and_stale_prices_still_block():
     assert stale['stale'] and stale['checks']['budget'] == 'unknown' and stale['status'] == 'review'
 
 
+def test_new_fee_source_cannot_refresh_old_rent():
+    old=dict(id='s',checked_at='2026-10-01',review_status='reviewed')
+    result=evaluate(offer(),PREFS,old,today=TODAY,sources={'s':old,'fees':REVIEWED})
+    assert result['stale'] and result['status']=='review'
+
+
 def test_advertised_range_is_compared_at_its_starting_price():
     rng = dict(minimum='1447', maximum='2599', basis='whole_unit', period='calendar_month', source_id='r')
     result = evaluate(offer(amount=None, basis='unknown', period='unknown', advertised_range=rng), PREFS, REVIEWED, today=TODAY,

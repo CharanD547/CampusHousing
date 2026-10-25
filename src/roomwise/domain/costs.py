@@ -143,9 +143,9 @@ def evaluate(offer, preferences, source, today=None, sources=None):
     terms = effective_terms(offer)
     amount, basis = terms['amount'], terms['basis']
     priced = {**offer, 'basis': basis, 'period': terms['period']}
-    # Freshness is the most recent check of any source for this property, including the research audit.
-    checked = [s.get('checked_at') for s in sources.values() if s.get('checked_at')] or [source.get('checked_at')]
-    latest = max((c for c in checked if c), default=None)
+    # A new fee page cannot refresh an old rent quote.
+    price_source = sources.get(offer.get('advertised_range', {}).get('source_id'), source) if terms['from_range'] else source
+    latest = price_source.get('reviewed_at') or price_source.get('checked_at')
     stale = not latest or (today - date.fromisoformat(latest[:10])).days > 7
     if stale: unknown.append('Price sources are more than seven days old; refresh and review them.')
     if source.get('review_status') not in ('reviewed', 'live_observation', 'research_observation'): unknown.append('Source changed or awaits review.')

@@ -197,6 +197,16 @@
               "default": "groceries",
               "title": "Category"
             }
+          },
+          {
+            "name": "radius",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 2500,
+              "title": "Radius"
+            }
           }
         ],
         "responses": {
@@ -215,6 +225,22 @@
                 "schema": {
                   "$ref": "#/components/schemas/HTTPValidationError"
                 }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/housing-guide": {
+      "get": {
+        "summary": "Housing Guide",
+        "operationId": "housing_guide_api_v1_housing_guide_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
               }
             }
           }
@@ -1100,6 +1126,18 @@
               }
             ],
             "title": "Error"
+          },
+          "fallback": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Fallback"
           }
         },
         "additionalProperties": false,
@@ -1211,11 +1249,30 @@
             "title": "Address"
           },
           "coordinates": {
-            "additionalProperties": {
-              "type": "number"
-            },
-            "type": "object",
+            "anyOf": [
+              {
+                "additionalProperties": {
+                  "type": "number"
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Coordinates"
+          },
+          "guide_reference": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Guide Reference"
           },
           "coordinate_basis": {
             "type": "string",

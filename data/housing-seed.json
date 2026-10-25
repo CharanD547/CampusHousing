@@ -14,14 +14,14 @@
           "id": "foxridge-plans",
           "url": "https://www.foxridgeliving.com/floorplans/",
           "title": "Foxridge Plans",
-          "checked_at": "2026-10-24T23:10:00+00:00",
-          "excerpt": "Burruss Rent: From $1,379 1 bd | 1 ba 725 sq ft 2 Roommates: From $690",
-          "applicable_term": "2027–28",
-          "review_status": "live_observation",
+          "checked_at": "2026-10-25T01:03:07.155Z",
+          "excerpt": "Burruss Rent: From $1,379",
+          "applicable_term": "Lease dates unconfirmed",
+          "review_status": "reviewed",
           "refresh_policy": "robots_checked",
-          "sha256": null,
-          "reviewed_at": null,
-          "review_scope": "Operator page read on Oct 24, 2026 (rendered page in a browser). Asking prices only; no unit availability guarantee."
+          "sha256": "f55ec3cdebd0dd5dd40127a4cda0dd2e3c05dea31afde60932d7f197f24b9ec1",
+          "reviewed_at": "2026-10-25T01:03:07.155Z",
+          "review_scope": "Operator page read 2026-10-24 (rendered page in a browser). Asking prices only; no unit availability guarantee."
         },
         {
           "id": "foxridge-fees",
@@ -78,7 +78,7 @@
           "start": null,
           "end": null,
           "annual_total": null,
-          "term_label": "2027–28",
+          "term_label": "Lease dates unconfirmed",
           "advertised_occupants": null,
           "upfront": [],
           "unknowns": [
@@ -92,9 +92,9 @@
           "evidence": [
             {
               "field": "amount",
-              "quote": "Burruss Rent: From $1,379 1 bd | 1 ba 725 sq ft 2 Roommates: From $690",
+              "quote": "Burruss Rent: From $1,379",
               "source_id": "foxridge-plans",
-              "reviewed_at": "2026-10-24T23:10:00+00:00",
+              "reviewed_at": "2026-10-25T01:03:07.155Z",
               "method": "rendered page in a browser"
             }
           ],
@@ -271,7 +271,7 @@
           "start": null,
           "end": null,
           "annual_total": null,
-          "term_label": "2027–28",
+          "term_label": "Lease dates unconfirmed",
           "advertised_occupants": null,
           "upfront": [],
           "unknowns": [
@@ -285,9 +285,9 @@
           "evidence": [
             {
               "field": "amount",
-              "quote": "Burruss Rent: From $1,379 1 bd | 1 ba 725 sq ft 2 Roommates: From $690",
+              "quote": "Cascade Rent: From $1,444",
               "source_id": "foxridge-plans",
-              "reviewed_at": "2026-10-24T23:10:00+00:00",
+              "reviewed_at": "2026-10-25T01:03:07.155Z",
               "method": "rendered page in a browser"
             }
           ],
@@ -464,7 +464,7 @@
           "start": null,
           "end": null,
           "annual_total": null,
-          "term_label": "2027–28",
+          "term_label": "Lease dates unconfirmed",
           "advertised_occupants": null,
           "upfront": [],
           "unknowns": [
@@ -478,9 +478,9 @@
           "evidence": [
             {
               "field": "amount",
-              "quote": "Burruss Rent: From $1,379 1 bd | 1 ba 725 sq ft 2 Roommates: From $690",
+              "quote": "Grove Rent: From $1,544",
               "source_id": "foxridge-plans",
-              "reviewed_at": "2026-10-24T23:10:00+00:00",
+              "reviewed_at": "2026-10-25T01:03:07.155Z",
               "method": "rendered page in a browser"
             }
           ],
@@ -657,7 +657,7 @@
           "start": null,
           "end": null,
           "annual_total": null,
-          "term_label": "2027–28",
+          "term_label": "Lease dates unconfirmed",
           "advertised_occupants": null,
           "upfront": [],
           "unknowns": [
@@ -671,9 +671,9 @@
           "evidence": [
             {
               "field": "amount",
-              "quote": "Burruss Rent: From $1,379 1 bd | 1 ba 725 sq ft 2 Roommates: From $690",
+              "quote": "Preston Rent: From $1,679",
               "source_id": "foxridge-plans",
-              "reviewed_at": "2026-10-24T23:10:00+00:00",
+              "reviewed_at": "2026-10-25T01:03:07.155Z",
               "method": "rendered page in a browser"
             }
           ],
@@ -850,7 +850,7 @@
           "start": null,
           "end": null,
           "annual_total": null,
-          "term_label": "2027–28",
+          "term_label": "Lease dates unconfirmed",
           "advertised_occupants": null,
           "upfront": [],
           "unknowns": [
@@ -864,9 +864,9 @@
           "evidence": [
             {
               "field": "amount",
-              "quote": "Burruss Rent: From $1,379 1 bd | 1 ba 725 sq ft 2 Roommates: From $690",
+              "quote": "Willow Rent: From $1,899",
               "source_id": "foxridge-plans",
-              "reviewed_at": "2026-10-24T23:10:00+00:00",
+              "reviewed_at": "2026-10-25T01:03:07.155Z",
               "method": "rendered page in a browser"
             }
           ],
@@ -1043,7 +1043,7 @@
           "start": null,
           "end": null,
           "annual_total": null,
-          "term_label": "2027–28",
+          "term_label": "Lease dates unconfirmed",
           "advertised_occupants": null,
           "upfront": [],
           "unknowns": [
@@ -1057,9 +1057,9 @@
           "evidence": [
             {
               "field": "amount",
-              "quote": "Burruss Rent: From $1,379 1 bd | 1 ba 725 sq ft 2 Roommates: From $690",
+              "quote": "Leyland Rent: From $2,919",
               "source_id": "foxridge-plans",
-              "reviewed_at": "2026-10-24T23:10:00+00:00",
+              "reviewed_at": "2026-10-25T01:03:07.155Z",
               "method": "rendered page in a browser"
             }
           ],
@@ -1236,7 +1236,7 @@
           "start": null,
           "end": null,
           "annual_total": null,
-          "term_label": "2027–28",
+          "term_label": "Lease dates unconfirmed",
           "advertised_occupants": null,
           "upfront": [],
           "unknowns": [
@@ -1250,9 +1250,9 @@
           "evidence": [
             {
               "field": "amount",
-              "quote": "Burruss Rent: From $1,379 1 bd | 1 ba 725 sq ft 2 Roommates: From $690",
+              "quote": "Foxfield Rent: From $3,564",
               "source_id": "foxridge-plans",
-              "reviewed_at": "2026-10-24T23:10:00+00:00",
+              "reviewed_at": "2026-10-25T01:03:07.155Z",
               "method": "rendered page in a browser"
             }
           ],
@@ -1432,14 +1432,14 @@
           "id": "alight-plans",
           "url": "https://alight-blacksburg.com/rates-floorplans/",
           "title": "Alight Plans",
-          "checked_at": "2026-10-24T23:10:00+00:00",
-          "excerpt": "Total price: $10,175 - $10,415 | 2027-28 Academic Year Floorplan Choices: East $ 835 LIMITED SPACES West $ 855",
+          "checked_at": "2026-10-25T01:08:22.446687+00:00",
+          "excerpt": "East $ 835",
           "applicable_term": "2027–28",
           "review_status": "reviewed",
           "refresh_policy": "manual_only",
-          "sha256": "efbb25b9691b191d36fb95ec890acf47dcb458d2faf55a42d28aa527a28fdc6c",
-          "reviewed_at": "2026-10-24T23:10:00+00:00",
-          "review_scope": "Operator page read on Oct 24, 2026 (robots-aware fetch). Asking prices only; no unit availability guarantee."
+          "sha256": "8c0435af53fa24a85e2f92ad52afcb3caf9ced735131ecf2b84ecca9fa15608f",
+          "reviewed_at": "2026-10-25T01:08:22.446687+00:00",
+          "review_scope": "Operator page read 2026-10-24 (robots-aware fetch). Asking prices only; no unit availability guarantee."
         },
         {
           "id": "alight-faq",
@@ -1456,14 +1456,14 @@
           "id": "alight-onesheet",
           "url": "https://alight-blacksburg.com/one-sheet/",
           "title": "Alight one-sheet",
-          "checked_at": "2026-10-24T23:10:00+00:00",
+          "checked_at": "2026-10-25T01:08:22.446687+00:00",
           "excerpt": "RATES: 4 Bedroom , 2 Bath East $ 835 West $ 855 2 Bedroom , 1 Bath Standard $ 955 With fireplace $ 999",
           "applicable_term": "Aug 18, 2027 – Jul 24, 2028, 12 installments",
-          "review_status": "reviewed",
+          "review_status": "live_observation",
           "refresh_policy": "manual_only",
           "sha256": "582fd0ea058737de5c00d43c72177697f7aafa8ff565739c782f811cc0091cb5",
-          "reviewed_at": "2026-10-24T23:10:00+00:00",
-          "review_scope": "Operator page read on Oct 24, 2026 (robots-aware fetch). Asking prices only; no unit availability guarantee."
+          "reviewed_at": null,
+          "review_scope": "Operator page read 2026-10-24 (robots-aware fetch). Asking prices only; no unit availability guarantee."
         }
       ],
       "offers": [
@@ -1494,9 +1494,9 @@
           "evidence": [
             {
               "field": "amount",
-              "quote": "Total price: $10,175 - $10,415 | 2027-28 Academic Year Floorplan Choices: East $ 835 LIMITED SPACES West $ 855",
+              "quote": "East $ 835",
               "source_id": "alight-plans",
-              "reviewed_at": "2026-10-24T23:10:00+00:00",
+              "reviewed_at": "2026-10-25T01:08:22.446687+00:00",
               "method": "robots-aware fetch"
             }
           ],
@@ -1524,7 +1524,7 @@
             "renters_insurance": "UNKNOWN"
           },
           "utility_source_id": "alight-plans",
-          "price_confidence_tier": "PORTAL_QUOTE",
+          "price_confidence_tier": "PUBLISHED_ASKING_PRICE",
           "operator_questions": [
             "What the $155 in mandatory fees covers and when it is billed, and why the one-sheet lists rates $6 lower.",
             "Application fee, administrative fee and security deposit for 2027–28 outside the current promotion.",
@@ -1560,9 +1560,9 @@
           "evidence": [
             {
               "field": "amount",
-              "quote": "Total price: $10,175 - $10,415 | 2027-28 Academic Year Floorplan Choices: East $ 835 LIMITED SPACES West $ 855",
+              "quote": "West $ 855",
               "source_id": "alight-plans",
-              "reviewed_at": "2026-10-24T23:10:00+00:00",
+              "reviewed_at": "2026-10-25T01:08:22.446687+00:00",
               "method": "robots-aware fetch"
             }
           ],
@@ -1590,7 +1590,7 @@
             "renters_insurance": "UNKNOWN"
           },
           "utility_source_id": "alight-plans",
-          "price_confidence_tier": "PORTAL_QUOTE",
+          "price_confidence_tier": "PUBLISHED_ASKING_PRICE",
           "operator_questions": [
             "What the $155 in mandatory fees covers and when it is billed, and why the one-sheet lists rates $6 lower.",
             "Application fee, administrative fee and security deposit for 2027–28 outside the current promotion.",
@@ -1626,9 +1626,9 @@
           "evidence": [
             {
               "field": "amount",
-              "quote": "Total price: $10,175 - $10,415 | 2027-28 Academic Year Floorplan Choices: East $ 835 LIMITED SPACES West $ 855",
+              "quote": "STANDARD Standard term of August 18, 2027 to July 24, 2028 IMMEDIATE MOVE-IN Move in on the next 1 st or 15 th of the month* Rates and availability for the 2027-28 academic year 4B 4 Bedroom , 2 Bath* Total price: $10,175 - $10,415 | 2027-28 Academic Year Floorplan Choices: East $ 835 LIMITED SPACES West $ 855 LIMITED SPACES Download Floorplan PDF Apply LIMITED SPOTS LEFT 2B 2 Bedroom , 1 Bath* Total price: $11,615 - $12,143 | 2027-28 Academic Year Floorplan Choices: Standard $ 955",
               "source_id": "alight-plans",
-              "reviewed_at": "2026-10-24T23:10:00+00:00",
+              "reviewed_at": "2026-10-25T01:08:22.446687+00:00",
               "method": "robots-aware fetch"
             }
           ],
@@ -1656,7 +1656,7 @@
             "renters_insurance": "UNKNOWN"
           },
           "utility_source_id": "alight-plans",
-          "price_confidence_tier": "PORTAL_QUOTE",
+          "price_confidence_tier": "PUBLISHED_ASKING_PRICE",
           "operator_questions": [
             "What the $155 in mandatory fees covers and when it is billed, and why the one-sheet lists rates $6 lower.",
             "Application fee, administrative fee and security deposit for 2027–28 outside the current promotion.",
@@ -1692,9 +1692,9 @@
           "evidence": [
             {
               "field": "amount",
-              "quote": "Total price: $10,175 - $10,415 | 2027-28 Academic Year Floorplan Choices: East $ 835 LIMITED SPACES West $ 855",
+              "quote": "With fireplace $ 999",
               "source_id": "alight-plans",
-              "reviewed_at": "2026-10-24T23:10:00+00:00",
+              "reviewed_at": "2026-10-25T01:08:22.446687+00:00",
               "method": "robots-aware fetch"
             }
           ],
@@ -1722,7 +1722,7 @@
             "renters_insurance": "UNKNOWN"
           },
           "utility_source_id": "alight-plans",
-          "price_confidence_tier": "PORTAL_QUOTE",
+          "price_confidence_tier": "PUBLISHED_ASKING_PRICE",
           "operator_questions": [
             "What the $155 in mandatory fees covers and when it is billed, and why the one-sheet lists rates $6 lower.",
             "Application fee, administrative fee and security deposit for 2027–28 outside the current promotion.",
@@ -1746,16 +1746,16 @@
       "sources": [
         {
           "id": "union-plans",
-          "url": "https://www.unionblacksburg.com/blacksburg/union-blacksburg/student",
+          "url": "https://www.unionblacksburg.com/blacksburg/union-blacksburg/student/",
           "title": "Union Plans",
-          "checked_at": "2026-10-24T23:10:00+00:00",
-          "excerpt": "Total Monthly Leasing Price $1,420.79 Base Rent: $1,414/per installment Lease term: Annual (08/16/2027 - 07/17/2028)",
+          "checked_at": "2026-10-25T01:07:59.928Z",
+          "excerpt": "S1 Furnished BEDS / BATHS Studio / 1ba ROOM TYPE * BASE RENT * SECURITY DEPOSIT (REFUNDABLE)* Room type options for S1 F",
           "applicable_term": "2027–28",
-          "review_status": "live_observation",
+          "review_status": "reviewed",
           "refresh_policy": "manual_only",
-          "sha256": null,
-          "reviewed_at": null,
-          "review_scope": "Operator page read on Oct 24, 2026 (rendered page in a browser). Asking prices only; no unit availability guarantee."
+          "sha256": "9012a25d2593de24382898564c65965b93fb486729591ef102e25afbbeecd777",
+          "reviewed_at": "2026-10-25T01:07:59.928Z",
+          "review_scope": "Operator page read 2026-10-24 (rendered page in a browser). Asking prices only; no unit availability guarantee."
         },
         {
           "id": "union-faq",
@@ -1825,9 +1825,9 @@
           "evidence": [
             {
               "field": "amount",
-              "quote": "Total Monthly Leasing Price $1,420.79 Base Rent: $1,414/per installment Lease term: Annual (08/16/2027 - 07/17/2028)",
+              "quote": "S1 Furnished BEDS / BATHS Studio / 1ba ROOM TYPE * BASE RENT * SECURITY DEPOSIT (REFUNDABLE)* Room type options for S1 Furnished Private Total Monthly Leasing Price $1,684.79 Base Rent: $1,678",
               "source_id": "union-plans",
-              "reviewed_at": "2026-10-24T23:10:00+00:00",
+              "reviewed_at": "2026-10-25T01:07:59.928Z",
               "method": "rendered page in a browser"
             }
           ],
@@ -1911,7 +1911,7 @@
             "electricity": "EXCLUDED_VARIABLE_USAGE"
           },
           "utility_source_id": "union-faq",
-          "price_confidence_tier": "PORTAL_QUOTE",
+          "price_confidence_tier": "PUBLISHED_BASE_RENT",
           "operator_questions": [
             "Whether the Aug 16, 2027 – Jul 17, 2028 lease is billed in 12 or 11 installments.",
             "That the billing fee is $6.79, not the $6.44 cached on floor-plan subpages.",
@@ -1984,9 +1984,9 @@
           "evidence": [
             {
               "field": "amount",
-              "quote": "Total Monthly Leasing Price $1,420.79 Base Rent: $1,414/per installment Lease term: Annual (08/16/2027 - 07/17/2028)",
+              "quote": "A1 Furnished BEDS / BATHS 1bd / 1ba ROOM TYPE * BASE RENT * SECURITY DEPOSIT (REFUNDABLE)* Room type options for A1 Furnished Private Total Monthly Leasing Price $1,892.79 Base Rent: $1,886",
               "source_id": "union-plans",
-              "reviewed_at": "2026-10-24T23:10:00+00:00",
+              "reviewed_at": "2026-10-25T01:07:59.928Z",
               "method": "rendered page in a browser"
             }
           ],
@@ -2070,7 +2070,7 @@
             "electricity": "EXCLUDED_VARIABLE_USAGE"
           },
           "utility_source_id": "union-faq",
-          "price_confidence_tier": "PORTAL_QUOTE",
+          "price_confidence_tier": "PUBLISHED_BASE_RENT",
           "operator_questions": [
             "Whether the Aug 16, 2027 – Jul 17, 2028 lease is billed in 12 or 11 installments.",
             "That the billing fee is $6.79, not the $6.44 cached on floor-plan subpages.",
@@ -2141,9 +2141,9 @@
           "evidence": [
             {
               "field": "amount",
-              "quote": "Total Monthly Leasing Price $1,420.79 Base Rent: $1,414/per installment Lease term: Annual (08/16/2027 - 07/17/2028)",
+              "quote": "B1 Furnished BEDS / BATHS 2bd / 2ba ROOM TYPE * BASE RENT * SECURITY DEPOSIT (REFUNDABLE)* Room type options for B1 Furnished Private Total Monthly Leasing Price $1,391.79 Base Rent: $1,385",
               "source_id": "union-plans",
-              "reviewed_at": "2026-10-24T23:10:00+00:00",
+              "reviewed_at": "2026-10-25T01:07:59.928Z",
               "method": "rendered page in a browser"
             }
           ],
@@ -2227,7 +2227,7 @@
             "electricity": "EXCLUDED_VARIABLE_USAGE"
           },
           "utility_source_id": "union-faq",
-          "price_confidence_tier": "PORTAL_QUOTE",
+          "price_confidence_tier": "PUBLISHED_BASE_RENT",
           "operator_questions": [
             "Whether the Aug 16, 2027 – Jul 17, 2028 lease is billed in 12 or 11 installments.",
             "That the billing fee is $6.79, not the $6.44 cached on floor-plan subpages.",
@@ -2298,9 +2298,9 @@
           "evidence": [
             {
               "field": "amount",
-              "quote": "Total Monthly Leasing Price $1,420.79 Base Rent: $1,414/per installment Lease term: Annual (08/16/2027 - 07/17/2028)",
+              "quote": "B2 Deluxe Furnished BEDS / BATHS 2bd / 2.5ba ROOM TYPE * BASE RENT * SECURITY DEPOSIT (REFUNDABLE)* Room type options for B2 Deluxe Furnished Private Total Monthly Leasing Price $1,420.79 Base Rent: $1,414",
               "source_id": "union-plans",
-              "reviewed_at": "2026-10-24T23:10:00+00:00",
+              "reviewed_at": "2026-10-25T01:07:59.928Z",
               "method": "rendered page in a browser"
             }
           ],
@@ -2384,7 +2384,7 @@
             "electricity": "EXCLUDED_VARIABLE_USAGE"
           },
           "utility_source_id": "union-faq",
-          "price_confidence_tier": "PORTAL_QUOTE",
+          "price_confidence_tier": "PUBLISHED_BASE_RENT",
           "operator_questions": [
             "Whether the Aug 16, 2027 – Jul 17, 2028 lease is billed in 12 or 11 installments.",
             "That the billing fee is $6.79, not the $6.44 cached on floor-plan subpages.",
@@ -2457,9 +2457,9 @@
           "evidence": [
             {
               "field": "amount",
-              "quote": "Total Monthly Leasing Price $1,420.79 Base Rent: $1,414/per installment Lease term: Annual (08/16/2027 - 07/17/2028)",
+              "quote": "C1 Furnished BEDS / BATHS 3bd / 3ba ROOM TYPE * BASE RENT * SECURITY DEPOSIT (REFUNDABLE)* Room type options for C1 Furnished Private Total Monthly Leasing Price $1,346.79 Base Rent: $1,340",
               "source_id": "union-plans",
-              "reviewed_at": "2026-10-24T23:10:00+00:00",
+              "reviewed_at": "2026-10-25T01:07:59.928Z",
               "method": "rendered page in a browser"
             }
           ],
@@ -2543,7 +2543,7 @@
             "electricity": "EXCLUDED_VARIABLE_USAGE"
           },
           "utility_source_id": "union-faq",
-          "price_confidence_tier": "PORTAL_QUOTE",
+          "price_confidence_tier": "PUBLISHED_BASE_RENT",
           "operator_questions": [
             "Whether the Aug 16, 2027 – Jul 17, 2028 lease is billed in 12 or 11 installments.",
             "That the billing fee is $6.79, not the $6.44 cached on floor-plan subpages.",
@@ -2615,9 +2615,9 @@
           "evidence": [
             {
               "field": "amount",
-              "quote": "Total Monthly Leasing Price $1,420.79 Base Rent: $1,414/per installment Lease term: Annual (08/16/2027 - 07/17/2028)",
+              "quote": "D1 Furnished BEDS / BATHS 4bd / 4ba ROOM TYPE * BASE RENT * SECURITY DEPOSIT (REFUNDABLE)* Room type options for D1 Furnished Private Total Monthly Leasing Price $1,220.79 Base Rent: $1,214/per installment Lease term: Annual (08/16/2027 - 07/17/2028) N/A Pool View Total Monthly Leasing Price $1,219.79 Base Rent: $1,213",
               "source_id": "union-plans",
-              "reviewed_at": "2026-10-24T23:10:00+00:00",
+              "reviewed_at": "2026-10-25T01:07:59.928Z",
               "method": "rendered page in a browser"
             }
           ],
@@ -2701,7 +2701,7 @@
             "electricity": "EXCLUDED_VARIABLE_USAGE"
           },
           "utility_source_id": "union-faq",
-          "price_confidence_tier": "PORTAL_QUOTE",
+          "price_confidence_tier": "PUBLISHED_BASE_RENT",
           "operator_questions": [
             "Whether the Aug 16, 2027 – Jul 17, 2028 lease is billed in 12 or 11 installments.",
             "That the billing fee is $6.79, not the $6.44 cached on floor-plan subpages.",
@@ -2771,9 +2771,9 @@
           "evidence": [
             {
               "field": "amount",
-              "quote": "Total Monthly Leasing Price $1,420.79 Base Rent: $1,414/per installment Lease term: Annual (08/16/2027 - 07/17/2028)",
+              "quote": "D2 Furnished BEDS / BATHS 4bd / 4ba ROOM TYPE * BASE RENT * SECURITY DEPOSIT (REFUNDABLE)* Room type options for D2 Furnished Private Total Monthly Leasing Price $1,217.79 Base Rent: $1,211/per installment Lease term: Annual (08/16/2027 - 07/17/2028) N/A Pool View Total Monthly Leasing Price $1,210.79 Base Rent: $1,204",
               "source_id": "union-plans",
-              "reviewed_at": "2026-10-24T23:10:00+00:00",
+              "reviewed_at": "2026-10-25T01:07:59.928Z",
               "method": "rendered page in a browser"
             }
           ],
@@ -2857,7 +2857,7 @@
             "electricity": "EXCLUDED_VARIABLE_USAGE"
           },
           "utility_source_id": "union-faq",
-          "price_confidence_tier": "PORTAL_QUOTE",
+          "price_confidence_tier": "PUBLISHED_BASE_RENT",
           "operator_questions": [
             "Whether the Aug 16, 2027 – Jul 17, 2028 lease is billed in 12 or 11 installments.",
             "That the billing fee is $6.79, not the $6.44 cached on floor-plan subpages.",
@@ -2927,9 +2927,9 @@
           "evidence": [
             {
               "field": "amount",
-              "quote": "Total Monthly Leasing Price $1,420.79 Base Rent: $1,414/per installment Lease term: Annual (08/16/2027 - 07/17/2028)",
+              "quote": "D3 Furnished BEDS / BATHS 4bd / 4ba ROOM TYPE * BASE RENT * SECURITY DEPOSIT (REFUNDABLE)* Room type options for D3 Furnished Private Total Monthly Leasing Price $1,228.79 Base Rent: $1,222",
               "source_id": "union-plans",
-              "reviewed_at": "2026-10-24T23:10:00+00:00",
+              "reviewed_at": "2026-10-25T01:07:59.928Z",
               "method": "rendered page in a browser"
             }
           ],
@@ -3013,7 +3013,7 @@
             "electricity": "EXCLUDED_VARIABLE_USAGE"
           },
           "utility_source_id": "union-faq",
-          "price_confidence_tier": "PORTAL_QUOTE",
+          "price_confidence_tier": "PUBLISHED_BASE_RENT",
           "operator_questions": [
             "Whether the Aug 16, 2027 – Jul 17, 2028 lease is billed in 12 or 11 installments.",
             "That the billing fee is $6.79, not the $6.44 cached on floor-plan subpages.",
@@ -3083,9 +3083,9 @@
           "evidence": [
             {
               "field": "amount",
-              "quote": "Total Monthly Leasing Price $1,420.79 Base Rent: $1,414/per installment Lease term: Annual (08/16/2027 - 07/17/2028)",
+              "quote": "THD4 Furnished BEDS / BATHS 4bd / 4ba ROOM TYPE * BASE RENT * SECURITY DEPOSIT (REFUNDABLE)* Room type options for THD4 Furnished Private Total Monthly Leasing Price $1,259.79 Base Rent: $1,253",
               "source_id": "union-plans",
-              "reviewed_at": "2026-10-24T23:10:00+00:00",
+              "reviewed_at": "2026-10-25T01:07:59.928Z",
               "method": "rendered page in a browser"
             }
           ],
@@ -3169,7 +3169,7 @@
             "electricity": "EXCLUDED_VARIABLE_USAGE"
           },
           "utility_source_id": "union-faq",
-          "price_confidence_tier": "PORTAL_QUOTE",
+          "price_confidence_tier": "PUBLISHED_BASE_RENT",
           "operator_questions": [
             "Whether the Aug 16, 2027 – Jul 17, 2028 lease is billed in 12 or 11 installments.",
             "That the billing fee is $6.79, not the $6.44 cached on floor-plan subpages.",
@@ -3236,9 +3236,9 @@
           "evidence": [
             {
               "field": "amount",
-              "quote": "Total Monthly Leasing Price $1,420.79 Base Rent: $1,414/per installment Lease term: Annual (08/16/2027 - 07/17/2028)",
+              "quote": "D5 - Existing Unit BEDS / BATHS 4bd / 4ba ROOM TYPE * BASE RENT * SECURITY DEPOSIT (REFUNDABLE)* Room type options for D5 - Existing Unit Unfurnished Total Monthly Leasing Price $1,036.79 Base Rent: $1,030",
               "source_id": "union-plans",
-              "reviewed_at": "2026-10-24T23:10:00+00:00",
+              "reviewed_at": "2026-10-25T01:07:59.928Z",
               "method": "rendered page in a browser"
             }
           ],
@@ -3322,7 +3322,7 @@
             "electricity": "EXCLUDED_VARIABLE_USAGE"
           },
           "utility_source_id": "union-faq",
-          "price_confidence_tier": "PORTAL_QUOTE",
+          "price_confidence_tier": "PUBLISHED_BASE_RENT",
           "operator_questions": [
             "Whether the Aug 16, 2027 – Jul 17, 2028 lease is billed in 12 or 11 installments.",
             "That the billing fee is $6.79, not the $6.44 cached on floor-plan subpages.",
@@ -3389,9 +3389,9 @@
           "evidence": [
             {
               "field": "amount",
-              "quote": "Total Monthly Leasing Price $1,420.79 Base Rent: $1,414/per installment Lease term: Annual (08/16/2027 - 07/17/2028)",
+              "quote": "D6 - Existing Unit BEDS / BATHS 4bd / 3ba ROOM TYPE * BASE RENT * SECURITY DEPOSIT (REFUNDABLE)* Room type options for D6 - Existing Unit Furnished Total Monthly Leasing Price $1,116.79 Base Rent: $1,110",
               "source_id": "union-plans",
-              "reviewed_at": "2026-10-24T23:10:00+00:00",
+              "reviewed_at": "2026-10-25T01:07:59.928Z",
               "method": "rendered page in a browser"
             }
           ],
@@ -3475,7 +3475,7 @@
             "electricity": "EXCLUDED_VARIABLE_USAGE"
           },
           "utility_source_id": "union-faq",
-          "price_confidence_tier": "PORTAL_QUOTE",
+          "price_confidence_tier": "PUBLISHED_BASE_RENT",
           "operator_questions": [
             "Whether the Aug 16, 2027 – Jul 17, 2028 lease is billed in 12 or 11 installments.",
             "That the billing fee is $6.79, not the $6.44 cached on floor-plan subpages.",
@@ -3582,14 +3582,14 @@
           "id": "terrace-widget",
           "url": "https://entratasnipit.terraceviewblacksburg.com/blacksburg/terrace-view/?&is_responsive_snippet=1&snippet_type=website&occupancy_type=10",
           "title": "Terrace Widget",
-          "checked_at": "2026-10-24T23:10:00+00:00",
-          "excerpt": "1x1 Tier 3 1 Bed / 1 Bath Options Rent Deposit Private Total Monthly Leasing Price $1,450 Lease term: 27/28 Lease Term (",
+          "checked_at": "2026-10-25T01:06:49.433Z",
+          "excerpt": "1x1.5TH T1 1 Bed / 1.5 Bath Options Rent Deposit Private Total Monthly Leasing Price $1,610",
           "applicable_term": "2027–28",
-          "review_status": "live_observation",
+          "review_status": "reviewed",
           "refresh_policy": "manual_only",
-          "sha256": null,
-          "reviewed_at": null,
-          "review_scope": "Operator page read on Oct 24, 2026 (operator leasing widget in a browser). Asking prices only; no unit availability guarantee."
+          "sha256": "fd4c7fc5c25fc15139e38c0efa0dc890556ef717001fbbff38df804f8d837e64",
+          "reviewed_at": "2026-10-25T01:06:49.433Z",
+          "review_scope": "Operator page read 2026-10-24 (operator leasing widget in a browser). Asking prices only; no unit availability guarantee."
         }
       ],
       "offers": [
@@ -3600,7 +3600,7 @@
           "bathrooms": 1.5,
           "amount": "1610",
           "basis": "person",
-          "period": "installment",
+          "period": "monthly",
           "contract": "unknown",
           "room": "private",
           "installments": null,
@@ -3627,9 +3627,9 @@
           "evidence": [
             {
               "field": "amount",
-              "quote": "1x1 Tier 3 1 Bed / 1 Bath Options Rent Deposit Private Total Monthly Leasing Price $1,450 Lease term: 27/28 Lease Term (08/21/2027 - 07/31/2028) $200",
+              "quote": "1x1.5TH T1 1 Bed / 1.5 Bath Options Rent Deposit Private Total Monthly Leasing Price $1,610",
               "source_id": "terrace-widget",
-              "reviewed_at": "2026-10-24T23:10:00+00:00",
+              "reviewed_at": "2026-10-25T01:06:49.433Z",
               "method": "operator leasing widget in a browser"
             }
           ],
@@ -3751,7 +3751,7 @@
             "renters_insurance": "PROVIDER_DEPENDENT"
           },
           "utility_source_id": "terrace-fees",
-          "price_confidence_tier": "PORTAL_QUOTE",
+          "price_confidence_tier": "PUBLISHED_TOTAL_LEASING_PRICE",
           "operator_questions": [
             "The full Fall 2027 fee schedule: are the $40 technology, $10 trash and $5 billing fees on top of the listed per-bed rate?",
             "Why 1x1 Tier 3 shows $1,450 on the portal versus $1,445 on listing sites.",
@@ -3788,7 +3788,7 @@
           "bathrooms": 1.5,
           "amount": "1550",
           "basis": "person",
-          "period": "installment",
+          "period": "monthly",
           "contract": "unknown",
           "room": "private",
           "installments": null,
@@ -3815,9 +3815,9 @@
           "evidence": [
             {
               "field": "amount",
-              "quote": "1x1 Tier 3 1 Bed / 1 Bath Options Rent Deposit Private Total Monthly Leasing Price $1,450 Lease term: 27/28 Lease Term (08/21/2027 - 07/31/2028) $200",
+              "quote": "1x1.5TH T2 1 Bed / 1.5 Bath Options Rent Deposit Private Total Monthly Leasing Price $1,550",
               "source_id": "terrace-widget",
-              "reviewed_at": "2026-10-24T23:10:00+00:00",
+              "reviewed_at": "2026-10-25T01:06:49.433Z",
               "method": "operator leasing widget in a browser"
             }
           ],
@@ -3939,7 +3939,7 @@
             "renters_insurance": "PROVIDER_DEPENDENT"
           },
           "utility_source_id": "terrace-fees",
-          "price_confidence_tier": "PORTAL_QUOTE",
+          "price_confidence_tier": "PUBLISHED_TOTAL_LEASING_PRICE",
           "operator_questions": [
             "The full Fall 2027 fee schedule: are the $40 technology, $10 trash and $5 billing fees on top of the listed per-bed rate?",
             "Why 1x1 Tier 3 shows $1,450 on the portal versus $1,445 on listing sites.",
@@ -3976,7 +3976,7 @@
           "bathrooms": 1.5,
           "amount": "1505",
           "basis": "person",
-          "period": "installment",
+          "period": "monthly",
           "contract": "unknown",
           "room": "private",
           "installments": null,
@@ -4003,9 +4003,9 @@
           "evidence": [
             {
               "field": "amount",
-              "quote": "1x1 Tier 3 1 Bed / 1 Bath Options Rent Deposit Private Total Monthly Leasing Price $1,450 Lease term: 27/28 Lease Term (08/21/2027 - 07/31/2028) $200",
+              "quote": "1x1.5TH T3 1 Bed / 1.5 Bath Options Rent Deposit Private Total Monthly Leasing Price $1,505",
               "source_id": "terrace-widget",
-              "reviewed_at": "2026-10-24T23:10:00+00:00",
+              "reviewed_at": "2026-10-25T01:06:49.433Z",
               "method": "operator leasing widget in a browser"
             }
           ],
@@ -4127,7 +4127,7 @@
             "renters_insurance": "PROVIDER_DEPENDENT"
           },
           "utility_source_id": "terrace-fees",
-          "price_confidence_tier": "PORTAL_QUOTE",
+          "price_confidence_tier": "PUBLISHED_TOTAL_LEASING_PRICE",
           "operator_questions": [
             "The full Fall 2027 fee schedule: are the $40 technology, $10 trash and $5 billing fees on top of the listed per-bed rate?",
             "Why 1x1 Tier 3 shows $1,450 on the portal versus $1,445 on listing sites.",
@@ -4164,7 +4164,7 @@
           "bathrooms": 1.0,
           "amount": "1520",
           "basis": "person",
-          "period": "installment",
+          "period": "monthly",
           "contract": "unknown",
           "room": "private",
           "installments": null,
@@ -4191,9 +4191,9 @@
           "evidence": [
             {
               "field": "amount",
-              "quote": "1x1 Tier 3 1 Bed / 1 Bath Options Rent Deposit Private Total Monthly Leasing Price $1,450 Lease term: 27/28 Lease Term (08/21/2027 - 07/31/2028) $200",
+              "quote": "1x1 Tier 1 1 Bed / 1 Bath Options Rent Deposit Private Total Monthly Leasing Price $1,520",
               "source_id": "terrace-widget",
-              "reviewed_at": "2026-10-24T23:10:00+00:00",
+              "reviewed_at": "2026-10-25T01:06:49.433Z",
               "method": "operator leasing widget in a browser"
             }
           ],
@@ -4315,7 +4315,7 @@
             "renters_insurance": "PROVIDER_DEPENDENT"
           },
           "utility_source_id": "terrace-fees",
-          "price_confidence_tier": "PORTAL_QUOTE",
+          "price_confidence_tier": "PUBLISHED_TOTAL_LEASING_PRICE",
           "operator_questions": [
             "The full Fall 2027 fee schedule: are the $40 technology, $10 trash and $5 billing fees on top of the listed per-bed rate?",
             "Why 1x1 Tier 3 shows $1,450 on the portal versus $1,445 on listing sites.",
@@ -4352,7 +4352,7 @@
           "bathrooms": 1.0,
           "amount": "1505",
           "basis": "person",
-          "period": "installment",
+          "period": "monthly",
           "contract": "unknown",
           "room": "private",
           "installments": null,
@@ -4379,9 +4379,9 @@
           "evidence": [
             {
               "field": "amount",
-              "quote": "1x1 Tier 3 1 Bed / 1 Bath Options Rent Deposit Private Total Monthly Leasing Price $1,450 Lease term: 27/28 Lease Term (08/21/2027 - 07/31/2028) $200",
+              "quote": "1x1 Tier 2 1 Bed / 1 Bath Options Rent Deposit Private Total Monthly Leasing Price $1,505",
               "source_id": "terrace-widget",
-              "reviewed_at": "2026-10-24T23:10:00+00:00",
+              "reviewed_at": "2026-10-25T01:06:49.433Z",
               "method": "operator leasing widget in a browser"
             }
           ],
@@ -4503,7 +4503,7 @@
             "renters_insurance": "PROVIDER_DEPENDENT"
           },
           "utility_source_id": "terrace-fees",
-          "price_confidence_tier": "PORTAL_QUOTE",
+          "price_confidence_tier": "PUBLISHED_TOTAL_LEASING_PRICE",
           "operator_questions": [
             "The full Fall 2027 fee schedule: are the $40 technology, $10 trash and $5 billing fees on top of the listed per-bed rate?",
             "Why 1x1 Tier 3 shows $1,450 on the portal versus $1,445 on listing sites.",
@@ -4540,7 +4540,7 @@
           "bathrooms": 1.0,
           "amount": "1450",
           "basis": "person",
-          "period": "installment",
+          "period": "monthly",
           "contract": "unknown",
           "room": "private",
           "installments": null,
@@ -4567,9 +4567,9 @@
           "evidence": [
             {
               "field": "amount",
-              "quote": "1x1 Tier 3 1 Bed / 1 Bath Options Rent Deposit Private Total Monthly Leasing Price $1,450 Lease term: 27/28 Lease Term (08/21/2027 - 07/31/2028) $200",
+              "quote": "1x1 Tier 3 1 Bed / 1 Bath Options Rent Deposit Private Total Monthly Leasing Price $1,450",
               "source_id": "terrace-widget",
-              "reviewed_at": "2026-10-24T23:10:00+00:00",
+              "reviewed_at": "2026-10-25T01:06:49.433Z",
               "method": "operator leasing widget in a browser"
             }
           ],
@@ -4691,7 +4691,7 @@
             "renters_insurance": "PROVIDER_DEPENDENT"
           },
           "utility_source_id": "terrace-fees",
-          "price_confidence_tier": "PORTAL_QUOTE",
+          "price_confidence_tier": "PUBLISHED_TOTAL_LEASING_PRICE",
           "operator_questions": [
             "The full Fall 2027 fee schedule: are the $40 technology, $10 trash and $5 billing fees on top of the listed per-bed rate?",
             "Why 1x1 Tier 3 shows $1,450 on the portal versus $1,445 on listing sites.",
@@ -4728,7 +4728,7 @@
           "bathrooms": 1.0,
           "amount": "910",
           "basis": "person",
-          "period": "installment",
+          "period": "monthly",
           "contract": "unknown",
           "room": "private",
           "installments": null,
@@ -4755,9 +4755,9 @@
           "evidence": [
             {
               "field": "amount",
-              "quote": "1x1 Tier 3 1 Bed / 1 Bath Options Rent Deposit Private Total Monthly Leasing Price $1,450 Lease term: 27/28 Lease Term (08/21/2027 - 07/31/2028) $200",
+              "quote": "2Ax1 T1 2 Bed / 1 Bath Options Rent Deposit Private Total Monthly Leasing Price $910",
               "source_id": "terrace-widget",
-              "reviewed_at": "2026-10-24T23:10:00+00:00",
+              "reviewed_at": "2026-10-25T01:06:49.433Z",
               "method": "operator leasing widget in a browser"
             }
           ],
@@ -4879,7 +4879,7 @@
             "renters_insurance": "PROVIDER_DEPENDENT"
           },
           "utility_source_id": "terrace-fees",
-          "price_confidence_tier": "PORTAL_QUOTE",
+          "price_confidence_tier": "PUBLISHED_TOTAL_LEASING_PRICE",
           "operator_questions": [
             "The full Fall 2027 fee schedule: are the $40 technology, $10 trash and $5 billing fees on top of the listed per-bed rate?",
             "Why 1x1 Tier 3 shows $1,450 on the portal versus $1,445 on listing sites.",
@@ -4916,7 +4916,7 @@
           "bathrooms": 1.0,
           "amount": "905",
           "basis": "person",
-          "period": "installment",
+          "period": "monthly",
           "contract": "unknown",
           "room": "private",
           "installments": null,
@@ -4943,9 +4943,9 @@
           "evidence": [
             {
               "field": "amount",
-              "quote": "1x1 Tier 3 1 Bed / 1 Bath Options Rent Deposit Private Total Monthly Leasing Price $1,450 Lease term: 27/28 Lease Term (08/21/2027 - 07/31/2028) $200",
+              "quote": "2Ax1 T2 2 Bed / 1 Bath Options Rent Deposit Private Total Monthly Leasing Price $905",
               "source_id": "terrace-widget",
-              "reviewed_at": "2026-10-24T23:10:00+00:00",
+              "reviewed_at": "2026-10-25T01:06:49.433Z",
               "method": "operator leasing widget in a browser"
             }
           ],
@@ -5067,7 +5067,7 @@
             "renters_insurance": "PROVIDER_DEPENDENT"
           },
           "utility_source_id": "terrace-fees",
-          "price_confidence_tier": "PORTAL_QUOTE",
+          "price_confidence_tier": "PUBLISHED_TOTAL_LEASING_PRICE",
           "operator_questions": [
             "The full Fall 2027 fee schedule: are the $40 technology, $10 trash and $5 billing fees on top of the listed per-bed rate?",
             "Why 1x1 Tier 3 shows $1,450 on the portal versus $1,445 on listing sites.",
@@ -5104,7 +5104,7 @@
           "bathrooms": 1.0,
           "amount": "865",
           "basis": "person",
-          "period": "installment",
+          "period": "monthly",
           "contract": "unknown",
           "room": "private",
           "installments": null,
@@ -5131,9 +5131,9 @@
           "evidence": [
             {
               "field": "amount",
-              "quote": "1x1 Tier 3 1 Bed / 1 Bath Options Rent Deposit Private Total Monthly Leasing Price $1,450 Lease term: 27/28 Lease Term (08/21/2027 - 07/31/2028) $200",
+              "quote": "2Ax1 T3 2 Bed / 1 Bath Options Rent Deposit Private Total Monthly Leasing Price $865",
               "source_id": "terrace-widget",
-              "reviewed_at": "2026-10-24T23:10:00+00:00",
+              "reviewed_at": "2026-10-25T01:06:49.433Z",
               "method": "operator leasing widget in a browser"
             }
           ],
@@ -5255,7 +5255,7 @@
             "renters_insurance": "PROVIDER_DEPENDENT"
           },
           "utility_source_id": "terrace-fees",
-          "price_confidence_tier": "PORTAL_QUOTE",
+          "price_confidence_tier": "PUBLISHED_TOTAL_LEASING_PRICE",
           "operator_questions": [
             "The full Fall 2027 fee schedule: are the $40 technology, $10 trash and $5 billing fees on top of the listed per-bed rate?",
             "Why 1x1 Tier 3 shows $1,450 on the portal versus $1,445 on listing sites.",
@@ -5292,7 +5292,7 @@
           "bathrooms": 1.5,
           "amount": "1050",
           "basis": "person",
-          "period": "installment",
+          "period": "monthly",
           "contract": "unknown",
           "room": "private",
           "installments": null,
@@ -5319,9 +5319,9 @@
           "evidence": [
             {
               "field": "amount",
-              "quote": "1x1 Tier 3 1 Bed / 1 Bath Options Rent Deposit Private Total Monthly Leasing Price $1,450 Lease term: 27/28 Lease Term (08/21/2027 - 07/31/2028) $200",
+              "quote": "2x1.5 T1 2 Bed / 1.5 Bath Options Rent Deposit Private Total Monthly Leasing Price $1,050",
               "source_id": "terrace-widget",
-              "reviewed_at": "2026-10-24T23:10:00+00:00",
+              "reviewed_at": "2026-10-25T01:06:49.433Z",
               "method": "operator leasing widget in a browser"
             }
           ],
@@ -5443,7 +5443,7 @@
             "renters_insurance": "PROVIDER_DEPENDENT"
           },
           "utility_source_id": "terrace-fees",
-          "price_confidence_tier": "PORTAL_QUOTE",
+          "price_confidence_tier": "PUBLISHED_TOTAL_LEASING_PRICE",
           "operator_questions": [
             "The full Fall 2027 fee schedule: are the $40 technology, $10 trash and $5 billing fees on top of the listed per-bed rate?",
             "Why 1x1 Tier 3 shows $1,450 on the portal versus $1,445 on listing sites.",
@@ -5480,7 +5480,7 @@
           "bathrooms": 1.5,
           "amount": "1000",
           "basis": "person",
-          "period": "installment",
+          "period": "monthly",
           "contract": "unknown",
           "room": "private",
           "installments": null,
@@ -5507,9 +5507,9 @@
           "evidence": [
             {
               "field": "amount",
-              "quote": "1x1 Tier 3 1 Bed / 1 Bath Options Rent Deposit Private Total Monthly Leasing Price $1,450 Lease term: 27/28 Lease Term (08/21/2027 - 07/31/2028) $200",
+              "quote": "2x1.5 T2 2 Bed / 1.5 Bath Options Rent Deposit Private Total Monthly Leasing Price $1,000",
               "source_id": "terrace-widget",
-              "reviewed_at": "2026-10-24T23:10:00+00:00",
+              "reviewed_at": "2026-10-25T01:06:49.433Z",
               "method": "operator leasing widget in a browser"
             }
           ],
@@ -5631,7 +5631,7 @@
             "renters_insurance": "PROVIDER_DEPENDENT"
           },
           "utility_source_id": "terrace-fees",
-          "price_confidence_tier": "PORTAL_QUOTE",
+          "price_confidence_tier": "PUBLISHED_TOTAL_LEASING_PRICE",
           "operator_questions": [
             "The full Fall 2027 fee schedule: are the $40 technology, $10 trash and $5 billing fees on top of the listed per-bed rate?",
             "Why 1x1 Tier 3 shows $1,450 on the portal versus $1,445 on listing sites.",
@@ -5668,7 +5668,7 @@
           "bathrooms": 1.5,
           "amount": "990",
           "basis": "person",
-          "period": "installment",
+          "period": "monthly",
           "contract": "unknown",
           "room": "private",
           "installments": null,
@@ -5695,9 +5695,9 @@
           "evidence": [
             {
               "field": "amount",
-              "quote": "1x1 Tier 3 1 Bed / 1 Bath Options Rent Deposit Private Total Monthly Leasing Price $1,450 Lease term: 27/28 Lease Term (08/21/2027 - 07/31/2028) $200",
+              "quote": "2x1.5 T3 2 Bed / 1.5 Bath Options Rent Deposit Private Total Monthly Leasing Price $990",
               "source_id": "terrace-widget",
-              "reviewed_at": "2026-10-24T23:10:00+00:00",
+              "reviewed_at": "2026-10-25T01:06:49.433Z",
               "method": "operator leasing widget in a browser"
             }
           ],
@@ -5819,7 +5819,7 @@
             "renters_insurance": "PROVIDER_DEPENDENT"
           },
           "utility_source_id": "terrace-fees",
-          "price_confidence_tier": "PORTAL_QUOTE",
+          "price_confidence_tier": "PUBLISHED_TOTAL_LEASING_PRICE",
           "operator_questions": [
             "The full Fall 2027 fee schedule: are the $40 technology, $10 trash and $5 billing fees on top of the listed per-bed rate?",
             "Why 1x1 Tier 3 shows $1,450 on the portal versus $1,445 on listing sites.",
@@ -5856,7 +5856,7 @@
           "bathrooms": 1.5,
           "amount": "1080",
           "basis": "person",
-          "period": "installment",
+          "period": "monthly",
           "contract": "unknown",
           "room": "private",
           "installments": null,
@@ -5883,9 +5883,9 @@
           "evidence": [
             {
               "field": "amount",
-              "quote": "1x1 Tier 3 1 Bed / 1 Bath Options Rent Deposit Private Total Monthly Leasing Price $1,450 Lease term: 27/28 Lease Term (08/21/2027 - 07/31/2028) $200",
+              "quote": "2x1.5TH T1 2 Bed / 1.5 Bath Options Rent Deposit Private Total Monthly Leasing Price $1,080",
               "source_id": "terrace-widget",
-              "reviewed_at": "2026-10-24T23:10:00+00:00",
+              "reviewed_at": "2026-10-25T01:06:49.433Z",
               "method": "operator leasing widget in a browser"
             }
           ],
@@ -6007,7 +6007,7 @@
             "renters_insurance": "PROVIDER_DEPENDENT"
           },
           "utility_source_id": "terrace-fees",
-          "price_confidence_tier": "PORTAL_QUOTE",
+          "price_confidence_tier": "PUBLISHED_TOTAL_LEASING_PRICE",
           "operator_questions": [
             "The full Fall 2027 fee schedule: are the $40 technology, $10 trash and $5 billing fees on top of the listed per-bed rate?",
             "Why 1x1 Tier 3 shows $1,450 on the portal versus $1,445 on listing sites.",
@@ -6044,7 +6044,7 @@
           "bathrooms": 1.5,
           "amount": "1055",
           "basis": "person",
-          "period": "installment",
+          "period": "monthly",
           "contract": "unknown",
           "room": "private",
           "installments": null,
@@ -6071,9 +6071,9 @@
           "evidence": [
             {
               "field": "amount",
-              "quote": "1x1 Tier 3 1 Bed / 1 Bath Options Rent Deposit Private Total Monthly Leasing Price $1,450 Lease term: 27/28 Lease Term (08/21/2027 - 07/31/2028) $200",
+              "quote": "2x1.5TH T2 2 Bed / 1.5 Bath Options Rent Deposit Private Total Monthly Leasing Price $1,055",
               "source_id": "terrace-widget",
-              "reviewed_at": "2026-10-24T23:10:00+00:00",
+              "reviewed_at": "2026-10-25T01:06:49.433Z",
               "method": "operator leasing widget in a browser"
             }
           ],
@@ -6195,7 +6195,7 @@
             "renters_insurance": "PROVIDER_DEPENDENT"
           },
           "utility_source_id": "terrace-fees",
-          "price_confidence_tier": "PORTAL_QUOTE",
+          "price_confidence_tier": "PUBLISHED_TOTAL_LEASING_PRICE",
           "operator_questions": [
             "The full Fall 2027 fee schedule: are the $40 technology, $10 trash and $5 billing fees on top of the listed per-bed rate?",
             "Why 1x1 Tier 3 shows $1,450 on the portal versus $1,445 on listing sites.",
@@ -6232,7 +6232,7 @@
           "bathrooms": 1.5,
           "amount": "1025",
           "basis": "person",
-          "period": "installment",
+          "period": "monthly",
           "contract": "unknown",
           "room": "private",
           "installments": null,
@@ -6259,9 +6259,9 @@
           "evidence": [
             {
               "field": "amount",
-              "quote": "1x1 Tier 3 1 Bed / 1 Bath Options Rent Deposit Private Total Monthly Leasing Price $1,450 Lease term: 27/28 Lease Term (08/21/2027 - 07/31/2028) $200",
+              "quote": "2x1.5TH T3 2 Bed / 1.5 Bath Options Rent Deposit Private Total Monthly Leasing Price $1,025",
               "source_id": "terrace-widget",
-              "reviewed_at": "2026-10-24T23:10:00+00:00",
+              "reviewed_at": "2026-10-25T01:06:49.433Z",
               "method": "operator leasing widget in a browser"
             }
           ],
@@ -6383,7 +6383,7 @@
             "renters_insurance": "PROVIDER_DEPENDENT"
           },
           "utility_source_id": "terrace-fees",
-          "price_confidence_tier": "PORTAL_QUOTE",
+          "price_confidence_tier": "PUBLISHED_TOTAL_LEASING_PRICE",
           "operator_questions": [
             "The full Fall 2027 fee schedule: are the $40 technology, $10 trash and $5 billing fees on top of the listed per-bed rate?",
             "Why 1x1 Tier 3 shows $1,450 on the portal versus $1,445 on listing sites.",
@@ -6420,7 +6420,7 @@
           "bathrooms": 2.5,
           "amount": "1125",
           "basis": "person",
-          "period": "installment",
+          "period": "monthly",
           "contract": "unknown",
           "room": "private",
           "installments": null,
@@ -6447,9 +6447,9 @@
           "evidence": [
             {
               "field": "amount",
-              "quote": "1x1 Tier 3 1 Bed / 1 Bath Options Rent Deposit Private Total Monthly Leasing Price $1,450 Lease term: 27/28 Lease Term (08/21/2027 - 07/31/2028) $200",
+              "quote": "2x2.5TH T1 2 Bed / 2.5 Bath Options Rent Deposit Private Total Monthly Leasing Price $1,125",
               "source_id": "terrace-widget",
-              "reviewed_at": "2026-10-24T23:10:00+00:00",
+              "reviewed_at": "2026-10-25T01:06:49.433Z",
               "method": "operator leasing widget in a browser"
             }
           ],
@@ -6571,7 +6571,7 @@
             "renters_insurance": "PROVIDER_DEPENDENT"
           },
           "utility_source_id": "terrace-fees",
-          "price_confidence_tier": "PORTAL_QUOTE",
+          "price_confidence_tier": "PUBLISHED_TOTAL_LEASING_PRICE",
           "operator_questions": [
             "The full Fall 2027 fee schedule: are the $40 technology, $10 trash and $5 billing fees on top of the listed per-bed rate?",
             "Why 1x1 Tier 3 shows $1,450 on the portal versus $1,445 on listing sites.",
@@ -6608,7 +6608,7 @@
           "bathrooms": 2.0,
           "amount": "1110",
           "basis": "person",
-          "period": "installment",
+          "period": "monthly",
           "contract": "unknown",
           "room": "private",
           "installments": null,
@@ -6635,9 +6635,9 @@
           "evidence": [
             {
               "field": "amount",
-              "quote": "1x1 Tier 3 1 Bed / 1 Bath Options Rent Deposit Private Total Monthly Leasing Price $1,450 Lease term: 27/28 Lease Term (08/21/2027 - 07/31/2028) $200",
+              "quote": "2x2 Tier 1 2 Bed / 2 Bath Options Rent Deposit Private Total Monthly Leasing Price $1,110",
               "source_id": "terrace-widget",
-              "reviewed_at": "2026-10-24T23:10:00+00:00",
+              "reviewed_at": "2026-10-25T01:06:49.433Z",
               "method": "operator leasing widget in a browser"
             }
           ],
@@ -6759,7 +6759,7 @@
             "renters_insurance": "PROVIDER_DEPENDENT"
           },
           "utility_source_id": "terrace-fees",
-          "price_confidence_tier": "PORTAL_QUOTE",
+          "price_confidence_tier": "PUBLISHED_TOTAL_LEASING_PRICE",
           "operator_questions": [
             "The full Fall 2027 fee schedule: are the $40 technology, $10 trash and $5 billing fees on top of the listed per-bed rate?",
             "Why 1x1 Tier 3 shows $1,450 on the portal versus $1,445 on listing sites.",
@@ -6796,7 +6796,7 @@
           "bathrooms": 1.5,
           "amount": "900",
           "basis": "person",
-          "period": "installment",
+          "period": "monthly",
           "contract": "unknown",
           "room": "private",
           "installments": null,
@@ -6823,9 +6823,9 @@
           "evidence": [
             {
               "field": "amount",
-              "quote": "1x1 Tier 3 1 Bed / 1 Bath Options Rent Deposit Private Total Monthly Leasing Price $1,450 Lease term: 27/28 Lease Term (08/21/2027 - 07/31/2028) $200",
+              "quote": "3Ax1.5 T1 3 Bed / 1.5 Bath Options Rent Deposit Private Total Monthly Leasing Price $900",
               "source_id": "terrace-widget",
-              "reviewed_at": "2026-10-24T23:10:00+00:00",
+              "reviewed_at": "2026-10-25T01:06:49.433Z",
               "method": "operator leasing widget in a browser"
             }
           ],
@@ -6947,7 +6947,7 @@
             "renters_insurance": "PROVIDER_DEPENDENT"
           },
           "utility_source_id": "terrace-fees",
-          "price_confidence_tier": "PORTAL_QUOTE",
+          "price_confidence_tier": "PUBLISHED_TOTAL_LEASING_PRICE",
           "operator_questions": [
             "The full Fall 2027 fee schedule: are the $40 technology, $10 trash and $5 billing fees on top of the listed per-bed rate?",
             "Why 1x1 Tier 3 shows $1,450 on the portal versus $1,445 on listing sites.",
@@ -6984,7 +6984,7 @@
           "bathrooms": 1.5,
           "amount": "890",
           "basis": "person",
-          "period": "installment",
+          "period": "monthly",
           "contract": "unknown",
           "room": "private",
           "installments": null,
@@ -7011,9 +7011,9 @@
           "evidence": [
             {
               "field": "amount",
-              "quote": "1x1 Tier 3 1 Bed / 1 Bath Options Rent Deposit Private Total Monthly Leasing Price $1,450 Lease term: 27/28 Lease Term (08/21/2027 - 07/31/2028) $200",
+              "quote": "3Ax1.5 T2 3 Bed / 1.5 Bath Options Rent Deposit Private Total Monthly Leasing Price $890",
               "source_id": "terrace-widget",
-              "reviewed_at": "2026-10-24T23:10:00+00:00",
+              "reviewed_at": "2026-10-25T01:06:49.433Z",
               "method": "operator leasing widget in a browser"
             }
           ],
@@ -7135,7 +7135,7 @@
             "renters_insurance": "PROVIDER_DEPENDENT"
           },
           "utility_source_id": "terrace-fees",
-          "price_confidence_tier": "PORTAL_QUOTE",
+          "price_confidence_tier": "PUBLISHED_TOTAL_LEASING_PRICE",
           "operator_questions": [
             "The full Fall 2027 fee schedule: are the $40 technology, $10 trash and $5 billing fees on top of the listed per-bed rate?",
             "Why 1x1 Tier 3 shows $1,450 on the portal versus $1,445 on listing sites.",
@@ -7172,7 +7172,7 @@
           "bathrooms": 1.5,
           "amount": "865",
           "basis": "person",
-          "period": "installment",
+          "period": "monthly",
           "contract": "unknown",
           "room": "private",
           "installments": null,
@@ -7199,9 +7199,9 @@
           "evidence": [
             {
               "field": "amount",
-              "quote": "1x1 Tier 3 1 Bed / 1 Bath Options Rent Deposit Private Total Monthly Leasing Price $1,450 Lease term: 27/28 Lease Term (08/21/2027 - 07/31/2028) $200",
+              "quote": "3Ax1.5 T3 3 Bed / 1.5 Bath Options Rent Deposit Private Total Monthly Leasing Price $865",
               "source_id": "terrace-widget",
-              "reviewed_at": "2026-10-24T23:10:00+00:00",
+              "reviewed_at": "2026-10-25T01:06:49.433Z",
               "method": "operator leasing widget in a browser"
             }
           ],
@@ -7323,7 +7323,7 @@
             "renters_insurance": "PROVIDER_DEPENDENT"
           },
           "utility_source_id": "terrace-fees",
-          "price_confidence_tier": "PORTAL_QUOTE",
+          "price_confidence_tier": "PUBLISHED_TOTAL_LEASING_PRICE",
           "operator_questions": [
             "The full Fall 2027 fee schedule: are the $40 technology, $10 trash and $5 billing fees on top of the listed per-bed rate?",
             "Why 1x1 Tier 3 shows $1,450 on the portal versus $1,445 on listing sites.",
@@ -7360,7 +7360,7 @@
           "bathrooms": 2.0,
           "amount": "920",
           "basis": "person",
-          "period": "installment",
+          "period": "monthly",
           "contract": "unknown",
           "room": "private",
           "installments": null,
@@ -7387,9 +7387,9 @@
           "evidence": [
             {
               "field": "amount",
-              "quote": "1x1 Tier 3 1 Bed / 1 Bath Options Rent Deposit Private Total Monthly Leasing Price $1,450 Lease term: 27/28 Lease Term (08/21/2027 - 07/31/2028) $200",
+              "quote": "3Ax2 T1 3 Bed / 2 Bath Options Rent Deposit Private Total Monthly Leasing Price $920",
               "source_id": "terrace-widget",
-              "reviewed_at": "2026-10-24T23:10:00+00:00",
+              "reviewed_at": "2026-10-25T01:06:49.433Z",
               "method": "operator leasing widget in a browser"
             }
           ],
@@ -7511,7 +7511,7 @@
             "renters_insurance": "PROVIDER_DEPENDENT"
           },
           "utility_source_id": "terrace-fees",
-          "price_confidence_tier": "PORTAL_QUOTE",
+          "price_confidence_tier": "PUBLISHED_TOTAL_LEASING_PRICE",
           "operator_questions": [
             "The full Fall 2027 fee schedule: are the $40 technology, $10 trash and $5 billing fees on top of the listed per-bed rate?",
             "Why 1x1 Tier 3 shows $1,450 on the portal versus $1,445 on listing sites.",
@@ -7548,7 +7548,7 @@
           "bathrooms": 1.5,
           "amount": "965",
           "basis": "person",
-          "period": "installment",
+          "period": "monthly",
           "contract": "unknown",
           "room": "private",
           "installments": null,
@@ -7575,9 +7575,9 @@
           "evidence": [
             {
               "field": "amount",
-              "quote": "1x1 Tier 3 1 Bed / 1 Bath Options Rent Deposit Private Total Monthly Leasing Price $1,450 Lease term: 27/28 Lease Term (08/21/2027 - 07/31/2028) $200",
+              "quote": "3x1.5TH T1 3 Bed / 1.5 Bath Options Rent Deposit Private Total Monthly Leasing Price $965",
               "source_id": "terrace-widget",
-              "reviewed_at": "2026-10-24T23:10:00+00:00",
+              "reviewed_at": "2026-10-25T01:06:49.433Z",
               "method": "operator leasing widget in a browser"
             }
           ],
@@ -7699,7 +7699,7 @@
             "renters_insurance": "PROVIDER_DEPENDENT"
           },
           "utility_source_id": "terrace-fees",
-          "price_confidence_tier": "PORTAL_QUOTE",
+          "price_confidence_tier": "PUBLISHED_TOTAL_LEASING_PRICE",
           "operator_questions": [
             "The full Fall 2027 fee schedule: are the $40 technology, $10 trash and $5 billing fees on top of the listed per-bed rate?",
             "Why 1x1 Tier 3 shows $1,450 on the portal versus $1,445 on listing sites.",
@@ -7736,7 +7736,7 @@
           "bathrooms": 1.5,
           "amount": "950",
           "basis": "person",
-          "period": "installment",
+          "period": "monthly",
           "contract": "unknown",
           "room": "private",
           "installments": null,
@@ -7763,9 +7763,9 @@
           "evidence": [
             {
               "field": "amount",
-              "quote": "1x1 Tier 3 1 Bed / 1 Bath Options Rent Deposit Private Total Monthly Leasing Price $1,450 Lease term: 27/28 Lease Term (08/21/2027 - 07/31/2028) $200",
+              "quote": "3x1.5TH T2 3 Bed / 1.5 Bath Options Rent Deposit Private Total Monthly Leasing Price $950",
               "source_id": "terrace-widget",
-              "reviewed_at": "2026-10-24T23:10:00+00:00",
+              "reviewed_at": "2026-10-25T01:06:49.433Z",
               "method": "operator leasing widget in a browser"
             }
           ],
@@ -7887,7 +7887,7 @@
             "renters_insurance": "PROVIDER_DEPENDENT"
           },
           "utility_source_id": "terrace-fees",
-          "price_confidence_tier": "PORTAL_QUOTE",
+          "price_confidence_tier": "PUBLISHED_TOTAL_LEASING_PRICE",
           "operator_questions": [
             "The full Fall 2027 fee schedule: are the $40 technology, $10 trash and $5 billing fees on top of the listed per-bed rate?",
             "Why 1x1 Tier 3 shows $1,450 on the portal versus $1,445 on listing sites.",
@@ -7924,7 +7924,7 @@
           "bathrooms": 1.5,
           "amount": "930",
           "basis": "person",
-          "period": "installment",
+          "period": "monthly",
           "contract": "unknown",
           "room": "private",
           "installments": null,
@@ -7951,9 +7951,9 @@
           "evidence": [
             {
               "field": "amount",
-              "quote": "1x1 Tier 3 1 Bed / 1 Bath Options Rent Deposit Private Total Monthly Leasing Price $1,450 Lease term: 27/28 Lease Term (08/21/2027 - 07/31/2028) $200",
+              "quote": "3x1.5TH T3 3 Bed / 1.5 Bath Options Rent Deposit Private Total Monthly Leasing Price $930",
               "source_id": "terrace-widget",
-              "reviewed_at": "2026-10-24T23:10:00+00:00",
+              "reviewed_at": "2026-10-25T01:06:49.433Z",
               "method": "operator leasing widget in a browser"
             }
           ],
@@ -8075,7 +8075,7 @@
             "renters_insurance": "PROVIDER_DEPENDENT"
           },
           "utility_source_id": "terrace-fees",
-          "price_confidence_tier": "PORTAL_QUOTE",
+          "price_confidence_tier": "PUBLISHED_TOTAL_LEASING_PRICE",
           "operator_questions": [
             "The full Fall 2027 fee schedule: are the $40 technology, $10 trash and $5 billing fees on top of the listed per-bed rate?",
             "Why 1x1 Tier 3 shows $1,450 on the portal versus $1,445 on listing sites.",
@@ -8112,7 +8112,7 @@
           "bathrooms": 2.5,
           "amount": "1045",
           "basis": "person",
-          "period": "installment",
+          "period": "monthly",
           "contract": "unknown",
           "room": "private",
           "installments": null,
@@ -8139,9 +8139,9 @@
           "evidence": [
             {
               "field": "amount",
-              "quote": "1x1 Tier 3 1 Bed / 1 Bath Options Rent Deposit Private Total Monthly Leasing Price $1,450 Lease term: 27/28 Lease Term (08/21/2027 - 07/31/2028) $200",
+              "quote": "3x2.5TH T1 3 Bed / 2.5 Bath Options Rent Deposit Private Total Monthly Leasing Price $1,045",
               "source_id": "terrace-widget",
-              "reviewed_at": "2026-10-24T23:10:00+00:00",
+              "reviewed_at": "2026-10-25T01:06:49.433Z",
               "method": "operator leasing widget in a browser"
             }
           ],
@@ -8263,7 +8263,7 @@
             "renters_insurance": "PROVIDER_DEPENDENT"
           },
           "utility_source_id": "terrace-fees",
-          "price_confidence_tier": "PORTAL_QUOTE",
+          "price_confidence_tier": "PUBLISHED_TOTAL_LEASING_PRICE",
           "operator_questions": [
             "The full Fall 2027 fee schedule: are the $40 technology, $10 trash and $5 billing fees on top of the listed per-bed rate?",
             "Why 1x1 Tier 3 shows $1,450 on the portal versus $1,445 on listing sites.",
@@ -8300,7 +8300,7 @@
           "bathrooms": 2.0,
           "amount": "935",
           "basis": "person",
-          "period": "installment",
+          "period": "monthly",
           "contract": "unknown",
           "room": "private",
           "installments": null,
@@ -8327,9 +8327,9 @@
           "evidence": [
             {
               "field": "amount",
-              "quote": "1x1 Tier 3 1 Bed / 1 Bath Options Rent Deposit Private Total Monthly Leasing Price $1,450 Lease term: 27/28 Lease Term (08/21/2027 - 07/31/2028) $200",
+              "quote": "3x2 Tier 1 3 Bed / 2 Bath Options Rent Deposit Private Total Monthly Leasing Price $935",
               "source_id": "terrace-widget",
-              "reviewed_at": "2026-10-24T23:10:00+00:00",
+              "reviewed_at": "2026-10-25T01:06:49.433Z",
               "method": "operator leasing widget in a browser"
             }
           ],
@@ -8451,7 +8451,7 @@
             "renters_insurance": "PROVIDER_DEPENDENT"
           },
           "utility_source_id": "terrace-fees",
-          "price_confidence_tier": "PORTAL_QUOTE",
+          "price_confidence_tier": "PUBLISHED_TOTAL_LEASING_PRICE",
           "operator_questions": [
             "The full Fall 2027 fee schedule: are the $40 technology, $10 trash and $5 billing fees on top of the listed per-bed rate?",
             "Why 1x1 Tier 3 shows $1,450 on the portal versus $1,445 on listing sites.",
@@ -8488,7 +8488,7 @@
           "bathrooms": 2.0,
           "amount": "920",
           "basis": "person",
-          "period": "installment",
+          "period": "monthly",
           "contract": "unknown",
           "room": "private",
           "installments": null,
@@ -8515,9 +8515,9 @@
           "evidence": [
             {
               "field": "amount",
-              "quote": "1x1 Tier 3 1 Bed / 1 Bath Options Rent Deposit Private Total Monthly Leasing Price $1,450 Lease term: 27/28 Lease Term (08/21/2027 - 07/31/2028) $200",
+              "quote": "3x2 Tier 2 3 Bed / 2 Bath Options Rent Deposit Private Total Monthly Leasing Price $920",
               "source_id": "terrace-widget",
-              "reviewed_at": "2026-10-24T23:10:00+00:00",
+              "reviewed_at": "2026-10-25T01:06:49.433Z",
               "method": "operator leasing widget in a browser"
             }
           ],
@@ -8639,7 +8639,7 @@
             "renters_insurance": "PROVIDER_DEPENDENT"
           },
           "utility_source_id": "terrace-fees",
-          "price_confidence_tier": "PORTAL_QUOTE",
+          "price_confidence_tier": "PUBLISHED_TOTAL_LEASING_PRICE",
           "operator_questions": [
             "The full Fall 2027 fee schedule: are the $40 technology, $10 trash and $5 billing fees on top of the listed per-bed rate?",
             "Why 1x1 Tier 3 shows $1,450 on the portal versus $1,445 on listing sites.",
@@ -8676,7 +8676,7 @@
           "bathrooms": 2.0,
           "amount": "900",
           "basis": "person",
-          "period": "installment",
+          "period": "monthly",
           "contract": "unknown",
           "room": "private",
           "installments": null,
@@ -8703,9 +8703,9 @@
           "evidence": [
             {
               "field": "amount",
-              "quote": "1x1 Tier 3 1 Bed / 1 Bath Options Rent Deposit Private Total Monthly Leasing Price $1,450 Lease term: 27/28 Lease Term (08/21/2027 - 07/31/2028) $200",
+              "quote": "3x2 Tier 3 3 Bed / 2 Bath Options Rent Deposit Private Total Monthly Leasing Price $900",
               "source_id": "terrace-widget",
-              "reviewed_at": "2026-10-24T23:10:00+00:00",
+              "reviewed_at": "2026-10-25T01:06:49.433Z",
               "method": "operator leasing widget in a browser"
             }
           ],
@@ -8827,7 +8827,7 @@
             "renters_insurance": "PROVIDER_DEPENDENT"
           },
           "utility_source_id": "terrace-fees",
-          "price_confidence_tier": "PORTAL_QUOTE",
+          "price_confidence_tier": "PUBLISHED_TOTAL_LEASING_PRICE",
           "operator_questions": [
             "The full Fall 2027 fee schedule: are the $40 technology, $10 trash and $5 billing fees on top of the listed per-bed rate?",
             "Why 1x1 Tier 3 shows $1,450 on the portal versus $1,445 on listing sites.",
@@ -8864,7 +8864,7 @@
           "bathrooms": 3.0,
           "amount": "1040",
           "basis": "person",
-          "period": "installment",
+          "period": "monthly",
           "contract": "unknown",
           "room": "private",
           "installments": null,
@@ -8891,9 +8891,9 @@
           "evidence": [
             {
               "field": "amount",
-              "quote": "1x1 Tier 3 1 Bed / 1 Bath Options Rent Deposit Private Total Monthly Leasing Price $1,450 Lease term: 27/28 Lease Term (08/21/2027 - 07/31/2028) $200",
+              "quote": "3x3 Tier 1 3 Bed / 3 Bath Options Rent Deposit Private Total Monthly Leasing Price $1,040",
               "source_id": "terrace-widget",
-              "reviewed_at": "2026-10-24T23:10:00+00:00",
+              "reviewed_at": "2026-10-25T01:06:49.433Z",
               "method": "operator leasing widget in a browser"
             }
           ],
@@ -9015,7 +9015,7 @@
             "renters_insurance": "PROVIDER_DEPENDENT"
           },
           "utility_source_id": "terrace-fees",
-          "price_confidence_tier": "PORTAL_QUOTE",
+          "price_confidence_tier": "PUBLISHED_TOTAL_LEASING_PRICE",
           "operator_questions": [
             "The full Fall 2027 fee schedule: are the $40 technology, $10 trash and $5 billing fees on top of the listed per-bed rate?",
             "Why 1x1 Tier 3 shows $1,450 on the portal versus $1,445 on listing sites.",
@@ -9052,7 +9052,7 @@
           "bathrooms": 2.5,
           "amount": "995",
           "basis": "person",
-          "period": "installment",
+          "period": "monthly",
           "contract": "unknown",
           "room": "private",
           "installments": null,
@@ -9079,9 +9079,9 @@
           "evidence": [
             {
               "field": "amount",
-              "quote": "1x1 Tier 3 1 Bed / 1 Bath Options Rent Deposit Private Total Monthly Leasing Price $1,450 Lease term: 27/28 Lease Term (08/21/2027 - 07/31/2028) $200",
+              "quote": "4x2.5 T1 4 Bed / 2.5 Bath Options Rent Deposit Private Total Monthly Leasing Price $995",
               "source_id": "terrace-widget",
-              "reviewed_at": "2026-10-24T23:10:00+00:00",
+              "reviewed_at": "2026-10-25T01:06:49.433Z",
               "method": "operator leasing widget in a browser"
             }
           ],
@@ -9203,7 +9203,7 @@
             "renters_insurance": "PROVIDER_DEPENDENT"
           },
           "utility_source_id": "terrace-fees",
-          "price_confidence_tier": "PORTAL_QUOTE",
+          "price_confidence_tier": "PUBLISHED_TOTAL_LEASING_PRICE",
           "operator_questions": [
             "The full Fall 2027 fee schedule: are the $40 technology, $10 trash and $5 billing fees on top of the listed per-bed rate?",
             "Why 1x1 Tier 3 shows $1,450 on the portal versus $1,445 on listing sites.",
@@ -9240,7 +9240,7 @@
           "bathrooms": 2.5,
           "amount": "960",
           "basis": "person",
-          "period": "installment",
+          "period": "monthly",
           "contract": "unknown",
           "room": "private",
           "installments": null,
@@ -9267,9 +9267,9 @@
           "evidence": [
             {
               "field": "amount",
-              "quote": "1x1 Tier 3 1 Bed / 1 Bath Options Rent Deposit Private Total Monthly Leasing Price $1,450 Lease term: 27/28 Lease Term (08/21/2027 - 07/31/2028) $200",
+              "quote": "4x2.5 T2 4 Bed / 2.5 Bath Options Rent Deposit Private Total Monthly Leasing Price $960",
               "source_id": "terrace-widget",
-              "reviewed_at": "2026-10-24T23:10:00+00:00",
+              "reviewed_at": "2026-10-25T01:06:49.433Z",
               "method": "operator leasing widget in a browser"
             }
           ],
@@ -9391,7 +9391,7 @@
             "renters_insurance": "PROVIDER_DEPENDENT"
           },
           "utility_source_id": "terrace-fees",
-          "price_confidence_tier": "PORTAL_QUOTE",
+          "price_confidence_tier": "PUBLISHED_TOTAL_LEASING_PRICE",
           "operator_questions": [
             "The full Fall 2027 fee schedule: are the $40 technology, $10 trash and $5 billing fees on top of the listed per-bed rate?",
             "Why 1x1 Tier 3 shows $1,450 on the portal versus $1,445 on listing sites.",
@@ -9428,7 +9428,7 @@
           "bathrooms": 2.5,
           "amount": "955",
           "basis": "person",
-          "period": "installment",
+          "period": "monthly",
           "contract": "unknown",
           "room": "private",
           "installments": null,
@@ -9455,9 +9455,9 @@
           "evidence": [
             {
               "field": "amount",
-              "quote": "1x1 Tier 3 1 Bed / 1 Bath Options Rent Deposit Private Total Monthly Leasing Price $1,450 Lease term: 27/28 Lease Term (08/21/2027 - 07/31/2028) $200",
+              "quote": "4x2.5 T3 4 Bed / 2.5 Bath Options Rent Deposit Private Total Monthly Leasing Price $955",
               "source_id": "terrace-widget",
-              "reviewed_at": "2026-10-24T23:10:00+00:00",
+              "reviewed_at": "2026-10-25T01:06:49.433Z",
               "method": "operator leasing widget in a browser"
             }
           ],
@@ -9579,7 +9579,7 @@
             "renters_insurance": "PROVIDER_DEPENDENT"
           },
           "utility_source_id": "terrace-fees",
-          "price_confidence_tier": "PORTAL_QUOTE",
+          "price_confidence_tier": "PUBLISHED_TOTAL_LEASING_PRICE",
           "operator_questions": [
             "The full Fall 2027 fee schedule: are the $40 technology, $10 trash and $5 billing fees on top of the listed per-bed rate?",
             "Why 1x1 Tier 3 shows $1,450 on the portal versus $1,445 on listing sites.",
@@ -9616,7 +9616,7 @@
           "bathrooms": 2.0,
           "amount": "925",
           "basis": "person",
-          "period": "installment",
+          "period": "monthly",
           "contract": "unknown",
           "room": "private",
           "installments": null,
@@ -9643,9 +9643,9 @@
           "evidence": [
             {
               "field": "amount",
-              "quote": "1x1 Tier 3 1 Bed / 1 Bath Options Rent Deposit Private Total Monthly Leasing Price $1,450 Lease term: 27/28 Lease Term (08/21/2027 - 07/31/2028) $200",
+              "quote": "4x2 Tier 1 4 Bed / 2 Bath Options Rent Deposit Private Total Monthly Leasing Price $925",
               "source_id": "terrace-widget",
-              "reviewed_at": "2026-10-24T23:10:00+00:00",
+              "reviewed_at": "2026-10-25T01:06:49.433Z",
               "method": "operator leasing widget in a browser"
             }
           ],
@@ -9767,7 +9767,7 @@
             "renters_insurance": "PROVIDER_DEPENDENT"
           },
           "utility_source_id": "terrace-fees",
-          "price_confidence_tier": "PORTAL_QUOTE",
+          "price_confidence_tier": "PUBLISHED_TOTAL_LEASING_PRICE",
           "operator_questions": [
             "The full Fall 2027 fee schedule: are the $40 technology, $10 trash and $5 billing fees on top of the listed per-bed rate?",
             "Why 1x1 Tier 3 shows $1,450 on the portal versus $1,445 on listing sites.",
@@ -9804,7 +9804,7 @@
           "bathrooms": 2.0,
           "amount": "920",
           "basis": "person",
-          "period": "installment",
+          "period": "monthly",
           "contract": "unknown",
           "room": "private",
           "installments": null,
@@ -9831,9 +9831,9 @@
           "evidence": [
             {
               "field": "amount",
-              "quote": "1x1 Tier 3 1 Bed / 1 Bath Options Rent Deposit Private Total Monthly Leasing Price $1,450 Lease term: 27/28 Lease Term (08/21/2027 - 07/31/2028) $200",
+              "quote": "4x2 Tier 2 4 Bed / 2 Bath Options Rent Deposit Private Total Monthly Leasing Price $920",
               "source_id": "terrace-widget",
-              "reviewed_at": "2026-10-24T23:10:00+00:00",
+              "reviewed_at": "2026-10-25T01:06:49.433Z",
               "method": "operator leasing widget in a browser"
             }
           ],
@@ -9955,7 +9955,7 @@
             "renters_insurance": "PROVIDER_DEPENDENT"
           },
           "utility_source_id": "terrace-fees",
-          "price_confidence_tier": "PORTAL_QUOTE",
+          "price_confidence_tier": "PUBLISHED_TOTAL_LEASING_PRICE",
           "operator_questions": [
             "The full Fall 2027 fee schedule: are the $40 technology, $10 trash and $5 billing fees on top of the listed per-bed rate?",
             "Why 1x1 Tier 3 shows $1,450 on the portal versus $1,445 on listing sites.",
@@ -9992,7 +9992,7 @@
           "bathrooms": 3.0,
           "amount": "985",
           "basis": "person",
-          "period": "installment",
+          "period": "monthly",
           "contract": "unknown",
           "room": "private",
           "installments": null,
@@ -10019,9 +10019,9 @@
           "evidence": [
             {
               "field": "amount",
-              "quote": "1x1 Tier 3 1 Bed / 1 Bath Options Rent Deposit Private Total Monthly Leasing Price $1,450 Lease term: 27/28 Lease Term (08/21/2027 - 07/31/2028) $200",
+              "quote": "4x3 Tier 1 4 Bed / 3 Bath Options Rent Deposit Private Total Monthly Leasing Price $985",
               "source_id": "terrace-widget",
-              "reviewed_at": "2026-10-24T23:10:00+00:00",
+              "reviewed_at": "2026-10-25T01:06:49.433Z",
               "method": "operator leasing widget in a browser"
             }
           ],
@@ -10143,7 +10143,7 @@
             "renters_insurance": "PROVIDER_DEPENDENT"
           },
           "utility_source_id": "terrace-fees",
-          "price_confidence_tier": "PORTAL_QUOTE",
+          "price_confidence_tier": "PUBLISHED_TOTAL_LEASING_PRICE",
           "operator_questions": [
             "The full Fall 2027 fee schedule: are the $40 technology, $10 trash and $5 billing fees on top of the listed per-bed rate?",
             "Why 1x1 Tier 3 shows $1,450 on the portal versus $1,445 on listing sites.",
@@ -10180,7 +10180,7 @@
           "bathrooms": 4.0,
           "amount": "1085",
           "basis": "person",
-          "period": "installment",
+          "period": "monthly",
           "contract": "unknown",
           "room": "private",
           "installments": null,
@@ -10207,9 +10207,9 @@
           "evidence": [
             {
               "field": "amount",
-              "quote": "1x1 Tier 3 1 Bed / 1 Bath Options Rent Deposit Private Total Monthly Leasing Price $1,450 Lease term: 27/28 Lease Term (08/21/2027 - 07/31/2028) $200",
+              "quote": "4x4 Tier 1 4 Bed / 4 Bath Options Rent Deposit Private Total Monthly Leasing Price $1,085",
               "source_id": "terrace-widget",
-              "reviewed_at": "2026-10-24T23:10:00+00:00",
+              "reviewed_at": "2026-10-25T01:06:49.433Z",
               "method": "operator leasing widget in a browser"
             }
           ],
@@ -10331,7 +10331,7 @@
             "renters_insurance": "PROVIDER_DEPENDENT"
           },
           "utility_source_id": "terrace-fees",
-          "price_confidence_tier": "PORTAL_QUOTE",
+          "price_confidence_tier": "PUBLISHED_TOTAL_LEASING_PRICE",
           "operator_questions": [
             "The full Fall 2027 fee schedule: are the $40 technology, $10 trash and $5 billing fees on top of the listed per-bed rate?",
             "Why 1x1 Tier 3 shows $1,450 on the portal versus $1,445 on listing sites.",
@@ -10378,14 +10378,14 @@
           "id": "windsor-plans",
           "url": "https://www.windsorhillsapts.com/floorplans/",
           "title": "Windsor Plans",
-          "checked_at": "2026-10-24T23:10:00+00:00",
-          "excerpt": "The Canterbury Rent: From: $1234 1 bd | 1 ba 836 sq ft Deposit: Call for details.",
-          "applicable_term": "2027–28",
-          "review_status": "live_observation",
+          "checked_at": "2026-10-25T01:04:47.338Z",
+          "excerpt": "The Ripley Rent: From: $1294",
+          "applicable_term": "Lease dates unconfirmed",
+          "review_status": "reviewed",
           "refresh_policy": "robots_checked",
-          "sha256": null,
-          "reviewed_at": null,
-          "review_scope": "Operator page read on Oct 24, 2026 (rendered page in a browser). Asking prices only; no unit availability guarantee."
+          "sha256": "875192a373d050901c38d9f3041e31aac25ae5a04920fa71b0e0b3a918219748",
+          "reviewed_at": "2026-10-25T01:04:47.338Z",
+          "review_scope": "Operator page read 2026-10-24 (rendered page in a browser). Asking prices only; no unit availability guarantee."
         },
         {
           "id": "windsor-fees",
@@ -10455,7 +10455,7 @@
           "start": null,
           "end": null,
           "annual_total": null,
-          "term_label": "2027–28",
+          "term_label": "Lease dates unconfirmed",
           "advertised_occupants": null,
           "upfront": [],
           "unknowns": [
@@ -10468,9 +10468,9 @@
           "evidence": [
             {
               "field": "amount",
-              "quote": "The Canterbury Rent: From: $1234 1 bd | 1 ba 836 sq ft Deposit: Call for details.",
+              "quote": "The Ripley Rent: From: $1294",
               "source_id": "windsor-plans",
-              "reviewed_at": "2026-10-24T23:10:00+00:00",
+              "reviewed_at": "2026-10-25T01:04:47.338Z",
               "method": "rendered page in a browser"
             }
           ],
@@ -10631,7 +10631,7 @@
           "start": null,
           "end": null,
           "annual_total": null,
-          "term_label": "2027–28",
+          "term_label": "Lease dates unconfirmed",
           "advertised_occupants": null,
           "upfront": [],
           "unknowns": [
@@ -10644,9 +10644,9 @@
           "evidence": [
             {
               "field": "amount",
-              "quote": "The Canterbury Rent: From: $1234 1 bd | 1 ba 836 sq ft Deposit: Call for details.",
+              "quote": "The Canterbury Rent: From: $1234",
               "source_id": "windsor-plans",
-              "reviewed_at": "2026-10-24T23:10:00+00:00",
+              "reviewed_at": "2026-10-25T01:04:47.338Z",
               "method": "rendered page in a browser"
             }
           ],
@@ -10807,7 +10807,7 @@
           "start": null,
           "end": null,
           "annual_total": null,
-          "term_label": "2027–28",
+          "term_label": "Lease dates unconfirmed",
           "advertised_occupants": null,
           "upfront": [],
           "unknowns": [
@@ -10820,9 +10820,9 @@
           "evidence": [
             {
               "field": "amount",
-              "quote": "The Canterbury Rent: From: $1234 1 bd | 1 ba 836 sq ft Deposit: Call for details.",
+              "quote": "The Dover Rent: From: $1250",
               "source_id": "windsor-plans",
-              "reviewed_at": "2026-10-24T23:10:00+00:00",
+              "reviewed_at": "2026-10-25T01:04:47.338Z",
               "method": "rendered page in a browser"
             }
           ],
@@ -10983,7 +10983,7 @@
           "start": null,
           "end": null,
           "annual_total": null,
-          "term_label": "2027–28",
+          "term_label": "Lease dates unconfirmed",
           "advertised_occupants": null,
           "upfront": [],
           "unknowns": [
@@ -10996,9 +10996,9 @@
           "evidence": [
             {
               "field": "amount",
-              "quote": "The Canterbury Rent: From: $1234 1 bd | 1 ba 836 sq ft Deposit: Call for details.",
+              "quote": "The Lincoln Rent: From: $1403",
               "source_id": "windsor-plans",
-              "reviewed_at": "2026-10-24T23:10:00+00:00",
+              "reviewed_at": "2026-10-25T01:04:47.338Z",
               "method": "rendered page in a browser"
             }
           ],
@@ -11159,7 +11159,7 @@
           "start": null,
           "end": null,
           "annual_total": null,
-          "term_label": "2027–28",
+          "term_label": "Lease dates unconfirmed",
           "advertised_occupants": null,
           "upfront": [],
           "unknowns": [
@@ -11172,9 +11172,9 @@
           "evidence": [
             {
               "field": "amount",
-              "quote": "The Canterbury Rent: From: $1234 1 bd | 1 ba 836 sq ft Deposit: Call for details.",
+              "quote": "The Rochester Rent: From: $1441",
               "source_id": "windsor-plans",
-              "reviewed_at": "2026-10-24T23:10:00+00:00",
+              "reviewed_at": "2026-10-25T01:04:47.338Z",
               "method": "rendered page in a browser"
             }
           ],
@@ -11335,7 +11335,7 @@
           "start": null,
           "end": null,
           "annual_total": null,
-          "term_label": "2027–28",
+          "term_label": "Lease dates unconfirmed",
           "advertised_occupants": null,
           "upfront": [],
           "unknowns": [
@@ -11348,9 +11348,9 @@
           "evidence": [
             {
               "field": "amount",
-              "quote": "The Canterbury Rent: From: $1234 1 bd | 1 ba 836 sq ft Deposit: Call for details.",
+              "quote": "The Lynford Rent: From: $1680",
               "source_id": "windsor-plans",
-              "reviewed_at": "2026-10-24T23:10:00+00:00",
+              "reviewed_at": "2026-10-25T01:04:47.338Z",
               "method": "rendered page in a browser"
             }
           ],
@@ -11511,7 +11511,7 @@
           "start": null,
           "end": null,
           "annual_total": null,
-          "term_label": "2027–28",
+          "term_label": "Lease dates unconfirmed",
           "advertised_occupants": null,
           "upfront": [],
           "unknowns": [
@@ -11524,9 +11524,9 @@
           "evidence": [
             {
               "field": "amount",
-              "quote": "The Canterbury Rent: From: $1234 1 bd | 1 ba 836 sq ft Deposit: Call for details.",
+              "quote": "The Warwick Rent: From: $1844",
               "source_id": "windsor-plans",
-              "reviewed_at": "2026-10-24T23:10:00+00:00",
+              "reviewed_at": "2026-10-25T01:04:47.338Z",
               "method": "rendered page in a browser"
             }
           ],
@@ -11690,14 +11690,14 @@
           "id": "mill-plans",
           "url": "https://www.blacksburgmill.com/floor-plans/",
           "title": "Mill Plans",
-          "checked_at": "2026-10-24T23:10:00+00:00",
-          "excerpt": "2 Beds | 1 Baths 780 Sq. Ft. Rent: $1300 (Only $650 per room with 2 people) Deposit & Fees: Security Deposit: $900 Appli",
-          "applicable_term": "2027–28",
+          "checked_at": "2026-10-25T01:08:24.845126+00:00",
+          "excerpt": "1 Bedroom 2 Bedroom 3 Bedroom Apply Now 1 Beds | 1 Baths 535 Sq. Ft. Rent: $1100",
+          "applicable_term": "Lease dates unconfirmed",
           "review_status": "reviewed",
           "refresh_policy": "robots_checked",
-          "sha256": "c6c6d04e353ba93bb0701101ff05580ac5828e78b1c707160a6045d84f9a8f3f",
-          "reviewed_at": "2026-10-24T23:10:00+00:00",
-          "review_scope": "Operator page read on Oct 24, 2026 (robots-aware fetch). Asking prices only; no unit availability guarantee."
+          "sha256": "e45cc7d5178b1c29503be7690d9e027e2b3d968c508810a1a2e96d7a351315c2",
+          "reviewed_at": "2026-10-25T01:08:24.845126+00:00",
+          "review_scope": "Operator page read 2026-10-24 (robots-aware fetch). Asking prices only; no unit availability guarantee."
         },
         {
           "id": "mill-faq",
@@ -11741,7 +11741,7 @@
           "start": null,
           "end": null,
           "annual_total": null,
-          "term_label": "2027–28",
+          "term_label": "Lease dates unconfirmed",
           "advertised_occupants": null,
           "upfront": [
             {
@@ -11761,9 +11761,9 @@
           "evidence": [
             {
               "field": "amount",
-              "quote": "2 Beds | 1 Baths 780 Sq. Ft. Rent: $1300 (Only $650 per room with 2 people) Deposit & Fees: Security Deposit: $900 Application Fee: $35",
+              "quote": "1 Bedroom 2 Bedroom 3 Bedroom Apply Now 1 Beds | 1 Baths 535 Sq. Ft. Rent: $1100",
               "source_id": "mill-plans",
-              "reviewed_at": "2026-10-24T23:10:00+00:00",
+              "reviewed_at": "2026-10-25T01:08:24.845126+00:00",
               "method": "robots-aware fetch"
             }
           ],
@@ -11807,7 +11807,7 @@
             "renters_insurance": "PROVIDER_DEPENDENT"
           },
           "utility_source_id": "mill-plans",
-          "price_confidence_tier": "PORTAL_QUOTE",
+          "price_confidence_tier": "PUBLISHED_ASKING_PRICE",
           "operator_questions": [
             "Exact physical move-in date in August 2027 and move-out date in July 2028.",
             "How many units of this size remain for 2027–28.",
@@ -11847,7 +11847,7 @@
           "start": null,
           "end": null,
           "annual_total": null,
-          "term_label": "2027–28",
+          "term_label": "Lease dates unconfirmed",
           "advertised_occupants": null,
           "upfront": [
             {
@@ -11867,9 +11867,9 @@
           "evidence": [
             {
               "field": "amount",
-              "quote": "2 Beds | 1 Baths 780 Sq. Ft. Rent: $1300 (Only $650 per room with 2 people) Deposit & Fees: Security Deposit: $900 Application Fee: $35",
+              "quote": "2 Bedroom 3 Bedroom Apply Now 1 Beds | 1 Baths 535 Sq. Ft. Rent: $1100 Deposit & Fees: Security Deposit: $800 Application Fee: $35 Apply Now 2 Beds | 1 Baths 780 Sq. Ft. Rent: $1300",
               "source_id": "mill-plans",
-              "reviewed_at": "2026-10-24T23:10:00+00:00",
+              "reviewed_at": "2026-10-25T01:08:24.845126+00:00",
               "method": "robots-aware fetch"
             }
           ],
@@ -11913,7 +11913,7 @@
             "renters_insurance": "PROVIDER_DEPENDENT"
           },
           "utility_source_id": "mill-plans",
-          "price_confidence_tier": "PORTAL_QUOTE",
+          "price_confidence_tier": "PUBLISHED_ASKING_PRICE",
           "operator_questions": [
             "Exact physical move-in date in August 2027 and move-out date in July 2028.",
             "How many units of this size remain for 2027–28.",
@@ -11953,7 +11953,7 @@
           "start": null,
           "end": null,
           "annual_total": null,
-          "term_label": "2027–28",
+          "term_label": "Lease dates unconfirmed",
           "advertised_occupants": null,
           "upfront": [
             {
@@ -11973,9 +11973,9 @@
           "evidence": [
             {
               "field": "amount",
-              "quote": "2 Beds | 1 Baths 780 Sq. Ft. Rent: $1300 (Only $650 per room with 2 people) Deposit & Fees: Security Deposit: $900 Application Fee: $35",
+              "quote": "3 Bedroom Apply Now 1 Beds | 1 Baths 535 Sq. Ft. Rent: $1100 Deposit & Fees: Security Deposit: $800 Application Fee: $35 Apply Now 2 Beds | 1 Baths 780 Sq. Ft. Rent: $1300 (Only $650 per room with 2 people) Deposit & Fees: Security Deposit: $900 Application Fee: $35 Pricing is per unit. All residents share joint and several responsibility for full rent View Virtual Tour Apply Now 3 Beds | 1 Baths 1,025 Sq. Ft. Rent: $1680",
               "source_id": "mill-plans",
-              "reviewed_at": "2026-10-24T23:10:00+00:00",
+              "reviewed_at": "2026-10-25T01:08:24.845126+00:00",
               "method": "robots-aware fetch"
             }
           ],
@@ -12019,7 +12019,7 @@
             "renters_insurance": "PROVIDER_DEPENDENT"
           },
           "utility_source_id": "mill-plans",
-          "price_confidence_tier": "PORTAL_QUOTE",
+          "price_confidence_tier": "PUBLISHED_ASKING_PRICE",
           "operator_questions": [
             "Exact physical move-in date in August 2027 and move-out date in July 2028.",
             "How many units of this size remain for 2027–28.",
@@ -12053,5 +12053,5 @@
   ],
   "price_review": "2026-10-24-mill-price-recheck",
   "research_port": "2026-10-24-pricing-research-audit",
-  "live_prices": "2026-10-24T23:10:00+00:00"
+  "live_prices": "2026-10-25T01:08:24.845126+00:00"
 }

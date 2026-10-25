@@ -18,7 +18,7 @@ def amounts(store): return {o['id']:o['amount'] for p in store.catalog() for o i
 
 
 def old_catalog(store):
-    manifest,_=inputs()
+    manifest,snapshots=inputs()
     with store.connect() as db:
         for review in manifest['sources']:
             prop=json.loads(db.execute('SELECT body FROM housing_catalog WHERE id=?',(review['property_id'],)).fetchone()[0])
@@ -26,7 +26,8 @@ def old_catalog(store):
             db.execute('UPDATE housing_catalog SET body=? WHERE id=?',(json.dumps(prop),prop['id']))
             # Roll the source back to before the manifest's snapshot so the review applies to older evidence.
             source=json.loads(db.execute('SELECT body FROM housing_sources WHERE id=?',(review['source_id'],)).fetchone()[0])
-            source.update(checked_at='2026-10-15T16:00:00+00:00',review_status='reviewed')
+            source.update(checked_at='2026-10-15T16:00:00+00:00',review_status='reviewed',
+                          url=snapshots[review['source_id']]['url'])
             db.execute('UPDATE housing_sources SET body=? WHERE id=?',(json.dumps(source),review['source_id']))
 
 

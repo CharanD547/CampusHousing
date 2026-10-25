@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Roomwise</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Compare student housing near Virginia Tech by real cost, roommates and the commute to each of your classes.">
+<meta name="description" content="Compare housing near Virginia Tech by cost, roommates, lease terms, nearby essentials and source evidence.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..800&display=swap">
@@ -501,6 +501,8 @@ input[type="range"] { width: 100%; accent-color: #c87649; height: 28px; }
 .ai-item dt { color: var(--peach-soft); font-size: .625rem; letter-spacing: .12em; text-transform: uppercase; font-weight: 850; padding-top: 4px; }
 .ai-item dd { margin: 0; color: #e7ecea; }
 .ai .linkish { color: var(--peach-soft); }
+.ai .btn:not(.btn-amber) { color: var(--on-dark); border-color: #788a86; }
+.ai .btn:not(.btn-amber):hover { background: #35413f; }
 .ai .notice { background: rgba(255, 255, 255, .06); }
 .ai .notice strong { color: var(--on-dark); }
 .ai .notice p { color: var(--on-dark-muted); }
@@ -607,6 +609,19 @@ input[type="range"] { width: 100%; accent-color: #c87649; height: 28px; }
 .plan-all { min-width: 0; }
 .plan-all li a span { min-width: 0; overflow-wrap: anywhere; }
 .plan-all ul { max-height: 420px; overflow-y: auto; }
+.nearby-categories { display:flex;flex-wrap:wrap;gap:8px; }
+.nearby-categories [aria-pressed="true"] { background:var(--ink);color:var(--white); }
+.nearby-controls { display:grid;grid-template-columns:1fr 1fr;gap:16px; }
+.nearby-list { padding-left:26px;margin-top:16px;max-height:460px;overflow-y:auto; }
+.nearby-list li { padding:16px 0;border-bottom:1px solid var(--rule); }
+.nearby-list .btn-row { margin-top:12px;flex-wrap:wrap; }
+.nearby-map { height:340px!important;min-height:300px; }
+.nearby-pin { display:grid;place-items:center;width:30px;height:30px;border:2px solid white;border-radius:50%;background:#ad4629;color:white;font-weight:800;box-shadow:0 2px 8px #0005; }
+.directory-grid { display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px; }
+.directory-toolbar { margin-top:30px; }
+.directory-toolbar > div { flex:1;min-width:200px; }
+@media(max-width:760px) { .directory-grid { grid-template-columns:1fr; } }
+@media(min-width:641px) and (max-width:1350px) { .prop-card { grid-template-columns:100px minmax(0,1fr); }.prop-card .plan-prices,.prop-card .cand-actions { grid-column:2;grid-row:auto; }.prop-card .plan-prices { border-left:0;padding-left:0; } }
 
 :root { --hero-image: url("/assets/hero.webp"); }
 </style>
@@ -637,5 +652,6 @@ input[type="range"] { width: 100%; accent-color: #c87649; height: 28px; }
 <script defer src="/assets/assistant.js"></script>
 <script defer src="/assets/maps.js"></script>
 <script defer src="/assets/data-tools.js"></script>
+<script defer src="/assets/housing-guide.js"></script>
 <script defer src="/assets/app.js"></script>
 </body></html>

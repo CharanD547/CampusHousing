@@ -16,14 +16,14 @@ function defaultState() {
     campus_id: 'vt', monthly_budget_per_person: 1100, household_size: 2,
     private_bedroom_required: true, individual_lease_required: false,
     travel_modes: ['walk', 'transit'], max_commute_minutes: 30, arrival_buffer_minutes: 10,
-    move_in_date: '', move_out_date: '', priorities: ['Lowest monthly cost', 'Shortest commute', 'Private bedroom'],
+    move_in_date: '', move_out_date: '', priorities: ['Lowest monthly cost', 'Nearby essentials', 'Private bedroom'],
   };
   return {
     revision: 0,
     workspaceRevision: 0, route_date: TODAY,
     prefs,
     draft: null,
-    commitments: clone(SAMPLE_COMMITMENTS),
+    commitments: [],
     shortlist: [],
     notes: {},
     setAside: {},
@@ -40,7 +40,7 @@ function loadState() {
     if (!raw) return null;
     const s = JSON.parse(raw);
     const d = defaultState();
-    return { ...d, ...s, guide: { ...d.guide, ...s.guide }, sim: { ...d.sim, ...s.sim }, ai: s.ai && s.ai.status === 'pending' ? { ...s.ai, status: 'interrupted' } : (s.ai || d.ai) };
+    return { ...d, ...s, commitments: [], guide: { ...d.guide, ...s.guide }, sim: { ...d.sim, ...s.sim }, ai: s.ai && s.ai.status === 'pending' ? { ...s.ai, status: 'interrupted' } : (s.ai?.flow === 'assistant-v2' ? s.ai : d.ai) };
   } catch (e) { return null; }
 }
 
@@ -66,6 +66,7 @@ const money2 = (n) => n == null ? 'Unknown' : '$' + (Math.round(n * 100) / 100).
 const parseDate = (s) => { const [y, m, d] = s.split('-').map(Number); return new Date(Date.UTC(y, m - 1, d)); };
 const daysBetween = (a, b) => Math.round((parseDate(b) - parseDate(a)) / 86400000);
 const fmtDate = (s, opts = { month: 'short', day: 'numeric', year: 'numeric' }) => s ? parseDate(s).toLocaleDateString('en-US', { ...opts, timeZone: 'UTC' }) : '';
+const campusDate = (s) => s && s.length>10 ? new Date(s).toLocaleDateString('en-CA',{timeZone:'America/New_York'}) : s;
 const fmtDay = (s) => fmtDate(s, { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' });
 const ago = (s) => { const n = daysBetween(s, TODAY); return n <= 0 ? 'today' : n === 1 ? '1 day ago' : `${n} days ago`; };
 const DAYS = [['mon', 'Mon'], ['tue', 'Tue'], ['wed', 'Wed'], ['thu', 'Thu'], ['fri', 'Fri'], ['sat', 'Sat'], ['sun', 'Sun']];
@@ -107,7 +108,7 @@ const FIT_ORDER = { fit: 0, insufficient: 1, conflict: 2 };
 
 /* ---------- small renderers ---------- */
 const FIT_META = {
-  fit: { label: 'Documented fit', cls: 'chip-fit', icon: I.check },
+  fit: { label: 'Criteria match', cls: 'chip-fit', icon: I.check },
   conflict: { label: 'Conflict', cls: 'chip-conflict', icon: I.x },
   insufficient: { label: 'Insufficient evidence', cls: 'chip-insufficient', icon: I.q },
 };
@@ -118,6 +119,7 @@ const typeLabel = (t) => ({ offer: 'Specific offer', property: 'Property', area:
 
 function priceBlock(r, size = 'card') {
   const c = r.cand;
+  if(c.guide_reference)return planPrices({cand:c});
   if (c.type === 'area') {
     const a = c.area_range;
     return `<div class="cand-price"><span class="amt range num">${money(a.min)}–${money(a.max)}</span><span class="basis">area range ${BASIS_LABEL[a.basis]} ${FREQ_LABEL[a.frequency]}, not an offer</span></div>`;
@@ -130,44 +132,10 @@ function priceBlock(r, size = 'card') {
 
 function freshness(r) {
   const c = r.cand;
+  if(c.guide_reference)return '<span class="chip chip-neutral">Guide reference · unverified</span>';
   const d = c.offer?.price?.last_reviewed_at || c.area_range?.observed_at || c.evidence[0]?.observed_at || TODAY;
   const stale = daysBetween(d, TODAY) > STALE_AFTER_DAYS;
   return stale ? flagChip(`Stale source, reviewed ${ago(d)}`) : `<span class="tiny">Reviewed ${ago(d)}</span>`;
-}
-
-function coverageDots(r) {
-  const p = S.prefs;
-  return `<span class="coverage-dots" aria-hidden="true">${r.commute.per.map((x) => `<i class="${x.best ? (x.best.minutes > p.max_commute_minutes ? 'over' : 'on') : ''}"></i>`).join('')}</span>`;
-}
-
-function coverageText(r) {
-  const cm = r.commute;
-  if (!cm.total) return 'No schedule yet';
-  const lim = cm.limiting ? `, longest ${cm.limiting.best.minutes} min to ${cm.limiting.b.short}` : '';
-  return `${cm.supported} of ${cm.total} classes have a supported route${lim}`;
-}
-
-// The guide sign: one row per commitment.
-// The date routes were actually computed for (a class's next meeting day), not the picker's date.
-function routedDates(r) {
-  const dates = [...new Set(r.commute.per.flatMap((x) => x.ests.map((e) => e.route_date)).filter(Boolean))].sort();
-  return dates.length ? dates.map((d) => fmtDay(d)).join(', ') : fmtDay(ROUTING_DATE);
-}
-
-function commuteSign(r, { title, small } = {}) {
-  const p = S.prefs;
-  const rows = r.commute.per.map((x) => {
-    const days = x.c.weekdays.map(dayLabel).join(' ');
-    if (!x.best) return `<div class="sign-row none"><span>${I.arrowUp}</span><span>${esc(x.b.short)}<span class="sub">${days} · unavailable for ${p.travel_modes.map((m) => MODE_LABEL[m].toLowerCase()).join(' or ')} route</span></span><span class="min">No estimate</span></div>`;
-    const over = x.best.minutes > p.max_commute_minutes;
-    return `<div class="sign-row ${over ? 'over' : ''}"><span>${modeIcon(x.best.mode)}</span><span>${esc(x.b.short)}<span class="sub">${days} · arrive ${fmtTime(x.c.arrival_time_local)}${over ? ' · over limit' : ''}</span></span><span class="min num">${x.best.minutes}<small>min</small></span></div>`;
-  }).join('');
-  const empty = !r.commute.total ? '<div class="sign-row none"><span></span><span>No classes yet<span class="sub">Add your schedule to fill this in</span></span><span class="min"></span></div>' : '';
-  return `<div class="sign ${small ? 'small-sign' : ''}" role="group" aria-label="Commute from ${esc(r.cand.property_name)}"><div class="sign-in">
-    <div class="sign-title"><strong>${esc(title || 'From ' + r.cand.property_name)}</strong><span>${r.commute.supported} of ${r.commute.total} routed</span></div>
-    ${rows}${empty}
-    <div class="sign-foot"><span>Routed for ${routedDates(r)}</span><span>Fastest of: ${p.travel_modes.map((m) => MODE_LABEL[m]).join(', ')}</span></div>
-  </div></div>`;
 }
 
 function shortlistBtn(id, small = true) {

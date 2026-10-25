@@ -1,72 +1,85 @@
 # Roomwise assistant and Gemma workflow
 
-## What works without API credentials
+## Assistant modes
 
-Open `/#assistant`. With model operations disabled, `/api/v1/assistant/messages` uses a deterministic local research helper. It explains installment billing, summarizes the selected comparison, reports missing costs and route coverage, and suggests before-signing questions. Unsupported questions receive an explicit insufficient-evidence response. It does not browse websites, analyze the collected reviews, execute actions, change prices or claim to be Gemma.
+`/#assistant` and `/api/v1/assistant/messages` support two answer paths:
 
-Answers identify `provider: local_rules` and `model_id: null`. Property questions use the saved comparison and its catalog snapshot; cited sources are links to the reviewed housing evidence. Route coverage is a fact about the saved comparison, not a new route calculation. General guidance is labeled separately. Chat is session-only in the browser and is not exported to training data.
+- **Local helper (`local_rules`)**: deterministic, needs no model and no credentials. It explains installment billing, summarizes the selected comparison, reports missing costs and route coverage, and suggests before-signing questions. Unsupported questions get an explicit insufficient-evidence response. It answers with `provider: local_rules` and `model_id: null`, and does not consume the model quota.
+- **Local Gemma (`openai_compatible`)**: posts the scoped assistant prompt to a loopback model server at `/v1/chat/completions`, then validates the model alias, the JSON structure and citation IDs. If the model output fails validation, the app falls back to the local helper.
 
-Model transports are implemented for `google` and `openai_compatible`; no production model call has been verified. The assistant applies scoped context, structured-output and citation checks, one request at a time, a persistent UTC daily attempt limit, and request-id replay protection. Failed attempts count toward the cap; requests are not automatically retried. The local research helper makes no model calls and does not consume the model quota. These controls do not independently establish the factual accuracy of every generated sentence.
+Model calls are limited to one at a time, with an explicitly configured persistent UTC daily attempt cap (30 by default, 200 in the current local setup). Failed attempts count toward the cap, requests are not retried automatically, and request IDs are replay-protected. Chat is session-only in the browser and is not exported to training data. These controls do not independently establish that every generated sentence is factually accurate.
 
-The earlier comparison explanation endpoint remains an optional Gemma boundary; local helper text is not presented as a successful model explanation. Live Maps and on-demand nearby Places are integrated. Live walking/transit estimates have now been verified with a separate Routes credential; the full coverage matrix remains incomplete. Google Search grounding is unimplemented, and provider Places content is excluded from saved model context. See the [expanded remaining-work checklist](COMPLETION_REPORT.md#still-blocked-or-intentionally-incomplete).
+The limit is explicitly configured in `ROOMWISE_AI_DAILY_REQUESTS`; configuring a model does not automatically raise it. The current local configuration uses 200. The assistant now sends compact comparison facts, validates cited candidate IDs and monetary amounts, and requires per-person, whole-unit and installment labels where relevant. These checks catch some unsupported answers; they do not prove every claim is grounded. A failed validation returns the deterministic helper with `provider: local_rules`, no model ID and an explicit `fallback` notice. Browser requests allow 35 seconds; inference transport remains bounded to 25 seconds with a 30-second response wall-clock limit.
 
-## Prepared training dataset
+## Local Gemma setup
 
-```powershell
-.\.venv\Scripts\python.exe tools/training/prepare_dataset.py
-.\.venv\Scripts\python.exe tools/training/train_gemma.py --report var/training/preflight.json
-.\.venv\Scripts\python.exe tools/training/evaluate_gemma.py
-```
+Weights used: `google/gemma-4-E4B-it`, revision `ee0ef6023621cff504d758262d4e04895a5af4a2`, stored in `var/models/gemma-4-E4B-it/`. Training and serving ran on a local NVIDIA GPU with about 24 GB VRAM, using a separate environment at `var/training-venv/` so the production API environment stays free of torch.
 
-These commands require no model/API credentials and do not download weights. They author and check **240 synthetic examples**: 192 training, 24 validation, 24 test. Examples teach structured answers, evidence IDs, uncertainty, billing basis, partial routing and handling instructions embedded in untrusted content. They use fictional counterfactual contexts and authored targets, not original review passages or student conversations.
-
-Output: `var/training/roomwise-synthetic-v1/`. The manifest records content hashes, source scope, split method and the proposed base model/revision. Context groups do not overlap between splits. Templates do overlap, so these are pipeline checks, not a validated generalization benchmark or proof of a useful fine-tuned model. The default evaluation checks target data only; it explicitly reports `inference_performed: false`.
-
-The 720 collected reviews, including 67 VT records, remain research-only. They have not become labeled, privacy-reviewed, authorized training data. Before incorporating resident text, establish training-use scope and create reviewed labels with source IDs, dates, property scope, aspect annotations and uncertainty. Split real examples by property/source/time, remove near-duplicates, and retain a genuinely held-out evaluation set. Do not train a model to memorize supposedly current rent or availability; retrieve those facts at inference time.
-
-## Actual LoRA training: not yet run
-
-The starter recipe targets Google's [Gemma 3 1B instruction model](https://huggingface.co/google/gemma-3-1b-it), pinned to the observed base revision `dcc83ea841ab6100d6b47a070329e1ba4cf78752`. It trains query/key/value/output projection adapters, masks prompt tokens from loss, preserves the base weights, records package versions and pre/post validation loss, and saves a separate adapter. See Google's [Gemma tuning guidance](https://ai.google.dev/gemma/docs/tune).
-
-Local inspection found an NVIDIA RTX 5090 Laptop GPU with approximately 24 GB VRAM. This is a promising candidate for the 1B LoRA recipe; CUDA/PyTorch compatibility and actual peak memory have not been tested. No Torch/Transformers/PEFT training stack is installed in the API environment. The normal local Hugging Face cache contains no Gemma model. Official model access is gated, and no Hugging Face token was present in the inspected process environment. No weights were downloaded and no trained model exists.
-
-When authorized model files/access are available, install the optional requirements into a **separate** environment and select a CUDA-enabled PyTorch build compatible with this GPU. Resolve and save a dependency lock for that runtime; `tools/training/requirements.txt` is a starter range file, not a tested lock. The API additionally needs FastAPI/httpx/uvicorn if that training environment will serve or evaluate the model. Do not add the training stack to the production API image.
+Start the model server (loopback only, port 8002):
 
 ```powershell
-# Run only from a prepared training environment with authorized model access.
-python tools/training/train_gemma.py --train
+var\training-venv\Scripts\python.exe tools\training\serve_gemma.py --model var\models\gemma-4-E4B-it --adapter var\models\roomwise-gemma-4-e4b-lora-cont\adapter --alias roomwise-gemma-4-e4b-v2 --port 8002
 ```
 
-Output defaults to `var/models/roomwise-gemma-1b-lora/`. Existing adapter output is not overwritten. Training reports distinguish validation loss from task quality; lower loss alone is not evidence of improved factuality or usefulness. The script validates chat-template prefix masking before training rather than guessing the prompt boundary.
+Check it with `GET http://127.0.0.1:8002/health`. The health check only confirms that the weights and adapter loaded. It does not establish answer quality.
 
-## Serve already-downloaded weights locally
-
-The local server requires no cloud API. It loads existing local base weights and an optional adapter, with model downloads disabled. It binds to loopback port 8002 and accepts one bounded generation at a time. This serving recipe has been syntax-checked but has not run with actual weights.
-
-```powershell
-python tools/training/serve_gemma.py --model C:/path/to/local/gemma-base --adapter var/models/roomwise-gemma-1b-lora/adapter --alias roomwise-gemma-1b-v1
-```
-
-In the separate Roomwise backend process, set:
+Point a backend at it. Use environment variables so `.env` stays unchanged:
 
 ```powershell
 $env:ROOMWISE_AI_PROVIDER='openai_compatible'
-$env:ROOMWISE_AI_MODEL='roomwise-gemma-1b-v1'
+$env:ROOMWISE_AI_MODEL='roomwise-gemma-4-e4b-v2'
 $env:ROOMWISE_AI_BASE_URL='http://127.0.0.1:8002/v1'
 $env:ROOMWISE_EXTERNAL_ENABLED='true'
 ```
 
-Despite its name, this switch also gates calls to a separate local model process. Keep it false until that runtime is intentionally running. No provider key is required for the loopback model server. Use a distinct model alias for each adapter/version. Loading an adapter is not proof that its responses pass evaluation.
+`ROOMWISE_EXTERNAL_ENABLED` also gates calls to the local model process despite its name. Keep it `false` unless that server is running. The loopback model server needs no API key. Use a distinct alias for each adapter version.
 
-## Evaluate before claiming improvement
-
-Run the base model first, then the adapter under a different alias, against the same held-out file:
+## Dataset
 
 ```powershell
-python tools/training/evaluate_gemma.py --generate --model roomwise-gemma-base --output var/training/base-evaluation.json
-python tools/training/evaluate_gemma.py --generate --model roomwise-gemma-1b-v1 --output var/training/adapter-evaluation.json
+.\.venv\Scripts\python.exe tools/training/prepare_dataset.py
+.\.venv\Scripts\python.exe tools/training/train_gemma.py --report var/training/preflight.json
 ```
 
-Each command expects the corresponding alias to be running at `http://127.0.0.1:8002/v1`. Generation evaluation measures schema validity, citation/candidate validity and expected answer kind. Manually review groundedness, financial/billing correctness, uncertainty, unsupported questions, prompt injection and latency as well. Citation validity does not establish that an answer's claim is actually supported.
+The dataset in `var/training/roomwise-synthetic-v1/` has 240 authored examples: 192 train, 24 validation and 24 test. Context groups do not overlap between splits, but templates are shared across them. The data is therefore a pipeline and evaluation starter, not a validated generalization benchmark. No collected resident reviews were used (`raw_review_records_used: 0`). Their training-use permission has not been established.
 
-Do not publish a “custom trained Gemma” claim before a real run, saved adapter, reproducible training report and held-out generation evaluation exist. Keep the base model's terms separate from the application's MIT license. The current delivered work is the working local helper and prepared, unexecuted model workflow.
+## Training runs
+
+Both runs used LoRA (rank 16, alpha 32, dropout 0.05) on the text-decoder `q/k/v/o` projections, with prompt tokens masked from loss. Base weights are unchanged.
+
+| Run | Output | Validation loss before → after | Notes |
+|---|---|---|---|
+| v1 | `var/models/roomwise-gemma-4-e4b-lora/` | 4.72 → 0.019 | 2 epochs, LR 2e-4 |
+| v2 (continued from v1) | `var/models/roomwise-gemma-4-e4b-lora-cont/` | 0.019 → 0.00003 | 2 more epochs, LR 1e-4 |
+
+The v2 loss is near zero on templated data, which suggests memorization of the authored templates rather than better general behavior. Use the generation evaluation below as the real quality signal.
+
+Training reports: `training-report.json` in each output folder. Historical reports retain the original dataset manifest's Gemma 3 label; do not rewrite those historical reports as new experiments. New dataset preparation now names Gemma 4 E4B, and future local training reports distinguish a declared revision from a Hub-resolved revision. Local paths alone do not establish the weight revision. Optional training requirements now list the observed top-level versions; they are not a complete transitive lock.
+
+## Held-out generation evaluation
+
+Each model answered the same 24 held-out test prompts through the serving endpoint. Results are in `var/training/*-gemma4-e4b-evaluation.json`.
+
+| Model | Schema valid | Citations valid | Answer kind correct |
+|---|---|---|---|
+| Base Gemma 4 E4B | 100% | 100% | 25% |
+| v1 adapter | 100% | 100% | 58% |
+| v2 adapter | 100% | 100% | 79% |
+
+"Answer kind correct" is an automated check on the answer category, not a review of factual support. Schema and citation validity show only that the output is well-formed and points at real IDs. They do not show that a claim is grounded. Manual review of groundedness, billing correctness, uncertainty and prompt-injection cases is still required before any quality claim beyond these numbers.
+
+## End-to-end check
+
+A backend with the v2 adapter (port 8003) answered a live assistant question about a saved comparison. The request returned `status: complete` with `provider: openai_compatible` and `model_id: roomwise-gemma-4-e4b-v2` in about 7.6 seconds. The model server handled one `/v1/chat/completions` request in that run.
+
+## Limits and remaining work
+
+The current main app on port 8001 is configured for the existing v2 local server on port 8002. Review testing found a correct Grove asking-price answer, successful installment/availability/safety refusals, awkward templated wording, and an incorrect description of the Mill installment as a term total. The billing guard now rejects that error and falls back explicitly. See `HOUSING_UPDATE_REVIEW.md`. No retraining was performed during this review.
+
+- The test set shares templates with training, so the 79% figure overstates performance on new real questions.
+- No independent, human-written evaluation set exists yet.
+- Real review data is not approved for training.
+- The `/api/v1/ai/explain` endpoint still uses `UnconfiguredGemmaRuntime`. Setting the chat transport does not configure it.
+- Hosted inference needs a compute choice, private artifact storage, access control and a budget.
+
+Do not describe the model as a fine-tuned product feature beyond this measured local evaluation. The base model's license applies separately from the application's MIT license.

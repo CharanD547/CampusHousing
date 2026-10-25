@@ -1,29 +1,19 @@
 /* ---------- Explore ---------- */
-function bandOf(r) {
-  const lim = r.commute.limiting;
-  if (!r.commute.total) return { key: 'none', label: 'No schedule' };
-  if (r.commute.supported < r.commute.total) return { key: 'none', label: `${r.commute.supported}/${r.commute.total} routed` };
-  const m = lim.best.minutes;
-  if (m > S.prefs.max_commute_minutes) return { key: 'over', label: `${m} min` };
-  if (m <= 15) return { key: 'short', label: `${m} min` };
-  return { key: 'mid', label: `${m} min` };
-}
-
 function schematicMap(results, opts = {}) {
   if (S.sim.mapFails) return `<div class="map-card panel"><h3>Map unavailable</h3><p>Every offer is still available in the list.</p><button class="btn" data-action="map-retry">Retry map</button></div>`;
   if (API.maps?.enabled && !MAPS.error) return googleMapShell(results);
-  const destinations=S.commitments.map(c=>building(c.building_id)).filter(Boolean);
-  const points=[...CANDIDATES.map(c=>({lat:c.coordinates.lat,lon:c.coordinates.lon})),...destinations];
+  const destinations=[];
+  const points=CANDIDATES.filter(c=>c.coordinates).map(c=>({lat:c.coordinates.lat,lon:c.coordinates.lon}));
   const lats=points.map(p=>p.lat),lons=points.map(p=>p.lon);
   const minLat=Math.min(...lats)-.003,maxLat=Math.max(...lats)+.003,minLon=Math.min(...lons)-.003,maxLon=Math.max(...lons)+.003;
   const xy=p=>[70+(p.lon-minLon)/(maxLon-minLon)*860,620-(p.lat-minLat)/(maxLat-minLat)*540];
   const seen=new Set();
-  const markers=results.filter(r=>{if(seen.has(r.cand.property_id))return false;seen.add(r.cand.property_id);return true;}).map(r=>{
+  const markers=results.filter(r=>{if(!r.cand.coordinates || seen.has(r.cand.property_id))return false;seen.add(r.cand.property_id);return true;}).map(r=>{
     const c=r.cand,[x,y]=xy({lat:c.coordinates.lat,lon:c.coordinates.lon});
     return `<g class="mk" tabindex="0" role="button" aria-label="${esc(c.property_name)}" data-action="select" data-id="${esc(c.id)}" transform="translate(${x},${y})"><circle r="12" fill="var(--ink)"/><text x="${x>750 ? -17:17}" text-anchor="${x>750 ? 'end':'start'}" y="5" font-size="18" fill="var(--ink)">${esc(c.property_name)}</text></g>`;
   }).join('');
   const buildings=destinations.map(b=>{const [x,y]=xy(b);return `<g transform="translate(${x},${y})"><rect x="-6" y="-6" width="12" height="12" fill="var(--amber)"/><text x="12" y="-10" font-size="16">${esc(b.short)}</text></g>`;}).join('');
-  return `<div class="map-card"><svg viewBox="0 0 1000 700" role="img" aria-label="Geographic overview of housing and selected campus buildings"><rect width="1000" height="700" fill="var(--map-bg)"/>${markers}${buildings}<text x="35" y="45" font-size="18">N ↑ · building and property locations</text></svg><div class="map-bar"><span>Coordinate overview: one marker per property. Select individual offers from the list. No street network or travel-time shading is shown. Property address points and VT GIS building locations are approximate destinations, not verified entrances.</span></div></div>`;
+  return `<div class="map-card"><svg viewBox="0 0 1000 700" role="img" aria-label="Geographic overview of housing"><rect width="1000" height="700" fill="var(--map-bg)"/>${markers}${buildings}<text x="35" y="45" font-size="18">N ↑ · property locations</text></svg><div class="map-bar"><span>Coordinate overview: one marker per property. Select individual offers from the list. No street network or travel-time shading is shown. Property address points and VT GIS building locations are approximate destinations, not verified entrances.</span></div></div>`;
 }
 
 function candCard(r) {
@@ -36,7 +26,6 @@ function candCard(r) {
       ${fitChip(r.fit)}
     </div>
     ${priceBlock(r)}
-    <div class="cand-meta"><span>${coverageDots(r)}<b>${coverageText(r)}</b></span></div>
     ${top ? `<div class="cand-unknown ${r.conflicts.length ? 'bad' : ''}">${r.conflicts.length ? I.x : I.q}<span>${esc(top.text)}${(r.conflicts.length + r.unknowns.length) > 1 ? ` <span class="small">+${r.conflicts.length + r.unknowns.length - 1} more</span>` : ''}</span></div>` : ''}
     <div class="cand-meta">${freshness(r)}${demoChip()}</div>
     <div class="cand-actions"><a class="btn btn-sm" href="#property-${c.id}">Details and sources</a><button class="btn btn-sm btn-quiet" data-action="evidence" data-id="${c.id}">Evidence</button>${c.type === 'offer' ? shortlistBtn(c.id) : ''}</div>
@@ -65,28 +54,29 @@ const bedLabel = (n) => (n === 0 ? 'Studio' : `${n} bed`);
 const FIT_DOT = { fit: 'var(--fit)', conflict: 'var(--conflict)', insufficient: 'var(--unsure)' };
 
 function planPrices(g) {
+  if(g.cand.guide_reference)return `<div class="plan-prices"><div class="plan-head">Housing guide reference · USD</div><p>${esc(g.cand.guide_reference.guide_price_summary)}</p><p class="tiny">Guide figures, not current verified quotes. Confirm billing basis, unit, fees and availability.</p></div>`;
   const price = g.plans[0].cand.offer.price;
-  const head = `${price.basis === 'whole_unit' ? 'Whole unit' : 'Per bed'} · ${price.frequency === 'installment' ? 'per installment' : 'per month'}`;
+  const head = `${price.basis === 'whole_unit' ? 'Whole unit' : price.basis==='per_person'?'Per person':'Billing basis unconfirmed'} · ${price.frequency === 'installment' ? 'per installment' : price.frequency==='calendar_month'?'per calendar month':'frequency unconfirmed'}`;
   const from = g.plans.some((r) => r.cand.offer.price_confidence_tier === 'ADVERTISED_FROM');
   const dot = (fit) => `<i class="plan-dot" style="background:${FIT_DOT[fit]}" title="${FIT_META[fit].label}"></i>`;
   let rows;
   if (g.plans.length <= 5) {
-    rows = g.plans.map((r) => `<li><a href="#property-${esc(r.cand.id)}">${dot(r.fit)}<span>${esc(r.cand.offer.layout)}</span><b class="num">${from ? 'from ' : ''}${money(r.cand.offer.price.amount)}</b></a></li>`);
+    rows = g.plans.map((r) => `<li><a href="#property-${esc(r.cand.id)}">${dot(r.fit)}<span>${esc(r.cand.offer.layout)}</span><b class="num">${r.cand.offer.price.amount==null?'Price unconfirmed':(r.cand.offer.price_confidence_tier==='ADVERTISED_FROM'?'from ':'')+money(r.cand.offer.price.amount)}</b></a></li>`);
   } else {
     const byBeds = new Map();
     for (const r of g.plans) {
-      const n = r.cand.offer.bedrooms ?? 0;
+      const n = /studio/i.test(r.cand.offer.layout) ? 0 : r.cand.offer.bedrooms ?? 0;
       if (!byBeds.has(n)) byBeds.set(n, []);
       byBeds.get(n).push(r);
     }
-    rows = [...byBeds.entries()].map(([n, rs]) => {
+    rows = [...byBeds.entries()].sort((a,b)=>a[0]-b[0]).map(([n, rs]) => {
       const amounts = rs.map((r) => r.cand.offer.price.amount).filter((x) => x != null);
       const lo = Math.min(...amounts), hi = Math.max(...amounts);
       const best = rs.reduce((b, r) => (FIT_ORDER[r.fit] < FIT_ORDER[b.fit] ? r : b), rs[0]);
-      return `<li><a href="#property-${esc(best.cand.id)}">${dot(best.fit)}<span>${bedLabel(n)} <span class="tiny">${plural(rs.length, 'plan')}</span></span><b class="num">${lo === hi ? money(lo) : `${money(lo)}–${money(hi)}`}</b></a></li>`;
+      return `<li><a href="#property-${esc(best.cand.id)}">${dot(best.fit)}<span>${bedLabel(n)} <span class="tiny">${plural(rs.length, 'plan')}</span></span><b class="num">${!amounts.length?'Price unconfirmed':(from?'from ':'')+(lo === hi ? money(lo) : `${money(lo)}–${money(hi)}`)}</b></a></li>`;
     });
   }
-  return `<div class="plan-prices"><div class="plan-head">${head}${from ? ' · advertised from' : ''}</div><ul>${rows.join('')}</ul></div>`;
+  return `<div class="plan-prices"><div class="plan-head">${head}${from ? ' · advertised from' : ''}</div><ul>${rows.join('')}</ul><p class="tiny">Base plan figures. Room upgrades, fees and availability may change the quote.</p></div>`;
 }
 
 function propertyCard(g) {
@@ -98,12 +88,11 @@ function propertyCard(g) {
       <div><div class="cand-name"><a href="#property-${esc(r.cand.id)}">${esc(c.property_name)}</a></div><div class="cand-area">${esc(c.address || c.area)}</div></div>
       ${fitChip(g.fit)}
     </div>
-    <div class="cand-meta"><b>${g.fitting.length ? `${g.fitting.length} of ${plural(g.plans.length, 'plan')} fit your needs` : `None of ${plural(g.plans.length, 'plan')} fits`}</b>${r.share ? `<span>· best for you: ${esc(r.cand.offer.layout)}, ${money(r.share.subtotal)} each</span>` : ''}</div>
-    <div class="cand-meta"><span>${coverageDots(r)}<b>${coverageText(r)}</b></span></div>
+    <div class="cand-meta"><b>${c.guide_reference?esc(c.guide_reference.zone):g.fitting.length ? `${g.fitting.length} of ${plural(g.plans.length, 'plan')} match checked criteria` : g.fit==='insufficient'?'More evidence needed to assess these plans':`All ${plural(g.plans.length, 'plan')} have a conflict`}</b>${r.share ? `<span>· ${esc(r.cand.offer.layout)}: known subtotal ${money(r.share.subtotal)} each</span>` : ''}</div>
     ${issue ? `<div class="cand-unknown ${r.conflicts.length ? 'bad' : ''}">${r.conflicts.length ? I.x : I.q}<span>${esc(issue.text)}</span></div>` : ''}
-    <div class="cand-meta">${freshness(r)}${demoChip()}</div>
+    <div class="cand-meta">${c.guide_reference?'<span class="chip chip-neutral">Guide reference · verify current details</span>':freshness(r)+demoChip()}</div>
     ${planPrices(g)}
-    <div class="cand-actions"><a class="btn btn-sm" href="#property-${esc(r.cand.id)}">View plans and sources</a>${shortlistBtn(r.cand.id)}</div>
+    <div class="cand-actions"><a class="btn btn-sm" href="#property-${esc(r.cand.id)}">Plans, sources and nearby places</a>${shortlistBtn(r.cand.id)}</div>
   </li>`;
 }
 
@@ -123,7 +112,7 @@ function viewExplore() {
       ? `<div class="empty"><h3>Nothing matches “${esc(UI.query)}”</h3><p>Search covers place names, streets and floor plans.</p><button class="btn btn-sm" data-action="clear-search">Clear search and filters</button></div>`
       : `<ul class="cand-list">${rs.map(propertyCard).join('')}</ul>`;
   return `
-  <div class="page-head"><div class="kicker">Explore · Blacksburg, VA</div><h1 tabindex="-1" id="page-title">Places near Virginia Tech</h1><p>${plural(total, 'place')}, ${plans} floor plans with prices checked ${fmtDate(LIVE_PRICES_AT || TODAY)}. Each place shows its best plan for revision ${S.revision} of your needs and ${plural(S.commitments.length, 'class', 'classes')}.</p></div>
+  <div class="page-head"><div class="kicker">Explore · Blacksburg, VA</div><h1 tabindex="-1" id="page-title">Places near Virginia Tech</h1><p>${plural(total, 'housing option')}: ${all.filter(g=>!g.cand.guide_reference).length} properties with operator-checked plans and ${all.filter(g=>g.cand.guide_reference).length} additional community and neighborhood references from the housing guide. Guide prices stay labeled; extra costs, lease dates and availability need confirmation.</p><p class="small">Map markers appear only for properties with verified address points. References without a verified point remain fully browsable in this list.</p></div>
   <div class="explore">
     <div>
       <div class="toolbar"><div class="explore-tools">
@@ -222,20 +211,9 @@ function priceDetail(r) {
   </section>`;
 }
 
-function commuteDetail(r) {
-  if (!r.commute.total) return `<div class="empty"><h3>No classes to route to</h3><p>Add your schedule and each class gets its own route from here.</p><a class="btn btn-sm" href="#schedule">Add classes</a></div>`;
-  return `<section class="panel stack-sm" aria-labelledby="h-routes"><h2 id="h-routes">Every route checked</h2>
-    ${r.commute.per.some(x=>x.ests.some(e=>e.provider==='google_routes')) ? '<div style="padding:10px 10px 5px"><img src="/assets/google-maps-attribution.svg" height="18" alt="Google Maps" style="height:18px;width:auto"></div><p class="tiny">Live Google Maps estimates. Saved briefs exclude these provider results and require fresh route checks.</p>' : ''}
-    <div class="cmp-scroll" style="border:0;background:none"><table class="ledger" style="min-width:420px"><thead><tr><th>Class</th><th>Mode</th><th class="r">Time</th></tr></thead><tbody>
-    ${r.commute.per.map((x) => x.ests.map((e, i) => `<tr><td>${i === 0 ? `<b>${esc(x.b.short)}</b><div class="tiny">${esc(x.date)} by ${fmtTime(x.c.arrival_time_local)}</div>` : ''}</td><td>${modeIcon(e.mode)} ${MODE_LABEL[e.mode]}<div class="tiny">${esc(e.context)}</div></td><td class="r num">${e.status === 'supported' ? `<b>${e.minutes} min</b>` : '<span class="unk">No supported estimate</span>'}</td></tr>`).join('')).join('')}
-    </tbody></table></div>
-    <p class="tiny">Origin: ${esc(r.cand.coordinate_basis.toLowerCase())}. Routed for ${routedDates(r)} with provider availability shown above. Missing estimates remain unknown.</p>
-  </section>`;
-}
-
 function fitSummary(r) {
   return `<section class="panel stack-sm" aria-labelledby="h-fit"><div class="panel-head" style="margin:0"><h2 id="h-fit">Against your needs</h2>${fitChip(r.fit)}</div>
-    ${!r.conflicts.length && !r.unknowns.length ? '<p class="small">Budget, bedrooms and every routed class check out with the current figures.</p>' : ''}
+    ${!r.conflicts.length && !r.unknowns.length ? '<p class="small">Budget and bedrooms check out with the current figures.</p>' : ''}
     <ul class="check-list">${r.conflicts.map((x) => `<li><span style="color:var(--conflict)">${I.x}</span><span>${esc(x.text)}</span></li>`).join('')}${r.unknowns.map((x) => `<li><span style="color:var(--unsure)">${I.q}</span><span>${esc(x.text)}</span></li>`).join('')}</ul>
     ${r.checks?.length ? `<h3 style="font-size:1rem;margin-top:12px">Worth confirming <span class="small">(doesn't change the result)</span></h3><ul class="check-list">${r.checks.map((t) => `<li><span style="color:var(--muted)">${I.info}</span><span>${esc(t)}</span></li>`).join('')}</ul>` : ''}
   </section>`;
@@ -258,13 +236,13 @@ function viewProperty(id) {
   <section class="band"><div class="wrap">
   <nav class="crumbs" aria-label="Breadcrumb"><a href="#explore">Explore</a><span aria-hidden="true">/</span><span>${esc(c.property_name)}</span></nav>
   <div class="prop-head">
-    <div><div class="kicker">${esc(c.offer.layout)} · ${esc(c.address || c.area)}</div><h1 tabindex="-1" id="page-title" style="margin-top:18px">${esc(c.property_name)}</h1><p class="lede">${esc(typeLabel(c.type))} in ${esc(c.area)}${c.address ? ', ' + esc(c.address) : ''}. Map point is the ${esc(c.coordinate_basis.toLowerCase())}.</p><div class="chips">${fitChip(r.fit)}${demoChip()}</div></div>
-    <div class="btn-row">${c.type === 'offer' ? shortlistBtn(c.id, false) : ''}<button class="btn" data-action="evidence" data-id="${c.id}">${I.doc} All evidence</button></div>
+    <div><div class="kicker">${esc(c.offer.layout)} · ${esc(c.address || c.area)}</div><h1 tabindex="-1" id="page-title" style="margin-top:18px">${esc(c.property_name)}</h1><p class="lede">${esc(typeLabel(c.type))} in ${esc(c.area)}${c.address ? ', ' + esc(c.address) : ''}. ${c.coordinates?'Map point is a representative address.':'No verified map point is available.'}</p><div class="chips">${fitChip(r.fit)}${c.guide_reference?freshness(r):demoChip()}</div></div>
+    <div class="btn-row">${shortlistBtn(c.id, false)}<button class="btn" data-action="evidence" data-id="${c.id}">${I.doc} All evidence</button></div>
   </div></div></section>
   <div class="wrap page">
   <div class="two-col">
-    <div class="stack">${priceDetail(r)}${pricingEvidence(c)}${housingResearch(c)}${nearbySection(c)}${commuteDetail(r)}</div>
-    <div class="stack">${allPlans(c)}${commuteSign(r)}${fitSummary(r)}${questionsBlock(c.id)}</div>
+    <div class="stack">${c.guide_reference?`<section class="panel stack-sm"><h2>Housing guide details</h2><p>${esc(c.guide_reference.zone)}</p><p>${esc(c.guide_reference.layouts)}</p>${planPrices({cand:c})}<p class="small">This reference can be shortlisted and compared. Its current rent, exact lease and property point remain unverified.</p></section>`:priceDetail(r)}${pricingEvidence(c)}${housingResearch(c)}${nearbySection(c)}</div>
+    <div class="stack">${allPlans(c)}${fitSummary(r)}${questionsBlock(c.id)}</div>
   </div></div>`;
 }
 
@@ -284,36 +262,28 @@ function evidenceDrawer(id) {
   <aside class="drawer" role="dialog" aria-modal="true" aria-labelledby="dr-t" id="drawer">
     <div class="drawer-head"><div><h2 id="dr-t">Evidence for ${esc(c.property_name)}</h2><p class="small">What each source says, when it was checked, and what it supports.</p></div><button class="btn btn-sm" data-action="close-drawer" id="drawer-close">Close</button></div>
     ${disagree ? asyncNotice('unsure', 'Sources disagree', 'The figure shown uses the most recent rendered operator page. The older copy is kept here so you can see the difference.') : ''}
-    ${[...c.evidence, ROUTE_EVIDENCE].map((e) => `<div class="ev"><b>${esc(e.source_name)}</b><dl><dt>Type</dt><dd>${esc(e.source_type)}</dd><dt>Checked</dt><dd>${fmtDate(e.observed_at)} (${ago(e.observed_at)})</dd><dt>Supports</dt><dd>${esc(e.supports)}</dd><dt>ID</dt><dd class="num">${esc(e.id)}</dd></dl>${e.url ? `<p><a href="${esc(e.url)}" target="_blank" rel="noopener noreferrer">Open original source ↗</a></p>` : ''}${e.excerpt ? `<blockquote>${esc(e.excerpt)}</blockquote>` : ''}</div>`).join('')}
+    ${c.evidence.map((e) => `<div class="ev"><b>${esc(e.source_name)}</b><dl><dt>Type</dt><dd>${esc(e.source_type)}</dd><dt>Checked</dt><dd>${fmtDate(e.observed_at)} (${ago(e.observed_at)})</dd><dt>Supports</dt><dd>${esc(e.supports)}</dd><dt>ID</dt><dd class="num">${esc(e.id)}</dd></dl>${e.url ? `<p><a href="${esc(e.url)}" target="_blank" rel="noopener noreferrer">Open original source ↗</a></p>` : ''}${e.excerpt ? `<blockquote>${esc(e.excerpt)}</blockquote>` : ''}</div>`).join('')}
     <p class="tiny">Sources are loaded from the backend evidence repository. Asking prices are dated evidence; confirm availability and all mandatory charges.</p>
   </aside>`;
 }
 
 /* ---------- Compare + AI ---------- */
 function aiPanel() {
-  const a = S.ai;
-  const btn = (label) => `<button class="btn btn-amber" data-action="run-ai" ${a.status === 'pending' || S.shortlist.length === 0 ? 'disabled' : ''}>${label}</button>`;
-  let body = '';
-  if (a.status === 'idle') body = `<p class="small">Get a plain-language read on your shortlist: why each place might work, its main limitation, and what to ask next. The comparison above is complete without it.</p>${btn('Why these options?')}`;
-  else if (a.status === 'pending') body = `<div class="pending-bar" role="progressbar" aria-label="Writing explanation"></div><p class="small" role="status">Writing an explanation for revision ${a.revision}. If you change your inputs before it finishes, this one is discarded.</p>`;
-  else if (a.status === 'unavailable') body = asyncNotice('bad', 'AI explanation unavailable', esc(a.reason || 'No verified model response is available. Your comparison, sources and shortlist are unaffected.'), `<div class="btn-row" style="margin-top:10px">${btn('Try again')}</div>`);
-  else if (a.status === 'interrupted') body = asyncNotice('unsure', 'The last request was interrupted', 'The page reloaded before an explanation came back. Nothing was saved from it.', `<div class="btn-row" style="margin-top:10px">${btn('Run it again')}</div>`);
-  else if (a.status === 'discarded') body = asyncNotice('unsure', 'Explanation discarded', `It was written for revision ${a.revision}, but your inputs changed to revision ${S.revision} while it was running.`, `<div class="btn-row" style="margin-top:10px">${btn(`Explain revision ${S.revision}`)}</div>`);
-  else if (a.status === 'done') {
-    const stale = a.revision !== S.revision;
-    const res = a.result;
-    body = `${stale ? asyncNotice('unsure', 'Out of date', `Written for revision ${a.revision}. Your inputs are now revision ${S.revision}, so the reasons below may be wrong.`, `<div class="btn-row" style="margin-top:10px">${btn(`Explain revision ${S.revision}`)}</div>`) : ''}
-      <div style="${stale ? 'opacity:.55' : ''}">
-        <p>${esc(res.summary)}</p>
-        ${res.candidate_explanations.map((x) => `<div class="ai-item"><h3>${esc(x.name)} ${fitChip(x.fit)}</h3><dl><dt>Why</dt><dd>${esc(x.reason)}</dd><dt>Limitation</dt><dd>${esc(x.limitation)}</dd><dt>Ask next</dt><dd>${esc(x.next_question)}</dd><dt>Sources</dt><dd><button class="linkish" data-action="evidence" data-id="${x.candidate_id}">${x.evidence_ids.map(esc).join(', ')}</button></dd></dl></div>`).join('')}
-      </div>
-      ${!stale ? `<div class="btn-row">${btn('Explain again')}</div>` : ''}`;
-  }
-  return `<section class="ai" aria-labelledby="h-ai">
-    <div class="ai-head"><div><div class="kicker">Explanation</div><h2 id="h-ai">Why these options?</h2></div><div class="ai-run">${a.status === 'done' ? `<span class="chip chip-neutral">Revision ${a.revision}</span><span class="chip chip-demo">Verified model response</span>` : '<span class="chip chip-demo">Optional Gemma provider</span>'}</div></div>
-    ${body}
-    <p class="tiny">Explanations only restate checks and sources from the comparison. Money and time figures come from the comparison, never from the model.</p>
-  </section>`;
+  const a=S.ai, res=a.result;
+  const stale=a.revision!==S.revision || a.selection!==JSON.stringify(S.shortlist.slice(0,3));
+  const button=label=>`<button class="btn btn-amber" data-action="run-ai" ${a.status==='pending'?'disabled':''}>${label}</button>`;
+  let body;
+  if(a.status==='pending')body='<p role="status">Writing an explanation from your shortlist and its sources…</p>';
+  else if(a.status==='done' && res && !stale) {
+    const sources=[...new Set(res.evidence_ids || [])];
+    body=`${res.fallback?asyncNotice('unsure','Local research helper',esc(res.fallback.message)):''}<p style="white-space:pre-line">${esc(res.answer)}</p>
+      <h3>Limitations</h3><ul>${(res.limitations || []).map(x=>`<li>${esc(x)}</li>`).join('')}</ul>
+      ${(res.next_questions || []).length?`<h3>Ask next</h3><ul>${res.next_questions.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`:''}
+      <div class="btn-row">${sources.map(id=>{const c=CANDIDATES.find(c=>c.sources.some(s=>s.id===id));return c?`<button class="btn btn-sm" data-action="evidence" data-id="${esc(c.id)}">${esc(id)}</button>`:'';}).join('')}</div>${button('Explain again')}`;
+  } else if(a.status==='unavailable')body=asyncNotice('bad','Explanation could not finish',esc(a.reason || 'Please retry the request.'),button('Try again'));
+  else body=`<p>Explain the costs, fit, missing information and next questions for these places using the connected housing assistant.</p>${button('Explain these options')}`;
+  const label=a.status==='done' && !stale ? res?.model_id || 'Local research helper' : API.health?.assistant?.model_id || 'Housing assistant';
+  return `<section class="ai" aria-labelledby="h-ai"><div class="ai-head"><div><div class="kicker">Explanation</div><h2 id="h-ai">Why these options?</h2></div><span class="chip chip-neutral">${esc(label)}</span></div>${body}<p class="tiny">Uses the comparison and its cited sources. Guide prices remain unverified; missing costs remain unknown.</p></section>`;
 }
 
 function viewCompare() {
@@ -326,12 +296,10 @@ function viewCompare() {
   <div class="cmp-scroll"><table class="cmp">
     <thead><tr><th><span class="sr">Check</span></th>${rs.map((r) => `<th scope="col"><a class="cname" href="#property-${r.cand.id}">${esc(r.cand.property_name)}</a>${fitChip(r.fit)}</th>`).join('')}${'<th></th>'.repeat(3 - rs.length)}</tr></thead>
     <tbody>
-      ${row('Price as listed', (r) => r.share ? `<span class="amt num">${money(r.cand.offer.price.amount)}</span><div class="small">${BASIS_LABEL[r.cand.offer.price.basis]} ${FREQ_LABEL[r.cand.offer.price.frequency]}</div>` : '<b style="color:var(--unsure)">Price needs confirmation</b>')}
-      ${row('Your share', (r) => r.share ? `<b class="num">${money(r.share.subtotal)}</b> <span class="small">${r.share.complete ? 'recurring, all known costs' : 'partial, costs missing'}${r.share.scenario ? `. Split ${S.prefs.household_size} ways as a scenario` : ''}</span>` : '—')}
+      ${row('Price as listed', (r) => r.share ? `<span class="amt num">${money(r.cand.offer.price.amount)}</span><div class="small">${BASIS_LABEL[r.cand.offer.price.basis]} ${FREQ_LABEL[r.cand.offer.price.frequency]}</div>` : r.cand.guide_reference ? planPrices({cand:r.cand}) : '<b style="color:var(--unsure)">Price needs confirmation</b>')}
+      ${row('Your share', (r) => r.share ? `<b class="num">${money(r.share.subtotal)}</b> <span class="small">${r.share.complete ? 'known recurring subtotal; confirm utilities and extra charges' : 'partial, costs missing'}${r.share.scenario ? `. Split ${S.prefs.household_size} ways as a scenario` : ''}</span>` : '—')}
       ${row('Source', (r) => `${freshness(r)}<div><button class="linkish small" data-action="evidence" data-id="${r.cand.id}">${esc(r.cand.evidence[0].id)}</button></div>`)}
-      ${row('Rooms and lease', (r) => r.cand.offer ? `${esc(r.cand.offer.layout)}<div class="small">${r.cand.offer.lease === 'individual' ? 'Individual lease' : 'Joint lease'}</div>` : '—')}
-      ${row('Commute coverage', (r) => `${coverageDots(r)}<b>${r.commute.supported} of ${r.commute.total}</b> routed<div class="small">${r.commute.within} within ${S.prefs.max_commute_minutes} min</div>`)}
-      ${row('Longest trip', (r) => r.commute.limiting ? `<b class="num">${r.commute.limiting.best.minutes} min</b> <span class="small">to ${esc(r.commute.limiting.b.short)} by ${MODE_LABEL[r.commute.limiting.best.mode].toLowerCase()}</span>` : '—')}
+      ${row('Rooms and lease', (r) => r.cand.offer ? `${esc(r.cand.offer.layout)}<div class="small">${r.cand.offer.lease === 'individual' ? 'Individual lease' : r.cand.offer.lease === 'joint' ? 'Joint lease' : 'Lease unconfirmed'}</div>` : '—')}
       ${row('Conflicts and unknowns', (r) => `<ul>${issues(r)}</ul>`)}
     </tbody>
   </table></div>
@@ -348,7 +316,6 @@ function viewShortlist() {
     return `<section class="panel sl-item" aria-labelledby="sl-${c.id}">
       <div class="panel-head" style="margin:0"><div><h2 id="sl-${c.id}"><a href="#property-${c.id}" style="text-decoration:none">${esc(c.property_name)}</a></h2><p class="small">${esc(c.offer?.layout || typeLabel(c.type))}</p></div><div class="chips">${fitChip(r.fit)}</div></div>
       ${priceBlock(r)}
-      <p class="small">${coverageDots(r)}${coverageText(r)}</p>
       ${questionsBlock(c.id).replace('class="panel stack-sm"', 'class="stack-sm"')}
       <div class="btn-row"><button class="btn btn-sm btn-quiet" data-action="toggle-shortlist" data-id="${c.id}">Remove from shortlist</button></div>
     </section>`;
@@ -358,7 +325,7 @@ function viewShortlist() {
   <div class="two-col">
     <div class="stack">${body}</div>
     <aside class="stack side">
-      <div class="panel stack-sm"><h2>Save a decision brief</h2><p class="small">A frozen snapshot of your needs, schedule, these places, their prices with basis and dates, routes, questions and AI status. Later price corrections won't change it.</p>
+      <div class="panel stack-sm"><h2>Save a decision brief</h2><p class="small">A frozen snapshot of your needs, these places, their prices with basis and dates, questions and AI status. Later price corrections won't change it.</p>
         <button class="btn btn-primary" data-action="save-brief" ${items.length ? '' : 'disabled'}>Save brief</button>
         <p class="tiny">${I.lock} Saved locally and synced to this backend. It won't appear on other devices.</p></div>
       <div class="panel stack-sm"><h2>Saved briefs</h2>${S.briefs.length ? `<ul class="brief-list">${S.briefs.map((b) => `<li><a href="#brief-${b.id}"><b>${new Date(b.saved_at).toLocaleString('en-US', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' })}</b><span class="small">${plural(b.candidates.length, 'place')} · revision ${b.revision}${b.origin === 'guide' ? ' · DormToDoor' : ''}</span></a></li>`).join('')}</ul>` : '<p class="small">None yet.</p>'}</div>
@@ -371,7 +338,6 @@ function briefText(b) {
   const L = [];
   L.push(`Roomwise decision brief`, `Saved ${new Date(b.saved_at).toLocaleString('en-US')} · revision ${b.revision} · source-backed research snapshot`, '');
   L.push(`Needs: ${money(b.prefs.monthly_budget_per_person)} per person, household of ${b.prefs.household_size}, ${b.prefs.private_bedroom_required ? 'private bedrooms' : 'sharing OK'}, ${b.prefs.travel_modes.map((m) => MODE_LABEL[m]).join('/')} up to ${b.prefs.max_commute_minutes} min`);
-  L.push(`Schedule (routed for ${fmtDay(b.routing_date)}): ${b.commitments.map((c) => `${c.building} ${c.weekdays.map(dayLabel).join('/')} ${fmtTime(c.arrival)}${c.sample ? ' [sample]' : ''}`).join('; ')}`, '');
   b.candidates.forEach((c) => {
     L.push(`${c.name} — ${FIT_META[c.fit].label}`);
     L.push(c.price ? `  ${money(c.price.amount)} ${BASIS_LABEL[c.price.basis]} ${FREQ_LABEL[c.price.frequency]}, reviewed ${fmtDate(c.price.last_reviewed_at)}` : '  Price needs confirmation');
@@ -408,7 +374,7 @@ function viewBrief(id) {
       <div class="panel stack-sm"><h2>Inputs at save time</h2><dl class="kv">
         <dt>Budget</dt><dd>${money(b.prefs.monthly_budget_per_person)} per person</dd><dt>Household</dt><dd>${b.prefs.household_size}, ${b.prefs.private_bedroom_required ? 'private rooms' : 'sharing OK'}</dd>
         <dt>Travel</dt><dd>${b.prefs.travel_modes.map((m) => MODE_LABEL[m]).join(', ')}, ≤ ${b.prefs.max_commute_minutes} min</dd><dt>Routed for</dt><dd>${fmtDay(b.routing_date)}</dd>
-        <dt>Classes</dt><dd>${b.commitments.map((c) => `${esc(c.building)}${c.sample ? ' (sample)' : ''}`).join(', ') || 'None'}</dd><dt>AI</dt><dd>${esc(b.ai.status)}</dd></dl></div>
+        <dt>AI</dt><dd>${esc(b.ai.status)}</dd></dl></div>
       <div class="panel stack-sm"><h2>Take it with you</h2><p class="small">Copies a plain-text version you can paste into notes or an email. Uploaded documents are never included.</p><button class="btn btn-primary" data-action="copy-brief" data-id="${b.id}">Copy brief as text</button><textarea class="input" id="brief-text" readonly rows="6" aria-label="Brief as text">${esc(briefText(b))}</textarea></div>
     </aside>
   </div>`;

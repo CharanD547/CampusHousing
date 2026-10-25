@@ -1,7 +1,7 @@
 /* ---------- DormToDoor guide ---------- */
 const GUIDE_STEPS = [
   { n: 1, t: 'Your needs', s: 'Budget, roommates, travel' },
-  { n: 2, t: 'Campus routine', s: 'Where and when you go' },
+  { n: 2, t: 'Explore places', s: 'Housing and nearby essentials' },
   { n: 3, t: 'Compare', s: 'Up to three places' },
   { n: 4, t: 'Before you sign', s: 'Your checklist' },
 ];
@@ -25,7 +25,6 @@ function guideAnswers() {
       <dt>Living</dt><dd>${p.household_size} ${p.household_size === 1 ? 'person' : 'people'}, ${p.private_bedroom_required ? 'own rooms' : 'sharing OK'}</dd>
       <dt>Travel</dt><dd>${p.travel_modes.map((m) => MODE_LABEL[m]).join(', ') || 'None'}</dd>
       <dt>Top three</dt><dd>${p.priorities.length ? p.priorities.map((x, i) => `${i + 1}. ${esc(x)}`).join('<br>') : 'Not chosen'}</dd>
-      <dt>Classes</dt><dd>${S.commitments.length}${S.commitments.some((c) => c.sample) ? ' (sample)' : ''}</dd>
     </dl>
     <p class="tiny">Shared with Explore and Preferences. Revision ${S.revision}. ${I.lock} Saved locally and synced to this backend.</p>
   </aside>`;
@@ -65,16 +64,16 @@ function guideStep1() {
 
 function guideStep2() {
   return `<div class="stack">
-    <div class="kicker">02 / Campus routine</div><h2 tabindex="-1" id="page-title">Where do you need to be each week?</h2>
-    <p class="lede">Add each class building with the days and time you need to arrive. Every place in step 3 is routed to all of them.</p>
-    ${scheduleBuilder()}
-    ${routingDisclosure()}
+    <div class="kicker">02 / Explore places</div><h2 tabindex="-1" id="page-title">What should be near your home?</h2>
+    <p class="lede">Explore all housing-guide options, save up to three different places and check groceries, restaurants and gas stations from property details.</p>
+    <p>Operator-checked plans and guide references have different evidence levels. Confirm the exact unit, lease, fees and address before deciding.</p>
+    <div class="btn-row"><a class="btn btn-primary" href="#explore">Explore housing options</a><a class="btn" href="#shortlist">Review my shortlist</a></div>
   </div>`;
 }
 
 function guideCandidates() {
   let ids = S.guide.selected_candidate_ids.filter((id) => candidate(id));
-  if (!ids.length) ids = S.shortlist.length ? S.shortlist.slice(0, 3) : compareAll().filter((r) => r.cand.type === 'offer').sort((a, z) => FIT_ORDER[a.fit] - FIT_ORDER[z.fit]).slice(0, 3).map((r) => r.cand.id);
+  if (!ids.length) ids = S.shortlist.length ? S.shortlist.slice(0, 3) : propertyGroups(compareAll()).map(g=>g.lead).slice(0, 3).map((r) => r.cand.id);
   return ids.slice(0, 3).map((id) => compare(candidate(id), S.prefs, S.commitments));
 }
 
@@ -84,17 +83,16 @@ function guideStep3() {
   return `<div class="stack">
     <div class="kicker">03 / Compare</div><h2 tabindex="-1" id="page-title">Three places to start with</h2>
     <p class="lede">${S.shortlist.length ? 'From your shortlist.' : 'The first three reviewed offers, documented fits first.'} Nobody is crowned the winner. Each card shows what's confirmed and what isn't.</p>
-    <div class="btn-row"><div class="seg view-switch" role="radiogroup" aria-label="View"><label><input type="radio" name="gview" value="list" data-action="gview" ${view === 'list' ? 'checked' : ''}><span>List</span></label><label><input type="radio" name="gview" value="map" data-action="gview" ${view === 'map' ? 'checked' : ''}><span>Map</span></label></div><a class="btn btn-quiet" href="#explore">Browse all ${CANDIDATES.length} on Explore</a></div>
+    <div class="btn-row"><div class="seg view-switch" role="radiogroup" aria-label="View"><label><input type="radio" name="gview" value="list" data-action="gview" ${view === 'list' ? 'checked' : ''}><span>List</span></label><label><input type="radio" name="gview" value="map" data-action="gview" ${view === 'map' ? 'checked' : ''}><span>Map</span></label></div><a class="btn btn-quiet" href="#explore">Browse all ${new Set(CANDIDATES.map(c=>c.property_id)).size} places on Explore</a></div>
     ${view === 'map' ? schematicMap(rs) : ''}
     <ul class="cand-list">${rs.map((r) => {
       const c = r.cand;
       return `<li class="cand" style="cursor:default">
         <div class="cand-top"><div><div class="cand-name">${esc(c.property_name)}</div><div class="cand-area">${esc(c.area)}${c.offer ? ' · ' + esc(c.offer.layout) : ''}</div></div>${fitChip(r.fit)}</div>
         ${priceBlock(r)}
-        <div class="cand-meta"><span>${coverageDots(r)}<b>${coverageText(r)}</b></span></div>
-        <div class="cand-meta">${freshness(r)}${demoChip()}</div>
+        <div class="cand-meta">${freshness(r)}${c.guide_reference?'':demoChip()}</div>
         <details class="vocab"><summary>Why this option?</summary><div style="padding-bottom:12px" class="stack-sm">
-          <ul class="check-list">${r.conflicts.map((x) => `<li><span style="color:var(--conflict)">${I.x}</span><span>${esc(x.text)}</span></li>`).join('')}${r.unknowns.map((x) => `<li><span style="color:var(--unsure)">${I.q}</span><span>${esc(x.text)}</span></li>`).join('')}${!r.conflicts.length && !r.unknowns.length ? `<li><span style="color:var(--fit)">${I.check}</span><span>Budget, bedrooms, lease and every routed class check out with current sources.</span></li>` : ''}</ul>
+          <ul class="check-list">${r.conflicts.map((x) => `<li><span style="color:var(--conflict)">${I.x}</span><span>${esc(x.text)}</span></li>`).join('')}${r.unknowns.map((x) => `<li><span style="color:var(--unsure)">${I.q}</span><span>${esc(x.text)}</span></li>`).join('')}${!r.conflicts.length && !r.unknowns.length ? `<li><span style="color:var(--fit)">${I.check}</span><span>Budget, bedrooms and lease check out with current sources.</span></li>` : ''}</ul>
           <p class="tiny">From the deterministic comparison, not AI. Sources: ${c.evidence.map((e) => esc(e.id)).join(', ')}. <button class="linkish" data-action="evidence" data-id="${c.id}">Open evidence</button></p>
         </div></details>
         <div class="cand-actions">${shortlistBtn(c.id)}<a class="btn btn-sm btn-quiet" href="#property-${c.id}">Full details</a></div>
@@ -124,7 +122,7 @@ function guideStep4() {
     }).join('')}
     <form class="btn-row" data-form="cl-add"><label class="sr" for="cl-new">Add your own item</label><input class="input" style="flex:1;min-width:200px" id="cl-new" placeholder="Add your own item"><select class="input" style="width:auto" id="cl-new-cat" aria-label="Category">${CHECKLIST_CATEGORIES.map((c) => `<option value="${c.id}">${c.label}</option>`).join('')}</select><button class="btn" type="submit">Add</button></form>
     <section class="empty" aria-labelledby="h-wish"><h3 id="h-wish">What students wish they knew</h3><p>No authorized resident feedback exists for these places yet, so this stays empty. Nothing here is written from marketing copy or guessed.</p></section>
-    <div class="panel stack-sm"><h3>Save your first-renter brief</h3><p class="small">Your answers, schedule, these places, this checklist and every open question, frozen as of now.</p><div class="btn-row"><button class="btn btn-primary" data-action="save-brief" data-origin="guide">Save brief</button></div></div>
+    <div class="panel stack-sm"><h3>Save your first-renter brief</h3><p class="small">Your answers, these places, this checklist and every open question, frozen as of now.</p><div class="btn-row"><button class="btn btn-primary" data-action="save-brief" data-origin="guide">Save brief</button></div></div>
   </div>`;
 }
 
