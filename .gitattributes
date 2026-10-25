@@ -1,5 +1,5 @@
 # Historical training bytes and hash-bearing configs must survive Windows clones.
-data/training/**/*.jsonl -text
-data/training/**/*.json -text
-models/**/*.json -text
+data/training/**/*.jsonl -text whitespace=cr-at-eol
+data/training/**/*.json -text whitespace=cr-at-eol
+models/**/*.json -text whitespace=cr-at-eol
 models/**/*.safetensors binary

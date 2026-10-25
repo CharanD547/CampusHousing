@@ -31,6 +31,10 @@ def test_packaged_training_data_matches_historical_hashes_and_contains_no_review
     assert manifest['raw_review_records_used']==0
     report=json.loads((ROOT/'data/training/reports/v2-training.json').read_text(encoding='utf-8'))
     assert report['dataset_manifest']['files']==manifest['files']
+    for name in ('base-gemma4-e4b-evaluation.json','adapter-gemma4-e4b-evaluation.json',
+                 'adapter-v2-gemma4-e4b-evaluation.json','adapter-v3-gemma4-e4b-evaluation.json'):
+        evaluation=json.loads((ROOT/'data/training/reports'/name).read_text(encoding='utf-8'))
+        assert evaluation['test_file_sha256']==manifest['files']['test']['sha256']
 
 
 @pytest.mark.parametrize('label,dataset',[('v1','v1'),('v2','v1'),('v3','v2')])

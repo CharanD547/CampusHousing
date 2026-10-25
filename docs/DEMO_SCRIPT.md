@@ -1,5 +1,7 @@
 # Two-minute Roomwise demo
 
+For the complete word-for-word pitch, preparation steps, recovery lines and judge Q&A, use [PITCH.md](PITCH.md).
+
 Use actual screens and actual provider labels. Rehearse before recording. Do not substitute a rules response for a Gemma response without saying so.
 
 | Time | Show | Explain |

@@ -45,7 +45,7 @@ Training preflight verifies data and dependencies; it does not train or establis
 | v2 (selected) | 100% | 100% | 79% |
 | v3 (not selected) | 54% | 46% | 25% |
 
-Each run used 24 shared-template cases; v3 used the second dataset version, so its prompts are not an identical controlled comparison with v1/v2. These figures are **not factual accuracy**, and valid citation IDs do not establish that a sentence follows from a source. Near-zero v2 validation loss suggests template memorization. v3 regressed, so it is not the selected runtime. Historical raw reports are packaged rather than selecting only favorable results.
+All four generation reports record the same original 24-case test-file hash. v3 was trained on the second dataset version but was evaluated on that original test file. These figures are **not factual accuracy**, and valid citation IDs do not establish that a sentence follows from a source. Near-zero v2 validation loss suggests template memorization. v3 regressed, so it is not the selected runtime. Historical raw reports are packaged rather than selecting only favorable results.
 
 New application audit prompts are in `data/evaluation/submission-cases.json`; they are separate authored checks, not a human-reviewed benchmark. Run `tools/training/evaluate_application.py` against a local backend with its configured model to retain actual responses and latency. Review money/basis, citation relevance, uncertainty, discrimination and adversarial requests qualitatively. Do not convert transport success or fallback rates into an accuracy claim.
 
